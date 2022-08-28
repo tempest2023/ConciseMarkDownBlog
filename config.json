@@ -1,21 +1,17 @@
 {
   "readmeUrl": "https://raw.githubusercontent.com/cveinnt/cveinnt/master/README.md",
-  "title": "LiveTerm",
-  "name": "John Doe",
-  "ascii": "liveterm",
+  "title": "TerminalResume",
+  "name": "Tempest(Tao Ren)",
+  "ascii": "terminal resume",
   "social": {
     "github": "github",
     "linkedin": "linkedin"
   },
-  "email": "contact@email.com",
-  "ps1_hostname": "liveterm",
+  "email": "tar118@pitt.edu",
+  "ps1_hostname": "know_me.host",
   "ps1_username": "visitor",
-  "repo": "https://github.com/Cveinnt/LiveTerm",
+  "repo": "https://github.com/623059008/TerminalResume",
   "resume_url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Resume.pdf",
-  "donate_urls": {
-    "paypal": "https://paypal.me/cveinnt",
-    "patreon": "https://patreon.com/cveinnt"
-  },
   "colors": {
     "light": {
       "background": "#FBF1C9",

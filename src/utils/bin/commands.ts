@@ -18,7 +18,7 @@ export const help = async (args: string[]): Promise<string> => {
 \n${c}\n
 [tab]: trigger completion.
 [ctrl+l]/clear: clear terminal.\n
-Type 'sumfetch' to display summary.
+Type 'whoami' to display intro.
 `;
 };
 
@@ -33,7 +33,7 @@ export const about = async (args: string[]): Promise<string> => {
   return `Hi, I am ${config.name}. 
 Welcome to my website!
 More about me:
-'sumfetch' - short summary.
+'whoami' - intro display.
 'resume' - my latest resume.
 'readme' - my github readme.`;
 };
@@ -140,18 +140,25 @@ export const sudo = async (args?: string[]): Promise<string> => {
 
 // Banner
 export const banner = (args?: string[]): string => {
-  return `
-█████        ███                       ███████████                                   
-░░███        ░░░                       ░█░░░███░░░█                                   
- ░███        ████  █████ █████  ██████ ░   ░███  ░   ██████  ████████  █████████████  
- ░███       ░░███ ░░███ ░░███  ███░░███    ░███     ███░░███░░███░░███░░███░░███░░███ 
- ░███        ░███  ░███  ░███ ░███████     ░███    ░███████  ░███ ░░░  ░███ ░███ ░███ 
- ░███      █ ░███  ░░███ ███  ░███░░░      ░███    ░███░░░   ░███      ░███ ░███ ░███ 
- ███████████ █████  ░░█████   ░░██████     █████   ░░██████  █████     █████░███ █████
-░░░░░░░░░░░ ░░░░░    ░░░░░     ░░░░░░     ░░░░░     ░░░░░░  ░░░░░     ░░░░░ ░░░ ░░░░░ 
-
+  return `                                                                                                                
+RRRRRRRRRRRRRRRRR                                                                                                      
+R::::::::::::::::R                                                                                                     
+R::::::RRRRRR:::::R                                                                                                    
+RR:::::R     R:::::R                                                                                                   
+  R::::R     R:::::R    eeeeeeeeeeee        ssssssssss   uuuuuu    uuuuuu     mmmmmmm    mmmmmmm       eeeeeeeeeeee    
+  R::::R     R:::::R  ee::::::::::::ee    ss::::::::::s  u::::u    u::::u   mm:::::::m  m:::::::mm   ee::::::::::::ee  
+  R::::RRRRRR:::::R  e::::::eeeee:::::eess:::::::::::::s u::::u    u::::u  m::::::::::mm::::::::::m e::::::eeeee:::::ee
+  R:::::::::::::RR  e::::::e     e:::::es::::::ssss:::::su::::u    u::::u  m::::::::::::::::::::::me::::::e     e:::::e
+  R::::RRRRRR:::::R e:::::::eeeee::::::e s:::::s  ssssss u::::u    u::::u  m:::::mmm::::::mmm:::::me:::::::eeeee::::::e
+  R::::R     R:::::Re:::::::::::::::::e    s::::::s      u::::u    u::::u  m::::m   m::::m   m::::me:::::::::::::::::e 
+  R::::R     R:::::Re::::::eeeeeeeeeee        s::::::s   u::::u    u::::u  m::::m   m::::m   m::::me::::::eeeeeeeeeee  
+  R::::R     R:::::Re:::::::e           ssssss   s:::::s u:::::uuuu:::::u  m::::m   m::::m   m::::me:::::::e           
+RR:::::R     R:::::Re::::::::e          s:::::ssss::::::su:::::::::::::::uum::::m   m::::m   m::::me::::::::e          
+R::::::R     R:::::R e::::::::eeeeeeee  s::::::::::::::s  u:::::::::::::::um::::m   m::::m   m::::m e::::::::eeeeeeee  
+R::::::R     R:::::R  ee:::::::::::::e   s:::::::::::ss    uu::::::::uu:::um::::m   m::::m   m::::m  ee:::::::::::::e  
+RRRRRRRR     RRRRRRR    eeeeeeeeeeeeee    sssssssssss        uuuuuuuu  uuuummmmmm   mmmmmm   mmmmmm    eeeeeeeeeeeeee  
 Type 'help' to see the list of available commands.
-Type 'sumfetch' to display summary.
+Type 'whoami' to display intro.
 Type 'repo' or click <u><a class="text-light-blue dark:text-dark-blue underline" href="${config.repo}" target="_blank">here</a></u> for the Github repository.
 `;
 };
