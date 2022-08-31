@@ -2,7 +2,7 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-08-31 14:39:25
- * @modify date 2022-08-31 14:39:37
+ * @modify date 2022-08-31 16:13:31
  * @desc Global CSS for this application
  */
 @font-face {
@@ -21,32 +21,8 @@ body > div:first-child,
 div#root,
 div#root > div {
   height: 100%;
-  overflow: auto;
   box-sizing: border-box;
-}
-
-a {
-  color: inherit!important; /* blue colors for links too */
-  text-decoration: inherit!important; /* no underline */
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #212020;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #a9a9b3;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #feb272;
+  overflow: auto;
 }
 
 .page {
@@ -55,8 +31,6 @@ a {
     color: #212529;
     height: 100%;
     width: 100%;
-    overflow-x: hidden;
-    overflow-y: scroll;
 }
 .main-container {
     display: flex;
@@ -64,5 +38,6 @@ a {
     flex: 1 auto;
     justify-content: center;
     align-items: center;
-    margin: 0
+    margin: 0;
+    padding: 20px;
 }

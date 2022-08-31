@@ -2,7 +2,7 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-08-31 12:59:50
- * @modify date 2022-08-31 14:40:29
+ * @modify date 2022-08-31 15:11:57
  * @desc Header CSS
  */
 .header-container {
@@ -15,6 +15,7 @@
     margin: 0;
     padding: 20px;
     flex-shrink: 0;
+    background-color: #fafafa;
 }
 
 .header-title {
@@ -50,6 +51,11 @@
 
 .header-link-wrapper:hover {
     color: #feb272;
+}
+
+.header-link-wrapper a {
+  color: inherit!important; /* blue colors for links too */
+  text-decoration: inherit!important; /* no underline */
 }
 
 .header-controller {

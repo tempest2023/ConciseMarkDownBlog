@@ -12,6 +12,8 @@ import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import remarkMath from 'remark-math';
+import remarkGfm from 'remark-gfm';
+
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -19,7 +21,7 @@ import 'katex/dist/katex.min.css';
 
 import config from '../../config.json';
 
-import styles from '../styles/editor.module.css';
+import styles from '../../styles/editor.module.css';
 
 export default function MarkDownPreview (props) {
   const { markdownFile, markdownString, loading } = props;
@@ -53,7 +55,7 @@ export default function MarkDownPreview (props) {
         : (
             <ReactMarkdown
               children={markdownContent}
-              remarkPlugins={[remarkMath]}
+              remarkPlugins={[remarkGfm, remarkMath]}
               rehypePlugins={[rehypeKatex, rehypeRaw]}
               components={{
                 code ({ node, inline, className, children, ...props }) {

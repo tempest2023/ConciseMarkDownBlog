@@ -10,7 +10,7 @@ import React, { useEffect, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Textarea from 'react-expanding-textarea';
 
-import styles from '../styles/editor.module.css';
+import styles from '../../styles/editor.module.css';
 
 export default function MarkdownTextarea ({
   maxLength,
