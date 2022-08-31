@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import config from './config.json';
 import Article from './components/article';
-import Editor from './components/editor';
+import MarkDownEditor from './components/editor';
 import Header from './components/header';
 import './styles/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,7 +14,7 @@ const App = () => {
       <Header setData={setData}/>
       <div className='main-container'>
         { data === 'editor'
-          ? <Editor data={config.default}/>
+          ? <MarkDownEditor data={config.default}/>
           : <Article data={data}/>
         }
       </div>
