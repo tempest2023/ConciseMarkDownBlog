@@ -1,35 +1,55 @@
 {
-  "readmeUrl": "https://raw.githubusercontent.com/cveinnt/cveinnt/master/README.md",
-  "title": "TerminalResume",
+  "readmeUrl": "",
+  "title": "Tempest's Blog",
   "name": "Tempest(Tao Ren)",
-  "ascii": "terminal resume",
   "social": {
     "github": "github",
     "linkedin": "linkedin"
   },
+  "default": "About",
+  "headers": [
+    {
+      "title": "About",
+      "type": "article"
+    },
+    {
+      "title": "Blog",
+      "type": "article"
+    },
+    {
+      "title": "Projects",
+      "type": "article"
+    },
+    {
+      "title": "Resume",
+      "type": "link",
+      "link": "Resume"
+    },
+    {
+      "title": "Editor",
+      "type": "link",
+      "link": "editor"
+    }
+  ],
+  "articles": {
+    "About": "",
+    "Projects": "",
+    "Blog": ""
+  },
+  "themeChange": true,
   "email": "tar118@pitt.edu",
-  "ps1_hostname": "know_me.host",
-  "ps1_username": "visitor",
-  "repo": "https://github.com/623059008/TerminalResume",
-  "resume_url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Resume.pdf",
+  "repo": "https://github.com/623059008/Profile",
+  "resume_url": "",
   "colors": {
     "light": {
-      "background": "#FBF1C9",
-      "foreground": "#3C3836",
-      "yellow": "#D79921",
-      "green": "#98971A",
-      "gray": "#7C6F64",
-      "blue": "#458588",
-      "red": "#CA2124"
+      "background": "#ffffff",
+      "foreground": "#feb272",
+      "gray": "#212529"
     },
     "dark": {
-      "background": "#2E3440",
-      "foreground": "#E5E9F0",
-      "yellow": "#5E81AC",
-      "green": "#A3BE8C",
-      "gray": "#88C0D0",
-      "blue": "#EBCB8B",
-      "red": "#BF616A"
+      "background": "#212020",
+      "foreground": "#653208",
+      "gray": "#a9a9b3"
     }
   }
 }

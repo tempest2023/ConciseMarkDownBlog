@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @font-face {
   font-family: 'Hack';
   src: url(/assets/fonts/Hack-NF.ttf);
@@ -19,6 +15,12 @@ div#__next,
 div#__next > div {
   height: 100%;
   overflow: auto;
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit!important; /* blue colors for links too */
+  text-decoration: inherit!important; /* no underline */
 }
 
 ::-webkit-scrollbar {
@@ -27,15 +29,15 @@ div#__next > div {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e252e;
+  background: #212020;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ebdbb2;
+  background: #a9a9b3;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff8037;
+  background: #feb272;
 }

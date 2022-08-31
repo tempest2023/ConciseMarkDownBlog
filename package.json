@@ -1,11 +1,10 @@
 {
-  "name": "liveterm",
+  "name": "concise-blog",
   "version": "0.1.0",
   "license": "MIT",
   "author": {
-    "name": "Vincent Wu",
-    "url": "https://cveinnt.com",
-    "email": "contact@wensenwu.com"
+    "name": "Tempest",
+    "email": "tar118@pitt.edu"
   },
   "scripts": {
     "dev": "next dev",
@@ -16,10 +15,15 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "next": "12.1.6",
+    "katex": "^0.16.2",
+    "next": "^12.2.5",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-icons": "^4.3.1"
+    "react-icons": "^4.3.1",
+    "react-markdown": "^8.0.3",
+    "react-syntax-highlighter": "^15.5.0",
+    "rehype-katex": "^6.0.2",
+    "remark-math": "^5.1.1"
   },
   "devDependencies": {
     "@types/node": "17.0.32",
@@ -28,6 +32,8 @@
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
     "autoprefixer": "^10.4.7",
+    "bootstrap": "^5.2.0",
+    "bootstrap-icons": "^1.9.1",
     "eslint": "8.15.0",
     "eslint-config-next": "^12.1.6",
     "eslint-plugin-next": "^0.0.0",
