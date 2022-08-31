@@ -10,6 +10,7 @@
     "bootstrap-icons": "^1.9.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-expanding-textarea": "^2.3.6",
     "react-icons": "^4.3.1",
     "react-markdown": "^8.0.3",
     "react-scripts": "5.0.1",
@@ -51,7 +52,7 @@
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.31.1",
-    "prettier": "^2.6.2",
-    "husky": "^8.0.1"
+    "husky": "^8.0.1",
+    "prettier": "^2.6.2"
   }
 }

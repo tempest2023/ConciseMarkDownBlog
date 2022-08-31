@@ -1,0 +1,26 @@
+.markdown-editor-container {
+    height: auto;
+    min-height: 561px;
+    max-height: 800px;
+}
+
+.fancy-textarea {
+    width: 100%;
+    outline: 0;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #FFF;
+    border-left: 4px solid #feb272;
+    resize: none;
+    font: inherit;
+}
+
+.markdown-preview-container {
+    height: auto;
+    max-height: 800px;
+}
+.preview-panel {
+    border-top: 4px solid #feb272;
+    padding: 20px;
+}

@@ -36,6 +36,10 @@
     "Projects": "",
     "Blog": ""
   },
+  "markdown": {
+    "loading": false,
+    "renderDelay": 0
+  },
   "themeChange": true,
   "email": "tar118@pitt.edu",
   "repo": "https://github.com/623059008/Profile",

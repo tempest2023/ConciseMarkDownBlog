@@ -11,7 +11,8 @@
   },
   "plugins": ["react"],
   "rules": {
-    "semi": "off"
+    "semi": "off",
+    "no-unused-vars": "warn"
   },
   "settings": {
     "react": {
