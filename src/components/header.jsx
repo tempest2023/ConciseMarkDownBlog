@@ -1,3 +1,10 @@
+/**
+ * @author Tempest
+ * @email tar118@pitt.edu
+ * @create date 2022-08-31 14:38:47
+ * @modify date 2022-08-31 14:38:47
+ * @desc Header component, include content block switching, theme switching, etc.
+ */
 import React, { useEffect, useState } from 'react';
 import config from '../config.json';
 import style from '../styles/header.module.css';

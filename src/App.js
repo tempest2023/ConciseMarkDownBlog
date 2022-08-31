@@ -1,7 +1,14 @@
+/**
+ * @author Tempest
+ * @email tar118@pitt.edu
+ * @create date 2022-08-31 14:40:35
+ * @modify date 2022-08-31 14:40:44
+ * @desc App
+ */
 import React, { useState } from 'react';
 import config from './config.json';
 import Article from './components/article';
-import MarkDownEditor from './components/editor';
+import MarkDownEditor from './components/editor/editor';
 import Header from './components/header';
 import './styles/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';

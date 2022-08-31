@@ -1,3 +1,10 @@
+/**
+ * @author Tempest
+ * @email tar118@pitt.edu
+ * @create date 2022-08-31 14:38:15
+ * @modify date 2022-08-31 14:38:15
+ * @desc article template component
+ */
 import React, { useEffect, useState } from 'react';
 import config from '../config.json';
 import styles from '../styles/article.module.css';
