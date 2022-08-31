@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
-import config from '../../config.json';
+import config from '../config.json';
 import style from '../styles/header.module.css';
-
-interface header {
-  title: string;
-  link: string;
-  color?: string;
-}
+import PropTypes from 'prop-types';
 
 // const ThemeChange = (props) => {
 //   const { themeMode, switchThemeMode } = props;
@@ -18,21 +12,22 @@ interface header {
 //   );
 // };
 
-const Header = () => {
+const Header = (props) => {
   const [headerLinks, setHeaderLinks] = useState([]);
+  const { setData } = props;
   const getLink = (link) => {
-    return `/${link}`;
+    return `${link}`;
   };
   const getHeaders = () => {
     const headerLinks = [];
-    config.headers.forEach((item: header) => {
+    config.headers.forEach((item) => {
       headerLinks.push(
         <div
           className={style['header-link-wrapper']}
           key={`header-link-wrapper[${item.title}]`}
         >
-          <Link href={getLink(item.link)}>{item.title}</Link>
-        </div>,
+          <span onClick={setData(getLink(item.link))}>{item.title}</span>
+        </div>
       );
     });
     setHeaderLinks(headerLinks);
@@ -47,4 +42,8 @@ const Header = () => {
     </div>
   );
 };
+
+Header.propTypes = {
+  setData: PropTypes.func.isRequired
+}
 export default Header;

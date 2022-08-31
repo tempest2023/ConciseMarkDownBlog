@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Hack';
-  src: url(/assets/fonts/Hack-NF.ttf);
+  src: url(/public/assets/Hack-NF.ttf);
   display: swap;
 }
 
@@ -11,8 +11,8 @@
 html,
 body,
 body > div:first-child,
-div#__next,
-div#__next > div {
+div#root,
+div#root > div {
   height: 100%;
   overflow: auto;
   box-sizing: border-box;
@@ -40,4 +40,22 @@ a {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #feb272;
+}
+
+.page {
+    display: block;
+    background-color: #ffffff;
+    color: #212529;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1 auto;
+    justify-content: center;
+    align-items: center;
+    margin: 0
 }

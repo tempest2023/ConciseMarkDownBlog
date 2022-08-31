@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import config from '../../config.json';
+import config from '../config.json';
 import styles from '../styles/article.module.css';
-const Page = (props) => {
+import PropTypes from 'prop-types';
+
+const Article = (props) => {
   const [content, setContent] = useState(null);
   const { data } = props;
   useEffect(() => {
@@ -10,4 +12,8 @@ const Page = (props) => {
   }, [data]);
   return <div className={styles['article-container']}>{content}</div>;
 };
-export default Page;
+
+Article.propTypes = {
+  data: PropTypes.string.isRequired
+}
+export default Article;

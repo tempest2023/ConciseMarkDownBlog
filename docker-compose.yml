@@ -11,4 +11,4 @@ services:
       - '3000:3000'
     volumes:
       - ./src/:/home/node/app/src
-    command: npm run dev
+    command: yarn start

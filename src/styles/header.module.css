@@ -19,6 +19,7 @@
     font-size: 32px;
     font-family: 'Hack', monospace;
     margin-left: 40px;
+    cursor: pointer;
 }
 
 .header-links {
@@ -37,6 +38,7 @@
     align-items: center;
     width: auto;
     margin-right: 20px;
+    cursor: pointer;
 }
 
 .header-link-wrapper:hover {
