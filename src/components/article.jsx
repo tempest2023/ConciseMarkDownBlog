@@ -6,21 +6,45 @@
  * @desc article template component
  */
 import React, { useEffect, useState } from 'react';
-import config from '../config.json';
+import config from '../config';
 import styles from '../styles/article.module.css';
 import PropTypes from 'prop-types';
+import MarkDownPreview from './editor/markDownPreview';
+
+const EmptyContent = (props) => {
+  const { page } = props;
+  return <div className='container'>
+    <div className='row'>
+      <h1>404</h1>
+      <p>Article {page} not found</p>
+    </div>
+  </div>
+};
+
+EmptyContent.propTypes = {
+  page: PropTypes.string.isRequired
+}
 
 const Article = (props) => {
-  const [content, setContent] = useState(null);
-  const { data } = props;
+  const [file, setFile] = useState(null);
+  const { page } = props;
   useEffect(() => {
-    const content = config.articles[data] || null;
-    setContent(content);
-  }, [data]);
-  return <div className={styles['article-container']}>{content}</div>;
+    // load article by require the markdown file
+    let mdfile
+    try {
+      mdfile = require('../articles/' + page + '.md');
+    } catch (e) {
+      // file not exist
+      console.log('[debug] file not exist', e);
+    }
+    setFile(mdfile);
+  }, [page]);
+  return <div className='container'>
+       {file ? <MarkDownPreview markdownFile={file} showPreviewHeader={false} /> : <EmptyContent page={page} />}
+      </div>;
 };
 
 Article.propTypes = {
-  data: PropTypes.string.isRequired
+  page: PropTypes.string.isRequired
 }
 export default Article;

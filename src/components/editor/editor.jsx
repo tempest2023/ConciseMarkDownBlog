@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 
 import MarkdownTextarea from './markDownTextarea';
 import MarkDownPreview from './markDownPreview';
-import config from '../../config.json';
+import config from '../../config';
 
 import introfile from '../../articles/markdown_intro.md'; // introduction of how to use markdown
 
@@ -31,7 +31,6 @@ export default function MarkDownEditor () {
     }
     markdownConfig.loading && setTriggerLoading(true);
     updateDebounce = setTimeout(() => {
-      console.log('[debug] set value', value)
       setValue(value);
       markdownConfig.loading && setTriggerLoading(false);
     }, markdownConfig.renderDelay);

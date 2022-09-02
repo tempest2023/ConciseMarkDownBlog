@@ -1,135 +1,128 @@
-# Github Style Markdown
+### [GitHub Flavored Markdown](https://github.github.com/gfm/)
+> ##### I also added some Typora Style Markdown support.
+> ##### H1 and H2 will have a divider.
+> ##### Block will have a grey font color and grey left border.
+# H1
+
+## H2
+
+### H3
+
+###### H5
+
+## Font Style
+
+**bold**
+
+__bold__
+
+*italic*
+
+_italic*
+
+
 ## Autolink literals
 
-www.example.com, https://example.com, and contact@example.com.
+www.github.com, https://github.com 
 
-## Footnote
+## Add a link
+```shell
+[623059008@github.com](https://github.com/623059008)
+```
+[623059008@github.com](https://github.com/623059008)
 
-A note[^1]
-
-[^1]: Big note.
 
 ## Strikethrough
 
 ~one~ or ~~two~~ tildes.
 
-## Table
 
-| a | b  |  c |  d  |
-| - | :- | -: | :-: |
+## List and Tasklist
 
-## Tasklist
+- A
+  - B
+    - C
+
+1. Project1
+2. Project2
+3. Project3
 
 * [ ] to do
 * [x] done
-## 功能快捷键
 
-撤销：<kbd>Ctrl/Command</kbd> + <kbd>Z</kbd>
-重做：<kbd>Ctrl/Command</kbd> + <kbd>Y</kbd>
-加粗：<kbd>Ctrl/Command</kbd> + <kbd>B</kbd>
-斜体：<kbd>Ctrl/Command</kbd> + <kbd>I</kbd>
-标题：<kbd>Ctrl/Command</kbd> + <kbd>Shift</kbd> + <kbd>H</kbd>
-无序列表：<kbd>Ctrl/Command</kbd> + <kbd>Shift</kbd> + <kbd>U</kbd>
-有序列表：<kbd>Ctrl/Command</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd>
-检查列表：<kbd>Ctrl/Command</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>
-插入代码：<kbd>Ctrl/Command</kbd> + <kbd>Shift</kbd> + <kbd>K</kbd>
-插入链接：<kbd>Ctrl/Command</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd>
-插入图片：<kbd>Ctrl/Command</kbd> + <kbd>Shift</kbd> + <kbd>G</kbd>
-查找：<kbd>Ctrl/Command</kbd> + <kbd>F</kbd>
-替换：<kbd>Ctrl/Command</kbd> + <kbd>G</kbd>
+## Block Quote
 
-## 如何改变文本的样式
+> ### Foo
 
-*强调文本* _强调文本_
+> bar
 
-**加粗文本** __加粗文本__
+> baz
 
-==标记文本==
-
-~~删除文本~~
-
-> 引用文本
-
-H~2~O is是液体。
-
-2^10^ 运算结果是 1024.
-
-## 插入链接与图片
-
-链接: [link](https://www.csdn.net/).
-
-图片: ![Alt](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw)
+> A block
+> Same Block
+> > Sub Block
 
 
-## 如何插入一段漂亮的代码片
+## Table (to be updated)
+| foo | bar |
+| --- | --- |
+| baz | bim |
 
-去[博客设置](https://mp.csdn.net/console/configBlog)页面，选择一款你喜欢的代码片高亮样式，下面展示同样高亮的 `代码片`.
+| abc | defghi |
+:-: | -----------:
+bar | baz
+
+## Link and Image
+
+Link: [link](https://www.csdn.net/).
+
+Image: ![Alt](https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png)
+
+
+## Insert Codes
+
 ```javascript
 // An highlighted block
 var foo = 'bar';
+console.log('Hello World!')
 ```
 
-## 生成一个适合你的列表
+```cpp
+#include <iostream>
+using namespace std;
+int main() { 
+  cout << "Hello World!";
+  return 0;
+}
+```
 
-- 项目
-  - 项目
-    - 项目
+```python
+from typing import List
+def helper(arr:List[]):
+  print(arr)
+print('Hello World!')
+```
 
-1. 项目1
-2. 项目2
-3. 项目3
+## KaTeX Math
 
+Use LaTeX to write math expression [KaTeX](https://khan.github.io/KaTeX/):
 
-### SmartyPants
-SmartyPants将ASCII标点字符转换为“智能”印刷标点HTML实体。例如：
-|    TYPE   |ASCII                          |HTML
-|----------------|-------------------------------|-----------------------------|
-|Single backticks|`'Isn't this fun?'`            |'Isn't this fun?'            |
-|Quotes          |`"Isn't this fun?"`            |"Isn't this fun?"            |
-|Dashes          |`-- is en-dash, --- is em-dash`|-- is en-dash, --- is em-dash|
-
-## 创建一个自定义列表
-Markdown
-:  Text-to-HTML conversion tool
-
-Authors
-:  John
-:  Luke
-
-## 如何创建一个注脚
-
-一个具有注脚的文本。[^2]
-
-[^2]: 注脚的解释
-
-##  注释也是必不可少的
-
-Markdown将文本转换为 HTML。
-
-*[HTML]:   超文本标记语言
-
-## KaTeX数学公式
-
-您可以使用渲染LaTeX数学表达式 [KaTeX](https://khan.github.io/KaTeX/):
-
-Gamma公式展示 $\Gamma(n) = (n-1)!\quad\forall
-n\in\mathbb N$ 是通过欧拉积分
+$\Gamma(n) = (n-1)!\quad\forall
+n\in\mathbb N$ 
 
 $$
 \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
 $$
 
-> 你可以找到更多关于的信息 **LaTeX** 数学表达式[here][1].
-## 导出与导入
+## Footnote
 
-###  导出
-如果你想尝试使用此编辑器, 你可以在此篇文章任意编辑。当你完成了一篇文章的写作, 在上方工具栏找到 **文章导出** ，生成一个.md文件或者.html文件进行本地保存。
+Link Foot Note
 
-### 导入
-如果你想加载一篇你写过的.md文件，在上方工具栏可以选择导入功能进行对应扩展名的文件导入，
-继续你的创作。
+> Find more about **LaTeX** [here][1].
+
+
+A text note[2]
+
 
  [1]: http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference
- [2]: https://mermaidjs.github.io/
- [3]: https://mermaidjs.github.io/
- [4]: http://adrai.github.io/flowchart.js/
+ [2]: Big note.

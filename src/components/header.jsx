@@ -6,9 +6,11 @@
  * @desc Header component, include content block switching, theme switching, etc.
  */
 import React, { useEffect, useState } from 'react';
-import config from '../config.json';
-import style from '../styles/header.module.css';
+import config from '../config';
+import styles from '../styles/header.module.css';
 import PropTypes from 'prop-types';
+import { formatLink } from '../util/url';
+import { compareLowerCase } from '../util/str';
 
 // const ThemeChange = (props) => {
 //   const { themeMode, switchThemeMode } = props;
@@ -19,38 +21,66 @@ import PropTypes from 'prop-types';
 //   );
 // };
 
-const Header = (props) => {
+const Header = props => {
   const [headerLinks, setHeaderLinks] = useState([]);
-  const { setData } = props;
-  const getLink = (link) => {
-    return `${link}`;
-  };
+  const { setPage, page } = props;
+  const pageUpdate = (item) => {
+    if (item.type === 'link') {
+      // open a new window with link
+      window.open(item.customUrl, '_blank');
+    } if (item.type === 'article') {
+      setPage(item.customUrl || item.title)
+    }
+  }
   const getHeaders = () => {
     const headerLinks = [];
-    config.headers.forEach((item) => {
+    config.headers.forEach(item => {
       headerLinks.push(
-        <div
-          className={style['header-link-wrapper']}
-          key={`header-link-wrapper[${item.title}]`}
-        >
-          <span onClick={setData(getLink(item.link))}>{item.title}</span>
-        </div>
+        <li className={styles['header-link-wrapper']} key={`navbar-link-${item.title}`}>
+          <a
+            className='nav-link'
+            data-active={compareLowerCase(item.title, page) || compareLowerCase(item.customUrl, page) ? 'active' : ''}
+            onClick={() => pageUpdate(item)}
+          >
+            {item.title}
+          </a>
+        </li>
       );
     });
     setHeaderLinks(headerLinks);
   };
   useEffect(() => {
     getHeaders();
-  }, []);
+  }, [page]);
   return (
-    <div className={style['header-container']}>
-      <div className={style['header-title']}>{config.title || 'Tempest'}</div>
-      <div className={style['header-links']}>{headerLinks}</div>
-    </div>
+    <nav className='navbar navbar-expand-lg bg-light'>
+      <div className='container-fluid'>
+        <a className='navbar-brand' href='/'>
+          {config.title || 'Tempest'}
+        </a>
+        <button
+          className='navbar-toggler'
+          type='button'
+          data-bs-toggle='collapse'
+          data-bs-target='#navbarNav'
+          aria-controls='navbarNav'
+          aria-expanded='false'
+          aria-label='Toggle navigation'
+        >
+          <span className='navbar-toggler-icon'></span>
+        </button>
+        {headerLinks.length > 0 && (
+          <div className='collapse navbar-collapse' id='navbarNav' style={{ justifyContent: 'flex-end' }}>
+            <ul className='navbar-nav'>{headerLinks}</ul>
+          </div>
+        )}
+      </div>
+    </nav>
   );
 };
 
 Header.propTypes = {
-  setData: PropTypes.func.isRequired
-}
+  page: PropTypes.string.isRequired,
+  setPage: PropTypes.func.isRequired
+};
 export default Header;

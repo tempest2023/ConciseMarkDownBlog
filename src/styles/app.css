@@ -2,9 +2,10 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-08-31 14:39:25
- * @modify date 2022-08-31 16:13:31
+ * @modify date 2022-09-02 15:05:34
  * @desc Global CSS for this application
  */
+
 @font-face {
   font-family: 'Hack';
   src: url(/public/assets/Hack-NF.ttf);
@@ -15,29 +16,45 @@
   font-family: 'Hack', monospace;
 }
 
-html,
-body,
-body > div:first-child,
-div#root,
-div#root > div {
+::-webkit-scrollbar {
+  /* hide the scroller background */
+  background-color: #fff;
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(254, 178, 114, 0.7);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(254, 178, 114);
+}
+
+html, body, body > #root {
   height: 100%;
+  width: 100%;
   box-sizing: border-box;
-  overflow: auto;
+  display: block;
 }
 
 .page {
-    display: block;
-    background-color: #ffffff;
-    color: #212529;
-    height: 100%;
-    width: 100%;
+  display: block;
+  background-color: #ffffff;
+  color: #212529;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
 }
+
 .main-container {
-    display: flex;
-    flex-direction: column;
-    flex: 1 auto;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 auto;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 20px;
 }
