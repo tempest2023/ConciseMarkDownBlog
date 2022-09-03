@@ -13,7 +13,7 @@
   "rules": {
     "semi": "off",
     "comma-dangle": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "warn"
   },
   "settings": {
     "react": {
