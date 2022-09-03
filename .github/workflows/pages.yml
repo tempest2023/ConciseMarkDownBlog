@@ -3,41 +3,17 @@ on:
   push:
     branches:
       - master
-      - dev
-
 jobs:
-  Build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: checkout code
-      uses: actions/checkout@v2
-    - name: actions/setup-node@v2
-      uses: actions/setup-node@v2   
-      with:
-        node-version: '16.14'
-        cache: 'yarn'
-        cache-dependency-path: '**/yarn.lock'
-    - run: yarn install && yarn build
-    - name: upload files 
-      uses: actions/upload-artifact@v2
-      with: 
-        name: build-pages
-        path: build
-        retention-days: 1
-  Deploy: 
-    needs: Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout code
-        uses: actions/checkout@v2
-      - name: download build files
-        uses: actions/download-artifact@v2
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Install and Build 🔧
+        run: yarn install && yarn build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          name: build-pages
-          path: build
-      - name: deploy
-        uses: JamesIves/github-pages-deploy-action@v4.2.3
-        with:
-          branch: production
-          folder: build 
-          token: "${{ secrets.DEPLOY_TOKEN }}"  
+          folder: build # The folder the action should deploy.
