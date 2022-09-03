@@ -2,7 +2,7 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-09-02 15:21:40
- * @modify date 2022-09-02 23:33:03
+ * @modify date 2022-09-03 19:06:11
  * @desc format link
  */
 // describe how to format a link.
@@ -36,8 +36,29 @@ export function getUrlParameters () {
   return params;
 }
 
-export function openUrl (url) {
-  // [TODO] check if the url is the same domain, if not, open in new tab,
-  // otherwise open in same tab.
-  window.location.href = url;
+// @setPage - state updater in App component, handle internal resources dynamically loading.
+export function handleUrl (url, setPage) {
+  // check if the url is the same domain, if not, open in new tab, otherwise open in same tab.
+  // same domain url refers to an internal markdown document
+  // for example, /?page=Projects/project1.md, ?page=About.md, /?page=Blog.md
+  // if setPage is null, can not handle the url as internal resources.
+  if (url.startsWith('http') || url.startsWith('https') || url.startsWith('www') || !url.match(/(^\?|^\/)/) || !setPage) {
+    window.open(url, '_blank');
+    return
+  }
+  if (url.indexOf('?') === -1 || url.split('?').length <= 1) {
+    // no url params, if it is not an external link, it may refer to a title
+    // directly setPage, the article component will handle the path.
+    setPage(url)
+    return
+  }
+
+  const query = url.split('?')[1];
+  const params = {}
+  const vars = query.split('&');
+  for (let i = 0; i < vars.length; i++) {
+    const pair = vars[i].split('=');
+    params[pair[0]] = pair[1];
+  }
+  setPage(params.page)
 }

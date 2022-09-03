@@ -2,7 +2,7 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-08-31 14:40:35
- * @modify date 2022-09-03 03:19:35
+ * @modify date 2022-09-03 19:07:33
  * @desc App
  */
 import React, { useEffect, useState } from 'react';
@@ -39,14 +39,18 @@ const getFilePath = (page) => {
 
 const App = () => {
   const [page, setPage] = useState('');
+  // [TODO] setPage supprot going back
+  // [TODO] use better way to transfer setPage to markdownPreview Component.
   useEffect(() => {
     const params = getUrlParameters() || {};
+    // internal links
     if (params.page) {
       setPage(params.page);
     } else {
       setPage(config.default)
     }
   }, [])
+
   return (
     <div className='page'>
       <Header setPage={setPage} page={page}/>
@@ -54,8 +58,8 @@ const App = () => {
         {!config.markdown.enable
           ? <Article filePath={getFilePath(page)} />
           : (compareLowerCase(page, 'Markdown')
-              ? <MarkDownEditor />
-              : <Article filePath={getFilePath(page)} />)
+              ? <MarkDownEditor setPage={setPage} />
+              : <Article filePath={getFilePath(page)} setPage={setPage} />)
         }
       </div>
     </div>

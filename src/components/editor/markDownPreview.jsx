@@ -18,13 +18,13 @@ import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import 'katex/dist/katex.min.css';
-import { openUrl } from '../../util/url';
+import { handleUrl } from '../../util/url';
 import config from '../../config';
 
 import styles from '../../styles/editor.module.css';
 
 export default function MarkDownPreview (props) {
-  const { markdownFile, markdownString, loading, showPreviewHeader = true } = props;
+  const { markdownFile, markdownString, loading, showPreviewHeader = true, setPage } = props;
   const [markdownContent, setMarkdownContent] = useState('');
   useEffect(() => {
     setMarkdownContent(markdownString);
@@ -89,16 +89,18 @@ export default function MarkDownPreview (props) {
 
                 blockquote ({ children, ...props }) {
                   return <blockquote style={ { borderLeft: '3px solid #ddd', paddingLeft: '0.5em', color: '#bbb' } } {...props}>{children}</blockquote>
-                }
+                },
 
-                // custom the link behavior
-                // a ({ node, children, ...props }) {
-                //   return (
-                //     <a href="#" title={node?.properties?.href} onClick={() => openUrl(node?.properties?.href)} {...props}>
-                //       {children}
-                //     </a>
-                //   );
-                // }
+                // custom the link behavior, all internal links will be loaded by setPage from App Component.
+                // It's to avoid the influence from different deployment root directory.
+                a ({ node, children, ...props }) {
+                  // determine if the link is external or internal
+                  return (
+                    <a title={node?.properties?.href} onClick={() => handleUrl(node?.properties?.href, setPage)} {...props} href="#" >
+                      {children}
+                    </a>
+                  );
+                }
               }}
             />
           )}
@@ -108,6 +110,7 @@ export default function MarkDownPreview (props) {
 }
 
 MarkDownPreview.propTypes = {
+  setPage: PropTypes.func.isRequired,
   markdownFile: PropTypes.string,
   markdownString: PropTypes.string,
   loading: PropTypes.bool,

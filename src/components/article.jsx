@@ -7,13 +7,13 @@
  */
 import React, { useEffect, useState } from 'react';
 import config from '../config';
-import styles from '../styles/article.module.css';
+// import styles from '../styles/article.module.css';
 import PropTypes from 'prop-types';
 import MarkDownPreview from './editor/markDownPreview';
 import NotFound from '../articles/404.md';
 
 const Article = props => {
-  const { filePath } = props;
+  const { filePath, setPage } = props;
   const [loading, setLoading] = useState(!filePath);
   useEffect(() => {
     if (!filePath) {
@@ -27,7 +27,7 @@ const Article = props => {
     <div className='container'>
       {filePath
         ? (
-        <MarkDownPreview markdownFile={filePath} showPreviewHeader={false} />
+        <MarkDownPreview markdownFile={filePath} showPreviewHeader={false} setPage={setPage} />
           )
         : loading
           ? (
@@ -41,12 +41,13 @@ const Article = props => {
           <span className='sr-only'></span>
         </div>
             )
-          : <MarkDownPreview markdownFile={NotFound} showPreviewHeader={false} />}
+          : <MarkDownPreview markdownFile={NotFound} showPreviewHeader={false} setPage={setPage} />}
     </div>
   );
 };
 
 Article.propTypes = {
-  filePath: PropTypes.string,
+  setPage: PropTypes.func.isRequired,
+  filePath: PropTypes.string
 };
 export default Article;

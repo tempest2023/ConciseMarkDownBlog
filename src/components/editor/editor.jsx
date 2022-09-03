@@ -17,11 +17,11 @@ import introfile from '../../articles/markdown_intro.md'; // introduction of how
 
 const markdownConfig = config.markdown;
 
-export default function MarkDownEditor () {
+export default function MarkDownEditor (props) {
   const [markdownString, setMarkdownString] = useState('');
   const [deafultValue, setDeafultValue] = useState('');
   const [triggerLoading, setTriggerLoading] = useState(false);
-
+  const { setPage } = props;
   let updateDebounce = null;
 
   const updatePreview = (v) => {
@@ -55,9 +55,13 @@ export default function MarkDownEditor () {
           />
         </div>
         <div className='col-6'>
-          <MarkDownPreview markdownString={markdownString} loading={triggerLoading} />
+          <MarkDownPreview markdownString={markdownString} loading={triggerLoading} setPage={setPage} />
         </div>
       </div>
     </div>
   );
 }
+
+MarkDownEditor.propTypes = {
+  setPage: PropTypes.func.isRequired
+};

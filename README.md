@@ -157,7 +157,7 @@ If we set
   customUrl: 'subdir/demo.md',
 }
 ```
-It also leads to `/src/articles/subdir/demo.md`, case sensitive.
+It leads to `/src/articles/subdir/demo.md`, case sensitive.
 
 Through this customUrl, we can create folders under `articles` and set the path of entrances to documents.
 
@@ -187,7 +187,7 @@ Using url parameter `page`, we can assign a Markdown file to load.
 
 This custom url provides `Demo.md` as parameters with key `page`. So it will automatically load `/src/articles/Demo.md`
 
-It also support hierarchical direcotry,
+It also supports hierarchical direcotry,
 
 ```javascript
 {
@@ -198,12 +198,13 @@ It also support hierarchical direcotry,
 }
 ```
 
-The target path of this url is `/src/articles/subdir/demo.md`, extra url parameters won't interrupt it.
+The target path of this custoomUrl is `/src/articles/subdir/demo.md`, extra url parameters won't interrupt it.
 
 #### Reserved Name
 
 You can not use 'Markdown' as a title, or a url parameter in the customUrl. It will navigate to my online markdown editor, case insensitive. You can close it in config.js `markdown.enable`.
 
+`404.md` under `/src/articles/` always is for Not Found page. You can change the content as other makrdown files.
 
 #### Navigation in Markdown
 
@@ -216,7 +217,7 @@ For Example,
 [My Project 1](/?page=Projects/project1.md)
 ```
 
-It will lead to `src/articles/Projects/project1.md`, you need to create directory `Projects` under `articles`.
+It will lead to `/src/articles/Projects/project1.md`, you need to create directory `Projects` under `articles`.
 
 For external link, direcly url on Markdown can create a link ([Github Flavored Markdown][4]).
 

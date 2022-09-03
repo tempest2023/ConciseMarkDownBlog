@@ -1,21 +1,26 @@
-# Blogs
+## Blogs
 
 
 I will post my study blogs here, continually updated.
 
 
-## Python
+### Python
 
-## Java
+- Nothing
 
-## Frontent
+### Java
 
-- ### JavaScript
+- Nothing
+### JavaScript
 
-    - [How to link to another document?](/?page=javascript_blog_1)
+- [How to link to another document?](/?page=javascript_blog_1)
 
-- ### TypeScript
+### TypeScript
 
-- ### Node.js
+- Nothing
 
-- ### React
+### Node.js
+- Will have many contents
+
+### React
+- Will have vast of blogs

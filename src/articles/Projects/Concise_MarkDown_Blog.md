@@ -2,9 +2,9 @@
 
 ## 🙋‍♂️ Why
 
->  I previously set up a profile web application by Bootstrap Template and ThinkJS. It's tortured to update that blogs because everytime I need to use rich-text editor to generate the HTML content and write it to MySQL. Yeah, I had a small server at that time. Now I don't want to pay a server, but I still need a place to record and share my experience.
+>  I previously developed a profile web application by Bootstrap Template and ThinkJS. It's tortured to update that blogs because everytime I need to use rich-text editor to generate the HTML content and write it to MySQL. Yeah, I had a small server at that time. Now I don't want to pay a server, but I still need a place to record and share my experience.
 
-I've been looking for a way to have a **sustainably updated**, **configurable** and **extensible** personal blog with **static** web pages.
+I've been looking for a way to setup a **easily updated**, **configurable** and **extensible** personal blog by **static** web pages.
 
 Specifically, I want to implement it without any server resources from my side.
 
@@ -15,7 +15,7 @@ It should be a concise web blog with the following parts.
 - Projects Presentation
 - Resume & Social Links
 
-It should be easy to update more blog articles, and push the updates conveniently.
+It should be easy to update more blog articles, and push the updates.
 
 
 ## Build Your Blog with in 5 mins
@@ -157,7 +157,7 @@ If we set
   customUrl: 'subdir/demo.md',
 }
 ```
-It also leads to `/src/articles/subdir/demo.md`, case sensitive.
+It leads to `/src/articles/subdir/demo.md`, case sensitive.
 
 Through this customUrl, we can create folders under `articles` and set the path of entrances to documents.
 
@@ -187,7 +187,7 @@ Using url parameter `page`, we can assign a Markdown file to load.
 
 This custom url provides `Demo.md` as parameters with key `page`. So it will automatically load `/src/articles/Demo.md`
 
-It also support hierarchical direcotry,
+It also supports hierarchical direcotry,
 
 ```javascript
 {
@@ -198,12 +198,13 @@ It also support hierarchical direcotry,
 }
 ```
 
-The target path of this url is `/src/articles/subdir/demo.md`, extra url parameters won't interrupt it.
+The target path of this custoomUrl is `/src/articles/subdir/demo.md`, extra url parameters won't interrupt it.
 
 #### Reserved Name
 
 You can not use 'Markdown' as a title, or a url parameter in the customUrl. It will navigate to my online markdown editor, case insensitive. You can close it in config.js `markdown.enable`.
 
+`404.md` under `/src/articles/` always is for Not Found page. You can change the content as other makrdown files.
 
 #### Navigation in Markdown
 
@@ -216,7 +217,7 @@ For Example,
 [My Project 1](/?page=Projects/project1.md)
 ```
 
-It will lead to `src/articles/Projects/project1.md`, you need to create directory `Projects` under `articles`.
+It will lead to `/src/articles/Projects/project1.md`, you need to create directory `Projects` under `articles`.
 
 For external link, direcly url on Markdown can create a link ([Github Flavored Markdown][4]).
 
