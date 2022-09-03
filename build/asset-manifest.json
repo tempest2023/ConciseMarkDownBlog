@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.543666d6.css",
-    "main.js": "/static/js/main.413d5f69.js",
+    "main.js": "/static/js/main.218a4fc4.js",
     "static/js/787.f587e8d5.chunk.js": "/static/js/787.f587e8d5.chunk.js",
     "static/media/Hack-NF.ttf": "/static/media/Hack-NF.f66ad81e1acf91cbeec6.ttf",
     "static/media/bootstrap-icons.woff?": "/static/media/bootstrap-icons.e559bf06bc84fd9525e6.woff",
@@ -53,6 +53,7 @@
     "static/media/KaTeX_Size4-Regular.ttf": "/static/media/KaTeX_Size4-Regular.4ad7c7e8bb8d10a34bb7.ttf",
     "static/media/KaTeX_SansSerif-Regular.woff2": "/static/media/KaTeX_SansSerif-Regular.cd5e231e0cc53b2cb2c0.woff2",
     "static/media/KaTeX_Script-Regular.woff2": "/static/media/KaTeX_Script-Regular.c81d1b2a4b75d3eded60.woff2",
+    "static/media/Concise_MarkDown_Blog.md": "/static/media/Concise_MarkDown_Blog.ee03c3fcc290f9c7bf54.md",
     "static/media/KaTeX_Caligraphic-Bold.woff": "/static/media/KaTeX_Caligraphic-Bold.d757c535a2e5902f1325.woff",
     "static/media/KaTeX_Caligraphic-Regular.woff": "/static/media/KaTeX_Caligraphic-Regular.db074fa22cf224af93d7.woff",
     "static/media/KaTeX_Size3-Regular.ttf": "/static/media/KaTeX_Size3-Regular.8d6b6822586eea3d3b20.ttf",
@@ -66,18 +67,20 @@
     "static/media/KaTeX_Size4-Regular.woff2": "/static/media/KaTeX_Size4-Regular.e418bf257af1052628d8.woff2",
     "static/media/KaTeX_Size3-Regular.woff": "/static/media/KaTeX_Size3-Regular.7947224e8a9914fa332b.woff",
     "static/media/KaTeX_Size3-Regular.woff2": "/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
-    "static/media/markdown_intro.md": "/static/media/markdown_intro.195a40d7af9e2317a1b7.md",
+    "static/media/markdown_intro.md": "/static/media/markdown_intro.6e847b32b2208dac90a0.md",
+    "static/media/About.md": "/static/media/About.dc2e12d640795a35599a.md",
     "index.html": "/index.html",
     "static/media/Blog.md": "/static/media/Blog.102eee0ad35d891301bf.md",
+    "static/media/Project.md": "/static/media/Project.3b644d4d4b7590169bac.md",
+    "static/media/404.md": "/static/media/404.de72d9629611317bf816.md",
     "static/media/javascript_blog_1.md": "/static/media/javascript_blog_1.ca7c7f9ca17a4546d65a.md",
-    "static/media/About.md": "/static/media/About.de7a0ad452a7a752ddee.md",
-    "static/media/Project.md": "/static/media/Project.54f3660d9025ee4e9811.md",
+    "static/media/project2.md": "/static/media/project2.d64e0ef77c31894d1fcb.md",
     "main.543666d6.css.map": "/static/css/main.543666d6.css.map",
-    "main.413d5f69.js.map": "/static/js/main.413d5f69.js.map",
+    "main.218a4fc4.js.map": "/static/js/main.218a4fc4.js.map",
     "787.f587e8d5.chunk.js.map": "/static/js/787.f587e8d5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.543666d6.css",
-    "static/js/main.413d5f69.js"
+    "static/js/main.218a4fc4.js"
   ]
 }
