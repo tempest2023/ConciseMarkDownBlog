@@ -71,7 +71,7 @@ bar | baz
 
 ## Link and Image
 
-Link: [link](https://www.csdn.net/).
+Link: [link](https://www.google.com/).
 
 Image: ![Alt](https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png)
 

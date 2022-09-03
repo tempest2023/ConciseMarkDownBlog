@@ -2,12 +2,12 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-09-02 17:02:50
- * @modify date 2022-09-03 03:19:49
+ * @modify date 2022-09-03 19:06:01
  * @desc config file
  */
 const config = {
   // github readme url
-  readmeUrl: 'https://github.com/623059008/Profile/blob/master/README.md',
+  readmeUrl: 'https://github.com/623059008/ConciseMarkDownBlog/blob/main/README.md',
   // blog title, on left top of the page
   title: "Tempest's Blog",
   // author name
