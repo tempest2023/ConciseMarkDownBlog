@@ -1,14 +1,43 @@
 name: Deploy Creat React App Project
-on: [push]
+on: 
+  push:
+    branches:
+      - master
+      - dev
+
 jobs:
-  build:
-    name: Build
+  Build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: borales/actions-yarn@v3.0.0
+    - name: checkout code
+      uses: actions/checkout@v2
+    - name: actions/setup-node@v2
+      uses: actions/setup-node@v2   
+      with:
+        node-version: '16.14'
+        cache: 'yarn'
+        cache-dependency-path: '**/yarn.lock'
+    - run: yarn install && yarn build
+    - name: upload files 
+      uses: actions/upload-artifact@v2
+      with: 
+        name: build-pages
+        path: build
+        retention-days: 1
+  Deploy: 
+    needs: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+      - name: download build files
+        uses: actions/download-artifact@v2
         with:
-          cmd: install # will run `yarn install` command
-      - uses: borales/actions-yarn@v3.0.0
+          name: build-pages
+          path: build
+      - name: deploy
+        uses: JamesIves/github-pages-deploy-action@v4.2.3
         with:
-          cmd: build # will run `yarn build` command
+          branch: production
+          folder: build 
+          token: "${{ secrets.DEPLOY_TOKEN }}"  
