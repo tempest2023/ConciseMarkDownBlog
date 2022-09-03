@@ -27,16 +27,18 @@ export default function MarkDownPreview (props) {
   const { markdownFile, markdownString, loading, showPreviewHeader = true } = props;
   const [markdownContent, setMarkdownContent] = useState('');
   useEffect(() => {
-    if (markdownString) {
-      setMarkdownContent(markdownString);
-    } else if (markdownFile) {
+    setMarkdownContent(markdownString);
+  }, [markdownString]);
+
+  useEffect(() => {
+    if (markdownFile) {
       fetch(markdownFile)
         .then((response) => response.text())
         .then((text) => {
           setMarkdownContent(text);
         });
     }
-  }, [markdownString, markdownFile]);
+  }, [markdownFile])
 
   return (
     <div className={styles['markdown-preview-container']}>

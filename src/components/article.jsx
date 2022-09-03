@@ -10,41 +10,43 @@ import config from '../config';
 import styles from '../styles/article.module.css';
 import PropTypes from 'prop-types';
 import MarkDownPreview from './editor/markDownPreview';
+import NotFound from '../articles/404.md';
 
-const EmptyContent = (props) => {
-  const { page } = props;
-  return <div className='container'>
-    <div className='row'>
-      <h1>404</h1>
-      <p>Article {page} not found</p>
-    </div>
-  </div>
-};
-
-EmptyContent.propTypes = {
-  page: PropTypes.string.isRequired
-}
-
-const Article = (props) => {
-  const [file, setFile] = useState(null);
-  const { page } = props;
+const Article = props => {
+  const { filePath } = props;
+  const [loading, setLoading] = useState(!filePath);
   useEffect(() => {
-    // load article by require the markdown file
-    let mdfile
-    try {
-      mdfile = require('../articles/' + page + '.md');
-    } catch (e) {
-      // file not exist
-      console.log('[debug] file not exist', e);
+    if (!filePath) {
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+      }, 500)
     }
-    setFile(mdfile);
-  }, [page]);
-  return <div className='container'>
-       {file ? <MarkDownPreview markdownFile={file} showPreviewHeader={false} /> : <EmptyContent page={page} />}
-      </div>;
+  }, [filePath])
+  return (
+    <div className='container'>
+      {filePath
+        ? (
+        <MarkDownPreview markdownFile={filePath} showPreviewHeader={false} />
+          )
+        : loading
+          ? (
+        <div
+          className='spinner-border'
+          style={{
+            color: config.colors.light.foreground
+          }}
+          role='status'
+        >
+          <span className='sr-only'></span>
+        </div>
+            )
+          : <MarkDownPreview markdownFile={NotFound} showPreviewHeader={false} />}
+    </div>
+  );
 };
 
 Article.propTypes = {
-  page: PropTypes.string.isRequired
-}
+  filePath: PropTypes.string,
+};
 export default Article;

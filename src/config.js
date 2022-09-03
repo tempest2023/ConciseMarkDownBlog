@@ -2,21 +2,24 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-09-02 17:02:50
- * @modify date 2022-09-02 17:58:48
- * @desc [description]
+ * @modify date 2022-09-03 03:19:49
+ * @desc config file
  */
 const config = {
   // github readme url
-  readmeUrl: '',
+  readmeUrl: 'https://github.com/623059008/Profile/blob/master/README.md',
   // blog title, on left top of the page
   title: "Tempest's Blog",
   // author name
   name: 'Tempest(Tao Ren)',
   // social links, on bottom of the page
   social: {
-    github: 'github',
-    linkedin: 'linkedin'
+    github: 'https://github.com/623059008/',
+    linkedin: 'https://www.linkedin.com/in/taoren-pitt/'
   },
+  email: 'tar118@pitt.edu',
+  repo: 'https://github.com/623059008/Profile',
+  resume_url: 'https://drive.google.com/file/d/1iVeW9GOa1LEDt3dqW4KKw63wrsfYrjm-/view?usp=sharing',
   // default content shown on the main page, /src/articles/[config.defalt].md
   default: 'About',
   headers: [
@@ -51,20 +54,18 @@ const config = {
       customUrl: 'https://drive.google.com/file/d/1iVeW9GOa1LEDt3dqW4KKw63wrsfYrjm-/view?usp=sharing'
     }
   ],
-  articles: {
-    About: '',
-    Projects: '',
-    Blog: ''
-  },
+  // markdown settings
   markdown: {
+    // set it false to disable markdown editor
+    enable: true,
+    // set it true to enable loading animation in refreshing markdown preview.
     loading: false,
+    // delay time for refreshing markdown preview
     renderDelay: 0,
+    // tab size for markdown editor
     tabSize: 2
   },
   themeChange: true,
-  email: 'tar118@pitt.edu',
-  repo: 'https://github.com/623059008/Profile',
-  resume_url: '',
   colors: {
     light: {
       background: '#ffffff',

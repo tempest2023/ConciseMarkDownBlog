@@ -18,20 +18,20 @@ import introfile from '../../articles/markdown_intro.md'; // introduction of how
 const markdownConfig = config.markdown;
 
 export default function MarkDownEditor () {
-  const [value, setValue] = useState('');
+  const [markdownString, setMarkdownString] = useState('');
   const [deafultValue, setDeafultValue] = useState('');
   const [triggerLoading, setTriggerLoading] = useState(false);
 
   let updateDebounce = null;
 
-  const updatePreview = (value) => {
+  const updatePreview = (v) => {
     // debounce the update
     if (updateDebounce) {
       clearTimeout(updateDebounce);
     }
     markdownConfig.loading && setTriggerLoading(true);
     updateDebounce = setTimeout(() => {
-      setValue(value);
+      setMarkdownString(v);
       markdownConfig.loading && setTriggerLoading(false);
     }, markdownConfig.renderDelay);
   };
@@ -41,7 +41,7 @@ export default function MarkDownEditor () {
       .then((response) => response.text())
       .then((text) => {
         setDeafultValue(text);
-        setValue(text);
+        setMarkdownString(text);
       });
   }, []);
   return (
@@ -55,7 +55,7 @@ export default function MarkDownEditor () {
           />
         </div>
         <div className='col-6'>
-          <MarkDownPreview markdownString={value} loading={triggerLoading} />
+          <MarkDownPreview markdownString={markdownString} loading={triggerLoading} />
         </div>
       </div>
     </div>

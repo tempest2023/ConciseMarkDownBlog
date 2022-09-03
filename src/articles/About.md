@@ -2,7 +2,7 @@
 
 My name is Tao Ren (Tempest).
 
-I'm a graduate student at the **University of Pittsburgh** studying **Information Science**.
+I'm a graduate student at the **University of Pittsburgh** studying in **Information Science**.
 
 Before being a graduate student, I worked for one year as a software engineer at **Ant Group**, Alibaba, in Mobile Technology Team.
 

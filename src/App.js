@@ -2,7 +2,7 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-08-31 14:40:35
- * @modify date 2022-09-02 17:58:18
+ * @modify date 2022-09-03 03:19:35
  * @desc App
  */
 import React, { useEffect, useState } from 'react';
@@ -15,24 +15,47 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
-import { getUrlParameters } from './util/url';
+import { getUrlParameters, formatPage } from './util/url';
 import { compareLowerCase } from './util/str';
 
+const articles = {};
+// import the article resources by require.context
+const articleContext = require.context('/src/articles/', true, /\.md$/);
+
+function importAllArticles (r) {
+  r.keys().forEach((key) => (articles[key] = r(key)));
+}
+importAllArticles(articleContext)
+
+const getFilePath = (page) => {
+  // if the path not in the articles, which is the maps from the original aricle path to the bundle path created by require.context
+  const path = formatPage(page);
+  if (!articles[path]) {
+    return null;
+  }
+  // dynamically import the article resource by articles
+  return articles[path];
+}
+
 const App = () => {
-  const [page, setPage] = useState(config.default);
+  const [page, setPage] = useState('');
   useEffect(() => {
     const params = getUrlParameters() || {};
     if (params.page) {
       setPage(params.page);
+    } else {
+      setPage(config.default)
     }
   }, [])
   return (
     <div className='page'>
       <Header setPage={setPage} page={page}/>
       <div className='main-container'>
-        { compareLowerCase(page, 'Markdown')
-          ? <MarkDownEditor page={config.default}/>
-          : <Article page={page}/>
+        {!config.markdown.enable
+          ? <Article filePath={getFilePath(page)} />
+          : (compareLowerCase(page, 'Markdown')
+              ? <MarkDownEditor />
+              : <Article filePath={getFilePath(page)} />)
         }
       </div>
     </div>

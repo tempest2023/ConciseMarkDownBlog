@@ -20,6 +20,9 @@ __bold__
 
 _italic*
 
+~Strikethrough~
+
+~one~ or ~~two~~ tildes.
 
 ## Autolink literals
 
@@ -30,12 +33,6 @@ www.github.com, https://github.com
 [623059008@github.com](https://github.com/623059008)
 ```
 [623059008@github.com](https://github.com/623059008)
-
-
-## Strikethrough
-
-~one~ or ~~two~~ tildes.
-
 
 ## List and Tasklist
 
