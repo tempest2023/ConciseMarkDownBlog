@@ -2,7 +2,7 @@ name: Deploy Creat React App Project
 on: 
   push:
     branches:
-      - master
+      - main
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest

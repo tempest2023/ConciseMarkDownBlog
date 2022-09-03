@@ -2,9 +2,9 @@
 
 ## 🙋‍♂️ Why
 
->  I previously set up a profile web application by Bootstrap Template and ThinkJS. It's tortured to update that blogs because everytime I need to use rich-text editor to generate the HTML content and write it to MySQL. Yeah, I had a small server at that time. Now I don't want to pay a server, but I still need a place to record and share my experience.
+>  I previously developed a profile web application by Bootstrap Template and ThinkJS. It's tortured to update that blogs because everytime I need to use rich-text editor to generate the HTML content and write it to MySQL. Yeah, I had a small server at that time. Now I don't want to pay a server, but I still need a place to record and share my experience.
 
-I've been looking for a way to have a **sustainably updated**, **configurable** and **extensible** personal blog with **static** web pages.
+I've been looking for a way to setup a **easily updated**, **configurable** and **extensible** personal blog by **static** web pages.
 
 Specifically, I want to implement it without any server resources from my side.
 
@@ -15,7 +15,7 @@ It should be a concise web blog with the following parts.
 - Projects Presentation
 - Resume & Social Links
 
-It should be easy to update more blog articles, and push the updates conveniently.
+It should be easy to update more blog articles, and push the updates.
 
 
 ## Build Your Blog with in 5 mins
