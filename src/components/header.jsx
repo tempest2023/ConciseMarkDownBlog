@@ -12,15 +12,6 @@ import PropTypes from 'prop-types';
 import { handleUrl } from '../util/url';
 import { compareLowerCase } from '../util/str';
 
-// const ThemeChange = (props) => {
-//   const { themeMode, switchThemeMode } = props;
-//   return (
-//     <span className={style['header-theme-toggler']} onClick={switchThemeMode}>
-//       <i className={themeMode =='light' ? "bi bi-laptop" : "bi bi-laptop-fill"}></i>
-//     </span>
-//   );
-// };
-
 const Header = props => {
   const [headerLinks, setHeaderLinks] = useState([]);
   const { setPage, page } = props;
