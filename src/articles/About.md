@@ -2,11 +2,11 @@
 
 My name is Tao Ren (Tempest).
 
-I'm a graduate student at the **University of Pittsburgh** studying in **Information Science**.
+I'm a graduate student at the **University of Pittsburgh** studying **Information Science**.
 
 Before being a graduate student, I worked for one year as a software engineer at **Ant Group**, Alibaba, in Mobile Technology Team.
 
-I was responsible for developing **Alipay Wealth Shop**, some dynamic templates, and live-streaming components with **billions** of visitors. That was an arduous task, especially in the Chinsese New Year period.
+I was responsible for developing **Alipay Wealth Shop**, some dynamic templates, and live-streaming components with **billions** of visitors. That was an arduous task, especially in the Chinese New Year period.
 
 I finished my Bachelor's Degree at the **Southern University of Science and Technology**, which spent four years to teach me the knowledge, passion, and spirit of continuous improvement needed to become a qualified software engineer and a Computer Science scholar.
 
