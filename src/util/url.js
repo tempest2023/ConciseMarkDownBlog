@@ -2,7 +2,7 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-09-02 15:21:40
- * @modify date 2022-09-03 20:40:16
+ * @modify date 2022-09-04 00:58:19
  * @desc format link
  */
 import config from '../config';
@@ -37,19 +37,35 @@ export function getUrlParameters () {
   return params;
 }
 
+// a weak external validation
+const externalValidator = (url) => {
+  const externalPrefixList = ['http', 'https', 'www', 'ftp', 'mailto', 'tel', 'ssh', 'git'];
+  return externalPrefixList.filter((prefix) => url.startsWith(prefix)).length > 0;
+}
+
 // @setPage - state updater in App component, handle internal resources dynamically loading.
 export function handleUrl (url, setPage) {
+  // parameters validation
+  if (!setPage || !url) {
+    console.error('[ERROR] setPage is not defined on /src/util/url.js:handleUrl');
+    return
+  }
+  // for external links, open it in a new tab.
+  if (externalValidator(url)) {
+    window.open(url, '_blank');
+    return
+  }
   // if the url is a header, load it directly.
   const inHeaders = config.headers.filter(item => item.title === url || item.customUrl === url)
   if (inHeaders.length > 0) {
     setPage(url);
     return;
   }
-  // check if the url is the same domain, if not, open in new tab, otherwise open in same tab.
+  // check if the url is the same domain, if not, open in new tab, otherwise load by setPage.
   // same domain url refers to an internal markdown document
   // for example, /?page=Projects/project1.md, ?page=About.md, /?page=Blog.md
   // if setPage is null, can not handle the url as internal resources.
-  if (url.startsWith('http') || url.startsWith('https') || url.startsWith('www') || !url.match(/(^\?|^\/)/) || !setPage) {
+  if (!url.match(/(^\?|^\/)/)) {
     window.open(url, '_blank');
     return
   }
