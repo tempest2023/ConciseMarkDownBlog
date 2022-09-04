@@ -6,7 +6,7 @@
  * @desc markdown preview component
  */
 /* eslint-disable react/no-children-prop */
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import ReactMarkdown from 'react-markdown';
