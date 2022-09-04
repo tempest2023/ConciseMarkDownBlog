@@ -2,9 +2,10 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-09-02 15:21:40
- * @modify date 2022-09-03 19:06:11
+ * @modify date 2022-09-03 20:40:16
  * @desc format link
  */
+import config from '../config';
 // describe how to format a link.
 export function formatLink (link) {
   return `?page=${link}`;
@@ -38,6 +39,12 @@ export function getUrlParameters () {
 
 // @setPage - state updater in App component, handle internal resources dynamically loading.
 export function handleUrl (url, setPage) {
+  // if the url is a header, load it directly.
+  const inHeaders = config.headers.filter(item => item.title === url || item.customUrl === url)
+  if (inHeaders.length > 0) {
+    setPage(url);
+    return;
+  }
   // check if the url is the same domain, if not, open in new tab, otherwise open in same tab.
   // same domain url refers to an internal markdown document
   // for example, /?page=Projects/project1.md, ?page=About.md, /?page=Blog.md

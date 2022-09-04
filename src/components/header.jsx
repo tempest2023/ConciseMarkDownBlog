@@ -9,28 +9,14 @@ import React, { useEffect, useState } from 'react';
 import config from '../config';
 import styles from '../styles/header.module.css';
 import PropTypes from 'prop-types';
-import { formatLink } from '../util/url';
+import { handleUrl } from '../util/url';
 import { compareLowerCase } from '../util/str';
-
-// const ThemeChange = (props) => {
-//   const { themeMode, switchThemeMode } = props;
-//   return (
-//     <span className={style['header-theme-toggler']} onClick={switchThemeMode}>
-//       <i className={themeMode =='light' ? "bi bi-laptop" : "bi bi-laptop-fill"}></i>
-//     </span>
-//   );
-// };
 
 const Header = props => {
   const [headerLinks, setHeaderLinks] = useState([]);
   const { setPage, page } = props;
   const pageUpdate = (item) => {
-    if (item.type === 'link') {
-      // open a new window with link
-      window.open(item.customUrl, '_blank');
-    } if (item.type === 'article') {
-      setPage(item.customUrl || item.title)
-    }
+    handleUrl(item.customUrl || item.title, setPage)
   }
   const getHeaders = () => {
     const headerLinks = [];
