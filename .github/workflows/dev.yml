@@ -1,0 +1,14 @@
+name: Build & Test Create React App
+on: 
+  push:
+    branches:
+      - concise-react-blog
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Install and Build 🔧
+        run: yarn install && yarn build
