@@ -1,7 +1,7 @@
 ## Blogs
 
 
-I will post my study blogs here, continually updated.
+I will post my study blogs here, and continually update them.
 
 
 ### Python

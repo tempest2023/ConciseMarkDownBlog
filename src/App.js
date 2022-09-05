@@ -51,6 +51,11 @@ const App = () => {
     }
   }, [])
 
+  // set document title
+  useEffect(() => {
+    document.title = config.title;
+  }, [])
+
   return (
     <div className='page'>
       <Header setPage={setPage} page={page}/>

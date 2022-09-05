@@ -8,7 +8,7 @@
 /* eslint-disable react/no-children-prop */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-
+import ColorLoading from '../colorLoading';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import remarkMath from 'remark-math';
@@ -45,15 +45,7 @@ export default function MarkDownPreview (props) {
     {showPreviewHeader && <h1>Markdown Preview</h1>}
     <div className={styles['preview-panel']} style={!showPreviewHeader ? { border: 0 } : {}}>
       {!markdownContent || loading
-        ? (
-        <div
-          className="spinner-border"
-          style={{ color: config.colors.light.foreground, marginLeft: '45%', marginTop: '40%' }}
-          role="status"
-        >
-          <span className="sr-only"></span>
-        </div>
-          )
+        ? <ColorLoading />
         : (
             <ReactMarkdown
               children={markdownContent}

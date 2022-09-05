@@ -6,9 +6,9 @@
  * @desc article template component
  */
 import React, { useEffect, useState } from 'react';
-import config from '../config';
 // import styles from '../styles/article.module.css';
 import PropTypes from 'prop-types';
+import ColorLoading from './colorLoading';
 import MarkDownPreview from './editor/markDownPreview';
 import NotFound from '../articles/404.md';
 
@@ -31,15 +31,7 @@ const Article = props => {
           )
         : loading
           ? (
-        <div
-          className='spinner-border'
-          style={{
-            color: config.colors.light.foreground
-          }}
-          role='status'
-        >
-          <span className='sr-only'></span>
-        </div>
+            <ColorLoading />
             )
           : <MarkDownPreview markdownFile={NotFound} showPreviewHeader={false} setPage={setPage} />}
     </div>
