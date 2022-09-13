@@ -1,5 +1,3 @@
-## Projects
-
 ### Awesome Projects
 
 

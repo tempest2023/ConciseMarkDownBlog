@@ -20,7 +20,7 @@ It should be easy to update more blog articles, and push the updates.
 
 ## Build Your Blog with in 5 mins
 
-1. ⭐️ Fork and start this repo. 
+1. ⭐️ Fork and star this repo.
 2. ✍🏻 Edit the config file, and write some articles, anything you want to show on your blog
 3. ```shell
    git add . 
