@@ -2,7 +2,7 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-09-02 17:02:50
- * @modify date 2022-09-04 00:55:30
+ * @modify date 2022-09-13 14:51:06
  * @desc config file
  */
 const config = {
@@ -63,7 +63,9 @@ const config = {
     // delay time for refreshing markdown preview
     renderDelay: 0,
     // tab size for markdown editor
-    tabSize: 2
+    tabSize: 2,
+    // the links in markdown does not have underlines, set it true to enable underline
+    linkUnderline: false,
   },
   themeChange: true,
   colors: {

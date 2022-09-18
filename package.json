@@ -1,8 +1,26 @@
 {
-  "name": "blog",
-  "version": "0.1.0",
-  "private": true,
+  "name": "concise-markdown-blog",
+  "description": "This is a concise, static, easily updated, configurable web blog based on MarkDown contents, and it can be deployed on Github Pages easily to set up your own blog within 5 mins.",
+  "author": "Temepst <tar118@pitt.edu> (https://blog.epicanecdotes.games)",
+  "contributors": [],
+  "version": "0.1.1",
   "homepage": ".",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/623059008/ConciseMarkDownBlog.git"
+  },
+  "keywords": [
+    "concise blog",
+    "personal blog",
+    "web blog",
+    "markdown",
+    "free deployment",
+    "github pages"
+  ],
+  "bugs": {
+    "url": "https://github.com/623059008/ConciseMarkDownBlog/issues"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",

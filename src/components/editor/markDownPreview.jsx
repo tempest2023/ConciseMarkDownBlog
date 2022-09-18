@@ -20,8 +20,9 @@ import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import 'katex/dist/katex.min.css';
 import { handleUrl } from '../../util/url';
 import config from '../../config';
-
 import styles from '../../styles/editor.module.css';
+
+const markdownConfig = config.markdown;
 
 export default function MarkDownPreview (props) {
   const { markdownFile, markdownString, loading, showPreviewHeader = true, setPage } = props;
@@ -88,7 +89,7 @@ export default function MarkDownPreview (props) {
                 a ({ node, children, ...props }) {
                   // determine if the link is external or internal
                   return (
-                    <a title={node?.properties?.href} onClick={() => handleUrl(node?.properties?.href, setPage)} {...props} href="#" >
+                    <a title={node?.properties?.href} style={!markdownConfig.linkUnderline ? { textDecoration: 'none' } : {}} onClick={() => handleUrl(node?.properties?.href, setPage)} {...props} href="#" >
                       {children}
                     </a>
                   );
