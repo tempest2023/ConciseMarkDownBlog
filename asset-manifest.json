@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "./static/css/main.fa771fe8.css",
-    "main.js": "./static/js/main.9dbb2b0e.js",
-    "static/js/787.f587e8d5.chunk.js": "./static/js/787.f587e8d5.chunk.js",
+    "main.js": "./static/js/main.4415b63c.js",
+    "static/js/787.e10291cf.chunk.js": "./static/js/787.e10291cf.chunk.js",
     "static/media/Hack-NF.ttf": "./static/media/Hack-NF.f66ad81e1acf91cbeec6.ttf",
     "static/media/bootstrap-icons.woff?": "./static/media/bootstrap-icons.e559bf06bc84fd9525e6.woff",
     "static/media/bootstrap-icons.woff2?": "./static/media/bootstrap-icons.ea98e12d2d58747f9fc5.woff2",
@@ -46,6 +46,7 @@
     "static/media/KaTeX_Size1-Regular.ttf": "./static/media/KaTeX_Size1-Regular.6de7d4b539221a49e9e2.ttf",
     "static/media/KaTeX_SansSerif-Bold.woff2": "./static/media/KaTeX_SansSerif-Bold.95591a929f0d32aa282a.woff2",
     "static/media/KaTeX_SansSerif-Italic.woff2": "./static/media/KaTeX_SansSerif-Italic.7d393d382f3e7fb1c637.woff2",
+    "static/media/Concise_MarkDown_Blog.md": "./static/media/Concise_MarkDown_Blog.a721e30003ef39bc3c2b.md",
     "static/media/KaTeX_Size2-Regular.ttf": "./static/media/KaTeX_Size2-Regular.57f5c1837853986ea1db.ttf",
     "static/media/KaTeX_Fraktur-Bold.woff2": "./static/media/KaTeX_Fraktur-Bold.931d67ea207ab37ee693.woff2",
     "static/media/KaTeX_Fraktur-Regular.woff2": "./static/media/KaTeX_Fraktur-Regular.172d3529b26f8cedef6b.woff2",
@@ -53,7 +54,6 @@
     "static/media/KaTeX_Size4-Regular.ttf": "./static/media/KaTeX_Size4-Regular.4ad7c7e8bb8d10a34bb7.ttf",
     "static/media/KaTeX_SansSerif-Regular.woff2": "./static/media/KaTeX_SansSerif-Regular.cd5e231e0cc53b2cb2c0.woff2",
     "static/media/KaTeX_Script-Regular.woff2": "./static/media/KaTeX_Script-Regular.c81d1b2a4b75d3eded60.woff2",
-    "static/media/Concise_MarkDown_Blog.md": "./static/media/Concise_MarkDown_Blog.d9d3d39a3f591c4b2aa2.md",
     "static/media/KaTeX_Caligraphic-Bold.woff": "./static/media/KaTeX_Caligraphic-Bold.d757c535a2e5902f1325.woff",
     "static/media/KaTeX_Caligraphic-Regular.woff": "./static/media/KaTeX_Caligraphic-Regular.db074fa22cf224af93d7.woff",
     "static/media/KaTeX_Size3-Regular.ttf": "./static/media/KaTeX_Size3-Regular.8d6b6822586eea3d3b20.ttf",
@@ -72,21 +72,25 @@
     "static/media/Short_Encoding_of_Words.md": "./static/media/Short_Encoding_of_Words.1aeffd430d9c7e43cde8.md",
     "static/media/Project.md": "./static/media/Project.07c2a696d63ee92a367d.md",
     "static/media/Maximum_Score_Of_Spliced_Array.md": "./static/media/Maximum_Score_Of_Spliced_Array.a3d8fd705b450e5ba2bd.md",
+    "static/media/socketio_error.md": "./static/media/socketio_error.70191913e023ddc42f33.md",
+    "static/media/Python_C_compile_script.md": "./static/media/Python_C_compile_script.56fa712b8d66cea3f5e9.md",
     "static/media/markdown_intro.md": "./static/media/markdown_intro.06591a1b31c6147af4ba.md",
     "static/media/Shortest_Unsorted_Continuous_Subarray.md": "./static/media/Shortest_Unsorted_Continuous_Subarray.f641df4bcb3b7ed8116b.md",
+    "static/media/pinitos_error.md": "./static/media/pinitos_error.2ef1c561127048e9bb44.md",
     "static/media/Encrypt_and_Decrypt_Strings.md": "./static/media/Encrypt_and_Decrypt_Strings.b4310f64cc52c0690994.md",
+    "static/media/Blog.md": "./static/media/Blog.f09dbf59d0c5f7dfce96.md",
     "static/media/About.md": "./static/media/About.aba7b80927252438d7da.md",
-    "static/media/Blog.md": "./static/media/Blog.6bd2cfc74d1bbb178043.md",
+    "static/media/colorfont.md": "./static/media/colorfont.fb8d70409884c4f6d10b.md",
     "index.html": "./index.html",
+    "static/media/Use_Python_to_print_colorfully.md": "./static/media/Use_Python_to_print_colorfully.176d497a840ff936695b.md",
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
-    "static/media/javascript_blog_1.md": "./static/media/javascript_blog_1.c1e7131d42124d63486b.md",
     "static/media/project2.md": "./static/media/project2.d64e0ef77c31894d1fcb.md",
     "main.fa771fe8.css.map": "./static/css/main.fa771fe8.css.map",
-    "main.9dbb2b0e.js.map": "./static/js/main.9dbb2b0e.js.map",
-    "787.f587e8d5.chunk.js.map": "./static/js/787.f587e8d5.chunk.js.map"
+    "main.4415b63c.js.map": "./static/js/main.4415b63c.js.map",
+    "787.e10291cf.chunk.js.map": "./static/js/787.e10291cf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fa771fe8.css",
-    "static/js/main.9dbb2b0e.js"
+    "static/js/main.4415b63c.js"
   ]
 }
