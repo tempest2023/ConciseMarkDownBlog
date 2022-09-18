@@ -29,3 +29,5 @@ I will post my study blogs here, and continually update them.
 
 - [Use Python script to help multi C++ files compile on Windows](/?page=Blogs/C/Python_C_compile_script)
 - [Errors when compile pintos on Ubuntu](/?page=Blogs/C/pinitos_error)
+
+### Deep Learning

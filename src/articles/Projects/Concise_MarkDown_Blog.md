@@ -1,4 +1,24 @@
 # Concise MarkDown Blog
+[![PayPal][badge_paypal_donate]][paypal-donations]
+
+<a href="https://www.buymeacoffee.com/tempes666" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee"></a>
+
+## Build Your Blog with in 5 mins
+
+1. ⭐️ Fork and star this repo.
+2. ✍🏻 Edit the config file, and write some articles, anything you want to show on your blog
+3. ```shell
+   git add . 
+   git commit -m 'some msg'
+   git push
+   ```
+4. 🚀 Use [Github Page][7] to deploy within 1 mins. 
+    - Click **Settings** on your repo
+    - Click **Pages** on left sidebar
+    - Choose **Deploy from a branch**.
+    - Choose branch `gh-pages`
+      > if you don't have this branch, update your `main` branch. It will automatically run Github Actions to create the `gh-pages` branch after new changes on `main`.
+    - Check your own online blog.
 
 ## 🙋‍♂️ Why
 
@@ -16,19 +36,6 @@ It should be a concise web blog with the following parts.
 - Resume & Social Links
 
 It should be easy to update more blog articles, and push the updates.
-
-
-## Build Your Blog with in 5 mins
-
-1. ⭐️ Fork and start this repo. 
-2. ✍🏻 Edit the config file, and write some articles, anything you want to show on your blog
-3. ```shell
-   git add . 
-   git commit -m 'some msg'
-   git push
-   ```
-4. 🚀 Use [Github Page][7] to deploy within 3 mins 
-
 ## 🧐 How
 
 ### [Github Page][7]
@@ -67,12 +74,13 @@ The content in each page is dynamically loaded and presented by a react [markdow
    git commit -m 'some msg'
    git push
    ```
+3. If you already setup your Github Pages, it will automatically run Github Actions to build this project and deploy it on `gh-pages` branchs. It will cost 3-5 mins, and then you can check the updates.
 
 By this way, I can update my blogs by markdown and use Github Repository to update, deploy and manage.
 
 ## 👨‍💻 Editor
 
-Even you can use any [markdown editor][6] you have, I provide an Online MarkDown Editor, the input part is based on a [Fancy TextArea][3] and the preview part is based on the react [markdown renderer][2] I just mentioned, exactly the one that every page uses to render the MarkDown documents.
+Although you can use any [markdown editor][6] you have, I provide an Online MarkDown Editor, the input part is based on a [Fancy TextArea][3] and the preview part is based on the react [markdown renderer][2] I just mentioned, exactly the one that every page uses to render the MarkDown documents.
 
 At least, you can use this online MarkDown editor to check the final preview of your article before `git push`. 
 
@@ -274,6 +282,31 @@ It is developed by Yu Zhang, a professor at SUSTech, which also is my undergradu
 Typora was a fancy, free markdown editor with awesome cross-platform compatibility, definitely my favorite production. I used it all the time for my undergraduate notes.  It's still fancy now, but not free.
 
 
+## :yum: How to contribute
+Have an idea? Found a bug? See [how to contribute][contributing].
+
+## :sparkling_heart: Support my projects
+I open-source almost everything I can, and I try to reply to everyone needing help using these projects. Obviously,
+this takes time. You can integrate and use these projects in your applications *for free*! You can even change the source code and redistribute (even resell it).
+
+However, if you get some profit from this or just want to encourage me to continue creating stuff, there are few ways you can do it:
+
+
+ - Starring and sharing the projects you like :rocket:
+ - [![PayPal][badge_paypal]][paypal-donations]—You can make one-time donations via PayPal. I'll probably buy a coffee or tea. :tea:
+ - **ETH**—You can send me Ethereum at this address (or scanning the code below): `0x2a25Dad6f9E314317168FC67790c62fDEdcEd9c9`
+
+    ![my_eth_wallet_address](https://s2.loli.net/2022/09/14/ACnm391s7bDJkFU.png)
+
+
+Thanks! :heart:
+
+
+## :scroll: License
+
+[MIT][license] © [Tempest][website]
+
+
 [1]: https://webpack.js.org/guides/dependency-management/
 
 [2]: https://github.com/remarkjs/react-markdown
@@ -289,3 +322,17 @@ Typora was a fancy, free markdown editor with awesome cross-platform compatibili
 [7]: https://pages.github.com/
 
 [8]: https://docs.github.com/en/get-started/quickstart/hello-world
+
+[badge_paypal]: https://ionicabizau.github.io/badges/paypal.svg
+
+[badge_paypal_donate]: https://ionicabizau.github.io/badges/paypal_donate.svg
+
+[paypal-donations]: https://www.paypal.com/paypalme/TaoTempest
+
+[license]: /LICENSE
+
+[contributing]: /CONTRIBUTING.md
+
+[website]: https://blog.epicanecdotes.games/
+
+
