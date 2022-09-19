@@ -2,7 +2,7 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-08-31 14:40:35
- * @modify date 2022-09-03 19:07:33
+ * @modify date 2022-09-19 18:53:48
  * @desc App
  */
 import React, { useEffect, useState } from 'react';
@@ -20,7 +20,7 @@ import { compareLowerCase } from './util/str';
 
 const articles = {};
 // import the article resources by require.context
-const articleContext = require.context('/src/articles/', true, /\.md$/);
+const articleContext = require.context('/src/articles/', true, /\.(md|jpg|png|gif|jpeg|mp4|mp3|avi|ogg)$/);
 
 function importAllArticles (r) {
   r.keys().forEach((key) => (articles[key] = r(key)));

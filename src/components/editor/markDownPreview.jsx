@@ -93,6 +93,16 @@ export default function MarkDownPreview (props) {
                       {children}
                     </a>
                   );
+                },
+                // transform the image path to /resources/[absolute path].
+                // In webpack.config.js, I add a rule to package all resources under /src/articles/ to /resources/ with original absolute path.
+                // I won't suggest you put resources in your repository, but if you do, it can work with absolution path, not relative path because the relative path can not be parsed in reandering.
+                // I suggest you put an image with external link like google drive.
+                img ({ node, children, ...props }) {
+                  const finalSrc = `/resources${node?.properties.src}`
+                  return (
+                    <img style={{ width: 'auto', maxWidth: '100%' }} title={node?.properties.alt} alt={node?.properties.alt} onClick={() => handleUrl(finalSrc, setPage)} {...props} src={finalSrc}>{children}</img>
+                  )
                 }
               }}
             />
