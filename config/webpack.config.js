@@ -339,6 +339,15 @@ module.exports = function (webpackEnv) {
     module: {
       strictExportPresence: true,
       rules: [
+        // pack all images & videos resource under /src/articles/ to a target file
+        {
+          test: [/.*\/src\/articles\/.*\.(jpg|png|gif|jpeg|mp4|mp3|avi|ogg)$/],
+          loader: require.resolve('file-loader'),
+          options: {
+            outputPath: 'resources',
+            name: '[path][name].[ext]',
+          },
+        },
         // Handle node_modules packages that contain sourcemaps
         shouldUseSourceMap && {
           enforce: 'pre',
@@ -355,6 +364,7 @@ module.exports = function (webpackEnv) {
             // https://github.com/jshttp/mime-db
             {
               test: [/\.avif$/],
+              exclude: [/.*\/src\/articles\/.*\.(avi|avif|mp4|mp3|ogg)$/],
               type: 'asset',
               mimetype: 'image/avif',
               parser: {
@@ -368,6 +378,7 @@ module.exports = function (webpackEnv) {
             // A missing `test` is equivalent to a match.
             {
               test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+              exclude: [/\/src\/articles\/\.(bmp|jpeg|jpg|png)$/],
               type: 'asset',
               parser: {
                 dataUrlCondition: {
@@ -377,6 +388,7 @@ module.exports = function (webpackEnv) {
             },
             {
               test: /\.svg$/,
+              exclude: [/.*\/src\/articles\/.*\.svg$/],
               use: [
                 {
                   loader: require.resolve('@svgr/webpack'),
@@ -559,7 +571,7 @@ module.exports = function (webpackEnv) {
             // ** STOP ** Are you adding a new loader?
             // Make sure to add the new loader(s) before the "file" loader.
           ],
-        },
+        }
       ].filter(Boolean),
     },
     plugins: [
