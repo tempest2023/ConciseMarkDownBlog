@@ -3,8 +3,12 @@
 
 - [Concise MarkDown Blog](/?page=Projects/Concise_MarkDown_Blog.md): A static, configurable, update by markdown, deploy on Github Page blog using React. Try it by yourself, 5 mins to set up your own concise markdown blog 🚀🚀🚀.
 
-- [Mintal](https://github.com/JoyDajunSpaceCraft/pittChallenge): A web application that provides questionnaire and psychotherapy advice for people who suffered from mental health problems, made for Pitt Hackathon
+[![Concise MarkDown Blog](https://github-readme-stats.vercel.app/api/pin/?username=623059008&repo=ConciseMarkDownBlog)](https://github.com/anuraghazra/github-readme-stats)
 
+
+- [Mintal](https://github.com/623059008/mintal): A web application that provides questionnaire and psychotherapy advice for people who suffered from mental health problems, made for Pitt Hackathon
+
+[![Mintal](https://github-readme-stats.vercel.app/api/pin/?username=623059008&repo=mintal)](https://github.com/anuraghazra/github-readme-stats)
 
 ### Academic Projects
 
