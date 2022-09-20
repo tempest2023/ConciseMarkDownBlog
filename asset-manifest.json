@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.fa771fe8.css",
-    "main.js": "./static/js/main.c0bed07f.js",
+    "main.js": "./static/js/main.bd4636fa.js",
     "static/js/107.22f30dff.chunk.js": "./static/js/107.22f30dff.chunk.js",
     "static/media/Hack-NF.ttf": "./static/media/Hack-NF.f66ad81e1acf91cbeec6.ttf",
     "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
@@ -36,7 +36,7 @@
     "static/media/KaTeX_Math-Italic.woff2": "./static/media/KaTeX_Math-Italic.6d3d25f4820d0da8f01f.woff2",
     "static/media/KaTeX_Math-BoldItalic.woff2": "./static/media/KaTeX_Math-BoldItalic.dcbcbd93bac0470b462d.woff2",
     "static/media/KaTeX_Typewriter-Regular.woff": "./static/media/KaTeX_Typewriter-Regular.4c6b94fd1d07f8beff7c.woff",
-    "static/media/Concise_MarkDown_Blog.md": "./static/media/Concise_MarkDown_Blog.a1cc280ae22898c7aa52.md",
+    "static/media/Concise_MarkDown_Blog.md": "./static/media/Concise_MarkDown_Blog.85a241a8197c5c87446a.md",
     "static/media/KaTeX_SansSerif-Bold.woff": "./static/media/KaTeX_SansSerif-Bold.b9cd458ac6d5889ff9c3.woff",
     "static/media/KaTeX_SansSerif-Italic.woff": "./static/media/KaTeX_SansSerif-Italic.8d593cfaa96238d5e2f8.woff",
     "static/media/KaTeX_Typewriter-Regular.woff2": "./static/media/KaTeX_Typewriter-Regular.c295e7f71970f03c0549.woff2",
@@ -68,8 +68,8 @@
     "static/media/KaTeX_Size2-Regular.woff2": "./static/media/KaTeX_Size2-Regular.2960900c4f271311eb36.woff2",
     "static/media/KaTeX_Size4-Regular.woff2": "./static/media/KaTeX_Size4-Regular.e418bf257af1052628d8.woff2",
     "static/media/KaTeX_Size3-Regular.woff": "./static/media/KaTeX_Size3-Regular.7947224e8a9914fa332b.woff",
+    "static/media/Project.md": "./static/media/Project.4233d4cb17e8a3e4b737.md",
     "static/media/A_cat_recognizer_works_wrong_in_which_pictures.md": "./static/media/A_cat_recognizer_works_wrong_in_which_pictures.f9ae617d14a127c081bd.md",
-    "static/media/Project.md": "./static/media/Project.e387ceb160cfaa31fea2.md",
     "static/media/PushDominoes.md": "./static/media/PushDominoes.95e13b3ce61ee53c5e50.md",
     "static/media/KaTeX_Size3-Regular.woff2": "./static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "static/media/Short_Encoding_of_Words.md": "./static/media/Short_Encoding_of_Words.1aeffd430d9c7e43cde8.md",
@@ -88,11 +88,11 @@
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
     "static/media/project2.md": "./static/media/project2.d64e0ef77c31894d1fcb.md",
     "main.fa771fe8.css.map": "./static/css/main.fa771fe8.css.map",
-    "main.c0bed07f.js.map": "./static/js/main.c0bed07f.js.map",
+    "main.bd4636fa.js.map": "./static/js/main.bd4636fa.js.map",
     "107.22f30dff.chunk.js.map": "./static/js/107.22f30dff.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fa771fe8.css",
-    "static/js/main.c0bed07f.js"
+    "static/js/main.bd4636fa.js"
   ]
 }
