@@ -327,13 +327,13 @@ this takes time. You can integrate and use these projects in your applications _
 
 However, if you get some profit from this or just want to encourage me to continue creating stuff, there are few ways you can do it:
 
-- Starring and sharing the projects you like :rocket:
-- [![PayPal][badge_paypal]][paypal-donations] — You can make one-time donations via PayPal. I'll probably buy a coffee or tea. :tea:
+- Starring and sharing the projects you like 🚀
+- [![PayPal][badge_paypal]][paypal-donations] — You can make one-time donations via PayPal. I'll probably buy a coffee or tea. 🍵
 - **ETH**—You can send me Ethereum at this address (or scanning the code below): `0x2a25Dad6f9E314317168FC67790c62fDEdcEd9c9`
 
   ![my_eth_wallet_address](https://s2.loli.net/2022/09/14/ACnm391s7bDJkFU.png)
 
-Thanks! :heart:
+Thanks! ❤️
 
 ## 📜 License
 
