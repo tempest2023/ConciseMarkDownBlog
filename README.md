@@ -271,6 +271,12 @@ Support media types: svg, png, jpg, gif, jpeg, mp4, mp3, avi, ogg.
 
 But I don't recommend you do in this way, github repositories are not cloud storage, the access speed also can not be guaranteed.
 
+Some suggestions about images cloud storage:
+
+- https://sm.ms/
+- https://www.google.com/drive/
+- https://www.microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage
+
 ## 🚀 Commands to run
 
 In the project directory, you can run:
@@ -327,13 +333,21 @@ this takes time. You can integrate and use these projects in your applications _
 
 However, if you get some profit from this or just want to encourage me to continue creating stuff, there are few ways you can do it:
 
-- Starring and sharing the projects you like :rocket:
-- [![PayPal][badge_paypal]][paypal-donations] — You can make one-time donations via PayPal. I'll probably buy a coffee or tea. :tea:
-- **ETH**—You can send me Ethereum at this address (or scanning the code below): `0x2a25Dad6f9E314317168FC67790c62fDEdcEd9c9`
+- Starring and sharing the projects you like 🚀
+- [![PayPal][badge_paypal]][paypal-donations] — You can make one-time donations via PayPal. I'll probably buy a coffee or tea. 🍵
+- **ETH** — You can send me Ethereum at this address (or scanning the code below): `0x2a25Dad6f9E314317168FC67790c62fDEdcEd9c9`
 
   ![my_eth_wallet_address](https://s2.loli.net/2022/09/14/ACnm391s7bDJkFU.png)
 
-Thanks! :heart:
+- Alipay - You can make one-time donations via Alipay.
+
+  <img style="width: 30%; height: auto;" src="https://s2.loli.net/2022/09/21/cYjP9ZDIzHM5RAW.jpg" />
+
+- WeChat - You can make one-time donations via WeChat.
+
+  <img style="width: 30%; height: auto;" src="https://s2.loli.net/2022/09/21/jqkZDpNz7ag5ist.jpg" />
+
+Thanks! ❤️
 
 ## 📜 License
 
@@ -351,5 +365,5 @@ Thanks! :heart:
 [badge_paypal_donate]: https://ionicabizau.github.io/badges/paypal_donate.svg
 [paypal-donations]: https://www.paypal.com/paypalme/TaoTempest
 [license]: /LICENSE
-[contributing]: /CONTRIBUTING.md
+[contributing]: https://github.com/623059008/ConciseMarkDownBlog/blob/main/CONTRIBUTING.md
 [website]: https://blog.epicanecdotes.games/
