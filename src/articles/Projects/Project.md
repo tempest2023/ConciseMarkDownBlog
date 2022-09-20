@@ -56,10 +56,10 @@
 
 ## Github Status
 
-<a href="https://github.com/anuraghazra/github-readme-stats">
+<a href="https://github.com/623059008">
   <img align="center" src="https://github-readme-stats.vercel.app/api?username=623059008" />
 </a>
-<a href="https://github.com/anuraghazra/github-readme-stats">
+<a href="https://github.com/623059008">
   <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=623059008&layout=compact" />
 </a>
 
