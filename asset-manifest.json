@@ -1,9 +1,10 @@
 {
   "files": {
     "main.css": "./static/css/main.fa771fe8.css",
-    "main.js": "./static/js/main.4415b63c.js",
-    "static/js/787.e10291cf.chunk.js": "./static/js/787.e10291cf.chunk.js",
+    "main.js": "./static/js/main.55b8a17b.js",
+    "static/js/107.22f30dff.chunk.js": "./static/js/107.22f30dff.chunk.js",
     "static/media/Hack-NF.ttf": "./static/media/Hack-NF.f66ad81e1acf91cbeec6.ttf",
+    "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
     "static/media/bootstrap-icons.woff?": "./static/media/bootstrap-icons.e559bf06bc84fd9525e6.woff",
     "static/media/bootstrap-icons.woff2?": "./static/media/bootstrap-icons.ea98e12d2d58747f9fc5.woff2",
     "static/media/KaTeX_AMS-Regular.ttf": "./static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
@@ -35,6 +36,7 @@
     "static/media/KaTeX_Math-Italic.woff2": "./static/media/KaTeX_Math-Italic.6d3d25f4820d0da8f01f.woff2",
     "static/media/KaTeX_Math-BoldItalic.woff2": "./static/media/KaTeX_Math-BoldItalic.dcbcbd93bac0470b462d.woff2",
     "static/media/KaTeX_Typewriter-Regular.woff": "./static/media/KaTeX_Typewriter-Regular.4c6b94fd1d07f8beff7c.woff",
+    "static/media/Concise_MarkDown_Blog.md": "./static/media/Concise_MarkDown_Blog.5ff9d603aba4e0d50b92.md",
     "static/media/KaTeX_SansSerif-Bold.woff": "./static/media/KaTeX_SansSerif-Bold.b9cd458ac6d5889ff9c3.woff",
     "static/media/KaTeX_SansSerif-Italic.woff": "./static/media/KaTeX_SansSerif-Italic.8d593cfaa96238d5e2f8.woff",
     "static/media/KaTeX_Typewriter-Regular.woff2": "./static/media/KaTeX_Typewriter-Regular.c295e7f71970f03c0549.woff2",
@@ -46,7 +48,6 @@
     "static/media/KaTeX_Size1-Regular.ttf": "./static/media/KaTeX_Size1-Regular.6de7d4b539221a49e9e2.ttf",
     "static/media/KaTeX_SansSerif-Bold.woff2": "./static/media/KaTeX_SansSerif-Bold.95591a929f0d32aa282a.woff2",
     "static/media/KaTeX_SansSerif-Italic.woff2": "./static/media/KaTeX_SansSerif-Italic.7d393d382f3e7fb1c637.woff2",
-    "static/media/Concise_MarkDown_Blog.md": "./static/media/Concise_MarkDown_Blog.a721e30003ef39bc3c2b.md",
     "static/media/KaTeX_Size2-Regular.ttf": "./static/media/KaTeX_Size2-Regular.57f5c1837853986ea1db.ttf",
     "static/media/KaTeX_Fraktur-Bold.woff2": "./static/media/KaTeX_Fraktur-Bold.931d67ea207ab37ee693.woff2",
     "static/media/KaTeX_Fraktur-Regular.woff2": "./static/media/KaTeX_Fraktur-Regular.172d3529b26f8cedef6b.woff2",
@@ -67,6 +68,7 @@
     "static/media/KaTeX_Size2-Regular.woff2": "./static/media/KaTeX_Size2-Regular.2960900c4f271311eb36.woff2",
     "static/media/KaTeX_Size4-Regular.woff2": "./static/media/KaTeX_Size4-Regular.e418bf257af1052628d8.woff2",
     "static/media/KaTeX_Size3-Regular.woff": "./static/media/KaTeX_Size3-Regular.7947224e8a9914fa332b.woff",
+    "static/media/A_cat_recognizer_works_wrong_in_which_pictures.md": "./static/media/A_cat_recognizer_works_wrong_in_which_pictures.f9ae617d14a127c081bd.md",
     "static/media/PushDominoes.md": "./static/media/PushDominoes.95e13b3ce61ee53c5e50.md",
     "static/media/KaTeX_Size3-Regular.woff2": "./static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "static/media/Short_Encoding_of_Words.md": "./static/media/Short_Encoding_of_Words.1aeffd430d9c7e43cde8.md",
@@ -77,8 +79,8 @@
     "static/media/markdown_intro.md": "./static/media/markdown_intro.06591a1b31c6147af4ba.md",
     "static/media/Shortest_Unsorted_Continuous_Subarray.md": "./static/media/Shortest_Unsorted_Continuous_Subarray.f641df4bcb3b7ed8116b.md",
     "static/media/pinitos_error.md": "./static/media/pinitos_error.2ef1c561127048e9bb44.md",
+    "static/media/Blog.md": "./static/media/Blog.d96fbf5b898e5e7bb138.md",
     "static/media/Encrypt_and_Decrypt_Strings.md": "./static/media/Encrypt_and_Decrypt_Strings.b4310f64cc52c0690994.md",
-    "static/media/Blog.md": "./static/media/Blog.f09dbf59d0c5f7dfce96.md",
     "static/media/About.md": "./static/media/About.aba7b80927252438d7da.md",
     "static/media/colorfont.md": "./static/media/colorfont.fb8d70409884c4f6d10b.md",
     "index.html": "./index.html",
@@ -86,11 +88,11 @@
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
     "static/media/project2.md": "./static/media/project2.d64e0ef77c31894d1fcb.md",
     "main.fa771fe8.css.map": "./static/css/main.fa771fe8.css.map",
-    "main.4415b63c.js.map": "./static/js/main.4415b63c.js.map",
-    "787.e10291cf.chunk.js.map": "./static/js/787.e10291cf.chunk.js.map"
+    "main.55b8a17b.js.map": "./static/js/main.55b8a17b.js.map",
+    "107.22f30dff.chunk.js.map": "./static/js/107.22f30dff.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fa771fe8.css",
-    "static/js/main.4415b63c.js"
+    "static/js/main.55b8a17b.js"
   ]
 }
