@@ -71,13 +71,14 @@ export default function MarkDownPreview (props) {
                     </code>
                       );
                 },
-
+                // custom h1, h2 behaviors, add anchor automatically with the title text.
+                // Add a  divider behind h1 and h2
                 h1 ({ children, ...props }) {
-                  return <><h1 {...props}>{children}</h1><hr /></>
+                  return <><h1 {...props}>{children}</h1><a name={children[0]} /><hr /></>
                 },
 
                 h2 ({ children, ...props }) {
-                  return <><h1 {...props}>{children}</h1><hr /></>
+                  return <><h2 {...props}>{children}</h2><a name={children[0]} /><hr /></>
                 },
 
                 blockquote ({ children, ...props }) {
