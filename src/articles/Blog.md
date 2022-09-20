@@ -31,3 +31,5 @@ I will post my study blogs here, and continually update them.
 - [Errors when compile pintos on Ubuntu](/?page=Blogs/C/pinitos_error)
 
 ### Deep Learning
+
+- [A cat recognizer works wrong in which pictures?](/?page=Blogs/DeepLearning/A_cat_recognizer_works_wrong_in_which_pictures.md)

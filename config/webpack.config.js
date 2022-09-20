@@ -341,7 +341,7 @@ module.exports = function (webpackEnv) {
       rules: [
         // pack all images & videos resource under /src/articles/ to a target file
         {
-          test: [/.*\/src\/articles\/.*\.(jpg|png|gif|jpeg|mp4|mp3|avi|ogg)$/],
+          test: [/.*\/src\/articles\/.*\.(svg|jpg|png|gif|jpeg|mp4|mp3|avi|ogg)$/],
           loader: require.resolve('file-loader'),
           options: {
             outputPath: 'resources',

@@ -18,7 +18,7 @@ import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import 'katex/dist/katex.min.css';
-import { handleUrl } from '../../util/url';
+import { handleUrl, externalValidator } from '../../util/url';
 import config from '../../config';
 import styles from '../../styles/editor.module.css';
 
@@ -99,9 +99,13 @@ export default function MarkDownPreview (props) {
                 // I won't suggest you put resources in your repository, but if you do, it can work with absolution path, not relative path because the relative path can not be parsed in reandering.
                 // I suggest you put an image with external link like google drive.
                 img ({ node, children, ...props }) {
+                  if (externalValidator(node?.properties?.src)) {
+                    // external link
+                    return (<img style={{ width: 'auto', maxWidth: '100%' }} {...props}></img>)
+                  }
                   const finalSrc = `/resources${node?.properties.src}`
                   return (
-                    <img style={{ width: 'auto', maxWidth: '100%' }} title={node?.properties.alt} alt={node?.properties.alt} onClick={() => handleUrl(finalSrc, setPage)} {...props} src={finalSrc}>{children}</img>
+                    <img style={{ width: 'auto', maxWidth: '100%' }} title={node?.properties.alt} alt={node?.properties.alt} {...props} src={finalSrc}>{children}</img>
                   )
                 }
               }}
