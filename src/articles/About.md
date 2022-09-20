@@ -16,13 +16,6 @@ For now, my interests include Frontend and Backend development, Software Enginee
 
 If you are interested in my work, feel free to [have a look](/?page=Projects/Project).
 
-### Github Status
-<a href="https://github.com/anuraghazra/github-readme-stats">
-  <img align="center" src="https://github-readme-stats.vercel.app/api?username=623059008" />
-</a>
-<a href="https://github.com/anuraghazra/github-readme-stats">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=623059008&layout=compact" />
-</a>
 
 
 

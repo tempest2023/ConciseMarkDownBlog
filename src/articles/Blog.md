@@ -1,4 +1,6 @@
-I will post my study blogs here, and continually update them.
+## Blog
+
+> I will post my study blogs here, and continually update them.
 
 ### Leetcode
 

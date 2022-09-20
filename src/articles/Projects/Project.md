@@ -30,3 +30,14 @@
 - [Electron Demo](https://github.com/623059008/ElectronParticleClock): An Electron particle clock application, supports Windows, MacoOS and Linux. Through this project, I figured out the way to package for different platforms, using Inno Setup to generate a Windows installer file. The particle animation is very fancy, not from me.
 - [eBookFlip](https://github.com/623059008/ebookflip): eBookFlip by jQuery.
 - [Horner's Method](https://github.com/623059008/Horner-s-Method/blob/master/Polynomials.html): Use Horner's Method to calculate the polynomial evaluation.
+
+## Github Status
+
+<a href="https://github.com/anuraghazra/github-readme-stats">
+  <img align="center" src="https://github-readme-stats.vercel.app/api?username=623059008" />
+</a>
+<a href="https://github.com/anuraghazra/github-readme-stats">
+  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=623059008&layout=compact" />
+</a>
+
+---------------
