@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.fa771fe8.css",
-    "main.js": "./static/js/main.4616a357.js",
+    "main.js": "./static/js/main.c0bed07f.js",
     "static/js/107.22f30dff.chunk.js": "./static/js/107.22f30dff.chunk.js",
     "static/media/Hack-NF.ttf": "./static/media/Hack-NF.f66ad81e1acf91cbeec6.ttf",
     "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
@@ -68,18 +68,18 @@
     "static/media/KaTeX_Size2-Regular.woff2": "./static/media/KaTeX_Size2-Regular.2960900c4f271311eb36.woff2",
     "static/media/KaTeX_Size4-Regular.woff2": "./static/media/KaTeX_Size4-Regular.e418bf257af1052628d8.woff2",
     "static/media/KaTeX_Size3-Regular.woff": "./static/media/KaTeX_Size3-Regular.7947224e8a9914fa332b.woff",
-    "static/media/Project.md": "./static/media/Project.b0715c07753efa092c93.md",
     "static/media/A_cat_recognizer_works_wrong_in_which_pictures.md": "./static/media/A_cat_recognizer_works_wrong_in_which_pictures.f9ae617d14a127c081bd.md",
+    "static/media/Project.md": "./static/media/Project.e387ceb160cfaa31fea2.md",
     "static/media/PushDominoes.md": "./static/media/PushDominoes.95e13b3ce61ee53c5e50.md",
     "static/media/KaTeX_Size3-Regular.woff2": "./static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "static/media/Short_Encoding_of_Words.md": "./static/media/Short_Encoding_of_Words.1aeffd430d9c7e43cde8.md",
     "static/media/Maximum_Score_Of_Spliced_Array.md": "./static/media/Maximum_Score_Of_Spliced_Array.a3d8fd705b450e5ba2bd.md",
+    "static/media/Blog.md": "./static/media/Blog.0152a519cb43b1dca87b.md",
     "static/media/socketio_error.md": "./static/media/socketio_error.70191913e023ddc42f33.md",
     "static/media/Python_C_compile_script.md": "./static/media/Python_C_compile_script.56fa712b8d66cea3f5e9.md",
     "static/media/markdown_intro.md": "./static/media/markdown_intro.06591a1b31c6147af4ba.md",
     "static/media/Shortest_Unsorted_Continuous_Subarray.md": "./static/media/Shortest_Unsorted_Continuous_Subarray.f641df4bcb3b7ed8116b.md",
     "static/media/pinitos_error.md": "./static/media/pinitos_error.2ef1c561127048e9bb44.md",
-    "static/media/Blog.md": "./static/media/Blog.c81fbe777d2d69124949.md",
     "static/media/Encrypt_and_Decrypt_Strings.md": "./static/media/Encrypt_and_Decrypt_Strings.b4310f64cc52c0690994.md",
     "static/media/About.md": "./static/media/About.bb5164b27618b2d5dd8f.md",
     "static/media/colorfont.md": "./static/media/colorfont.fb8d70409884c4f6d10b.md",
@@ -88,11 +88,11 @@
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
     "static/media/project2.md": "./static/media/project2.d64e0ef77c31894d1fcb.md",
     "main.fa771fe8.css.map": "./static/css/main.fa771fe8.css.map",
-    "main.4616a357.js.map": "./static/js/main.4616a357.js.map",
+    "main.c0bed07f.js.map": "./static/js/main.c0bed07f.js.map",
     "107.22f30dff.chunk.js.map": "./static/js/107.22f30dff.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fa771fe8.css",
-    "static/js/main.4616a357.js"
+    "static/js/main.c0bed07f.js"
   ]
 }
