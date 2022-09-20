@@ -6,7 +6,7 @@
 
 ## Build Your Blog with in 5 mins
 
-1. ⭐️ Fork and star this repo.
+1. ⭐️ Star and fork this repository, edit in your own repository.
 2. ✍🏻 Edit the config file, and write some articles, anything you want to show on your blog
 3. ```shell
    git add .
@@ -25,36 +25,42 @@
 
 > I previously developed a profile web application by Bootstrap Template and ThinkJS. It's tortured to update that blogs because everytime I need to use rich-text editor to generate the HTML content and write it to MySQL. Yeah, I had a small server at that time. Now I don't want to pay a server, but I still need a place to record and share my experience.
 
-I've been looking for a way to setup a **easily updated**, **configurable** and **extensible** personal blog by **static** web pages.
+I've been looking for a way to setup an **easily update**, **configurable** and **extensible** personal blog by **static** web pages.
 
 Specifically, I want to implement it without any server resources from my side.
 
 It should be a concise web blog with the following parts.
 
 - Self Introduction
-- Blogs
+- Blogs, includes contents with text contents, hyperlink and media resources.
 - Projects Presentation
 - Resume & Social Links
-
-It should be easy to update more blog articles, and push the updates.
-
+- Modularization & Flexibile Configs
+- Update Easily (Low Code) & Version Control
+- High Accessibility
+- Free 💵
 ## 🧐 How
-
-### [Github Page][7]
+> Github + Markdown + React = Concise MarkDown Blog 
+### Deployment by [Github Page][7]
+> Considering my requirements, I think using **Git** and **Github** to complete the version control of my blog will be a good idea. Also Git is not a great barrier for non-technical people.
+In this way, a static web application can be updated easily by maintaining Gitub repository.
 
 To avoid extra server resources from my side, I use [Github Page][7] to deploy my project, a staic web application. It is totally free, and every github user can use it.
 
 ### Concise and Easy by MarkDown
 
-Considering all my notes are finished by MarkDown, and indeed MarkDown is good enough to write all what I want.
+Markdown is a good choice for blog, elegant and concise. All my notes are written by Markdown, it's easy for me to move them to my new Blog. Also Markdown is powerful enough to write and display technical article, class notes, casual thoughts, math formula, even fiction.
 
-What I need are links, images, lists, codes, and texts, and MarkDown satisfies.
 
-Here is the idea, I build this blog by dynamic loading MarkDown documents for almost every part except the basic Frontend codes for rendering MarkDown, supporting configurations or other fancy animations I want, all contents are implemented by MarkDown.
+What I need are links, images, lists, codes, and texts, and MarkDown is good.
 
-There is only one type of resources in this web application: **MarkDown** **Documents**.
+### React Web Application
 
-All markdown documents are packaged within the web application and loaded dynamically.
+Here is the idea, I build this blog by dynamic loading MarkDown documents for almost every part except the basic Frontend codes for rendering MarkDown, supporting configurations or other fancy animations I want, all contents are written by MarkDown.
+
+It reduces the difficulty to maintain my own website & blog and update the contents.
+
+No worry about the codes, only focus on markdown documents.
 
 #### Dynamic Loading
 
@@ -69,16 +75,16 @@ The content in each page is dynamically loaded and presented by a react [markdow
 
 ### Update Blogs
 
-1.  Write some blogs by MarkDown, clear up the links in the entry file (also markdown documents).
+1.  Update some contents by MarkDown, clear up the links and media.
 
 2.  ```shell
     git add .
     git commit -m 'some msg'
     git push
     ```
-3.  If you already setup your Github Pages, it will automatically run Github Actions to build this project and deploy it on `gh-pages` branchs. It will cost 3-5 mins, and then you can check the updates.
+3.  If you already set up your Github Pages, you don't need to do anything, it will automatically run Github Actions to build this project and deploy it on `gh-pages` branchs. It will cost 3-5 mins, and then you can check the updates online and share it to your friends.
 
-By this way, I can update my blogs by markdown and use Github Repository to update, deploy and manage.
+By this way, I can maintain my own Website & Blogs by MarkDown and Github.
 
 ## 👨‍💻 Editor
 
