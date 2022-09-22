@@ -18,8 +18,8 @@ const config = {
     linkedin: 'https://www.linkedin.com/in/taoren-pitt/'
   },
   email: 'tar118@pitt.edu',
-  repo: 'https://github.com/623059008/Profile',
-  resume_url: 'https://drive.google.com/file/d/1iVeW9GOa1LEDt3dqW4KKw63wrsfYrjm-/view?usp=sharing',
+  repo: 'https://github.com/623059008/ConciseMarkDownBlog',
+  resume_url: 'https://docs.google.com/document/d/1OUpm20344qy2T1nhhgegRDdBz-XaxXr8DTAQlS37ylw/edit?usp=sharing',
   // default content shown on the main page, /src/articles/[config.defalt].md
   default: 'About',
   headers: [
@@ -51,7 +51,7 @@ const config = {
     {
       title: 'Resume',
       type: 'link',
-      customUrl: 'https://drive.google.com/file/d/1iVeW9GOa1LEDt3dqW4KKw63wrsfYrjm-/view?usp=sharing'
+      customUrl: 'https://docs.google.com/document/d/1OUpm20344qy2T1nhhgegRDdBz-XaxXr8DTAQlS37ylw/edit?usp=sharing'
     }
   ],
   // markdown settings
