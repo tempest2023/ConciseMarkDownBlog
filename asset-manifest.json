@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.fa771fe8.css",
-    "main.js": "./static/js/main.bd4636fa.js",
+    "main.js": "./static/js/main.a8cc3eea.js",
     "static/js/107.22f30dff.chunk.js": "./static/js/107.22f30dff.chunk.js",
     "static/media/Hack-NF.ttf": "./static/media/Hack-NF.f66ad81e1acf91cbeec6.ttf",
     "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
@@ -80,19 +80,19 @@
     "static/media/markdown_intro.md": "./static/media/markdown_intro.06591a1b31c6147af4ba.md",
     "static/media/Shortest_Unsorted_Continuous_Subarray.md": "./static/media/Shortest_Unsorted_Continuous_Subarray.f641df4bcb3b7ed8116b.md",
     "static/media/pinitos_error.md": "./static/media/pinitos_error.2ef1c561127048e9bb44.md",
+    "static/media/About.md": "./static/media/About.7726c1285b78b274ad41.md",
     "static/media/Encrypt_and_Decrypt_Strings.md": "./static/media/Encrypt_and_Decrypt_Strings.b4310f64cc52c0690994.md",
-    "static/media/About.md": "./static/media/About.bb5164b27618b2d5dd8f.md",
     "static/media/colorfont.md": "./static/media/colorfont.fb8d70409884c4f6d10b.md",
     "index.html": "./index.html",
     "static/media/Use_Python_to_print_colorfully.md": "./static/media/Use_Python_to_print_colorfully.176d497a840ff936695b.md",
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
     "static/media/project2.md": "./static/media/project2.d64e0ef77c31894d1fcb.md",
     "main.fa771fe8.css.map": "./static/css/main.fa771fe8.css.map",
-    "main.bd4636fa.js.map": "./static/js/main.bd4636fa.js.map",
+    "main.a8cc3eea.js.map": "./static/js/main.a8cc3eea.js.map",
     "107.22f30dff.chunk.js.map": "./static/js/107.22f30dff.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fa771fe8.css",
-    "static/js/main.bd4636fa.js"
+    "static/js/main.a8cc3eea.js"
   ]
 }
