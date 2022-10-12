@@ -34,7 +34,7 @@
 
 ### React
 
-- Will have vast of blogs
+- [Best Practice for React Native](/?page=Blogs/ReactNative/best_practice)
 
 ### C++
 
