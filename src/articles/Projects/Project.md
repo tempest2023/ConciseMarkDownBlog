@@ -5,6 +5,9 @@
 
 [![Concise MarkDown Blog](https://github-readme-stats-623059008.vercel.app/api/pin/?username=623059008&repo=ConciseMarkDownBlog)](https://github.com/623059008/ConciseMarkDownBlog)
 
+- [Happy Triplet Elimation - Algo](https://github.com/623059008/HappyTripleElimationProgramming): A game teaches players what algorithm practise looks like. A triplet matching casual game. Hope you enjoy the Triplet erasing and learn some algorithm knowledge. Vite+Eletron, released on [itch](https://temepst-666.itch.io/happy-triple-elimation-programming-algorithm)
+
+[![TripletErasingGame](https://github-readme-stats-623059008.vercel.app/api/pin/?username=623059008&repo=HappyTripleElimationProgramming)](https://github.com/623059008/HappyTripleElimationProgramming)
 
 - [Mintal](https://github.com/623059008/mintal): A web application that provides questionnaire and psychotherapy advice for people who suffered from mental health problems, made for Pitt Hackathon
 
