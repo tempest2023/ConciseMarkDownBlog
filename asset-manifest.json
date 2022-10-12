@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.fa771fe8.css",
-    "main.js": "./static/js/main.6d1d7e78.js",
+    "main.js": "./static/js/main.a49beeff.js",
     "static/js/107.22f30dff.chunk.js": "./static/js/107.22f30dff.chunk.js",
     "static/media/Hack-NF.ttf": "./static/media/Hack-NF.f66ad81e1acf91cbeec6.ttf",
     "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
@@ -65,6 +65,7 @@
     "static/media/KaTeX_Size4-Regular.woff": "./static/media/KaTeX_Size4-Regular.aeffd8025cba3647f1a6.woff",
     "static/media/KaTeX_Size1-Regular.woff2": "./static/media/KaTeX_Size1-Regular.6eec866c69313624be60.woff2",
     "static/media/Paint_House_III.md": "./static/media/Paint_House_III.48a1802b169e86368a5c.md",
+    "static/media/best_practice.md": "./static/media/best_practice.4d6deb08878b08227a61.md",
     "static/media/KaTeX_Size2-Regular.woff2": "./static/media/KaTeX_Size2-Regular.2960900c4f271311eb36.woff2",
     "static/media/Project.md": "./static/media/Project.72fadf8ad63d039e81d6.md",
     "static/media/KaTeX_Size4-Regular.woff2": "./static/media/KaTeX_Size4-Regular.e418bf257af1052628d8.woff2",
@@ -74,7 +75,7 @@
     "static/media/KaTeX_Size3-Regular.woff2": "./static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "static/media/Short_Encoding_of_Words.md": "./static/media/Short_Encoding_of_Words.1aeffd430d9c7e43cde8.md",
     "static/media/Maximum_Score_Of_Spliced_Array.md": "./static/media/Maximum_Score_Of_Spliced_Array.a3d8fd705b450e5ba2bd.md",
-    "static/media/Blog.md": "./static/media/Blog.0152a519cb43b1dca87b.md",
+    "static/media/Blog.md": "./static/media/Blog.b125b7c3ee0de5b42146.md",
     "static/media/socketio_error.md": "./static/media/socketio_error.70191913e023ddc42f33.md",
     "static/media/Python_C_compile_script.md": "./static/media/Python_C_compile_script.56fa712b8d66cea3f5e9.md",
     "static/media/markdown_intro.md": "./static/media/markdown_intro.06591a1b31c6147af4ba.md",
@@ -88,11 +89,11 @@
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
     "static/media/project2.md": "./static/media/project2.d64e0ef77c31894d1fcb.md",
     "main.fa771fe8.css.map": "./static/css/main.fa771fe8.css.map",
-    "main.6d1d7e78.js.map": "./static/js/main.6d1d7e78.js.map",
+    "main.a49beeff.js.map": "./static/js/main.a49beeff.js.map",
     "107.22f30dff.chunk.js.map": "./static/js/107.22f30dff.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fa771fe8.css",
-    "static/js/main.6d1d7e78.js"
+    "static/js/main.a49beeff.js"
   ]
 }
