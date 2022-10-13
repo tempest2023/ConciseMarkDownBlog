@@ -37,13 +37,13 @@ It should be a concise web blog with the following parts.
 - Resume & Social Links
 - Modularization & Flexibile Configs
 - Update Easily (Low Code) & Version Control
-- High Accessibility
+- High Accessibility, Easy Deployment with CI/CD
 - Free 💵
 ## 🧐 How
 > Github + Markdown + React = Concise MarkDown Blog 
 ### Deployment by [Github Page][7]
 > Considering my requirements, I think using **Git** and **Github** to complete the version control of my blog will be a good idea. Also Git is not a great barrier for non-technical people.
-In this way, a static web application can be updated easily by maintaining Gitub repository.
+In this way, a static web application can be updated easily by maintaining Gitub repository. I even don't need to worry about the deployment and accessibility after every upadte, because once I set the CI/CD(Github Actions) ready, the process wil be automatical and stable.
 
 To avoid extra server resources from my side, I use [Github Page][7] to deploy my project, a staic web application. It is totally free, and every github user can use it.
 
