@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.fa771fe8.css",
-    "main.js": "./static/js/main.a49beeff.js",
+    "main.js": "./static/js/main.0f0d467e.js",
     "static/js/107.22f30dff.chunk.js": "./static/js/107.22f30dff.chunk.js",
     "static/media/Hack-NF.ttf": "./static/media/Hack-NF.f66ad81e1acf91cbeec6.ttf",
     "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
@@ -58,6 +58,7 @@
     "static/media/KaTeX_Caligraphic-Bold.woff": "./static/media/KaTeX_Caligraphic-Bold.d757c535a2e5902f1325.woff",
     "static/media/KaTeX_Caligraphic-Regular.woff": "./static/media/KaTeX_Caligraphic-Regular.db074fa22cf224af93d7.woff",
     "static/media/KaTeX_Size3-Regular.ttf": "./static/media/KaTeX_Size3-Regular.8d6b6822586eea3d3b20.ttf",
+    "static/media/Links.md": "./static/media/Links.7f0fd1cf28a16ae3b6ad.md",
     "static/media/KaTeX_Caligraphic-Bold.woff2": "./static/media/KaTeX_Caligraphic-Bold.a1abf90dfd72792a577a.woff2",
     "static/media/KaTeX_Caligraphic-Regular.woff2": "./static/media/KaTeX_Caligraphic-Regular.d6484fce1ef428d5bd94.woff2",
     "static/media/KaTeX_Size1-Regular.woff": "./static/media/KaTeX_Size1-Regular.0108e89c9003e8c14ea3.woff",
@@ -67,7 +68,7 @@
     "static/media/Paint_House_III.md": "./static/media/Paint_House_III.48a1802b169e86368a5c.md",
     "static/media/best_practice.md": "./static/media/best_practice.4d6deb08878b08227a61.md",
     "static/media/KaTeX_Size2-Regular.woff2": "./static/media/KaTeX_Size2-Regular.2960900c4f271311eb36.woff2",
-    "static/media/Project.md": "./static/media/Project.72fadf8ad63d039e81d6.md",
+    "static/media/Project.md": "./static/media/Project.bb1cec313bddf6b4d514.md",
     "static/media/KaTeX_Size4-Regular.woff2": "./static/media/KaTeX_Size4-Regular.e418bf257af1052628d8.woff2",
     "static/media/KaTeX_Size3-Regular.woff": "./static/media/KaTeX_Size3-Regular.7947224e8a9914fa332b.woff",
     "static/media/A_cat_recognizer_works_wrong_in_which_pictures.md": "./static/media/A_cat_recognizer_works_wrong_in_which_pictures.f9ae617d14a127c081bd.md",
@@ -89,11 +90,11 @@
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
     "static/media/project2.md": "./static/media/project2.d64e0ef77c31894d1fcb.md",
     "main.fa771fe8.css.map": "./static/css/main.fa771fe8.css.map",
-    "main.a49beeff.js.map": "./static/js/main.a49beeff.js.map",
+    "main.0f0d467e.js.map": "./static/js/main.0f0d467e.js.map",
     "107.22f30dff.chunk.js.map": "./static/js/107.22f30dff.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fa771fe8.css",
-    "static/js/main.a49beeff.js"
+    "static/js/main.0f0d467e.js"
   ]
 }
