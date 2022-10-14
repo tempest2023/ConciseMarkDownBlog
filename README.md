@@ -4,10 +4,11 @@
 
 <a href="https://www.buymeacoffee.com/tempes666" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee"></a>
 
+![demo](./demo.png)
 ## Build Your Blog with in 5 mins
 
 1. ⭐️ Star and fork this repository, edit in your own repository.
-2. ✍🏻 Edit the config file, and write some articles, anything you want to show on your blog
+2. ✍🏻 Edit the config file for custom theme, headers and features, and write some articles, anything you want to show on your blog
 3. ```shell
    git add .
    git commit -m 'some msg'
