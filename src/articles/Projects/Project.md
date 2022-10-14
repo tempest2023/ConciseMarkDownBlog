@@ -9,7 +9,7 @@
 
 [![TripletErasingGame](https://github-readme-stats-623059008.vercel.app/api/pin/?username=623059008&repo=HappyTripleElimationProgramming)](https://github.com/623059008/HappyTripleElimationProgramming)
 
-- [eBookFlip](https://github.com/623059008/ebookflip): An e-book flip player implemented by React and Canvas Updating with 60fps, also provides a version implemented by jQuery (not playable but flipable with animation, only 1fps) in jquery-impl branch.
+- [eBookFlip](https://github.com/623059008/ebookflip): An e-book flip player implemented by React and Canvas Updating with 60fps, also provides a version implemented by jQuery (not playable but flipable with animation, one-click flip) in jquery-impl branch.
 
 [![eBookFlip](https://github-readme-stats-623059008.vercel.app/api/pin/?username=623059008&repo=ebookflip)](https://github.com/623059008/ebookflip)
 
