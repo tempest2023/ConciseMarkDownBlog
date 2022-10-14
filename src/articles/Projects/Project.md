@@ -9,6 +9,10 @@
 
 [![TripletErasingGame](https://github-readme-stats-623059008.vercel.app/api/pin/?username=623059008&repo=HappyTripleElimationProgramming)](https://github.com/623059008/HappyTripleElimationProgramming)
 
+- [eBookFlip](https://github.com/623059008/ebookflip): An e-book flip player implemented by React and Canvas Updating with 60fps, also provides a version implemented by jQuery (not playable but flipable with animation, only 1fps) in jquery-impl branch.
+
+[![eBookFlip](https://github-readme-stats-623059008.vercel.app/api/pin/?username=623059008&repo=ebookflip)](https://github.com/623059008/ebookflip)
+
 - [Mintal](https://github.com/623059008/mintal): A web application that provides questionnaire and psychotherapy advice for people who suffered from mental health problems, made for Pitt Hackathon
 
 [![Mintal](https://github-readme-stats-623059008.vercel.app/api/pin/?username=623059008&repo=mintal)](https://github.com/623059008/mintal)
@@ -48,10 +52,6 @@
 - [Electron Particle Clock](https://github.com/623059008/ElectronParticleClock): An Electron particle clock application, supports Windows, MacoOS and Linux. Through this project, I figured out the way to package for different platforms, using Inno Setup to generate a Windows installer file. The particle animation is very fancy, not from me.
 
 [![Electron Particle Clock](https://github-readme-stats-623059008.vercel.app/api/pin/?username=623059008&repo=ElectronParticleClock)](https://github.com/623059008/ElectronParticleClock)
-
-- [eBookFlip](https://github.com/623059008/ebookflip): eBookFlip by React with updating images by canvas to reach 60fps, also provides a version implemented by jQuery (not playable but flipable) in jquery-impl branch.
-
-[![eBookFlip](https://github-readme-stats-623059008.vercel.app/api/pin/?username=623059008&repo=ebookflip)](https://github.com/623059008/ebookflip)
 
 - [Horner's Method](https://github.com/623059008/Horner-s-Method/blob/master/Polynomials.html): Use Horner's Method to calculate the polynomial evaluation.
 
