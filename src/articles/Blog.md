@@ -11,6 +11,7 @@
 - <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg> [838. Push Dominoes](/?page=Blogs/Leetcode/PushDominoes)
 - <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg> [581. Shortest Unsorted Continuous Subarray](/?page=Blogs/Leetcode/Shortest_Unsorted_Continuous_Subarray)
 - <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg> [820. Short Encoding of Words](/?page=Blogs/Leetcode/Short_Encoding_of_Words)
+- <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg> [12. Int to Roman](/?page=Blogs/Leetcode/Int_to_Roman)
 
 
 > <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg>
