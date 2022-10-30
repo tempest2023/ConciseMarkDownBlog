@@ -12,6 +12,7 @@
 - <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg> [581. Shortest Unsorted Continuous Subarray](/?page=Blogs/Leetcode/Shortest_Unsorted_Continuous_Subarray)
 - <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg> [820. Short Encoding of Words](/?page=Blogs/Leetcode/Short_Encoding_of_Words)
 - <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg> [12. Int to Roman](/?page=Blogs/Leetcode/Int_to_Roman)
+- <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg> [2456. Most Popular Video Creator](/?page=Blogs/Leetcode/Most_Popular_Video_Creator)
 
 
 > <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg>
@@ -19,6 +20,7 @@
 - <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [2227. Encrypt and Decrypt Strings](/?page=Blogs/Leetcode/Encrypt_and_Decrypt_Strings)
 - <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [2321. Maximum Score Of Spliced Array](/?page=Blogs/Leetcode/Maximum_Score_Of_Spliced_Array)
 - <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [1473. Paint House III](/?page=Blogs/Leetcode/Paint_House_III)
+- <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [2458. Height of Binary Tree After Subtree Removal Queries](/?page=Blogs/Leetcode/Height_of_Binary_Tree_After_Subtree_Removal_Queries)
 
 
 ### Python
