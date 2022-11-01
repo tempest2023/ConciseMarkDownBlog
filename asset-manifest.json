@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.7963d010.css",
-    "main.js": "./static/js/main.0ba98e0c.js",
+    "main.js": "./static/js/main.713788ce.js",
     "static/js/107.22f30dff.chunk.js": "./static/js/107.22f30dff.chunk.js",
     "static/media/Hack-NF.ttf": "./static/media/Hack-NF.f66ad81e1acf91cbeec6.ttf",
     "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
@@ -94,11 +94,11 @@
     "static/media/Use_Python_to_print_colorfully.md": "./static/media/Use_Python_to_print_colorfully.176d497a840ff936695b.md",
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
     "main.7963d010.css.map": "./static/css/main.7963d010.css.map",
-    "main.0ba98e0c.js.map": "./static/js/main.0ba98e0c.js.map",
+    "main.713788ce.js.map": "./static/js/main.713788ce.js.map",
     "107.22f30dff.chunk.js.map": "./static/js/107.22f30dff.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7963d010.css",
-    "static/js/main.0ba98e0c.js"
+    "static/js/main.713788ce.js"
   ]
 }
