@@ -2,7 +2,7 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-08-31 14:40:35
- * @modify date 2022-11-01 01:44:05
+ * @modify date 2022-11-01 14:26:50
  * @desc App
  */
 import React, { useEffect, useState } from 'react';
@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import config from './config';
 import Article from './components/article';
 import MarkDownEditor from './components/editor/editor';
-import NotionStyleEditor from './components/editor/notionStyleEditor';
 import Header from './components/header';
 import { getUrlParameters, formatPage } from './util/url';
 import { compareLowerCase } from './util/str';
@@ -19,6 +18,7 @@ import './styles/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import MarkdownTextarea from './components/editor/markDownTextarea';
 
 const { debug } = config;
 
@@ -53,7 +53,7 @@ const App = () => {
           {!config.markdown.enable
             ? <Article />
             : (compareLowerCase(page, 'Markdown')
-                ? <NotionStyleEditor />
+                ? <MarkDownEditor />
                 : <Article />)
           }
         </div>
