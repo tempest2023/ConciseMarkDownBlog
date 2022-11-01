@@ -2,10 +2,11 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-09-02 17:02:50
- * @modify date 2022-10-30 02:35:32
+ * @modify date 2022-10-31 20:22:14
  * @desc config file
  */
 const config = {
+  debug: false,
   // github readme url
   readmeUrl: 'https://github.com/623059008/ConciseMarkDownBlog/blob/main/README.md',
   // blog title, on left top of the page
@@ -69,7 +70,11 @@ const config = {
     // tab size for markdown editor
     tabSize: 2,
     // the links in markdown does not have underlines, set it true to enable underline
-    linkUnderline: false,
+    linkStyle: {
+      textDecoration: 'none',
+      // link blue
+      color: '#0077ff'
+    },
   },
   themeChange: true,
   colors: {

@@ -12,18 +12,17 @@ import PropTypes from 'prop-types';
 import MarkdownTextarea from './markDownTextarea';
 import MarkDownPreview from './markDownPreview';
 import config from '../../config';
-
 import introfile from '../../articles/markdown_intro.md'; // introduction of how to use markdown
 
 const markdownConfig = config.markdown;
 
-export default function MarkDownEditor (props) {
+export default function MarkDownEditor () {
   const [markdownString, setMarkdownString] = useState('');
   const [deafultValue, setDeafultValue] = useState('');
   const [triggerLoading, setTriggerLoading] = useState(false);
-  const { setPage } = props;
   let updateDebounce = null;
 
+  // update the markdown preview part.
   const updatePreview = (v) => {
     // debounce the update
     if (updateDebounce) {
@@ -36,6 +35,7 @@ export default function MarkDownEditor (props) {
     }, markdownConfig.renderDelay);
   };
 
+  // load introduction of markdown file as default value.
   useEffect(() => {
     fetch(introfile)
       .then((response) => response.text())
@@ -44,6 +44,7 @@ export default function MarkDownEditor (props) {
         setMarkdownString(text);
       });
   }, []);
+
   return (
     <div className="container-md">
       <div className='row align-items-start'>
@@ -55,13 +56,11 @@ export default function MarkDownEditor (props) {
           />
         </div>
         <div className='col-6'>
-          <MarkDownPreview markdownString={markdownString} loading={triggerLoading} setPage={setPage} />
+          <MarkDownPreview markdownString={markdownString} loading={triggerLoading} />
         </div>
       </div>
     </div>
   );
 }
 
-MarkDownEditor.propTypes = {
-  setPage: PropTypes.func.isRequired
-};
+MarkDownEditor.propTypes = {};
