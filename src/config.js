@@ -2,7 +2,7 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-09-02 17:02:50
- * @modify date 2022-10-31 20:22:14
+ * @modify date 2022-11-01 14:21:45
  * @desc config file
  */
 const config = {
@@ -20,7 +20,7 @@ const config = {
   },
   email: 'tar118@pitt.edu',
   repo: 'https://github.com/623059008/ConciseMarkDownBlog',
-  resume_url: 'https://pitt-my.sharepoint.com/:b:/g/personal/tar118_pitt_edu/ERTcyqloNkxGl-o5Kcp3iaoBhSjSOQ7xygUjSglqLqObGA?e=qc1BPg',
+  resume_url: 'https://drive.google.com/file/d/1Myh0ANA3SbAuVLkLnGjr9xeMBaxz2RJc/view?usp=share_link',
   // default content shown on the main page, /src/articles/[config.defalt].md
   default: 'About',
   headers: [
@@ -52,7 +52,7 @@ const config = {
     {
       title: 'Resume',
       type: 'link',
-      customUrl: 'https://pitt-my.sharepoint.com/:b:/g/personal/tar118_pitt_edu/ERTcyqloNkxGl-o5Kcp3iaoBhSjSOQ7xygUjSglqLqObGA?e=qc1BPg'
+      customUrl: 'https://drive.google.com/file/d/1Myh0ANA3SbAuVLkLnGjr9xeMBaxz2RJc/view?usp=share_link'
     },
     {
       title: 'Links',

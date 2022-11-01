@@ -2,7 +2,7 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-08-31 14:40:35
- * @modify date 2022-10-31 20:25:13
+ * @modify date 2022-11-01 01:44:05
  * @desc App
  */
 import React, { useEffect, useState } from 'react';
@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import config from './config';
 import Article from './components/article';
 import MarkDownEditor from './components/editor/editor';
+import NotionStyleEditor from './components/editor/notionStyleEditor';
 import Header from './components/header';
 import { getUrlParameters, formatPage } from './util/url';
 import { compareLowerCase } from './util/str';
@@ -47,13 +48,13 @@ const App = () => {
 
   return (
       <div className='page'>
-        <Header/>
+        <Header />
         <div className='main-container'>
           {!config.markdown.enable
             ? <Article />
             : (compareLowerCase(page, 'Markdown')
-                ? <MarkDownEditor/>
-                : <Article/>)
+                ? <NotionStyleEditor />
+                : <Article />)
           }
         </div>
       </div>
