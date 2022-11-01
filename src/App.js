@@ -2,7 +2,7 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-08-31 14:40:35
- * @modify date 2022-10-31 20:25:13
+ * @modify date 2022-11-01 14:26:50
  * @desc App
  */
 import React, { useEffect, useState } from 'react';
@@ -18,6 +18,7 @@ import './styles/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import MarkdownTextarea from './components/editor/markDownTextarea';
 
 const { debug } = config;
 
@@ -47,13 +48,13 @@ const App = () => {
 
   return (
       <div className='page'>
-        <Header/>
+        <Header />
         <div className='main-container'>
           {!config.markdown.enable
             ? <Article />
             : (compareLowerCase(page, 'Markdown')
-                ? <MarkDownEditor/>
-                : <Article/>)
+                ? <MarkDownEditor />
+                : <Article />)
           }
         </div>
       </div>
