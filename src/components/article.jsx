@@ -8,13 +8,21 @@
 import React, { useEffect, useState } from 'react';
 // import styles from '../styles/article.module.css';
 import PropTypes from 'prop-types';
-import ColorLoading from './colorLoading';
+import { useDispatch, useSelector } from 'react-redux';
+import { navigate, goBack, selectPage, selectFilePath } from '../util/store'
 import MarkDownPreview from './editor/markDownPreview';
+import ColorLoading from './colorLoading';
 import NotFound from '../articles/404.md';
 
-const Article = props => {
-  const { filePath, setPage } = props;
+const Article = () => {
+  const filePath = useSelector(selectFilePath);
   const [loading, setLoading] = useState(!filePath);
+  const dispatch = useDispatch();
+  const setPage = (page) => {
+    dispatch(navigate(page));
+  }
+
+  // load article with filePath
   useEffect(() => {
     if (!filePath) {
       setLoading(true);
@@ -23,6 +31,7 @@ const Article = props => {
       }, 500)
     }
   }, [filePath])
+
   return (
     <div className='container'>
       {filePath
@@ -38,8 +47,5 @@ const Article = props => {
   );
 };
 
-Article.propTypes = {
-  setPage: PropTypes.func.isRequired,
-  filePath: PropTypes.string
-};
+Article.propTypes = {};
 export default Article;

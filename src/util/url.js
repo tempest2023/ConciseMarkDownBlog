@@ -2,13 +2,24 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-09-02 15:21:40
- * @modify date 2022-09-20 02:03:25
+ * @modify date 2022-10-31 20:25:54
  * @desc format link
  */
 import config from '../config';
+
+const { debug } = config;
+
 // describe how to format a link.
 export function formatLink (link) {
   return `?page=${link}`;
+}
+
+// check a string starts with '/', if not, add '/' to it.
+export function slashStart (s) {
+  if (s.startsWith('/')) {
+    return s;
+  }
+  return '/' + s;
 }
 
 // convert page to relative path of the articles
@@ -52,14 +63,14 @@ export function handleUrl (url, setPage) {
   }
   // for external links, open it in a new tab.
   if (externalValidator(url)) {
-    console.log('[debug][1] jump to external link:', url);
+    debug && console.log('[debug][1] jump to external link:', url);
     window.open(url, '_blank');
     return
   }
   // if the url is a header, load it directly.
   const inHeaders = config.headers.filter(item => item.title === url || item.customUrl === url)
   if (inHeaders.length > 0) {
-    console.log('[debug][2] jump to headers page:', url);
+    debug && console.log('[debug][2] jump to headers page:', url);
     setPage(url);
     return;
   }
@@ -68,14 +79,14 @@ export function handleUrl (url, setPage) {
   // for example, /?page=Projects/project1.md, ?page=About.md, /?page=Blog.md
   // if setPage is null, can not handle the url as internal resources.
   if (!url.match(/(^\?|^\/)/)) {
-    console.log('[debug][3] jump to external link:', url);
+    debug && console.log('[debug][3] jump to external link:', url);
     window.open(url, '_blank');
     return
   }
   if (url.indexOf('?') === -1 || url.split('?').length <= 1) {
     // no url params, if it is not an external link, it may refer to a title
     // directly setPage, the article component will handle the path.
-    console.log('[debug][4] jump to internal page with title:', url);
+    debug && console.log('[debug][4] jump to internal page with title:', url);
     setPage(url)
     return
   }
@@ -87,6 +98,6 @@ export function handleUrl (url, setPage) {
     const pair = vars[i].split('=');
     params[pair[0]] = pair[1];
   }
-  console.log('[debug][5] jump to internal page with page param:', url);
+  debug && console.log('[debug][5] jump to internal page with page param:', url);
   setPage(params.page)
 }

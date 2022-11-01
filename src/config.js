@@ -2,10 +2,11 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-09-02 17:02:50
- * @modify date 2022-10-29 05:42:55
+ * @modify date 2022-10-31 20:22:14
  * @desc config file
  */
 const config = {
+  debug: false,
   // github readme url
   readmeUrl: 'https://github.com/623059008/ConciseMarkDownBlog/blob/main/README.md',
   // blog title, on left top of the page
@@ -19,7 +20,7 @@ const config = {
   },
   email: 'tar118@pitt.edu',
   repo: 'https://github.com/623059008/ConciseMarkDownBlog',
-  resume_url: 'https://docs.google.com/document/d/1OUpm20344qy2T1nhhgegRDdBz-XaxXr8DTAQlS37ylw/edit?usp=sharing',
+  resume_url: 'https://pitt-my.sharepoint.com/:b:/g/personal/tar118_pitt_edu/ERTcyqloNkxGl-o5Kcp3iaoBhSjSOQ7xygUjSglqLqObGA?e=qc1BPg',
   // default content shown on the main page, /src/articles/[config.defalt].md
   default: 'About',
   headers: [
@@ -69,7 +70,11 @@ const config = {
     // tab size for markdown editor
     tabSize: 2,
     // the links in markdown does not have underlines, set it true to enable underline
-    linkUnderline: false,
+    linkStyle: {
+      textDecoration: 'none',
+      // link blue
+      color: '#0077ff'
+    },
   },
   themeChange: true,
   colors: {

@@ -48,7 +48,7 @@ tar118@pitt.edu
 	 M45.5,32h-7c-0.552,0-1-0.447-1-1s0.448-1,1-1h7c0.552,0,1,0.447,1,1S46.052,32,45.5,32z M37.5,16V2l14,14H37.5z"/>
 <g>
 </svg>
-[Google Resume](https://docs.google.com/document/d/1OUpm20344qy2T1nhhgegRDdBz-XaxXr8DTAQlS37ylw/edit?usp=sharing)
+[Resume](https://pitt-my.sharepoint.com/:b:/g/personal/tar118_pitt_edu/ERTcyqloNkxGl-o5Kcp3iaoBhSjSOQ7xygUjSglqLqObGA?e=qc1BPg)
 
 <svg width="16" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve">

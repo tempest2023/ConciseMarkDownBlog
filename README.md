@@ -6,6 +6,7 @@
 
 ![demo](./demo.png)
 ## Build Your Blog with in 5 mins
+> Support Notion resources, export your notion documents as Markdown and drag them to `src/articles/`, set an entry header in `/src/config.js`. You can deploy your own blog based on Github Page (Free and Unlimited Storage)!
 
 1. ⭐️ Star and fork this repository, edit in your own repository.
 2. ✍🏻 Edit the config file for custom theme, headers and features, and write some articles, anything you want to show on your blog

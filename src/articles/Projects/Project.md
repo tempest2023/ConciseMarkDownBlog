@@ -1,7 +1,7 @@
 ### Awesome Projects
 
 
-- [Concise MarkDown Blog](/?page=Projects/Concise_MarkDown_Blog.md): A static, configurable, update by markdown, deploy on Github Page blog using React. Try it by yourself, 5 mins to set up your own concise markdown blog 🚀🚀🚀.
+- [Concise MarkDown Blog](https://github.com/623059008/ConciseMarkDownBlog): A static, configurable, update by markdown, deploy on Github Page blog using React. Try it by yourself, 5 mins to set up your own concise markdown blog 🚀🚀🚀.
 
 [![Concise MarkDown Blog](https://github-readme-stats-623059008.vercel.app/api/pin/?username=623059008&repo=ConciseMarkDownBlog)](https://github.com/623059008/ConciseMarkDownBlog)
 

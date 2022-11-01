@@ -36,7 +36,9 @@ class Solution:
             l.append(a)
             l.sort(reverse=True)
             return l[0:2]
-        
+        '''
+        use dfs to iterate all nodes and record their depths, height, and the height list with different depth
+        '''
         def dfs(node, depth):
             if(not node):
                 return depth-1
@@ -51,6 +53,10 @@ class Solution:
             depth2NodeHeight[depth] = max2ele(depth2NodeHeight[depth], node2height[node.val])
             
             return node2height[node.val]
+        '''
+        remove the value from a list with max length 2
+        if the value is not in list, do nothing
+        '''
         def removeFromList(l, v):
             # len of l can only be [0,1,2]
             if(len(l) == 0):
@@ -64,6 +70,7 @@ class Solution:
             return l
 
         dfs(root, 0)
+        
         # print(node2depth, node2height, depth2NodeHeight)
         res = [0]*m  
         for i in range(m):
@@ -74,9 +81,11 @@ class Solution:
             # remove the height of this node's subtree
             depthList = removeFromList(depthList, height)
             if(len(depthList) == 0):
-                # no neighbors can provide larger height
+                # no neighbors can provide larger height, the max height will be depth - 1
                 res[i] = depth-1
             else:
                 res[i] = depthList[0]
         return res
+        
+        
 ```
