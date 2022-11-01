@@ -6,6 +6,8 @@
 ### Leetcode
 > <svg width="50" height="28"><text x="10" y="18" fill="rgb(67, 160, 71)">Easy</text></svg>
 
+- <svg width="50" height="28"><text x="10" y="18" fill="rgb(67, 160, 71)">Easy</text></svg> [766. Toeplitz Matrix](/?page=Blogs/Leetcode/766_Toeplitz_Matrix)
+
 > <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg>
 
 - <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg> [838. Push Dominoes](/?page=Blogs/Leetcode/PushDominoes)
@@ -21,6 +23,7 @@
 - <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [2321. Maximum Score Of Spliced Array](/?page=Blogs/Leetcode/Maximum_Score_Of_Spliced_Array)
 - <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [1473. Paint House III](/?page=Blogs/Leetcode/Paint_House_III)
 - <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [2458. Height of Binary Tree After Subtree Removal Queries](/?page=Blogs/Leetcode/Height_of_Binary_Tree_After_Subtree_Removal_Queries)
+- <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [1293. Shortest Path in a Grid with Obstacles Elimination](/?page=Blogs/Leetcode/1293_Shortest_Path_in_a_Grid_with_Obstacles_Elimin_cf144d0b51e84c79899b68208d590e3a.md)
 
 
 ### Python
