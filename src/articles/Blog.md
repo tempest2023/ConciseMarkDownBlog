@@ -25,6 +25,8 @@
 - <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [2458. Height of Binary Tree After Subtree Removal Queries](/?page=Blogs/Leetcode/Height_of_Binary_Tree_After_Subtree_Removal_Queries)
 - <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [1293. Shortest Path in a Grid with Obstacles Elimination](/?page=Blogs/Leetcode/1293_Shortest_Path_in_a_Grid_with_Obstacles_Elimin_cf144d0b51e84c79899b68208d590e3a.md)
 - <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [76. Minimum Window Substring](/?page=Blogs/Leetcode/76_Minimum_Window_Substring)
+- <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [1531. String Compression II](/?page=Blogs/Leetcode/1531_String_Compression_II.md)
+
 
 
 ### Python
