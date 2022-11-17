@@ -20,6 +20,7 @@ import rehypeRaw from 'rehype-raw';
 import 'katex/dist/katex.min.css';
 
 import { handleUrl, externalValidator } from '../../util/url';
+import { getInfoByChildren } from '../../util/str';
 import { navigate } from '../../util/store'
 import config from '../../config';
 import styles from '../../styles/editor.module.css';
@@ -80,13 +81,13 @@ export default function MarkDownPreview (props) {
                 },
                 // custom h1, h2 behaviors, add anchor automatically with the title text.
                 // Add a  divider behind h1 and h2
-                h1 ({ children, ...props }) {
-                  return <><h1 {...props}>{children}</h1><a name={children[0]} /><hr /></>
+                h1 ({ children, node, ...props }) {
+                  return <><h1 {...props}>{children}</h1><a name={getInfoByChildren(children)} /><hr /></>
                 },
-                h2 ({ children, ...props }) {
-                  return <><h2 {...props}>{children}</h2><a name={children[0]} /><hr /></>
+                h2 ({ children, node, ...props }) {
+                  return <><h2 {...props}>{children}</h2><a name={getInfoByChildren(children)} /><hr /></>
                 },
-                blockquote ({ children, ...props }) {
+                blockquote ({ children, node, ...props }) {
                   return <blockquote style={ { borderLeft: '3px solid #ddd', paddingLeft: '0.5em', color: '#bbb' } } {...props}>{children}</blockquote>
                 },
                 // custom the link behavior, all internal links will be loaded by setPage from App Component.
