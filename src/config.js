@@ -2,7 +2,7 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-09-02 17:02:50
- * @modify date 2022-11-01 14:21:45
+ * @modify date 2022-11-18 02:18:57
  * @desc config file
  */
 const config = {
@@ -52,7 +52,7 @@ const config = {
     {
       title: 'Resume',
       type: 'link',
-      customUrl: 'https://drive.google.com/file/d/1Myh0ANA3SbAuVLkLnGjr9xeMBaxz2RJc/view?usp=share_link'
+      customUrl: 'https://drive.google.com/file/d/1iVeW9GOa1LEDt3dqW4KKw63wrsfYrjm-/view?usp=share_link'
     },
     {
       title: 'Links',

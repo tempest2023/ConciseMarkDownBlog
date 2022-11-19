@@ -15,6 +15,7 @@
 - <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg> [820. Short Encoding of Words](/?page=Blogs/Leetcode/Short_Encoding_of_Words)
 - <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg> [12. Int to Roman](/?page=Blogs/Leetcode/Int_to_Roman)
 - <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg> [2456. Most Popular Video Creator](/?page=Blogs/Leetcode/Most_Popular_Video_Creator)
+- <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg> [204. Count Primes](/?page=Blogs/Leetcode/204_Count_Primes.md)
 
 
 > <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg>
@@ -26,6 +27,7 @@
 - <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [1293. Shortest Path in a Grid with Obstacles Elimination](/?page=Blogs/Leetcode/1293_Shortest_Path_in_a_Grid_with_Obstacles_Elimin_cf144d0b51e84c79899b68208d590e3a.md)
 - <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [76. Minimum Window Substring](/?page=Blogs/Leetcode/76_Minimum_Window_Substring)
 - <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [1531. String Compression II](/?page=Blogs/Leetcode/1531_String_Compression_II.md)
+- <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [295. Find Median from Data Stream](/?page=Blogs/Leetcode/295_Find_Median_from_Data_Stream.md)
 
 
 
