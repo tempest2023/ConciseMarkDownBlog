@@ -8,7 +8,7 @@
 ## Build Your Blog with in 5 mins
 > Support Notion resources, export your notion documents as Markdown and drag them to `src/articles/`, set an entry header in `/src/config.js`. You can deploy your own blog based on Github Page (Free and Unlimited Storage)!
 
-1. ⭐️ Star and fork this repository, edit in your own repository.
+1. ⭐️ Star it and click the **[Use this template](https://github.com/623059008/ConciseMarkDownBlog/generate)** button (you must be logged in) or just clone this repo.
 2. ✍🏻 Edit the config file for custom theme, headers and features, and write some articles, anything you want to show on your blog
 3. ```shell
    git add .
@@ -23,6 +23,7 @@
      > if you don't have this branch, update your `main` branch. It will automatically run Github Actions to create the `gh-pages` branch after new changes on `main`.
    - Check your own online blog.
 
+That's all you need. 😉
 ## 🙋‍♂️ Why
 
 > I previously developed a profile web application by Bootstrap Template and ThinkJS. It's tortured to update that blogs because everytime I need to use rich-text editor to generate the HTML content and write it to MySQL. Yeah, I had a small server at that time. Now I don't want to pay a server, but I still need a place to record and share my experience.
