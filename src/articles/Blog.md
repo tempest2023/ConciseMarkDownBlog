@@ -41,6 +41,7 @@
 
 ### JavaScript
 
+- [Fancy Ideas](/?page=Blogs/Frontend/FancyIdeas.md)
 - [Socket.IO Error, RangeError: Maximum call stack size exceeded](/?page=Blogs/JavaScript/socketio_error)
 
 ### React
