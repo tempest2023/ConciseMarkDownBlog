@@ -5,6 +5,10 @@
 
 [![Concise MarkDown Blog](https://github-readme-stats-623059008.vercel.app/api/pin/?username=623059008&repo=ConciseMarkDownBlog)](https://github.com/623059008/ConciseMarkDownBlog)
 
+- [Dark Forest Adventure](https://temepst-666.itch.io/darkforestadventure): A Unity 3rd perspetive 3D adventure game. Player explores the occult foggy forest and near village, collects different resources, changes the terrains for your combat strategy and challenges the various and cunning enemies hidden in the forest. 
+
+<img src="https://img.itch.zone/aW1hZ2UvMTgzMzgwNS8xMDc2NDAxMy5wbmc=/794x1000/U5dYyt.png" width="240px" height="148.32px" />
+
 - [Happy Triplet Elimation - Algo](https://github.com/623059008/HappyTripleElimationProgramming): A game teaches players what algorithm practise looks like. A triplet matching casual game. Hope you enjoy the Triplet erasing and learn some algorithm knowledge. Vite+Eletron, released on [itch](https://temepst-666.itch.io/happy-triple-elimation-programming-algorithm)
 
 [![TripletErasingGame](https://github-readme-stats-623059008.vercel.app/api/pin/?username=623059008&repo=HappyTripleElimationProgramming)](https://github.com/623059008/HappyTripleElimationProgramming)
