@@ -41,6 +41,7 @@
 
 ### JavaScript
 
+- [Fancy Ideas](/?page=Blogs/Frontend/FancyIdeas.md)
 - [Socket.IO Error, RangeError: Maximum call stack size exceeded](/?page=Blogs/JavaScript/socketio_error)
 
 ### React
@@ -57,5 +58,11 @@
 ### Deep Learning
 
 - [A cat recognizer works wrong in which pictures?](/?page=Blogs/DeepLearning/A_cat_recognizer_works_wrong_in_which_pictures.md)
+
+### Other
+
+- [Recommendation Letter Template](/?page=Blogs/Other/RecommendationLetter.md)
+- [Recommendation Letter Template2](/?page=Blogs/Other/RecommendationLetter-Lab.md)
+- [Recommendation Letter Template3](/?page=Blogs/Other/RecommendationLetter-Fellow.md)
 
 
