@@ -2,13 +2,11 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-08-31 14:39:25
- * @modify date 2023-01-24 04:32:25
+ * @modify date 2023-02-19 18:01:58
  * @desc Global CSS for this application
  */
 * {
-  font-family: 'Explora', cursive;
-  font-family: 'Libre Franklin', sans-serif;
-  font-family: 'Roboto', sans-serif;
+  font-family: Hack,consolas,Menlo-Regular,Menlo,Monaco,'ubuntu mono',monospace,monospace;
 }
 
 ::-webkit-scrollbar {
