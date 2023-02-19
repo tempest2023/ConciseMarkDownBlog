@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.cd2a604c.css",
-    "main.js": "./static/js/main.aa8b5025.js",
+    "main.css": "./static/css/main.c8c49317.css",
+    "main.js": "./static/js/main.a2764413.js",
     "static/js/107.22f30dff.chunk.js": "./static/js/107.22f30dff.chunk.js",
     "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
     "static/media/bootstrap-icons.woff?": "./static/media/bootstrap-icons.6959d0d983ee318f8880.woff",
@@ -88,25 +88,25 @@
     "static/media/Shortest_Unsorted_Continuous_Subarray.md": "./static/media/Shortest_Unsorted_Continuous_Subarray.f641df4bcb3b7ed8116b.md",
     "static/media/pinitos_error.md": "./static/media/pinitos_error.2ef1c561127048e9bb44.md",
     "static/media/RecommendationLetter.md": "./static/media/RecommendationLetter.a20538bc01e2ddf069fa.md",
+    "static/media/About.md": "./static/media/About.cbffce6d00269e66f352.md",
     "static/media/RecommendationLetter-Lab.md": "./static/media/RecommendationLetter-Lab.a67e0116f1e20ce17964.md",
-    "static/media/About.md": "./static/media/About.703715d9b51bc85a8b2a.md",
     "static/media/Encrypt_and_Decrypt_Strings.md": "./static/media/Encrypt_and_Decrypt_Strings.b4310f64cc52c0690994.md",
     "static/media/Int_to_Roman.md": "./static/media/Int_to_Roman.07b3788e96665d9aa070.md",
     "static/media/766_Toeplitz_Matrix.md": "./static/media/766_Toeplitz_Matrix.3547cc3ae5f87d7b29cc.md",
     "static/media/RecommendationLetter-Fellow.md": "./static/media/RecommendationLetter-Fellow.5a396eb04124d4879fe4.md",
     "static/media/204_Count_Primes.md": "./static/media/204_Count_Primes.03bafbf02cf255b8d5c5.md",
-    "index.html": "./index.html",
     "static/media/colorfont.md": "./static/media/colorfont.fb8d70409884c4f6d10b.md",
     "static/media/MyFrontendJourney.md": "./static/media/MyFrontendJourney.7a796bee70c1ab0eb798.md",
+    "index.html": "./index.html",
     "static/media/Use_Python_to_print_colorfully.md": "./static/media/Use_Python_to_print_colorfully.176d497a840ff936695b.md",
     "static/media/FancyIdeas.md": "./static/media/FancyIdeas.659185e8a67d4688047c.md",
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
-    "main.cd2a604c.css.map": "./static/css/main.cd2a604c.css.map",
-    "main.aa8b5025.js.map": "./static/js/main.aa8b5025.js.map",
+    "main.c8c49317.css.map": "./static/css/main.c8c49317.css.map",
+    "main.a2764413.js.map": "./static/js/main.a2764413.js.map",
     "107.22f30dff.chunk.js.map": "./static/js/107.22f30dff.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cd2a604c.css",
-    "static/js/main.aa8b5025.js"
+    "static/css/main.c8c49317.css",
+    "static/js/main.a2764413.js"
   ]
 }
