@@ -118,6 +118,13 @@ It supports following features:
 
 In the future, this editor may be separated when it is good enough to be a separate project.
 
+### TODO:
+
+- Notion Style Markdown Editor
+- Support Video source: Youtube, Bilibili
+- Support Link File: Google Drive
+- Support Data table like Notion
+
 ## 📋 Reminder
 
 #### Comment
