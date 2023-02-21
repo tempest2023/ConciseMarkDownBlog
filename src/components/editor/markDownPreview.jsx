@@ -32,7 +32,7 @@ export default function MarkDownPreview (props) {
   const setPage = (page) => {
     dispatch(navigate(page));
   }
-  const { markdownFile, markdownString, loading, showPreviewHeader = true } = props;
+  const { markdownFile, markdownString, loading, showHeader = true } = props;
   const [markdownContent, setMarkdownContent] = useState('');
   useEffect(() => {
     setMarkdownContent(markdownString);
@@ -50,12 +50,11 @@ export default function MarkDownPreview (props) {
 
   return (
     <div className={styles['markdown-preview-container']}>
-    {showPreviewHeader && <h1>Markdown Preview</h1>}
-    <div className={styles['preview-panel']} style={!showPreviewHeader ? { border: 0 } : {}}>
+    {showHeader && <h1>Markdown Preview</h1>}
+    <div className={styles['preview-panel']} style={!showHeader ? { border: 0 } : {}}>
       {!markdownContent || loading
         ? <ColorLoading />
-        : (
-            <ReactMarkdown
+        : (<ReactMarkdown
               children={markdownContent}
               remarkPlugins={[remarkGfm, remarkMath]}
               rehypePlugins={[rehypeKatex, rehypeRaw]}
@@ -126,5 +125,5 @@ MarkDownPreview.propTypes = {
   markdownFile: PropTypes.string,
   markdownString: PropTypes.string,
   loading: PropTypes.bool,
-  showPreviewHeader: PropTypes.bool
+  showHeader: PropTypes.bool
 };

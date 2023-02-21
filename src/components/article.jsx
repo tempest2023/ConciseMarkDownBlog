@@ -6,17 +6,30 @@
  * @desc article template component
  */
 import React, { useEffect, useState } from 'react';
-// import styles from '../styles/article.module.css';
+import styles from '../styles/article.module.css';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { navigate, goBack, selectPage, selectFilePath } from '../util/store'
 import MarkDownPreview from './editor/markDownPreview';
+import FlipButton from './FlipButton';
+import MarkdownTextarea from './editor/markDownTextarea';
 import ColorLoading from './colorLoading';
 import NotFound from '../articles/404.md';
 
 const Article = () => {
   const filePath = useSelector(selectFilePath);
+  const [markdownContent, setMarkdownContent] = useState('');
   const [loading, setLoading] = useState(!filePath);
+  const [mode, setMode] = useState('preview');
+
+  const switchMode = () => {
+    if (mode === 'preview') {
+      setMode('raw')
+    } else {
+      setMode('preview')
+    }
+  }
+
   const dispatch = useDispatch();
   const setPage = (page) => {
     dispatch(navigate(page));
@@ -30,19 +43,32 @@ const Article = () => {
         setLoading(false);
       }, 500)
     }
+
+    fetch(filePath)
+      .then((response) => response.text())
+      .then((text) => {
+        setMarkdownContent(text);
+      });
   }, [filePath])
 
   return (
     <div className='container'>
       {filePath
         ? (
-        <MarkDownPreview markdownFile={filePath} showPreviewHeader={false} setPage={setPage} />
+          <div>
+            <div className={styles['top-right-button']}>
+              <FlipButton onClick={switchMode} open={false} closeElement={'View'} openElement={'Raw'} size="small" />
+            </div>
+            {mode !== 'preview' && <MarkdownTextarea showHeader={false} deafultValue={markdownContent} updatePreview={() => {}} />}
+            {mode === 'preview' &&
+            <MarkDownPreview markdownString={markdownContent} showHeader={false} setPage={setPage} />}
+          </div>
           )
         : loading
           ? (
             <ColorLoading />
             )
-          : <MarkDownPreview markdownFile={NotFound} showPreviewHeader={false} setPage={setPage} />}
+          : <MarkDownPreview markdownFile={NotFound} showHeader={false} setPage={setPage} />}
     </div>
   );
 };
