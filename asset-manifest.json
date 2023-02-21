@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.c8c49317.css",
-    "main.js": "./static/js/main.a2764413.js",
+    "main.css": "./static/css/main.99367213.css",
+    "main.js": "./static/js/main.b60fd900.js",
     "static/js/107.22f30dff.chunk.js": "./static/js/107.22f30dff.chunk.js",
     "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
     "static/media/bootstrap-icons.woff?": "./static/media/bootstrap-icons.6959d0d983ee318f8880.woff",
@@ -101,12 +101,12 @@
     "static/media/Use_Python_to_print_colorfully.md": "./static/media/Use_Python_to_print_colorfully.176d497a840ff936695b.md",
     "static/media/FancyIdeas.md": "./static/media/FancyIdeas.659185e8a67d4688047c.md",
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
-    "main.c8c49317.css.map": "./static/css/main.c8c49317.css.map",
-    "main.a2764413.js.map": "./static/js/main.a2764413.js.map",
+    "main.99367213.css.map": "./static/css/main.99367213.css.map",
+    "main.b60fd900.js.map": "./static/js/main.b60fd900.js.map",
     "107.22f30dff.chunk.js.map": "./static/js/107.22f30dff.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c8c49317.css",
-    "static/js/main.a2764413.js"
+    "static/css/main.99367213.css",
+    "static/js/main.b60fd900.js"
   ]
 }
