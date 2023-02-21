@@ -17,7 +17,8 @@ export default function MarkdownTextarea ({
   maxLength,
   placeholder,
   deafultValue,
-  updatePreview
+  updatePreview,
+  showHeader
 }) {
   const textareaRef = useRef();
 
@@ -53,7 +54,7 @@ export default function MarkdownTextarea ({
 
   return (
     <div className={styles['markdown-editor-container']}>
-      <h1>Markdown Editor</h1>
+      {showHeader && <h1>Markdown Editor</h1>}
       <Textarea
         className={styles['fancy-textarea']}
         onKeyDown={onKeyDown}
@@ -73,5 +74,6 @@ MarkdownTextarea.propTypes = {
   maxLength: PropTypes.number,
   placeholder: PropTypes.string,
   deafultValue: PropTypes.string.isRequired,
-  updatePreview: PropTypes.func.isRequired
+  updatePreview: PropTypes.func.isRequired,
+  showHeader: PropTypes.bool,
 };
