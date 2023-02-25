@@ -2,7 +2,7 @@
  * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2022-08-31 14:39:43
- * @modify date 2023-02-21 15:56:07
+ * @modify date 2023-02-25 15:43:08
  * @desc Article CSS Style
  */
 .article-container {
@@ -19,4 +19,9 @@
     top: 0px;
     left: calc(100% - 50px);
     z-index: 100;
-  }
+}
+
+.small-icon {
+    width: 20px;
+    height: 20px;
+}
