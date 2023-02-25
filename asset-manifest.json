@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.99367213.css",
-    "main.js": "./static/js/main.b60fd900.js",
+    "main.css": "./static/css/main.d961fd2f.css",
+    "main.js": "./static/js/main.6e7a6803.js",
     "static/js/107.22f30dff.chunk.js": "./static/js/107.22f30dff.chunk.js",
     "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
     "static/media/bootstrap-icons.woff?": "./static/media/bootstrap-icons.6959d0d983ee318f8880.woff",
@@ -57,7 +57,7 @@
     "static/media/KaTeX_Caligraphic-Bold.woff": "./static/media/KaTeX_Caligraphic-Bold.d757c535a2e5902f1325.woff",
     "static/media/KaTeX_Caligraphic-Regular.woff": "./static/media/KaTeX_Caligraphic-Regular.db074fa22cf224af93d7.woff",
     "static/media/KaTeX_Size3-Regular.ttf": "./static/media/KaTeX_Size3-Regular.8d6b6822586eea3d3b20.ttf",
-    "static/media/Links.md": "./static/media/Links.45eca70c8dd81f8d40f6.md",
+    "static/media/Links.md": "./static/media/Links.d253531cee064fb038b8.md",
     "static/media/KaTeX_Caligraphic-Bold.woff2": "./static/media/KaTeX_Caligraphic-Bold.a1abf90dfd72792a577a.woff2",
     "static/media/KaTeX_Caligraphic-Regular.woff2": "./static/media/KaTeX_Caligraphic-Regular.d6484fce1ef428d5bd94.woff2",
     "static/media/KaTeX_Size1-Regular.woff": "./static/media/KaTeX_Size1-Regular.0108e89c9003e8c14ea3.woff",
@@ -101,12 +101,12 @@
     "static/media/Use_Python_to_print_colorfully.md": "./static/media/Use_Python_to_print_colorfully.176d497a840ff936695b.md",
     "static/media/FancyIdeas.md": "./static/media/FancyIdeas.659185e8a67d4688047c.md",
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
-    "main.99367213.css.map": "./static/css/main.99367213.css.map",
-    "main.b60fd900.js.map": "./static/js/main.b60fd900.js.map",
+    "main.d961fd2f.css.map": "./static/css/main.d961fd2f.css.map",
+    "main.6e7a6803.js.map": "./static/js/main.6e7a6803.js.map",
     "107.22f30dff.chunk.js.map": "./static/js/107.22f30dff.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.99367213.css",
-    "static/js/main.b60fd900.js"
+    "static/css/main.d961fd2f.css",
+    "static/js/main.6e7a6803.js"
   ]
 }
