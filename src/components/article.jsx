@@ -8,6 +8,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../styles/article.module.css';
 import PropTypes from 'prop-types';
+import config from '../config';
 import { useDispatch, useSelector } from 'react-redux';
 import { navigate, goBack, selectPage, selectFilePath } from '../util/store'
 import MarkDownPreview from './editor/markDownPreview';
@@ -15,6 +16,8 @@ import FlipButton from './FlipButton';
 import MarkdownTextarea from './editor/markDownTextarea';
 import ColorLoading from './colorLoading';
 import NotFound from '../articles/404.md';
+
+const { debug } = config;
 
 const Article = () => {
   const filePath = useSelector(selectFilePath);
@@ -43,6 +46,7 @@ const Article = () => {
         setLoading(false);
       }, 500)
     }
+    debug && console.log('[debug][article.jsx] filePath update:', filePath)
 
     fetch(filePath)
       .then((response) => response.text())

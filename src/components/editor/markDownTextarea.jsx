@@ -26,6 +26,11 @@ export default function MarkdownTextarea ({
     updatePreview(e.target.value);
   }, []);
 
+  useEffect(() => {
+    // update textarea value when deafultValue changes
+    textareaRef.current.value = deafultValue;
+  }, [deafultValue]);
+
   const onKeyDown = e => {
     const textArea = textareaRef.current;
     if (e.key === 'Tab') {
