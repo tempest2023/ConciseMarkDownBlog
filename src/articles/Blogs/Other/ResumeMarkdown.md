@@ -35,7 +35,7 @@ Full Stack Software Engineer Internship, Digital Twin
 4. Using Python to develop Data Classes and Models for RESTful APIs under the ideology of Dependency Injection and Object-oriented Programming.
 
 #### Ant Group, Alibaba                                                      
-Software Development Engineer, Mobile Technology
+Software Development Engineer, Alipay Mobile Technology
 
 07.2020-06.2021
 
