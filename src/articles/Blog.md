@@ -60,9 +60,10 @@
 - [A cat recognizer works wrong in which pictures?](/?page=Blogs/DeepLearning/A_cat_recognizer_works_wrong_in_which_pictures.md)
 
 ### Other
-
+- [Resume(Markdown Style)](/?page=Blogs/Other/ResumeMarkdown.md)
 - [Recommendation Letter Template](/?page=Blogs/Other/RecommendationLetter.md)
 - [Recommendation Letter Template2](/?page=Blogs/Other/RecommendationLetter-Lab.md)
 - [Recommendation Letter Template3](/?page=Blogs/Other/RecommendationLetter-Fellow.md)
+- [Third-Person perspective referal](/?page=Blogs/Other/referal3rd.md)
 
 

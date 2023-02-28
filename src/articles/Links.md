@@ -49,6 +49,7 @@ tar118@pitt.edu
 <g>
 </svg>
 [Resume](https://drive.google.com/file/d/14bZtX7RY1H7ldGPC6E2JI9ITWxP448Ng/view?usp=share_link)
+, [Resume(Markdown Style)](/?page=Blogs/Other/ResumeMarkdown.md)
 
 <svg width="16" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve">
