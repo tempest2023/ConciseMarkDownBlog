@@ -1,0 +1,7 @@
+# Third-Person perspective referal
+
+Tao Ren is a highly skilled full-stack software engineer with expertise in developing web and iOS applications using various technologies such as React, React Native, Node.js, Python, and Java. He is an exceptional problem-solver, quick learner, and possesses a keen eye for detail, making him a valuable asset to any development team. Tao has a strong understanding of both front-end and back-end development and works efficiently in an agile environment.
+
+Tao has a diverse background, having worked in both the technology and financial industries. During his tenure at Ant Group, he was a Software Development Engineer in the Alipay mobile technology team, where he led the development of the low-code build platform and the live-streaming system for Alipay Financial (both iOS and Android). He collaborated with product managers and financial institutions to establish the infrastructure of the live-streaming ecosystem. As an intern full-stack engineer in the digital twin team at Ansys Inc., he developed a Twin Deployer App with Python Tornado Web Services, TypeScript, Vue, Quasar, Electron, and Swagger for modeling, simulating, and analyzing virtual system prototypes.
+
+Currently, Tao is an R&D engineer at Dr. Dan Ding's Human Engineering Research Laboratories, focusing on disability rehabilitation research with information systems on embedded devices and a low-code platform. Based on his exceptional skills and experience, I have complete trust in his ability to excel in any position and highly recommend him.

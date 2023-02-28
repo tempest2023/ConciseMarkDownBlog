@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.d961fd2f.css",
-    "main.js": "./static/js/main.6e7a6803.js",
+    "main.js": "./static/js/main.1b56fd44.js",
     "static/js/107.22f30dff.chunk.js": "./static/js/107.22f30dff.chunk.js",
     "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
     "static/media/bootstrap-icons.woff?": "./static/media/bootstrap-icons.6959d0d983ee318f8880.woff",
@@ -57,7 +57,7 @@
     "static/media/KaTeX_Caligraphic-Bold.woff": "./static/media/KaTeX_Caligraphic-Bold.d757c535a2e5902f1325.woff",
     "static/media/KaTeX_Caligraphic-Regular.woff": "./static/media/KaTeX_Caligraphic-Regular.db074fa22cf224af93d7.woff",
     "static/media/KaTeX_Size3-Regular.ttf": "./static/media/KaTeX_Size3-Regular.8d6b6822586eea3d3b20.ttf",
-    "static/media/Links.md": "./static/media/Links.d253531cee064fb038b8.md",
+    "static/media/Links.md": "./static/media/Links.1beead6ce1d383753a96.md",
     "static/media/KaTeX_Caligraphic-Bold.woff2": "./static/media/KaTeX_Caligraphic-Bold.a1abf90dfd72792a577a.woff2",
     "static/media/KaTeX_Caligraphic-Regular.woff2": "./static/media/KaTeX_Caligraphic-Regular.d6484fce1ef428d5bd94.woff2",
     "static/media/KaTeX_Size1-Regular.woff": "./static/media/KaTeX_Size1-Regular.0108e89c9003e8c14ea3.woff",
@@ -73,8 +73,9 @@
     "static/media/KaTeX_Size4-Regular.woff2": "./static/media/KaTeX_Size4-Regular.e418bf257af1052628d8.woff2",
     "static/media/1531_String_Compression_II.md": "./static/media/1531_String_Compression_II.ae3c5aab8e79ac5ed916.md",
     "static/media/KaTeX_Size3-Regular.woff": "./static/media/KaTeX_Size3-Regular.7947224e8a9914fa332b.woff",
+    "static/media/Blog.md": "./static/media/Blog.f30670ed1291486ea834.md",
     "static/media/A_cat_recognizer_works_wrong_in_which_pictures.md": "./static/media/A_cat_recognizer_works_wrong_in_which_pictures.f9ae617d14a127c081bd.md",
-    "static/media/Blog.md": "./static/media/Blog.466fedbc2e4000f0bcd7.md",
+    "static/media/ResumeMarkdown.md": "./static/media/ResumeMarkdown.ec29a2595479c0f3f819.md",
     "static/media/PushDominoes.md": "./static/media/PushDominoes.95e13b3ce61ee53c5e50.md",
     "static/media/KaTeX_Size3-Regular.woff2": "./static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "static/media/Short_Encoding_of_Words.md": "./static/media/Short_Encoding_of_Words.1aeffd430d9c7e43cde8.md",
@@ -88,6 +89,7 @@
     "static/media/Shortest_Unsorted_Continuous_Subarray.md": "./static/media/Shortest_Unsorted_Continuous_Subarray.f641df4bcb3b7ed8116b.md",
     "static/media/pinitos_error.md": "./static/media/pinitos_error.2ef1c561127048e9bb44.md",
     "static/media/RecommendationLetter.md": "./static/media/RecommendationLetter.a20538bc01e2ddf069fa.md",
+    "static/media/referal3rd.md": "./static/media/referal3rd.4435558d5be0bece3e90.md",
     "static/media/About.md": "./static/media/About.cbffce6d00269e66f352.md",
     "static/media/RecommendationLetter-Lab.md": "./static/media/RecommendationLetter-Lab.a67e0116f1e20ce17964.md",
     "static/media/Encrypt_and_Decrypt_Strings.md": "./static/media/Encrypt_and_Decrypt_Strings.b4310f64cc52c0690994.md",
@@ -102,11 +104,11 @@
     "static/media/FancyIdeas.md": "./static/media/FancyIdeas.659185e8a67d4688047c.md",
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
     "main.d961fd2f.css.map": "./static/css/main.d961fd2f.css.map",
-    "main.6e7a6803.js.map": "./static/js/main.6e7a6803.js.map",
+    "main.1b56fd44.js.map": "./static/js/main.1b56fd44.js.map",
     "107.22f30dff.chunk.js.map": "./static/js/107.22f30dff.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d961fd2f.css",
-    "static/js/main.6e7a6803.js"
+    "static/js/main.1b56fd44.js"
   ]
 }
