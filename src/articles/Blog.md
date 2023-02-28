@@ -64,5 +64,6 @@
 - [Recommendation Letter Template](/?page=Blogs/Other/RecommendationLetter.md)
 - [Recommendation Letter Template2](/?page=Blogs/Other/RecommendationLetter-Lab.md)
 - [Recommendation Letter Template3](/?page=Blogs/Other/RecommendationLetter-Fellow.md)
+- [Third-Person perspective referal](/?page=Blogs/Other/referal3rd.md)
 
 
