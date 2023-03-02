@@ -5,7 +5,6 @@
  * @modify date 2022-08-31 13:00:50
  * @desc markdown preview component
  */
-/* eslint-disable react/no-children-prop */
 import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
