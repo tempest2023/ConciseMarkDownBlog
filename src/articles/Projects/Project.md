@@ -110,8 +110,6 @@
 
 - [Autopilot2PytorchSteering](https://github.com/623059008/Autopilot2PytorchSteering): A Pytorch implementation of Autopilot2 to determine the steering angle. For ATC’23 Robotic Environmental Dynamics(only part of module, may be open-source after publication), a pending paper under review.
 
-<!-- <a href="https://github.com/623059008/Autopilot2PytorchSteering"><img style="margin-left:20px" src="https://github-readme-stats-623059008.vercel.app/api/pin/?username=623059008&repo=Autopilot2PytorchSteering" alt="Autopilot2PytorchSteering" /></a> -->
-
 - [Taming Accessibility Issues in Web Application for the Disabled](https://drive.google.com/file/d/1OeUMlKKRzQRxBwwlv_h6faJBbqWykii8/view?usp=sharing): How to find and fix the web accessibility problems automatically? Look at my [Web Patch Tool](https://github.com/623059008/ApplyPatchOnWeb)
 
 
@@ -121,14 +119,14 @@
 > Some initial, for learning/homework purpose projects
 > Hope I have free time to complete them and push them to the Awesome Projects list.
 
+- [iOS/Android Chat App](https://github.com/623059008/sayHi):
+  This project is a chat & date mobile App which is for Full stack challenge event, including PostgreSQL/MySQL + Node.js backend services and React Native Mobile Frontend.
 
 - [Pusher](https://github.com/623059008/PusherDemo): A pusher demo includes two implementations, one is based on [pusher](https://github.com/pusher/pusher-js) and [slanger](https://github.com/stevegraham/slanger), and another is based on Vue, [Socket.IO](https://socket.io/) (my favorite websoket lib).
 
 - [Data Analysis for houses in Kansas](https://github.com/623059008/InfoVizProject)
 
 - [Best2buy](https://github.com/623059008/Best2Buy): A lightweight e-commerce web application powered by Egg.js, jQuery, Bootstrap and Mysql.
-
-<!-- <a href="https://github.com/623059008/Best2Buy"><img style="margin-left:20px" src="https://github-readme-stats-623059008.vercel.app/api/pin/?username=623059008&repo=Best2Buy" alt="Best2buy" /></a> -->
 
 - [Electron Particle Clock](https://github.com/623059008/ElectronParticleClock): An Electron particle clock application, supports Windows, MacoOS and Linux. Through this project, I figured out the way to package for different platforms, using Inno Setup to generate a Windows installer file. The particle animation is very fancy, not from me.
 

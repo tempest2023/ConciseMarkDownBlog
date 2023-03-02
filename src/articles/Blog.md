@@ -65,5 +65,5 @@
 - [Recommendation Letter Template2](/?page=Blogs/Other/RecommendationLetter-Lab.md)
 - [Recommendation Letter Template3](/?page=Blogs/Other/RecommendationLetter-Fellow.md)
 - [Third-Person perspective referal](/?page=Blogs/Other/referal3rd.md)
-
+- [Summer Internship Summary](/?page=Blogs/Other/SummerInternshipMidtermSummary.md)
 
