@@ -50,6 +50,8 @@
 
 - [Best Practice for React Native](/?page=Blogs/ReactNative/best_practice)
 
+- [React And Css Pseudo-Classes](/?page=Blogs/Frontend/ReactAndCssPseudoClasses.md)
+
 ### C++
 
 - [Use Python script to help multi C++ files compile on Windows](/?page=Blogs/C/Python_C_compile_script)
@@ -60,6 +62,7 @@
 - [A cat recognizer works wrong in which pictures?](/?page=Blogs/DeepLearning/A_cat_recognizer_works_wrong_in_which_pictures.md)
 
 ### Other
+- [Fancy Ideas](/?page=Blogs/Frontend/FancyIdeas.md)
 - [Resume(Markdown Style)](/?page=Blogs/Other/ResumeMarkdown.md)
 - [Recommendation Letter Template](/?page=Blogs/Other/RecommendationLetter.md)
 - [Recommendation Letter Template2](/?page=Blogs/Other/RecommendationLetter-Lab.md)
