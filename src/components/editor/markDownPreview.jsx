@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ColorLoading from '../colorLoading';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { oneDark, vs } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
 import rehypeKatex from 'rehype-katex';
@@ -66,7 +66,7 @@ export default function MarkDownPreview (props) {
                     <SyntaxHighlighter
                       // eslint-disable-next-line react/no-children-prop
                       children={String(children).replace(/\n$/, '')}
-                      style={dark}
+                      style={oneDark}
                       language={match[1]}
                       PreTag="div"
                       {...props}
