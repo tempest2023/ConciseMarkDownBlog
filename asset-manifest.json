@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "./static/css/main.d961fd2f.css",
-    "main.js": "./static/js/main.a49f7738.js",
+    "main.css": "./static/css/main.2a0be430.css",
+    "main.js": "./static/js/main.f3aa8a5b.js",
     "static/js/107.22f30dff.chunk.js": "./static/js/107.22f30dff.chunk.js",
     "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
-    "static/media/bootstrap-icons.woff?": "./static/media/bootstrap-icons.6959d0d983ee318f8880.woff",
-    "static/media/bootstrap-icons.woff2?": "./static/media/bootstrap-icons.b2e5aab643c6f0fd2da6.woff2",
+    "static/media/bootstrap-icons.woff?": "./static/media/bootstrap-icons.4753c5ba57962b4d7bf8.woff",
+    "static/media/bootstrap-icons.woff2?": "./static/media/bootstrap-icons.6d63d0501e5ed7b79dab.woff2",
     "static/media/KaTeX_AMS-Regular.ttf": "./static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
     "static/media/KaTeX_Main-Regular.ttf": "./static/media/KaTeX_Main-Regular.9eba1d77abcf2aa6e94e.ttf",
     "static/media/KaTeX_Main-Bold.ttf": "./static/media/KaTeX_Main-Bold.8169508bf58f8bd92ad8.ttf",
@@ -88,11 +88,11 @@
     "static/media/socketio_error.md": "./static/media/socketio_error.70191913e023ddc42f33.md",
     "static/media/Python_C_compile_script.md": "./static/media/Python_C_compile_script.56fa712b8d66cea3f5e9.md",
     "static/media/markdown_intro.md": "./static/media/markdown_intro.06591a1b31c6147af4ba.md",
+    "static/media/About.md": "./static/media/About.019939dcabffaeeaea55.md",
     "static/media/Shortest_Unsorted_Continuous_Subarray.md": "./static/media/Shortest_Unsorted_Continuous_Subarray.f641df4bcb3b7ed8116b.md",
     "static/media/pinitos_error.md": "./static/media/pinitos_error.2ef1c561127048e9bb44.md",
     "static/media/RecommendationLetter.md": "./static/media/RecommendationLetter.a20538bc01e2ddf069fa.md",
     "static/media/referal3rd.md": "./static/media/referal3rd.4435558d5be0bece3e90.md",
-    "static/media/About.md": "./static/media/About.cbffce6d00269e66f352.md",
     "static/media/RecommendationLetter-Lab.md": "./static/media/RecommendationLetter-Lab.a67e0116f1e20ce17964.md",
     "static/media/Encrypt_and_Decrypt_Strings.md": "./static/media/Encrypt_and_Decrypt_Strings.b4310f64cc52c0690994.md",
     "static/media/Int_to_Roman.md": "./static/media/Int_to_Roman.07b3788e96665d9aa070.md",
@@ -105,12 +105,12 @@
     "index.html": "./index.html",
     "static/media/Use_Python_to_print_colorfully.md": "./static/media/Use_Python_to_print_colorfully.176d497a840ff936695b.md",
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
-    "main.d961fd2f.css.map": "./static/css/main.d961fd2f.css.map",
-    "main.a49f7738.js.map": "./static/js/main.a49f7738.js.map",
+    "main.2a0be430.css.map": "./static/css/main.2a0be430.css.map",
+    "main.f3aa8a5b.js.map": "./static/js/main.f3aa8a5b.js.map",
     "107.22f30dff.chunk.js.map": "./static/js/107.22f30dff.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d961fd2f.css",
-    "static/js/main.a49f7738.js"
+    "static/css/main.2a0be430.css",
+    "static/js/main.f3aa8a5b.js"
   ]
 }
