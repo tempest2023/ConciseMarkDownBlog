@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.8aac8d0a.css",
-    "main.js": "./static/js/main.9f3f8763.js",
+    "main.js": "./static/js/main.57326bdb.js",
     "static/js/107.22f30dff.chunk.js": "./static/js/107.22f30dff.chunk.js",
     "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
     "static/media/bootstrap-icons.woff?": "./static/media/bootstrap-icons.4753c5ba57962b4d7bf8.woff",
@@ -75,7 +75,7 @@
     "static/media/KaTeX_Size2-Regular.woff2": "./static/media/KaTeX_Size2-Regular.2960900c4f271311eb36.woff2",
     "static/media/KaTeX_Size4-Regular.woff2": "./static/media/KaTeX_Size4-Regular.e418bf257af1052628d8.woff2",
     "static/media/1531_String_Compression_II.md": "./static/media/1531_String_Compression_II.ae3c5aab8e79ac5ed916.md",
-    "static/media/Blog.md": "./static/media/Blog.c563ce3cec2f4a194378.md",
+    "static/media/Blog.md": "./static/media/Blog.b4ac7a7f3913aa840320.md",
     "static/media/KaTeX_Size3-Regular.woff": "./static/media/KaTeX_Size3-Regular.7947224e8a9914fa332b.woff",
     "static/media/A_cat_recognizer_works_wrong_in_which_pictures.md": "./static/media/A_cat_recognizer_works_wrong_in_which_pictures.f9ae617d14a127c081bd.md",
     "static/media/ResumeMarkdown.md": "./static/media/ResumeMarkdown.ec29a2595479c0f3f819.md",
@@ -107,11 +107,11 @@
     "static/media/Use_Python_to_print_colorfully.md": "./static/media/Use_Python_to_print_colorfully.176d497a840ff936695b.md",
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
     "main.8aac8d0a.css.map": "./static/css/main.8aac8d0a.css.map",
-    "main.9f3f8763.js.map": "./static/js/main.9f3f8763.js.map",
+    "main.57326bdb.js.map": "./static/js/main.57326bdb.js.map",
     "107.22f30dff.chunk.js.map": "./static/js/107.22f30dff.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8aac8d0a.css",
-    "static/js/main.9f3f8763.js"
+    "static/js/main.57326bdb.js"
   ]
 }
