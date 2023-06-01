@@ -60,6 +60,7 @@
 ### Deep Learning
 
 - [A cat recognizer works wrong in which pictures?](/?page=Blogs/DeepLearning/A_cat_recognizer_works_wrong_in_which_pictures.md)
+- [Bard is Amazing](/?page=Blogs/DeepLearning/BardConversation.md)
 
 ### Other
 - [Fancy Ideas](/?page=Blogs/Frontend/FancyIdeas.md)
