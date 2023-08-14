@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "./static/css/main.bae68c39.css",
+    "main.css": "./static/css/main.f97ee422.css",
     "main.js": "./static/js/main.70ad4d02.js",
     "static/js/107.22f30dff.chunk.js": "./static/js/107.22f30dff.chunk.js",
     "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
@@ -106,12 +106,12 @@
     "index.html": "./index.html",
     "static/media/Use_Python_to_print_colorfully.md": "./static/media/Use_Python_to_print_colorfully.176d497a840ff936695b.md",
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
-    "main.bae68c39.css.map": "./static/css/main.bae68c39.css.map",
+    "main.f97ee422.css.map": "./static/css/main.f97ee422.css.map",
     "main.70ad4d02.js.map": "./static/js/main.70ad4d02.js.map",
     "107.22f30dff.chunk.js.map": "./static/js/107.22f30dff.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bae68c39.css",
+    "static/css/main.f97ee422.css",
     "static/js/main.70ad4d02.js"
   ]
 }
