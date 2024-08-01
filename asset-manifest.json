@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.104a05a6.css",
-    "main.js": "./static/js/main.32acb7e6.js",
+    "main.js": "./static/js/main.3eac39be.js",
     "static/js/358.b773cd29.chunk.js": "./static/js/358.b773cd29.chunk.js",
     "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
     "static/media/bootstrap-icons.woff?": "./static/media/bootstrap-icons.39795c0b4513de014cf8.woff",
@@ -56,7 +56,7 @@
     "static/media/KaTeX_Size4-Regular.ttf": "./static/media/KaTeX_Size4-Regular.4ad7c7e8bb8d10a34bb7.ttf",
     "static/media/KaTeX_SansSerif-Regular.woff2": "./static/media/KaTeX_SansSerif-Regular.cd5e231e0cc53b2cb2c0.woff2",
     "static/media/KaTeX_Script-Regular.woff2": "./static/media/KaTeX_Script-Regular.c81d1b2a4b75d3eded60.woff2",
-    "static/media/About.md": "./static/media/About.c7dd63b863de827681d2.md",
+    "static/media/About.md": "./static/media/About.e3dd7a5601413882de96.md",
     "static/media/KaTeX_Caligraphic-Bold.woff": "./static/media/KaTeX_Caligraphic-Bold.d757c535a2e5902f1325.woff",
     "static/media/KaTeX_Caligraphic-Regular.woff": "./static/media/KaTeX_Caligraphic-Regular.db074fa22cf224af93d7.woff",
     "static/media/KaTeX_Size3-Regular.ttf": "./static/media/KaTeX_Size3-Regular.8d6b6822586eea3d3b20.ttf",
@@ -107,11 +107,11 @@
     "static/media/Use_Python_to_print_colorfully.md": "./static/media/Use_Python_to_print_colorfully.176d497a840ff936695b.md",
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
     "main.104a05a6.css.map": "./static/css/main.104a05a6.css.map",
-    "main.32acb7e6.js.map": "./static/js/main.32acb7e6.js.map",
+    "main.3eac39be.js.map": "./static/js/main.3eac39be.js.map",
     "358.b773cd29.chunk.js.map": "./static/js/358.b773cd29.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.104a05a6.css",
-    "static/js/main.32acb7e6.js"
+    "static/js/main.3eac39be.js"
   ]
 }
