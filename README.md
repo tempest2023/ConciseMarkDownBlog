@@ -293,7 +293,13 @@ Some suggestions about images cloud storage:
 - https://www.google.com/drive/
 - https://www.microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage
 
-## 🚀 Commands to run
+## 🚀 Get Started
+
+
+> If you don't have yarn, run `npm install -g yarn` to install yarn
+### `yarn`
+
+Install Depedencies
 
 In the project directory, you can run:
 
