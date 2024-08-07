@@ -46,7 +46,7 @@
 
 ### React
 
-- [My Frontend journey](/?page=Blogs/MyFrontendJourney)
+- [My Frontend journey](/?page=Blogs/Frontend/MyFrontendJourney)
 
 - [Best Practice for React Native](/?page=Blogs/ReactNative/best_practice)
 
