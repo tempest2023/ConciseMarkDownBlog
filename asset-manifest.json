@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.104a05a6.css",
-    "main.js": "./static/js/main.3eac39be.js",
+    "main.css": "./static/css/main.d78911f3.css",
+    "main.js": "./static/js/main.b10589a3.js",
     "static/js/358.b773cd29.chunk.js": "./static/js/358.b773cd29.chunk.js",
     "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
     "static/media/bootstrap-icons.woff?": "./static/media/bootstrap-icons.39795c0b4513de014cf8.woff",
@@ -56,7 +56,7 @@
     "static/media/KaTeX_Size4-Regular.ttf": "./static/media/KaTeX_Size4-Regular.4ad7c7e8bb8d10a34bb7.ttf",
     "static/media/KaTeX_SansSerif-Regular.woff2": "./static/media/KaTeX_SansSerif-Regular.cd5e231e0cc53b2cb2c0.woff2",
     "static/media/KaTeX_Script-Regular.woff2": "./static/media/KaTeX_Script-Regular.c81d1b2a4b75d3eded60.woff2",
-    "static/media/About.md": "./static/media/About.e3dd7a5601413882de96.md",
+    "static/media/About.md": "./static/media/About.538711d76facea14a41d.md",
     "static/media/KaTeX_Caligraphic-Bold.woff": "./static/media/KaTeX_Caligraphic-Bold.d757c535a2e5902f1325.woff",
     "static/media/KaTeX_Caligraphic-Regular.woff": "./static/media/KaTeX_Caligraphic-Regular.db074fa22cf224af93d7.woff",
     "static/media/KaTeX_Size3-Regular.ttf": "./static/media/KaTeX_Size3-Regular.8d6b6822586eea3d3b20.ttf",
@@ -76,9 +76,10 @@
     "static/media/KaTeX_Size2-Regular.woff2": "./static/media/KaTeX_Size2-Regular.2960900c4f271311eb36.woff2",
     "static/media/KaTeX_Size4-Regular.woff2": "./static/media/KaTeX_Size4-Regular.e418bf257af1052628d8.woff2",
     "static/media/1531_String_Compression_II.md": "./static/media/1531_String_Compression_II.ae3c5aab8e79ac5ed916.md",
-    "static/media/Blog.md": "./static/media/Blog.b4ac7a7f3913aa840320.md",
+    "static/media/Blog.md": "./static/media/Blog.a85153d42b504c763a49.md",
     "static/media/KaTeX_Size3-Regular.woff": "./static/media/KaTeX_Size3-Regular.7947224e8a9914fa332b.woff",
     "static/media/A_cat_recognizer_works_wrong_in_which_pictures.md": "./static/media/A_cat_recognizer_works_wrong_in_which_pictures.f9ae617d14a127c081bd.md",
+    "static/media/MyFrontendJourney.md": "./static/media/MyFrontendJourney.b316df97e9a10baf67b8.md",
     "static/media/ResumeMarkdown.md": "./static/media/ResumeMarkdown.ec29a2595479c0f3f819.md",
     "static/media/PushDominoes.md": "./static/media/PushDominoes.95e13b3ce61ee53c5e50.md",
     "static/media/KaTeX_Size3-Regular.woff2": "./static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
@@ -102,16 +103,15 @@
     "static/media/204_Count_Primes.md": "./static/media/204_Count_Primes.03bafbf02cf255b8d5c5.md",
     "static/media/FancyIdeas.md": "./static/media/FancyIdeas.afc189769512580b3c60.md",
     "static/media/colorfont.md": "./static/media/colorfont.fb8d70409884c4f6d10b.md",
-    "static/media/MyFrontendJourney.md": "./static/media/MyFrontendJourney.7a796bee70c1ab0eb798.md",
     "index.html": "./index.html",
     "static/media/Use_Python_to_print_colorfully.md": "./static/media/Use_Python_to_print_colorfully.176d497a840ff936695b.md",
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
-    "main.104a05a6.css.map": "./static/css/main.104a05a6.css.map",
-    "main.3eac39be.js.map": "./static/js/main.3eac39be.js.map",
+    "main.d78911f3.css.map": "./static/css/main.d78911f3.css.map",
+    "main.b10589a3.js.map": "./static/js/main.b10589a3.js.map",
     "358.b773cd29.chunk.js.map": "./static/js/358.b773cd29.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.104a05a6.css",
-    "static/js/main.3eac39be.js"
+    "static/css/main.d78911f3.css",
+    "static/js/main.b10589a3.js"
   ]
 }
