@@ -37,6 +37,11 @@ const config = {
       type: 'article'
     },
     {
+      title: 'Tech Stack',
+      type: 'article',
+      customUrl: 'TechStack'
+    },
+    {
       title: 'Blog',
       type: 'article'
     },
