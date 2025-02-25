@@ -87,7 +87,13 @@ https://www.linkedin.com/in/taoren-pitt/
 ## Cooperator
 
 [Zexin Li](https://blog.zexinli.com/)
+[Yiming Zeng](https://scholar.google.com/citations?user=iVODU-AAAAAJ)
 
 ## Publishment
 
 [RED: A Systematic Real-Time Scheduling Approach for Robotic Environmental Dynamics](https://ieeexplore.ieee.org/abstract/document/10405986)
+
+[Bridging the Editing Gap in LLMs: FineEdit for Precise and Targeted Text Modifications](https://arxiv.org/abs/2502.13358)
+
+[Infant Agent: A Tool-Integrated, Logic-Driven Agent with Cost-Effective API Usage](https://arxiv.org/abs/2411.01114)
+
