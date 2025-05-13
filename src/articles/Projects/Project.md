@@ -1,9 +1,31 @@
 ### Awesome Projects
 
-- [Concise MarkDown Blog](https://github.com/623059008/ConciseMarkDownBlog): 
+- [Influ Agent](https://influagent.tempest.fun/)
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
     <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
-    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">JS</text>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">AI</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#2ecc71"/>
+    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">React</text>
+  </svg>
+  An autonomous 24/7 AI Multi-Agents system that achieves your success in social growth. We are the Devin of Social Media.
+
+- [MockMyInterview](https://mockmyinterview-git-production-chatmetas-projects.vercel.app/#hero)
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">AI</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#2ecc71"/>
+    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">React</text>
+  </svg>
+  Using AI voice agents to help you mock your interview.
+
+- [Concise MarkDown Blog](https://github.com/623059008/ConciseMarkDownBlog): 
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#2ecc71"/>
+    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">React</text>
   </svg>
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
     <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
@@ -31,6 +53,17 @@
   A Unity 3rd perspetive 3D adventure game. Player explores the occult foggy forest and near village, collects different resources, changes the terrains for your combat strategy and challenges the various and cunning enemies hidden in the forest. 
 
 <img src="https://img.itch.zone/aW1hZ2UvMTgzMzgwNS8xMDc2NDAxMy5wbmc=/794x1000/U5dYyt.png" width="240px" height="148.32px" style="margin: 5px;margin-left:calc(50% - 120px);" alt="Dark Forest Adventure preview picture" />
+
+- [Chatty AI](https://www.chattyai.tech/)
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">AI</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#2ecc71"/>
+    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">React</text>
+  </svg>
+  An AI chatbot website (profit-making project)
 
 - [Happy Triplet Elimation - Algo](https://github.com/623059008/HappyTripleElimationProgramming):
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
