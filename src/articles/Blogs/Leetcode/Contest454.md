@@ -275,5 +275,11 @@ queries[j] == [uj, vj]
 The input is generated such that edges represents a valid tree.
 
 ### Key Thoughts
+We can use binary lifting to find the lowest common ancestor (LCA) of the two nodes u, v in the query.
+Using Dfs we can find the costs from root node 0 to every node x
+Total Path Cost = costs[u] + costs[v] - 2* costs[lca]. We can get half Path Cost
+If costs[u] > costs[v], straightforward binary search between the depths of u and lca to find a node whose cost is greater than or equal to halfCost and move down away from LCA
+But if costs[u] < costs[v], then find a node from v whose cost is less than or equal to halfCost and move up towards LCA
 
 ### Solution
+https://leetcode.com/problems/find-weighted-median-node-in-tree/solutions/6844956/python3-binary-lifting-binary-search-simple-o-n-log-n/
