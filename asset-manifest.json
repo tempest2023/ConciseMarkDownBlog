@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.104a05a6.css",
-    "main.js": "./static/js/main.9f1ca2c3.js",
+    "main.js": "./static/js/main.b092fd1e.js",
     "static/js/358.b773cd29.chunk.js": "./static/js/358.b773cd29.chunk.js",
     "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
     "static/media/bootstrap-icons.woff?": "./static/media/bootstrap-icons.39795c0b4513de014cf8.woff",
@@ -61,7 +61,7 @@
     "static/media/KaTeX_Caligraphic-Bold.woff": "./static/media/KaTeX_Caligraphic-Bold.d757c535a2e5902f1325.woff",
     "static/media/KaTeX_Caligraphic-Regular.woff": "./static/media/KaTeX_Caligraphic-Regular.db074fa22cf224af93d7.woff",
     "static/media/KaTeX_Size3-Regular.ttf": "./static/media/KaTeX_Size3-Regular.8d6b6822586eea3d3b20.ttf",
-    "static/media/Links.md": "./static/media/Links.b9ef842f59caed7bddcd.md",
+    "static/media/Links.md": "./static/media/Links.3137df3990e094476fb7.md",
     "static/media/ReactAndCssPseudoClasses.md": "./static/media/ReactAndCssPseudoClasses.321c7a1872af28571d67.md",
     "static/media/KaTeX_Caligraphic-Bold.woff2": "./static/media/KaTeX_Caligraphic-Bold.a1abf90dfd72792a577a.woff2",
     "static/media/KaTeX_Caligraphic-Regular.woff2": "./static/media/KaTeX_Caligraphic-Regular.d6484fce1ef428d5bd94.woff2",
@@ -110,11 +110,11 @@
     "static/media/Use_Python_to_print_colorfully.md": "./static/media/Use_Python_to_print_colorfully.176d497a840ff936695b.md",
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
     "main.104a05a6.css.map": "./static/css/main.104a05a6.css.map",
-    "main.9f1ca2c3.js.map": "./static/js/main.9f1ca2c3.js.map",
+    "main.b092fd1e.js.map": "./static/js/main.b092fd1e.js.map",
     "358.b773cd29.chunk.js.map": "./static/js/358.b773cd29.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.104a05a6.css",
-    "static/js/main.9f1ca2c3.js"
+    "static/js/main.b092fd1e.js"
   ]
 }
