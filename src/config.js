@@ -57,7 +57,7 @@ const config = {
     {
       title: 'Resume',
       type: 'link',
-      customUrl: 'https://drive.google.com/file/d/1l82fru4lHTh0exY19jWOqfGk_vuzYprv/view'
+      customUrl: 'https://drive.google.com/file/d/1aNJ-NPuk71x4xQgRo5Es2WPyNZA8kbCb/view?usp=sharing'
     },
     {
       title: 'Links',
