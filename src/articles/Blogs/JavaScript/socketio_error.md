@@ -15,7 +15,7 @@ When I use socket.io to transfer data, I got this errors. This error has a very 
 
 This problem is based on how the `buffer.js` handle the data we sent.
 
-![send_data](https://img-blog.csdnimg.cn/20181110190024372.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTM1NjA5MzI=,size_16,color_FFFFFF,t_70)
+![send_data](/src/articles/Blogs/JavaScript/images/maximum_call_stack_size_exceeded.png)
 
 ### True reason of bug
 
