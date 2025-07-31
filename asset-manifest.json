@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.104a05a6.css",
-    "main.js": "./static/js/main.b092fd1e.js",
+    "main.js": "./static/js/main.f1c8e059.js",
     "static/js/358.b773cd29.chunk.js": "./static/js/358.b773cd29.chunk.js",
     "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
     "static/media/bootstrap-icons.woff?": "./static/media/bootstrap-icons.39795c0b4513de014cf8.woff",
@@ -110,11 +110,11 @@
     "static/media/Use_Python_to_print_colorfully.md": "./static/media/Use_Python_to_print_colorfully.176d497a840ff936695b.md",
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
     "main.104a05a6.css.map": "./static/css/main.104a05a6.css.map",
-    "main.b092fd1e.js.map": "./static/js/main.b092fd1e.js.map",
+    "main.f1c8e059.js.map": "./static/js/main.f1c8e059.js.map",
     "358.b773cd29.chunk.js.map": "./static/js/358.b773cd29.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.104a05a6.css",
-    "static/js/main.b092fd1e.js"
+    "static/js/main.f1c8e059.js"
   ]
 }
