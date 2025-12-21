@@ -6,7 +6,7 @@
  * @desc markdown preview component
  */
 /* eslint-disable react/no-children-prop */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import ColorLoading from '../colorLoading';
@@ -34,8 +34,32 @@ export default function MarkDownPreview (props) {
   }
   const { markdownFile, markdownString, loading, showHeader = true } = props;
   const [markdownContent, setMarkdownContent] = useState('');
+  const previewContainerRef = useRef(null);
+
   useEffect(() => {
+    // Save container height before content change to detect height changes
+    if (previewContainerRef.current && config.debug) {
+      const heightBefore = previewContainerRef.current.offsetHeight;
+      console.log('[Scroll Debug] MarkDownPreview before content update:', {
+        markdownStringLength: markdownString.length,
+        containerHeight: heightBefore,
+      });
+    }
+
     setMarkdownContent(markdownString);
+
+    // Check height after content update
+    if (previewContainerRef.current && config.debug) {
+      setTimeout(() => {
+        const heightAfter = previewContainerRef.current.offsetHeight;
+        console.log('[Scroll Debug] MarkDownPreview after content update:', {
+          markdownStringLength: markdownString.length,
+          containerHeight: heightAfter,
+          heightDiff: heightAfter - (previewContainerRef.current.dataset.prevHeight || 0),
+        });
+        previewContainerRef.current.dataset.prevHeight = heightAfter;
+      }, 0);
+    }
   }, [markdownString]);
 
   useEffect(() => {
@@ -49,7 +73,7 @@ export default function MarkDownPreview (props) {
   }, [markdownFile])
 
   return (
-    <div className={styles['markdown-preview-container']}>
+    <div className={styles['markdown-preview-container']} ref={previewContainerRef}>
     {showHeader && <h1>Markdown Preview</h1>}
     <div className={styles['preview-panel']} style={!showHeader ? { border: 0 } : {}}>
       {!markdownContent || loading
