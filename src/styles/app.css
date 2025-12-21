@@ -40,6 +40,8 @@ html, body, body > #root {
   box-sizing: border-box;
   overflow-y: scroll;
   -ms-overflow-style: none;
+  /* Disable scroll anchoring to prevent automatic scroll adjustments when layout changes */
+  overflow-anchor: none;
 }
 
 .main-container {
