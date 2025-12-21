@@ -25,9 +25,10 @@ export default function MarkDownEditor () {
 
   // update the markdown preview part.
   const updatePreview = (v, savedScrollY = null) => {
-    // Use provided scroll position if available, otherwise get current
-    // This allows caller to save scroll position BEFORE calling updatePreview
-    const scrollYToSave = savedScrollY !== null ? savedScrollY : (window.scrollY || 0);
+    // Use provided scroll position if available (null means don't preserve scroll)
+    // This allows caller to indicate whether scroll should be preserved
+    // null means cursor is not visible, so we should let browser scroll naturally
+    const scrollYToSave = savedScrollY !== null ? savedScrollY : null;
 
     // Get current page height and textarea position BEFORE any updates
     const pageHeightBefore = document.documentElement.scrollHeight;
@@ -48,11 +49,17 @@ export default function MarkDownEditor () {
 
     // Save scroll position AND layout info BEFORE any state updates
     // This is critical: we need to capture scroll position before any re-renders
-    scrollRestoreRef.current = {
-      scrollY: scrollYToSave,
-      pageHeightBefore,
-      textareaTopBefore,
-    };
+    // Only save if scrollYToSave is not null (meaning cursor is visible)
+    if (scrollYToSave !== null) {
+      scrollRestoreRef.current = {
+        scrollY: scrollYToSave,
+        pageHeightBefore,
+        textareaTopBefore,
+      };
+    } else {
+      // Cursor is not visible, don't preserve scroll - let browser scroll naturally
+      scrollRestoreRef.current = null;
+    }
 
     // debounce the update
     if (updateDebounce) {

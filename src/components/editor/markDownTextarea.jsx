@@ -25,25 +25,85 @@ export default function MarkdownTextarea ({
   const lastScrollYRef = useRef(typeof window !== 'undefined' ? window.scrollY || 0 : 0);
   const scrollLogDebounceRef = useRef(null);
 
+  // Helper function to check if cursor line is visible in viewport
+  const isCursorLineVisible = (textarea, cursorPosition) => {
+    if (!textarea) {
+      return false;
+    }
+
+    // Get cursor position in textarea
+    const textBeforeCursor = textarea.value.substring(0, cursorPosition);
+
+    // Create a temporary element to measure text height up to cursor
+    const tempDiv = document.createElement('div');
+    const computedStyle = window.getComputedStyle(textarea);
+    tempDiv.style.position = 'absolute';
+    tempDiv.style.visibility = 'hidden';
+    tempDiv.style.whiteSpace = 'pre-wrap';
+    tempDiv.style.wordWrap = 'break-word';
+    tempDiv.style.font = computedStyle.font;
+    tempDiv.style.width = textarea.offsetWidth + 'px';
+    tempDiv.style.padding = computedStyle.padding;
+    tempDiv.style.border = computedStyle.border;
+    tempDiv.style.boxSizing = computedStyle.boxSizing;
+    tempDiv.textContent = textBeforeCursor;
+    document.body.appendChild(tempDiv);
+    const textHeight = tempDiv.offsetHeight;
+    const lineHeight = parseFloat(computedStyle.lineHeight) || parseFloat(computedStyle.fontSize) * 1.2;
+    document.body.removeChild(tempDiv);
+
+    // Calculate cursor line position relative to textarea top
+    const cursorRelativeTop = textHeight;
+    const cursorRelativeBottom = cursorRelativeTop + lineHeight;
+
+    // Get textarea position in viewport
+    const textareaRect = textarea.getBoundingClientRect();
+    const cursorViewportTop = textareaRect.top + cursorRelativeTop;
+    const cursorViewportBottom = textareaRect.top + cursorRelativeBottom;
+
+    // Check if cursor line is visible in viewport
+    const windowHeight = window.innerHeight;
+    const viewportTop = 0;
+    const viewportBottom = windowHeight;
+
+    // Account for padding/margin at bottom
+    const bottomPadding = 20; // main-container padding
+    const bottomMargin = 16; // textarea margin (1rem)
+    const effectiveBottom = viewportBottom - bottomPadding - bottomMargin;
+
+    // Cursor line is visible if it's within the viewport (with tolerance at bottom)
+    return cursorViewportTop >= viewportTop && cursorViewportTop < effectiveBottom &&
+           cursorViewportBottom > viewportTop;
+  };
+
   const handleChange = useCallback(e => {
     const scrollYBefore = window.scrollY || 0;
     const textarea = textareaRef.current;
     const textareaRect = textarea ? textarea.getBoundingClientRect() : null;
+    const cursorPosition = textarea ? textarea.selectionStart : null;
+
+    // Check if cursor line is visible in viewport
+    const cursorVisible = isCursorLineVisible(textarea, cursorPosition);
 
     if (config.debug) {
       console.log('[Scroll Debug] handleChange START:', {
         scrollY: scrollYBefore,
         valueLength: e.target.value.length,
-        cursorPos: textarea ? textarea.selectionStart : null,
+        cursorPos: cursorPosition,
         textareaTop: textareaRect ? textareaRect.top : null,
         textareaBottom: textareaRect ? textareaRect.bottom : null,
         windowHeight: window.innerHeight,
+        cursorVisible,
       });
     }
 
-    // Pass scroll position to updatePreview so it can save it BEFORE any state updates
+    // Only save scroll position if cursor line is visible in viewport
+    // If cursor is not visible, let browser naturally scroll to it
+    const scrollYToSave = cursorVisible ? scrollYBefore : null;
+
+    // Pass scroll position to updatePreview (null if cursor not visible)
     // This is critical: we need to save scroll position before updatePreview triggers re-renders
-    updatePreview(e.target.value, scrollYBefore);
+    updatePreview(e.target.value, scrollYToSave);
 
     // Check scroll after a short delay to catch async changes
     setTimeout(() => {
