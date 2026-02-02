@@ -5,7 +5,7 @@
  * @modify date 2022-08-31 14:38:15
  * @desc article template component
  */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import styles from '../styles/article.module.css';
 import PropTypes from 'prop-types';
 import config from '../config';
@@ -25,6 +25,7 @@ const Article = () => {
   const [markdownContent, setMarkdownContent] = useState('');
   const [loading, setLoading] = useState(!filePath);
   const [mode, setMode] = useState('preview');
+  const scrollRestoreRef = useRef(null);
 
   const switchMode = () => {
     if (mode === 'preview') {
@@ -38,6 +39,40 @@ const Article = () => {
   const setPage = (page) => {
     dispatch(navigate(page));
   }
+
+  // update markdown content in raw mode and optionally preserve scroll
+  const updateRawMarkdown = (value, savedScrollY = null) => {
+    // Only preserve scroll when caller indicates the cursor line is visible
+    if (savedScrollY !== null) {
+      scrollRestoreRef.current = savedScrollY;
+    } else {
+      scrollRestoreRef.current = null;
+    }
+    setMarkdownContent(value);
+  };
+
+  // Restore scroll position after markdown content updates in raw mode
+  useLayoutEffect(() => {
+    if (scrollRestoreRef.current !== null) {
+      const savedScrollY = scrollRestoreRef.current;
+      const currentScrollY = window.scrollY || 0;
+
+      // Only restore if scroll was changed (likely by browser's automatic adjustment)
+      if (Math.abs(currentScrollY - savedScrollY) > 1) {
+        if (debug) {
+          console.log('[Scroll Debug][Article] Restoring scroll after raw markdown update:', {
+            from: currentScrollY,
+            to: savedScrollY,
+            diff: savedScrollY - currentScrollY,
+          });
+        }
+        window.scrollTo(0, savedScrollY);
+      }
+
+      // Clear restore flag
+      scrollRestoreRef.current = null;
+    }
+  }, [markdownContent]);
 
   // load article with filePath
   useEffect(() => {
@@ -69,7 +104,13 @@ const Article = () => {
                 openElement={<img className={styles['small-icon']} src={codeIcon} />}
                 size="small" />
             </div>
-            {mode !== 'preview' && <MarkdownTextarea showHeader={false} deafultValue={markdownContent} updatePreview={() => {}} />}
+            {mode !== 'preview' && (
+              <MarkdownTextarea
+                showHeader={false}
+                deafultValue={markdownContent}
+                updatePreview={updateRawMarkdown}
+              />
+            )}
             {mode === 'preview' &&
             <MarkDownPreview markdownString={markdownContent} showHeader={false} setPage={setPage} />}
           </div>
