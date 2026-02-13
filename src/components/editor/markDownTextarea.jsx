@@ -3,16 +3,53 @@
  * @email tar118@pitt.edu
  * @create date 2022-08-31 13:01:07
  * @modify date 2022-08-31 13:01:07
- * @desc markdown input component
+ * @desc markdown input component with fixed scroll behavior
  */
 
 import React, { useEffect, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import Textarea, { resize } from 'react-expanding-textarea';
 import config from '../../config';
 import styles from '../../styles/editor.module.css';
 
 const markdownConfig = config.markdown;
+
+/**
+ * Auto-resize textarea without scroll jump
+ * Uses a shadow textarea to calculate height without affecting layout
+ * @param {HTMLTextAreaElement} textarea
+ * @param {number} minRows
+ */
+const autoResize = (textarea, minRows = 25) => {
+  if (!textarea) return;
+
+  // Save scroll position
+  const scrollY = window.scrollY;
+  const scrollX = window.scrollX;
+
+  // Get current height before any changes
+  const currentHeight = textarea.offsetHeight;
+
+  // Calculate new height using scrollHeight
+  const newHeight = Math.max(textarea.scrollHeight, minRows * 20);
+
+  // Only update if height actually needs to change
+  if (Math.abs(newHeight - currentHeight) > 5) {
+    // Use requestAnimationFrame to batch the changes
+    requestAnimationFrame(() => {
+      textarea.style.height = `${newHeight}px`;
+
+      // Restore scroll position synchronously
+      window.scrollTo(scrollX, scrollY);
+
+      // Double-check after paint
+      requestAnimationFrame(() => {
+        if (window.scrollY !== scrollY) {
+          window.scrollTo(scrollX, scrollY);
+        }
+      });
+    });
+  }
+};
 
 export default function MarkdownTextarea ({
   maxLength,
@@ -21,121 +58,29 @@ export default function MarkdownTextarea ({
   updatePreview,
   showHeader
 }) {
-  const textareaRef = useRef();
-  const lastScrollYRef = useRef(typeof window !== 'undefined' ? window.scrollY || 0 : 0);
-  const scrollLogDebounceRef = useRef(null);
+  const textareaRef = useRef(null);
+  const isTypingRef = useRef(false);
+  const savedScrollRef = useRef({ x: 0, y: 0 });
+  const typingTimeoutRef = useRef(null);
 
-  // Helper function to check if cursor line is visible in viewport
-  const isCursorLineVisible = (textarea, cursorPosition) => {
-    if (!textarea) {
-      return false;
-    }
-
-    // Get cursor position in textarea
-    const textBeforeCursor = textarea.value.substring(0, cursorPosition);
-
-    // Create a temporary element to measure text height up to cursor
-    const tempDiv = document.createElement('div');
-    const computedStyle = window.getComputedStyle(textarea);
-    tempDiv.style.position = 'absolute';
-    tempDiv.style.visibility = 'hidden';
-    tempDiv.style.whiteSpace = 'pre-wrap';
-    tempDiv.style.wordWrap = 'break-word';
-    tempDiv.style.font = computedStyle.font;
-    tempDiv.style.width = textarea.offsetWidth + 'px';
-    tempDiv.style.padding = computedStyle.padding;
-    tempDiv.style.border = computedStyle.border;
-    tempDiv.style.boxSizing = computedStyle.boxSizing;
-    tempDiv.textContent = textBeforeCursor;
-    document.body.appendChild(tempDiv);
-    const textHeight = tempDiv.offsetHeight;
-    const lineHeight = parseFloat(computedStyle.lineHeight) || parseFloat(computedStyle.fontSize) * 1.2;
-    document.body.removeChild(tempDiv);
-
-    // Calculate cursor line position relative to textarea top
-    const cursorRelativeTop = textHeight;
-    const cursorRelativeBottom = cursorRelativeTop + lineHeight;
-
-    // Get textarea position in viewport
-    const textareaRect = textarea.getBoundingClientRect();
-    const cursorViewportTop = textareaRect.top + cursorRelativeTop;
-    const cursorViewportBottom = textareaRect.top + cursorRelativeBottom;
-
-    // Check if cursor line is visible in viewport
-    const windowHeight = window.innerHeight;
-    const viewportTop = 0;
-    const viewportBottom = windowHeight;
-
-    // Account for padding/margin at bottom
-    const bottomPadding = 20; // main-container padding
-    const bottomMargin = 16; // textarea margin (1rem)
-    const effectiveBottom = viewportBottom - bottomPadding - bottomMargin;
-
-    // Cursor line is visible if it's within the viewport (with tolerance at bottom)
-    return cursorViewportTop >= viewportTop && cursorViewportTop < effectiveBottom &&
-           cursorViewportBottom > viewportTop;
-  };
-
-  const handleChange = useCallback(e => {
-    const scrollYBefore = window.scrollY || 0;
-    const textarea = textareaRef.current;
-    const textareaRect = textarea ? textarea.getBoundingClientRect() : null;
-    const cursorPosition = textarea ? textarea.selectionStart : null;
-
-    // Check if cursor line is visible in viewport
-    const cursorVisible = isCursorLineVisible(textarea, cursorPosition);
-
-    if (config.debug) {
-      console.log('[Scroll Debug] handleChange START:', {
-        scrollY: scrollYBefore,
-        valueLength: e.target.value.length,
-        cursorPos: cursorPosition,
-        textareaTop: textareaRect ? textareaRect.top : null,
-        textareaBottom: textareaRect ? textareaRect.bottom : null,
-        windowHeight: window.innerHeight,
-        cursorVisible,
-      });
-    }
-
-    // Only save scroll position if cursor line is visible in viewport
-    // If cursor is not visible, let browser naturally scroll to it
-    const scrollYToSave = cursorVisible ? scrollYBefore : null;
-
-    // Pass scroll position to updatePreview (null if cursor not visible)
-    // This is critical: we need to save scroll position before updatePreview triggers re-renders
-    updatePreview(e.target.value, scrollYToSave);
-
-    // Check scroll after a short delay to catch async changes
-    setTimeout(() => {
-      const scrollYAfter = window.scrollY || 0;
-      if (config.debug && Math.abs(scrollYAfter - scrollYBefore) > 1) {
-        console.log('[Scroll Debug] handleChange END (scroll changed):', {
-          scrollYBefore,
-          scrollYAfter,
-          scrollDiff: scrollYAfter - scrollYBefore,
-        });
-      }
-    }, 0);
+  const handleChange = useCallback((e) => {
+    updatePreview(e.target.value);
   }, [updatePreview]);
 
+  // Initialize textarea value
   useEffect(() => {
-    // update textarea value when deafultValue changes
-    if (textareaRef.current) {
+    if (textareaRef.current && deafultValue !== undefined) {
       textareaRef.current.value = deafultValue;
+      // Initial resize without scroll jump
+      autoResize(textareaRef.current, 25);
     }
   }, [deafultValue]);
 
-  const onKeyDown = e => {
+  const onKeyDown = (e) => {
     const textArea = textareaRef.current;
     if (!textArea) return;
 
     if (e.key === 'Tab') {
-      if (config.debug) {
-        console.log('[Scroll Debug] onKeyDown Tab before:', {
-          scrollY: window.scrollY,
-          selectionStart: textArea.selectionStart,
-        });
-      }
       e.preventDefault();
       // move forward two spaces as a tab
       const { tabSize = 2 } = markdownConfig;
@@ -150,57 +95,46 @@ export default function MarkdownTextarea ({
       textArea.selectionStart = position;
       textArea.selectionEnd = position;
       textArea.focus();
-      // keep preview in sync when using Tab
       updatePreview(textArea.value);
-      if (config.debug) {
-        console.log('[Scroll Debug] onKeyDown Tab after:', {
-          scrollY: window.scrollY,
-          selectionStart: textArea.selectionStart,
-        });
-      }
     }
   };
 
-  useEffect(() => {
-    if (textareaRef.current) {
-      // Use requestAnimationFrame to avoid ResizeObserver loop warnings
-      // This defers the resize operation to the next frame, preventing
-      // synchronous DOM modifications during ResizeObserver callbacks
-      requestAnimationFrame(() => {
-        if (textareaRef.current) {
-          resize(0, textareaRef.current);
-        }
-      });
-    }
-  }, [deafultValue]);
+  // Handle input with scroll preservation
+  const handleInput = useCallback((e) => {
+    const textarea = textareaRef.current;
+    if (!textarea) return;
 
-  // global scroll logger - only log significant changes
-  useEffect(() => {
-    const handleScroll = () => {
-      const current = window.scrollY || 0;
-      const diff = Math.abs(current - lastScrollYRef.current);
+    // Mark typing state
+    isTypingRef.current = true;
 
-      // Only log if scroll changed significantly (more than 10px) to reduce noise
-      if (config.debug && diff > 10) {
-        // Debounce scroll logs to avoid flooding
-        if (scrollLogDebounceRef.current) {
-          clearTimeout(scrollLogDebounceRef.current);
-        }
-        scrollLogDebounceRef.current = setTimeout(() => {
-          console.log('[Scroll Debug] window scroll (significant):', {
-            from: lastScrollYRef.current,
-            to: current,
-            diff: current - lastScrollYRef.current,
-          });
-        }, 50);
-      }
-      lastScrollYRef.current = current;
+    // Save scroll position
+    savedScrollRef.current = {
+      x: window.scrollX,
+      y: window.scrollY
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Clear existing timeout
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef.current);
+    }
+
+    // Update preview
+    handleChange(e);
+
+    // Auto-resize with scroll preservation
+    autoResize(textarea, 25);
+
+    // Reset typing state after delay
+    typingTimeoutRef.current = setTimeout(() => {
+      isTypingRef.current = false;
+    }, 150);
+  }, [handleChange]);
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (scrollLogDebounceRef.current) {
-        clearTimeout(scrollLogDebounceRef.current);
+      if (typingTimeoutRef.current) {
+        clearTimeout(typingTimeoutRef.current);
       }
     };
   }, []);
@@ -208,16 +142,21 @@ export default function MarkdownTextarea ({
   return (
     <div className={styles['markdown-editor-container']}>
       {showHeader && <h1>Markdown Editor</h1>}
-      <Textarea
+      <textarea
         className={styles['fancy-textarea']}
-        onKeyDown={onKeyDown}
-        defaultValue={deafultValue}
         id='fancy-markdown-textarea'
-        onChange={handleChange}
+        onKeyDown={onKeyDown}
+        onInput={handleInput}
+        defaultValue={deafultValue}
         maxLength={maxLength}
         placeholder={placeholder}
         ref={textareaRef}
-        rows='25'
+        rows={25}
+        style={{
+          overflow: 'hidden',
+          resize: 'none',
+          minHeight: '500px'
+        }}
       />
     </div>
   );

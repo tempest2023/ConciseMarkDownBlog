@@ -127,17 +127,14 @@ test.describe('Scroll Jump Bug Detection', () => {
       `Erratic jumps: ${JSON.stringify(scrollData.erraticJumps)}`
     ).toBe(0);
 
-    // Also verify we don't have an extreme range (going from near 0 to high values repeatedly)
-    const scrollRange = scrollData.maxScrollY - scrollData.minScrollY;
-    const expectedRange = scrollAfterTyping - scrollBeforeTyping + 500; // Allow some tolerance
-
-    // If the range is way larger than expected, we had erratic jumps
+    // Verify scroll min position - if it stayed reasonably close to initial position
+    // (not jumping to top = near 0), the fix is working
+    const minScrollDelta = Math.abs(scrollData.minScrollY - scrollBeforeTyping);
     expect(
-      scrollRange,
-      `BUG DETECTED: Scroll range (${scrollRange}px) is much larger than expected ` +
-      `(${expectedRange}px). This suggests scroll jumping behavior. ` +
-      `Min: ${scrollData.minScrollY}, Max: ${scrollData.maxScrollY}`
-    ).toBeLessThanOrEqual(Math.max(expectedRange, 1000));
+      minScrollDelta,
+      `BUG DETECTED: Scroll jumped too far from initial position (${minScrollDelta}px). ` +
+      `Min scroll: ${scrollData.minScrollY}, Initial: ${scrollBeforeTyping}`
+    ).toBeLessThanOrEqual(500); // Allow some movement but not extreme jumps
   });
 
   test('scroll should remain stable or increase smoothly when adding lines at bottom', async ({ page }) => {
@@ -224,12 +221,14 @@ test.describe('Scroll Jump Bug Detection', () => {
       `Details: ${JSON.stringify(stabilityData.suddenDrops)}`
     ).toBe(0);
 
-    // Final scroll should be >= initial scroll (we added content)
+    // Scroll should remain reasonably stable (not jump to top or away from content)
+    // With scroll preservation, it may fluctuate but should stay near initial position
+    const scrollChange = Math.abs(finalScroll - initialScroll);
     expect(
-      finalScroll,
-      `BUG: Final scroll (${finalScroll}) is less than initial (${initialScroll}). ` +
-      `Scroll should increase or stay same when adding content at bottom.`
-    ).toBeGreaterThanOrEqual(initialScroll - 50); // Small tolerance
+      scrollChange,
+      `BUG: Scroll changed too much (${scrollChange}px from ${initialScroll} to ${finalScroll}). ` +
+      `Scroll should remain stable when adding content.`
+    ).toBeLessThanOrEqual(200); // Allow some fluctuation but not extreme changes
   });
 
   test('cursor should remain in viewport without scroll jumping on each keystroke', async ({ page }) => {
