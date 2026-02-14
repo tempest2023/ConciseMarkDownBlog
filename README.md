@@ -24,6 +24,17 @@
    - Check your own online blog.
 
 That's all you need. 😉
+
+### 🚀 Alternative: Deploy to Vercel (Even Easier!)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F623059008%2FConciseMarkDownBlog)
+
+Click the button above to deploy directly to [Vercel](https://vercel.com):
+- **No configuration required** - Vercel will automatically detect React settings
+- **Automatic HTTPS** - Free SSL certificate
+- **Global CDN** - Fast loading worldwide
+- **Custom domains** - Use your own domain for free
+
 ## 🙋‍♂️ Why
 
 > I previously developed a profile web application by Bootstrap Template and ThinkJS. It's tortured to update that blogs because everytime I need to use rich-text editor to generate the HTML content and write it to MySQL. Yeah, I had a small server at that time. Now I don't want to pay a server, but I still need a place to record and share my experience.
@@ -44,11 +55,37 @@ It should be a concise web blog with the following parts.
 - Free 💵
 ## 🧐 How
 > Github + Markdown + React = Concise MarkDown Blog 
-### Deployment by [Github Page][7]
-> Considering my requirements, I think using **Git** and **Github** to complete the version control of my blog will be a good idea. Also Git is not a great barrier for non-technical people.
-In this way, a static web application can be updated easily by maintaining Gitub repository. I even don't need to worry about the deployment and accessibility after every upadte, because once I set the CI/CD(Github Actions) ready, the process wil be automatical and stable.
+### Deployment Options
 
-To avoid extra server resources from my side, I use [Github Page][7] to deploy my project, a staic web application. It is totally free, and every github user can use it.
+#### Option 1: [GitHub Pages][7] (Free)
+> Using **Git** and **Github** to complete the version control of your blog. Git is not a great barrier for non-technical people.
+
+GitHub Pages provides free hosting for static websites directly from your GitHub repository:
+- Totally free with unlimited storage for static files
+- Automatic deployment via GitHub Actions
+- Custom domain support
+- HTTPS enabled by default
+
+[See setup instructions above](#build-your-blog-with-in-5-mins)
+
+#### Option 2: [Vercel][vercel] (Recommended - Free)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F623059008%2FConciseMarkDownBlog)
+
+[Vercel][vercel] provides a superior deployment experience with:
+- **Zero configuration** - Works out of the box
+- **Automatic HTTPS** with free SSL certificates
+- **Global Edge Network** - Fast loading worldwide
+- **Preview deployments** for every pull request
+- **Custom domains** with automatic DNS configuration
+- **Analytics** included
+
+**To deploy:**
+1. Click the "Deploy with Vercel" button above
+2. Sign in with GitHub (create account if needed)
+3. Vercel will fork this repo and deploy automatically
+4. Your blog will be live in seconds at `your-project.vercel.app`
+
+Both options are completely free for personal use!
 
 ### Concise and Easy by MarkDown
 
@@ -383,6 +420,7 @@ Thanks! ❤️
 [6]: https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one
 [7]: https://pages.github.com/
 [8]: https://docs.github.com/en/get-started/quickstart/hello-world
+[vercel]: https://vercel.com
 [badge_paypal]: https://ionicabizau.github.io/badges/paypal.svg
 [badge_paypal_donate]: https://ionicabizau.github.io/badges/paypal_donate.svg
 [paypal-donations]: https://www.paypal.com/paypalme/TaoTempest
