@@ -44,4 +44,12 @@
     cursor: pointer;
     width: 1.5em;
     height: 1.5em;
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.25rem;
+}
+
+.header-theme-toggler:hover {
+    opacity: 0.7;
 }

@@ -13,11 +13,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { handleUrl } from '../util/url';
 import { navigate, goBack, selectPage } from '../util/store'
 import { compareLowerCase } from '../util/str';
+import { useTheme } from './ThemeProvider';
 
 const Header = () => {
   const [headerLinks, setHeaderLinks] = useState([]);
   const page = useSelector(selectPage);
   const dispatch = useDispatch();
+  const { isDark, toggleTheme, themeEnabled } = useTheme();
+
   const setPage = (page) => {
     dispatch(navigate(page));
   }
@@ -68,6 +71,18 @@ const Header = () => {
         {headerLinks.length > 0 && (
           <div className='collapse navbar-collapse' id='navbarNav' style={{ justifyContent: 'flex-end' }}>
             <ul className='navbar-nav'>{headerLinks}</ul>
+          </div>
+        )}
+        {themeEnabled && (
+          <div className={styles['header-controller']}>
+            <button
+              className={styles['header-theme-toggler']}
+              onClick={toggleTheme}
+              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              <i className={`bi ${isDark ? 'bi-sun' : 'bi-moon'}`}></i>
+            </button>
           </div>
         )}
       </div>

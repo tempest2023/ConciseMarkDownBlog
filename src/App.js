@@ -5,7 +5,7 @@
  * @modify date 2023-02-19 18:03:59
  * @desc App
  */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import config from './config';
 import Article from './components/article';
@@ -13,7 +13,8 @@ import MarkDownEditor from './components/editor/editor';
 import ConfigEditor from './components/config/configEditor';
 // import MarkDownEditor from './components/editor/slashEditor';
 import Header from './components/header';
-import { getUrlParameters, formatPage } from './util/url';
+import { ThemeProvider, useTheme } from './components/ThemeProvider';
+import { getUrlParameters } from './util/url';
 import { compareLowerCase } from './util/str';
 import { navigate, goBack, selectHistory, selectPage } from './util/store'
 import './styles/app.css';
@@ -23,15 +24,18 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 const { debug } = config;
 
-const App = () => {
+const AppContent = () => {
   const dispatch = useDispatch();
   const page = useSelector(selectPage);
   const history = useSelector(selectHistory);
+  const { isDark } = useTheme();
+
   const popstateHandler = (e) => {
     // click the goBack button on browser
     // go back to the previous page in history list.
     dispatch(goBack());
   }
+
   useEffect(() => {
     debug && console.log('[debug] component reload as page: ', page);
     window.addEventListener('popstate', popstateHandler);
@@ -45,6 +49,10 @@ const App = () => {
       return;
     }
     dispatch(navigate(params.page));
+
+    return () => {
+      window.removeEventListener('popstate', popstateHandler);
+    };
   }, []);
 
   const renderContent = () => {
@@ -63,12 +71,20 @@ const App = () => {
   };
 
   return (
-      <div className='page'>
-        <Header />
-        <div className='main-container'>
-          {renderContent()}
-        </div>
+    <div className={`page ${isDark ? 'dark-theme' : 'light-theme'}`}>
+      <Header />
+      <div className='main-container'>
+        {renderContent()}
       </div>
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 };
 
