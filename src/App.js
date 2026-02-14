@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import config from './config';
 import Article from './components/article';
 import MarkDownEditor from './components/editor/editor';
+import ConfigEditor from './components/config/configEditor';
 // import MarkDownEditor from './components/editor/slashEditor';
 import Header from './components/header';
 import { getUrlParameters, formatPage } from './util/url';
@@ -46,16 +47,26 @@ const App = () => {
     dispatch(navigate(params.page));
   }, []);
 
+  const renderContent = () => {
+    // Config editor page (local access only)
+    if (compareLowerCase(page, 'config')) {
+      return <ConfigEditor />;
+    }
+
+    // Markdown editor page
+    if (config.markdown.enable && compareLowerCase(page, 'Markdown')) {
+      return <MarkDownEditor />;
+    }
+
+    // Default article view
+    return <Article />;
+  };
+
   return (
       <div className='page'>
         <Header />
         <div className='main-container'>
-          {!config.markdown.enable
-            ? <Article />
-            : (compareLowerCase(page, 'Markdown')
-                ? <MarkDownEditor />
-                : <Article />)
-          }
+          {renderContent()}
         </div>
       </div>
   );
