@@ -3,7 +3,7 @@
  * @description Tests for GUI config editor functionality
  */
 
-import { generateConfigFromState, configToJsContent } from '../components/config/ConfigEditor';
+import { generateConfigFromState, configToJsContent, escapeString } from '../components/config/ConfigEditor';
 
 describe('ConfigEditor', () => {
   describe('generateConfigFromState', () => {
@@ -304,6 +304,71 @@ describe('ConfigEditor', () => {
 
       expect(content).toContain(`@create date ${today}`);
       expect(content).toContain(`@modify date ${today}`);
+    });
+
+    it('should escape single quotes in strings', () => {
+      const configWithQuotes = {
+        ...mockConfig,
+        title: "Tempest's Blog",
+        name: "O'Brien"
+      };
+      const content = configToJsContent(configWithQuotes);
+
+      // The single quote should be escaped
+      expect(content).toContain("title: 'Tempest\\'s Blog'");
+      expect(content).toContain("name: 'O\\'Brien'");
+    });
+
+    it('should escape backslashes in strings', () => {
+      const configWithBackslash = {
+        ...mockConfig,
+        title: "My \\ Blog"
+      };
+      const content = configToJsContent(configWithBackslash);
+
+      expect(content).toContain("title: 'My \\\\ Blog'");
+    });
+
+    it('should handle strings with both quotes and backslashes', () => {
+      const configWithBoth = {
+        ...mockConfig,
+        title: "It's \\ amazing"
+      };
+      const content = configToJsContent(configWithBoth);
+
+      expect(content).toContain("title: 'It\\'s \\\\ amazing'");
+    });
+  });
+
+  describe('escapeString', () => {
+    it('should return the string as is when no special characters', () => {
+      expect(escapeString('Hello World')).toBe('Hello World');
+      expect(escapeString('Test Blog 123')).toBe('Test Blog 123');
+    });
+
+    it('should escape single quotes', () => {
+      expect(escapeString("It's a test")).toBe("It\\'s a test");
+      expect(escapeString("O'Brien's Blog")).toBe("O\\'Brien\\'s Blog");
+      expect(escapeString("Tempest's Blog")).toBe("Tempest\\'s Blog");
+    });
+
+    it('should escape backslashes', () => {
+      expect(escapeString('C:\\path\\to\\file')).toBe('C:\\\\path\\\\to\\\\file');
+      expect(escapeString('Line1\\nLine2')).toBe('Line1\\\\nLine2');
+    });
+
+    it('should escape both single quotes and backslashes', () => {
+      expect(escapeString("It's \\ path")).toBe("It\\'s \\\\ path");
+    });
+
+    it('should handle empty strings', () => {
+      expect(escapeString('')).toBe('');
+    });
+
+    it('should return non-string values as is', () => {
+      expect(escapeString(null)).toBe(null);
+      expect(escapeString(undefined)).toBe(undefined);
+      expect(escapeString(123)).toBe(123);
     });
   });
 });

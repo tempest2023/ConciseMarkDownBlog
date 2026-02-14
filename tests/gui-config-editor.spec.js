@@ -136,4 +136,76 @@ test.describe('GUI Config Editor', () => {
       await expect(aboutCheckbox).toBeChecked({ checked: !isChecked });
     }
   });
+
+  test('should properly escape single quotes in exported config', async ({ page, context }) => {
+    const hasEditor = await page.locator('.config-editor-container').isVisible().catch(() => false);
+
+    if (hasEditor) {
+      // Set a blog title with a single quote
+      const blogTitleInput = page.locator('input#blogTitle');
+      await blogTitleInput.fill("Tempest's Amazing Blog");
+
+      // Set an author name with a single quote
+      const authorNameInput = page.locator('input#authorName');
+      await authorNameInput.fill("O'Brien");
+
+      // Click the Export Configuration button
+      const exportButton = page.locator('button', { hasText: /export configuration/i });
+      await exportButton.click();
+
+      // Wait for the export modal to appear
+      const modal = page.locator('.modal');
+      await expect(modal).toBeVisible();
+
+      // Get the config content from the preview
+      const configPreview = page.locator('.export-preview pre');
+      await expect(configPreview).toBeVisible();
+
+      const configContent = await configPreview.textContent();
+
+      // Verify single quotes are escaped in the exported config
+      expect(configContent).toContain("title: 'Tempest\\'s Amazing Blog'");
+      expect(configContent).toContain("name: 'O\\'Brien'");
+
+      // Verify the config is valid JavaScript by checking structure
+      expect(configContent).toContain('const config = {');
+      expect(configContent).toContain('export default config;');
+
+      // Close the modal
+      const closeButton = page.locator('button.modal-close');
+      await closeButton.click();
+      await expect(modal).not.toBeVisible();
+    }
+  });
+
+  test('should handle special characters in form inputs', async ({ page }) => {
+    const hasEditor = await page.locator('.config-editor-container').isVisible().catch(() => false);
+
+    if (hasEditor) {
+      // Test various special characters in blog title
+      const blogTitleInput = page.locator('input#blogTitle');
+      const specialTitles = [
+        "It's a test",
+        "Blog & More",
+        "Test (Example)",
+        "Blog with \\ backslash"
+      ];
+
+      for (const title of specialTitles) {
+        await blogTitleInput.fill(title);
+        await expect(blogTitleInput).toHaveValue(title);
+      }
+
+      // Export and verify no errors
+      const exportButton = page.locator('button', { hasText: /export configuration/i });
+      await exportButton.click();
+
+      const modal = page.locator('.modal');
+      await expect(modal).toBeVisible();
+
+      // Config should be displayed without errors
+      const configPreview = page.locator('.export-preview pre');
+      await expect(configPreview).toBeVisible();
+    }
+  });
 });
