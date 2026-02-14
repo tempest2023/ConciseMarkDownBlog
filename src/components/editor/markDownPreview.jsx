@@ -32,34 +32,49 @@ export default function MarkDownPreview (props) {
   const setPage = (page) => {
     dispatch(navigate(page));
   }
-  const { markdownFile, markdownString, loading, showHeader = true } = props;
+  const { markdownFile, markdownString, loading: externalLoading, showHeader = true } = props;
   const [markdownContent, setMarkdownContent] = useState('');
+  const [isDelayedLoading, setIsDelayedLoading] = useState(false);
   const previewContainerRef = useRef(null);
+  const debounceTimerRef = useRef(null);
 
   useEffect(() => {
-    // Save container height before content change to detect height changes
-    if (previewContainerRef.current && config.debug) {
-      const heightBefore = previewContainerRef.current.offsetHeight;
-      console.log('[Scroll Debug] MarkDownPreview before content update:', {
-        markdownStringLength: markdownString.length,
-        containerHeight: heightBefore,
-      });
+    // Clear previous timer
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
     }
 
-    setMarkdownContent(markdownString);
+    const renderDelay = markdownConfig.renderDelay || 0;
 
-    // Check height after content update
-    if (previewContainerRef.current && config.debug) {
-      setTimeout(() => {
-        const heightAfter = previewContainerRef.current.offsetHeight;
-        console.log('[Scroll Debug] MarkDownPreview after content update:', {
-          markdownStringLength: markdownString.length,
-          containerHeight: heightAfter,
-          heightDiff: heightAfter - (previewContainerRef.current.dataset.prevHeight || 0),
-        });
-        previewContainerRef.current.dataset.prevHeight = heightAfter;
-      }, 0);
+    if (renderDelay > 0) {
+      // Show loading state during delay
+      setIsDelayedLoading(true);
+
+      // Debounce the content update
+      debounceTimerRef.current = setTimeout(() => {
+        setMarkdownContent(markdownString);
+        setIsDelayedLoading(false);
+
+        if (previewContainerRef.current && config.debug) {
+          const heightAfter = previewContainerRef.current.offsetHeight;
+          console.log('[Scroll Debug] MarkDownPreview after debounced update:', {
+            markdownStringLength: markdownString.length,
+            containerHeight: heightAfter,
+          });
+        }
+      }, renderDelay);
+    } else {
+      // Immediate update if no delay
+      setMarkdownContent(markdownString);
+      setIsDelayedLoading(false);
     }
+
+    // Cleanup timer on unmount or when markdownString changes
+    return () => {
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+    };
   }, [markdownString]);
 
   useEffect(() => {
@@ -76,7 +91,7 @@ export default function MarkDownPreview (props) {
     <div className={styles['markdown-preview-container']} ref={previewContainerRef}>
     {showHeader && <h1>Markdown Preview</h1>}
     <div className={styles['preview-panel']} style={!showHeader ? { border: 0 } : {}}>
-      {!markdownContent || loading
+      {!markdownContent || externalLoading || isDelayedLoading
         ? <ColorLoading />
         : (<ReactMarkdown
               children={markdownContent}
