@@ -495,4 +495,53 @@ describe('ConfigEditor', () => {
       expect(headersLine).toMatch(/^  headers: /);
     });
   });
+
+  describe('config file format', () => {
+    const formatMockConfig = {
+      debug: false,
+      readmeUrl: 'https://github.com/user/repo/blob/main/README.md',
+      title: 'Test Blog',
+      name: 'Test Author',
+      social: {
+        github: 'https://github.com/testuser',
+        linkedin: 'https://linkedin.com/in/testuser'
+      },
+      email: 'test@example.com',
+      repo: 'https://github.com/testuser/blog',
+      resume_url: 'https://example.com/resume.pdf',
+      default: 'About',
+      headers: [
+        { title: 'About', type: 'article' }
+      ],
+      markdown: {
+        enable: true,
+        loading: false,
+        renderDelay: 0,
+        tabSize: 2,
+        linkStyle: {
+          textDecoration: 'none',
+          color: '#0077ff'
+        }
+      },
+      themeChange: true,
+      colors: {
+        light: { background: '#ffffff', foreground: '#feb272', gray: '#212529' },
+        dark: { background: '#212020', foreground: '#653208', gray: '#a9a9b3' }
+      }
+    };
+
+    it('should end with a newline character (eol-last)', () => {
+      const config = configToJsContent(formatMockConfig);
+
+      // File should end with newline for ESLint eol-last rule
+      expect(config.endsWith('\n')).toBe(true);
+    });
+
+    it('should have export statement on its own line', () => {
+      const config = configToJsContent(formatMockConfig);
+
+      // Should contain export statement
+      expect(config).toContain('\nexport default config;\n');
+    });
+  });
 });
