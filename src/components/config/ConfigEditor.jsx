@@ -129,16 +129,6 @@ function getInitialFormState () {
   // Preserve the actual headers array structure with all properties (type, customUrl)
   const headers = config.headers?.map(h => ({ ...h })) || [];
 
-  // Calculate derived values for UI convenience
-  const pages = {
-    about: headers.some(h => h.title === 'About'),
-    blog: headers.some(h => h.title === 'Blog'),
-    projects: headers.some(h => h.title === 'Projects'),
-    techstack: headers.some(h => h.title === 'Tech Stack'),
-    links: headers.some(h => h.title === 'Links'),
-    resume: headers.some(h => h.title === 'Resume')
-  };
-
   return {
     blogTitle: config.title || '',
     authorName: config.name || '',
@@ -151,8 +141,6 @@ function getInitialFormState () {
     themeChange: config.themeChange !== false,
     // Preserve full headers array with type, customUrl, etc.
     headers,
-    // UI convenience flags
-    pages,
     markdownEnable: config.markdown?.enable !== false,
     markdownLoading: config.markdown?.loading || false,
     markdownRenderDelay: config.markdown?.renderDelay || 0,
@@ -173,53 +161,6 @@ export function generateConfigFromState (formState) {
     ? `https://github.com/${formState.githubUsername}`
     : '';
 
-  // Build headers array preserving existing header objects when available
-  // This preserves customUrl, type, and any other properties
-  const headers = [];
-
-  // Helper to find existing header or create new one
-  const addHeader = (title, defaultType = 'article', defaultCustomUrl = null) => {
-    const existing = formState.headers.find(h => h.title === title);
-    if (existing) {
-      // Preserve the existing header with all its properties
-      headers.push({ ...existing });
-    } else {
-      // Create new header
-      const header = { title, type: defaultType };
-      if (defaultCustomUrl) {
-        header.customUrl = defaultCustomUrl;
-      }
-      headers.push(header);
-    }
-  };
-
-  // Add headers in order based on page toggles
-  if (formState.pages.about) addHeader('About', 'article');
-  if (formState.pages.techstack) addHeader('Tech Stack', 'article', 'TechStack');
-  if (formState.pages.blog) addHeader('Blog', 'article');
-  if (formState.pages.projects) addHeader('Projects', 'article', 'Projects/Project');
-
-  // Always add MarkDown if markdown is enabled
-  if (formState.markdownEnable) {
-    addHeader('MarkDown', 'article');
-  }
-
-  if (formState.pages.resume) {
-    // For Resume, use existing header with its customUrl (link URL) if available
-    const existingResume = formState.headers.find(h => h.title === 'Resume');
-    if (existingResume && existingResume.customUrl) {
-      headers.push({ ...existingResume });
-    } else if (formState.resumeUrl) {
-      headers.push({
-        title: 'Resume',
-        type: 'link',
-        customUrl: formState.resumeUrl
-      });
-    }
-  }
-
-  if (formState.pages.links) addHeader('Links', 'article');
-
   return {
     debug: formState.debug,
     readmeUrl: formState.repoUrl ? `${formState.repoUrl}/blob/main/README.md` : '',
@@ -232,8 +173,8 @@ export function generateConfigFromState (formState) {
     email: formState.email,
     repo: formState.repoUrl,
     resume_url: formState.resumeUrl,
-    default: 'About',
-    headers,
+    default: formState.headers[0]?.title || 'About',
+    headers: formState.headers,
     markdown: {
       enable: formState.markdownEnable,
       loading: formState.markdownLoading,
@@ -343,104 +284,180 @@ const TabSocial = ({ formState, setFormState }) => (
         onChange={(e) => setFormState(prev => ({ ...prev, resumeUrl: e.target.value }))}
         placeholder="https://example.com/resume.pdf"
       />
-      <small>Add a Resume link to navigation. Must be a full URL (http:// or https://)</small>
+      <small>External link to your resume (opens in new tab)</small>
     </div>
   </div>
 );
 
-const TabPages = ({ formState, setFormState }) => {
-  const togglePage = (page) => {
+const TabHeaders = ({ formState, setFormState }) => {
+  const [newHeader, setNewHeader] = useState({ title: '', type: 'article', customUrl: '' });
+  const [editingIndex, setEditingIndex] = useState(null);
+  const [editHeader, setEditHeader] = useState({ title: '', type: 'article', customUrl: '' });
+
+  const addHeader = () => {
+    if (!newHeader.title.trim()) return;
+    const header = {
+      title: newHeader.title.trim(),
+      type: newHeader.type
+    };
+    if (newHeader.customUrl.trim()) {
+      header.customUrl = newHeader.customUrl.trim();
+    }
     setFormState(prev => ({
       ...prev,
-      pages: { ...prev.pages, [page]: !prev.pages[page] }
+      headers: [...prev.headers, header]
     }));
+    setNewHeader({ title: '', type: 'article', customUrl: '' });
+  };
+
+  const removeHeader = (index) => {
+    setFormState(prev => ({
+      ...prev,
+      headers: prev.headers.filter((_, i) => i !== index)
+    }));
+  };
+
+  const moveHeader = (index, direction) => {
+    const newHeaders = [...formState.headers];
+    if (direction === 'up' && index > 0) {
+      [newHeaders[index], newHeaders[index - 1]] = [newHeaders[index - 1], newHeaders[index]];
+    } else if (direction === 'down' && index < newHeaders.length - 1) {
+      [newHeaders[index], newHeaders[index + 1]] = [newHeaders[index + 1], newHeaders[index]];
+    }
+    setFormState(prev => ({ ...prev, headers: newHeaders }));
+  };
+
+  const startEdit = (index) => {
+    setEditingIndex(index);
+    setEditHeader({ ...formState.headers[index] });
+  };
+
+  const saveEdit = () => {
+    if (!editHeader.title.trim()) return;
+    const updated = { title: editHeader.title.trim(), type: editHeader.type };
+    if (editHeader.customUrl?.trim()) {
+      updated.customUrl = editHeader.customUrl.trim();
+    }
+    const newHeaders = [...formState.headers];
+    newHeaders[editingIndex] = updated;
+    setFormState(prev => ({ ...prev, headers: newHeaders }));
+    setEditingIndex(null);
+  };
+
+  const cancelEdit = () => {
+    setEditingIndex(null);
+    setEditHeader({ title: '', type: 'article', customUrl: '' });
   };
 
   return (
     <div className={styles['tab-content']}>
-      <h2>Page Configuration</h2>
-      <p>Select which pages to include in your navigation:</p>
+      <h2>Navigation Headers</h2>
+      <p>Configure the navigation menu items. Each header represents a page or link in your blog.</p>
 
-      <div className={styles['form-group']}>
-        <div className={styles['checkbox-group']}>
-          <label>
-            <input
-              type="checkbox"
-              checked={formState.pages.about}
-              onChange={() => togglePage('about')}
-            />
-            About (Home page)
-          </label>
-        </div>
+      <div className={styles['help-section']}>
+        <h4>How Headers Work</h4>
+        <ul>
+          <li><strong>Article headers</strong> load markdown files from <code>src/articles/</code></li>
+          <li><strong>Link headers</strong> open external URLs in a new tab</li>
+          <li><strong>Custom URL</strong> (optional) specifies a custom path for article headers</li>
+          <li>The first header becomes your default/home page</li>
+        </ul>
 
-        <div className={styles['checkbox-group']}>
-          <label>
-            <input
-              type="checkbox"
-              checked={formState.pages.blog}
-              onChange={() => togglePage('blog')}
-            />
-            Blog
-          </label>
-        </div>
-
-        <div className={styles['checkbox-group']}>
-          <label>
-            <input
-              type="checkbox"
-              checked={formState.pages.projects}
-              onChange={() => togglePage('projects')}
-            />
-            Projects (custom path: Projects/Project)
-          </label>
-        </div>
-
-        <div className={styles['checkbox-group']}>
-          <label>
-            <input
-              type="checkbox"
-              checked={formState.pages.techstack}
-              onChange={() => togglePage('techstack')}
-            />
-            Tech Stack (custom path: TechStack)
-          </label>
-        </div>
-
-        <div className={styles['checkbox-group']}>
-          <label>
-            <input
-              type="checkbox"
-              checked={formState.pages.links}
-              onChange={() => togglePage('links')}
-            />
-            Links
-          </label>
-        </div>
-
-        <div className={styles['checkbox-group']}>
-          <label>
-            <input
-              type="checkbox"
-              checked={formState.pages.resume}
-              onChange={() => togglePage('resume')}
-            />
-            Resume Link (external link, requires Resume URL)
-          </label>
-        </div>
+        <h4>Creating Articles</h4>
+        <p>For each <strong>article</strong> header, create a markdown file in <code>src/articles/</code>:</p>
+        <ul>
+          <li>Header &quot;About&quot; → create <code>src/articles/About.md</code></li>
+          <li>Header &quot;Projects&quot; with customUrl &quot;Projects/Project&quot; → create <code>src/articles/Projects/Project.md</code></li>
+          <li>Header &quot;Tech Stack&quot; with customUrl &quot;TechStack&quot; → create <code>src/articles/TechStack.md</code></li>
+        </ul>
       </div>
 
-      <div className={styles['form-group']}>
-        <div className={styles['checkbox-group']}>
-          <label>
-            <input
-              type="checkbox"
-              checked={formState.markdownEnable}
-              onChange={() => setFormState(prev => ({ ...prev, markdownEnable: !prev.markdownEnable }))}
-            />
-            Enable Markdown Editor (adds MarkDown page)
-          </label>
-          <small>The Markdown editor allows writing and previewing markdown</small>
+      <div className={styles['headers-list']}>
+        {formState.headers.map((header, index) => (
+          <div key={index} className={styles['header-item']}>
+            {
+              editingIndex === index
+                ? (
+                  <div className={styles['header-edit-form']}>
+                    <div className={styles['form-row']}>
+                      <input
+                        type="text"
+                        value={editHeader.title}
+                        onChange={(e) => setEditHeader(prev => ({ ...prev, title: e.target.value }))}
+                        placeholder="Title"
+                      />
+                      <select
+                        value={editHeader.type}
+                        onChange={(e) => setEditHeader(prev => ({ ...prev, type: e.target.value }))}
+                      >
+                        <option value="article">Article</option>
+                        <option value="link">External Link</option>
+                      </select>
+                    </div>
+                    <input
+                      type="text"
+                      value={editHeader.customUrl || ''}
+                      onChange={(e) => setEditHeader(prev => ({ ...prev, customUrl: e.target.value }))}
+                      placeholder={editHeader.type === 'article' ? 'Custom path (optional, e.g., Projects/Project)' : 'Full URL (https://...)'}
+                    />
+                    <div className={styles['header-actions']}>
+                      <button onClick={saveEdit} className={styles['btn-small-primary']}>Save</button>
+                      <button onClick={cancelEdit} className={styles['btn-small-secondary']}>Cancel</button>
+                    </div>
+                  </div>
+                  )
+                : (
+                  <>
+                    <div className={styles['header-info']}>
+                      <span className={styles['header-title']}>{header.title}</span>
+                      <span className={styles['header-type']}>{header.type}</span>
+                      {
+                        header.customUrl
+                          ? (
+                            <span className={styles['header-custom-url']}>({header.customUrl})</span>
+                            )
+                          : null
+                      }
+                    </div>
+                    <div className={styles['header-actions']}>
+                      <button onClick={() => moveHeader(index, 'up')} disabled={index === 0}>↑</button>
+                      <button onClick={() => moveHeader(index, 'down')} disabled={index === formState.headers.length - 1}>↓</button>
+                      <button onClick={() => startEdit(index)} className={styles['btn-small-secondary']}>Edit</button>
+                      <button onClick={() => removeHeader(index)} className={styles['btn-small-danger']}>Remove</button>
+                    </div>
+                  </>
+                  )
+            }
+          </div>
+        ))}
+      </div>
+
+      <div className={styles['add-header-form']}>
+        <h4>Add New Header</h4>
+        <div className={styles['form-row']}>
+          <input
+            type="text"
+            value={newHeader.title}
+            onChange={(e) => setNewHeader(prev => ({ ...prev, title: e.target.value }))}
+            placeholder="Header title (e.g., Projects)"
+          />
+          <select
+            value={newHeader.type}
+            onChange={(e) => setNewHeader(prev => ({ ...prev, type: e.target.value }))}
+          >
+            <option value="article">Article</option>
+            <option value="link">External Link</option>
+          </select>
         </div>
+        <input
+          type="text"
+          value={newHeader.customUrl}
+          onChange={(e) => setNewHeader(prev => ({ ...prev, customUrl: e.target.value }))}
+          placeholder={newHeader.type === 'article' ? 'Custom path (optional, e.g., Projects/Project)' : 'Full URL (https://...)'}
+        />
+        <button onClick={addHeader} className={styles['btn-secondary']}>
+          Add Header
+        </button>
       </div>
     </div>
   );
@@ -474,6 +491,19 @@ const TabSettings = ({ formState, setFormState }) => (
           Enable Debug Mode
         </label>
         <small>Shows debug messages in browser console</small>
+      </div>
+    </div>
+
+    <div className={styles['form-group']}>
+      <div className={styles['checkbox-group']}>
+        <label>
+          <input
+            type="checkbox"
+            checked={formState.markdownEnable}
+            onChange={() => setFormState(prev => ({ ...prev, markdownEnable: !prev.markdownEnable }))}
+          />
+          Enable Markdown Editor (adds /?page=markdown route)
+        </label>
       </div>
     </div>
 
@@ -526,7 +556,7 @@ TabSocial.propTypes = {
   setFormState: PropTypes.func.isRequired
 };
 
-TabPages.propTypes = {
+TabHeaders.propTypes = {
   formState: PropTypes.object.isRequired,
   setFormState: PropTypes.func.isRequired
 };
@@ -556,6 +586,18 @@ function ExportModal ({ configContent, onClose, onDownload, onCopy }) {
           </button>
         </div>
         <div className={styles['modal-body']}>
+          <div className={styles['export-info']}>
+            <p><strong>After exporting:</strong></p>
+            <ol>
+              <li>Copy the config below or download the file</li>
+              <li>Replace <code>src/config.js</code> with the new content</li>
+              <li>Create markdown files in <code>src/articles/</code> for each article header:</li>
+            </ol>
+            <ul>
+              <li>Header &quot;About&quot; → <code>src/articles/About.md</code></li>
+              <li>Header &quot;Projects&quot; with customUrl &quot;Projects/Project&quot; → <code>src/articles/Projects/Project.md</code></li>
+            </ul>
+          </div>
           <div className={styles['export-actions']}>
             <button className={styles['btn-primary']} onClick={onDownload}>
               Download config.js
@@ -569,9 +611,6 @@ function ExportModal ({ configContent, onClose, onDownload, onCopy }) {
               <pre>{configContent}</pre>
             </code>
           </div>
-          <p className={styles['access-note']}>
-            Copy this content to your <code>src/config.js</code> file to apply the changes.
-          </p>
         </div>
       </div>
     </div>
@@ -654,7 +693,7 @@ export default function ConfigEditor () {
   const tabs = [
     { id: 'general', label: 'General', component: TabGeneral },
     { id: 'social', label: 'Social', component: TabSocial },
-    { id: 'pages', label: 'Pages', component: TabPages },
+    { id: 'headers', label: 'Headers', component: TabHeaders },
     { id: 'settings', label: 'Settings', component: TabSettings }
   ];
 

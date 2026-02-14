@@ -19,7 +19,7 @@ test.describe('GUI Config Editor', () => {
 
   test('should display tabs when accessed locally', async ({ page }) => {
     // Check for tab buttons - they should be present even if access denied content shows
-    const tabs = ['General', 'Social', 'Pages', 'Settings'];
+    const tabs = ['General', 'Social', 'Headers', 'Settings'];
 
     // The page will either show tabs (if local) or access denied message
     const hasAccessDenied = await page.locator('.access-denied').isVisible().catch(() => false);
@@ -108,32 +108,13 @@ test.describe('GUI Config Editor', () => {
       const githubInput = page.locator('input#githubUsername');
       await expect(githubInput).toBeVisible();
 
-      // Click on Settings tab
-      const settingsTab = page.locator('button', { hasText: 'Settings' });
-      await settingsTab.click();
+      // Click on Headers tab
+      const headersTab = page.locator('button', { hasText: 'Headers' });
+      await headersTab.click();
 
-      // Should show theme change checkbox
-      const themeChangeCheckbox = page.locator('input[type="checkbox"]').first();
-      await expect(themeChangeCheckbox).toBeVisible();
-    }
-  });
-
-  test('page configuration checkboxes should work when local', async ({ page }) => {
-    const hasEditor = await page.locator('.config-editor-container').isVisible().catch(() => false);
-
-    if (hasEditor) {
-      // Navigate to Pages tab
-      const pagesTab = page.locator('button', { hasText: 'Pages' });
-      await pagesTab.click();
-
-      // Check for About checkbox
-      const aboutCheckbox = page.locator('input[type="checkbox"]').first();
-      await expect(aboutCheckbox).toBeVisible();
-
-      // Check/uncheck should work
-      const isChecked = await aboutCheckbox.isChecked();
-      await aboutCheckbox.click();
-      await expect(aboutCheckbox).toBeChecked({ checked: !isChecked });
+      // Should show headers section
+      const headersSection = page.locator('h2', { hasText: 'Navigation Headers' });
+      await expect(headersSection).toBeVisible();
     }
   });
 
@@ -209,29 +190,115 @@ test.describe('GUI Config Editor', () => {
     }
   });
 
+  test('should show headers management help section', async ({ page }) => {
+    const hasEditor = await page.locator('.config-editor-container').isVisible().catch(() => false);
+
+    if (hasEditor) {
+      // Navigate to Headers tab
+      const headersTab = page.locator('button', { hasText: 'Headers' });
+      await headersTab.click();
+
+      // Check for help section
+      const helpSection = page.locator('.help-section');
+      await expect(helpSection).toBeVisible();
+
+      // Verify help content exists
+      expect(await helpSection.textContent()).toContain('How Headers Work');
+      expect(await helpSection.textContent()).toContain('Creating Articles');
+      expect(await helpSection.textContent()).toContain('src/articles/');
+    }
+  });
+
+  test('should allow adding a new article header', async ({ page }) => {
+    const hasEditor = await page.locator('.config-editor-container').isVisible().catch(() => false);
+
+    if (hasEditor) {
+      // Navigate to Headers tab
+      const headersTab = page.locator('button', { hasText: 'Headers' });
+      await headersTab.click();
+
+      // Fill in new header form
+      const titleInput = page.locator('.add-header-form input[placeholder*="Header title"]').first();
+      await titleInput.fill('My New Page');
+
+      // Click Add Header button
+      const addButton = page.locator('.add-header-form button', { hasText: 'Add Header' });
+      await addButton.click();
+
+      // Verify the new header appears in the list
+      const newHeader = page.locator('.header-title', { hasText: 'My New Page' });
+      await expect(newHeader).toBeVisible();
+
+      // Export and verify header is in config
+      const exportButton = page.locator('button', { hasText: /export configuration/i });
+      await exportButton.click();
+
+      const configPreview = page.locator('.export-preview pre');
+      const configContent = await configPreview.textContent();
+
+      expect(configContent).toContain("title: 'My New Page'");
+      expect(configContent).toContain("type: 'article'");
+    }
+  });
+
+  test('should allow adding a new link header', async ({ page }) => {
+    const hasEditor = await page.locator('.config-editor-container').isVisible().catch(() => false);
+
+    if (hasEditor) {
+      // Navigate to Headers tab
+      const headersTab = page.locator('button', { hasText: 'Headers' });
+      await headersTab.click();
+
+      // Fill in new header form
+      const titleInput = page.locator('.add-header-form input[placeholder*="Header title"]').first();
+      await titleInput.fill('External Link');
+
+      // Change type to link
+      const typeSelect = page.locator('.add-header-form select').first();
+      await typeSelect.selectOption('link');
+
+      // Fill in URL
+      const urlInput = page.locator('.add-header-form input[placeholder*="Full URL"]').first();
+      await urlInput.fill('https://example.com');
+
+      // Click Add Header button
+      const addButton = page.locator('.add-header-form button', { hasText: 'Add Header' });
+      await addButton.click();
+
+      // Verify the new header appears in the list
+      const newHeader = page.locator('.header-title', { hasText: 'External Link' });
+      await expect(newHeader).toBeVisible();
+
+      // Export and verify header is in config
+      const exportButton = page.locator('button', { hasText: /export configuration/i });
+      await exportButton.click();
+
+      const configPreview = page.locator('.export-preview pre');
+      const configContent = await configPreview.textContent();
+
+      expect(configContent).toContain("title: 'External Link'");
+      expect(configContent).toContain("type: 'link'");
+      expect(configContent).toContain("customUrl: 'https://example.com'");
+    }
+  });
+
   test('should preserve header structure with customUrl', async ({ page }) => {
     const hasEditor = await page.locator('.config-editor-container').isVisible().catch(() => false);
 
     if (hasEditor) {
-      // Navigate to Pages tab
-      const pagesTab = page.locator('button', { hasText: 'Pages' });
-      await pagesTab.click();
+      // Navigate to Headers tab
+      const headersTab = page.locator('button', { hasText: 'Headers' });
+      await headersTab.click();
 
-      // Enable Tech Stack page
-      const techStackCheckbox = page.locator('input[type="checkbox"]').filter({ hasText: /tech stack/i });
-      if (!await techStackCheckbox.isChecked().catch(() => false)) {
-        await techStackCheckbox.click();
-      }
+      // Add a header with customUrl
+      const titleInput = page.locator('.add-header-form input[placeholder*="Header title"]').first();
+      await titleInput.fill('Projects');
 
-      // Enable Resume page and set URL
-      const resumeCheckbox = page.locator('input[type="checkbox"]').filter({ hasText: /resume/i });
-      if (!await resumeCheckbox.isChecked().catch(() => false)) {
-        await resumeCheckbox.click();
-      }
+      const customUrlInput = page.locator('.add-header-form input[placeholder*="Custom path"]').first();
+      await customUrlInput.fill('Projects/Project');
 
-      // Set Resume URL
-      const resumeUrlInput = page.locator('input#resumeUrl');
-      await resumeUrlInput.fill('https://example.com/my-resume.pdf');
+      const addButton = page.locator('.add-header-form button', { hasText: 'Add Header' });
+      await addButton.click();
 
       // Export config
       const exportButton = page.locator('button', { hasText: /export configuration/i });
@@ -245,26 +312,18 @@ test.describe('GUI Config Editor', () => {
       const configPreview = page.locator('.export-preview pre');
       const configContent = await configPreview.textContent();
 
-      // Verify Tech Stack header has customUrl
-      expect(configContent).toContain("title: 'Tech Stack'");
-      expect(configContent).toContain("customUrl: 'TechStack'");
-
-      // Verify Resume header has type: 'link' and customUrl
-      expect(configContent).toContain("title: 'Resume'");
-      expect(configContent).toContain("type: 'link'");
-      expect(configContent).toContain("customUrl: 'https://example.com/my-resume.pdf'");
+      // Verify header has customUrl
+      expect(configContent).toContain("title: 'Projects'");
+      expect(configContent).toContain("type: 'article'");
+      expect(configContent).toContain("customUrl: 'Projects/Project'");
     }
   });
 
-  test('should preserve existing header properties when regenerating', async ({ page }) => {
+  test('should show article creation instructions in export modal', async ({ page }) => {
     const hasEditor = await page.locator('.config-editor-container').isVisible().catch(() => false);
 
     if (hasEditor) {
-      // Navigate to Pages tab
-      const pagesTab = page.locator('button', { hasText: 'Pages' });
-      await pagesTab.click();
-
-      // Export config
+      // Click Export
       const exportButton = page.locator('button', { hasText: /export configuration/i });
       await exportButton.click();
 
@@ -272,16 +331,15 @@ test.describe('GUI Config Editor', () => {
       const modal = page.locator('.modal');
       await expect(modal).toBeVisible();
 
-      // Get config content
-      const configPreview = page.locator('.export-preview pre');
-      const configContent = await configPreview.textContent();
+      // Check for export info section
+      const exportInfo = page.locator('.export-info');
+      await expect(exportInfo).toBeVisible();
 
-      // Verify Projects header has correct customUrl
-      expect(configContent).toContain("title: 'Projects'");
-      expect(configContent).toContain("customUrl: 'Projects/Project'");
-
-      // Verify headers array is properly formatted
-      expect(configContent).toMatch(/headers:\s*\[\s*\{[\s\S]*?\},?\s*\]/);
+      // Verify instructions exist
+      const infoText = await exportInfo.textContent();
+      expect(infoText).toContain('src/config.js');
+      expect(infoText).toContain('src/articles/');
+      expect(infoText).toContain('About.md');
     }
   });
 });

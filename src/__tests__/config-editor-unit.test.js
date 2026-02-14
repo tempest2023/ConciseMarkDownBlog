@@ -285,7 +285,7 @@ describe('Config Editor Utils', () => {
       expect(resume.customUrl).toBe('https://example.com/resume.pdf');
     });
 
-    it('should create new Resume header with type link when resumeUrl is provided', () => {
+    it('should preserve headers array as-is in generated config', () => {
       const formState = {
         blogTitle: 'Test Blog',
         authorName: 'Test Author',
@@ -296,15 +296,9 @@ describe('Config Editor Utils', () => {
         resumeUrl: 'https://new-url.com/cv',
         debug: false,
         themeChange: true,
-        headers: [],
-        pages: {
-          about: false,
-          blog: false,
-          projects: false,
-          techstack: false,
-          links: false,
-          resume: true
-        },
+        headers: [
+          { title: 'Resume', type: 'link', customUrl: 'https://new-url.com/cv' }
+        ],
         markdownEnable: false,
         markdownLoading: false,
         markdownRenderDelay: 0,
@@ -315,6 +309,8 @@ describe('Config Editor Utils', () => {
 
       const result = generateConfigFromState(formState);
 
+      // Headers should be passed through as-is
+      expect(result.headers).toEqual(formState.headers);
       const resume = result.headers.find(h => h.title === 'Resume');
       expect(resume).toBeDefined();
       expect(resume.type).toBe('link');
