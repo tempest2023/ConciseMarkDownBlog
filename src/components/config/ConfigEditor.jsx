@@ -366,8 +366,8 @@ const TabHeaders = ({ formState, setFormState }) => {
         <h4>Creating Articles</h4>
         <p>For each <strong>article</strong> header, create a markdown file in <code>src/articles/</code>:</p>
         <ul>
-          <li>Header &quot;About&quot; → create <code>src/articles/About.md</code></li>
-          <li>Header &quot;Projects&quot; with customUrl &quot;mobile_app&quot; → create <code>src/articles/mobile_app.md</code></li>
+          <li>Header &quot;About&quot; (no customUrl) → create <code>src/articles/About.md</code></li>
+          <li>Header &quot;Projects&quot; with customUrl &quot;Projects/mobile_app&quot; → create <code>src/articles/Projects/mobile_app.md</code></li>
           <li>Header &quot;Work&quot; with customUrl &quot;Work/Experience&quot; → create <code>src/articles/Work/Experience.md</code></li>
         </ul>
       </div>
