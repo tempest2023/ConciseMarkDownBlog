@@ -70,6 +70,7 @@ export function formatObject (obj, baseIndent = 2) {
 export function configToJsContent (configObj) {
   const headersStr = formatObject(configObj.headers, 2);
   const linkStyleStr = formatObject(configObj.markdown.linkStyle, 4);
+  const colorsStr = formatObject(configObj.colors, 2);
 
   return `/**
  * @author ${escapeString(configObj.name)}
@@ -110,7 +111,8 @@ const config = {
     // the links in markdown does not have underlines, set it true to enable underline
     linkStyle: ${linkStyleStr}
   },
-  themeChange: ${configObj.themeChange}
+  themeChange: ${configObj.themeChange},
+  colors: ${colorsStr}
 }
 
 export default config;
@@ -242,7 +244,12 @@ export function generateConfigFromState (formState) {
         color: formState.markdownLinkColor
       }
     },
-    themeChange: formState.themeChange
+    themeChange: formState.themeChange,
+    // Include colors from original config (preserved for components that use them)
+    colors: config.colors || {
+      light: { background: '#ffffff', foreground: '#feb272', gray: '#212529' },
+      dark: { background: '#212020', foreground: '#653208', gray: '#a9a9b3' }
+    }
   };
 }
 

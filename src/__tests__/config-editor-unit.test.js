@@ -103,7 +103,11 @@ describe('Config Editor Utils', () => {
             color: '#0077ff'
           }
         },
-        themeChange: true
+        themeChange: true,
+        colors: {
+          light: { background: '#ffffff', foreground: '#feb272', gray: '#212529' },
+          dark: { background: '#212020', foreground: '#653208', gray: '#a9a9b3' }
+        }
       };
 
       const content = configToJsContent(config);
@@ -111,6 +115,11 @@ describe('Config Editor Utils', () => {
       // Check structure
       expect(content).toContain('const config = {');
       expect(content).toContain('export default config;');
+
+      // Check colors are included
+      expect(content).toContain('colors:');
+      expect(content).toContain("background: '#ffffff'");
+      expect(content).toContain("foreground: '#feb272'");
 
       // Check fields
       expect(content).toContain("title: 'Test Blog'");
@@ -147,41 +156,17 @@ describe('Config Editor Utils', () => {
           tabSize: 2,
           linkStyle: { textDecoration: 'none', color: '#0077ff' }
         },
-        themeChange: true
+        themeChange: true,
+        colors: {
+          light: { background: '#ffffff', foreground: '#feb272', gray: '#212529' },
+          dark: { background: '#212020', foreground: '#653208', gray: '#a9a9b3' }
+        }
       };
 
       const content = configToJsContent(config);
 
       expect(content).toContain("title: 'It\\'s a Blog'");
       expect(content).toContain("name: 'O\\'Brien'");
-    });
-
-    it('should not include colors in exported config', () => {
-      const config = {
-        debug: false,
-        readmeUrl: '',
-        title: 'Test',
-        name: 'Test',
-        social: { github: '', linkedin: '' },
-        email: '',
-        repo: '',
-        resume_url: '',
-        default: 'About',
-        headers: [],
-        markdown: {
-          enable: true,
-          loading: false,
-          renderDelay: 0,
-          tabSize: 2,
-          linkStyle: { textDecoration: 'none', color: '#0077ff' }
-        },
-        themeChange: true
-      };
-
-      const content = configToJsContent(config);
-
-      // Colors should not be in the exported config since they don't affect the blog
-      expect(content).not.toContain('colors:');
     });
   });
 
@@ -336,7 +321,7 @@ describe('Config Editor Utils', () => {
       expect(resume.customUrl).toBe('https://new-url.com/cv');
     });
 
-    it('should not include colors in generated config', () => {
+    it('should include default colors in generated config', () => {
       const formState = {
         blogTitle: 'Test Blog',
         authorName: 'Test Author',
@@ -366,8 +351,11 @@ describe('Config Editor Utils', () => {
 
       const result = generateConfigFromState(formState);
 
-      // Colors should not be in generated config
-      expect(result.colors).toBeUndefined();
+      // Colors should be in generated config (used by colorLoading component)
+      expect(result.colors).toBeDefined();
+      expect(result.colors.light).toBeDefined();
+      expect(result.colors.dark).toBeDefined();
+      expect(result.colors.light.foreground).toBeDefined();
     });
 
     it('should generate correct social links from username', () => {

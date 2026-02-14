@@ -2,12 +2,16 @@ import React from 'react';
 import config from '../config';
 
 const colorLoading = () => {
+  // Safe fallback for colors - use Bootstrap primary color as default
+  const defaultColor = '#007bff';
+  const spinnerColor = config.colors?.light?.foreground || defaultColor;
+
   return (
     <div className='col-6 offset-3 text-center'>
       <div
         className='spinner-border'
         style={{
-          color: config.colors.light.foreground,
+          color: spinnerColor,
         }}
         role='status'
       >
