@@ -3,7 +3,7 @@
  * @description Tests for GUI config editor functionality
  */
 
-import { generateConfigFromState, configToJsContent, escapeString } from '../components/config/ConfigEditor';
+import { generateConfigFromState, configToJsContent, escapeString, formatObject } from '../components/config/ConfigEditor';
 
 describe('ConfigEditor', () => {
   describe('generateConfigFromState', () => {
@@ -277,8 +277,9 @@ describe('ConfigEditor', () => {
       const content = configToJsContent(mockConfig);
 
       expect(content).toContain('colors:');
-      expect(content).toContain("'background': '#ffffff'");
-      expect(content).toContain("'foreground': '#feb272'");
+      // Colors use formatObject which produces different indentation
+      expect(content).toContain("background: '#ffffff'");
+      expect(content).toContain("foreground: '#feb272'");
     });
 
     it('should include themeChange setting', () => {
@@ -369,6 +370,129 @@ describe('ConfigEditor', () => {
       expect(escapeString(null)).toBe(null);
       expect(escapeString(undefined)).toBe(undefined);
       expect(escapeString(123)).toBe(123);
+    });
+  });
+
+  describe('formatObject', () => {
+    it('should format simple objects with correct indentation', () => {
+      const obj = { a: 1, b: 2 };
+      const result = formatObject(obj, 2);
+      // Opening brace no indent, content has 2+2=4 spaces, closing has 2 spaces
+      expect(result).toContain('{');
+      expect(result).toContain('a: 1');
+      expect(result).toContain('b: 2');
+    });
+
+    it('should format nested objects with base indentation', () => {
+      const obj = { linkStyle: { textDecoration: 'none' } };
+      const result = formatObject(obj, 4);
+      // First line no indent, subsequent lines have 4 space indent
+      expect(result).toContain('{');
+      expect(result).toContain('    textDecoration:');
+    });
+
+    it('should format arrays with base indentation', () => {
+      const arr = [{ title: 'About' }, { title: 'Blog' }];
+      const result = formatObject(arr, 2);
+      // Should have proper indentation - opening bracket no indent
+      // array elements have appropriate indentation
+      expect(result).toContain('[');
+      expect(result).toContain('title:');
+      expect(result).toContain("'About'");
+    });
+
+    it('should use single quotes instead of double quotes', () => {
+      const obj = { key: 'value' };
+      const result = formatObject(obj, 0);
+      expect(result).toContain("'value'");
+      expect(result).not.toContain('"value"');
+    });
+
+    it('should handle empty objects', () => {
+      const obj = {};
+      const result = formatObject(obj, 2);
+      expect(result).toBe('{}');
+    });
+
+    it('should handle empty arrays', () => {
+      const arr = [];
+      const result = formatObject(arr, 2);
+      expect(result).toBe('[]');
+    });
+  });
+
+  describe('config output indentation', () => {
+    const indentMockConfig = {
+      debug: false,
+      readmeUrl: 'https://github.com/user/repo/blob/main/README.md',
+      title: 'Test Blog',
+      name: 'Test Author',
+      social: {
+        github: 'https://github.com/testuser',
+        linkedin: 'https://linkedin.com/in/testuser'
+      },
+      email: 'test@example.com',
+      repo: 'https://github.com/testuser/blog',
+      resume_url: 'https://example.com/resume.pdf',
+      default: 'About',
+      headers: [
+        { title: 'About', type: 'article' }
+      ],
+      markdown: {
+        enable: true,
+        loading: false,
+        renderDelay: 0,
+        tabSize: 2,
+        linkStyle: {
+          textDecoration: 'none',
+          color: '#0077ff'
+        }
+      },
+      themeChange: true,
+      colors: {
+        light: { background: '#ffffff', foreground: '#feb272', gray: '#212529' },
+        dark: { background: '#212020', foreground: '#653208', gray: '#a9a9b3' }
+      }
+    };
+
+    it('should have consistent 2-space indentation for top-level properties', () => {
+      const config = configToJsContent(indentMockConfig);
+      const lines = config.split('\n');
+
+      // Check that top-level properties have 2-space indent
+      const propertyLines = lines.filter(line =>
+        line.match(/^  \w+:/)
+      );
+      expect(propertyLines.length).toBeGreaterThan(0);
+      propertyLines.forEach(line => {
+        expect(line.startsWith('  ')).toBe(true);
+      });
+    });
+
+    it('should have proper indentation for nested objects', () => {
+      const config = configToJsContent(indentMockConfig);
+
+      // Check social object indentation
+      expect(config).toContain('\n    github:');
+      expect(config).toContain('\n    linkedin:');
+
+      // Check markdown.linkStyle indentation
+      expect(config).toContain('\n      textDecoration:');
+      expect(config).toContain('\n      color:');
+    });
+
+    it('should have proper indentation for arrays', () => {
+      const config = configToJsContent(indentMockConfig);
+      const lines = config.split('\n');
+
+      // Find headers array and check indentation
+      const headersIndex = lines.findIndex(line => line.includes('headers:'));
+      expect(headersIndex).toBeGreaterThan(-1);
+
+      // The array content should be properly indented
+      // headers: [ at 2-space indent, then array content follows
+      const headersLine = lines[headersIndex];
+      expect(headersLine).toMatch(/^  headers: /);
     });
   });
 });

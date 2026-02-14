@@ -109,18 +109,45 @@ export function escapeString (str) {
 }
 
 /**
+ * Formats an object for config output with proper indentation
+ * @param {Object} obj - Object to format
+ * @param {number} baseIndent - Base indentation level (spaces)
+ * @returns {string} - Formatted string
+ */
+export function formatObject (obj, baseIndent = 2) {
+  // Get the JSON representation
+  const jsonStr = JSON.stringify(obj, null, 2)
+    .replace(/"([^"]+)":/g, '$1:')
+    .replace(/"/g, "'");
+
+  const lines = jsonStr.split('\n');
+  const baseSpaces = ' '.repeat(baseIndent);
+
+  // First line is opening brace, subsequent lines need baseIndent added
+  // but we need to preserve the relative indentation of nested content
+  return lines
+    .map((line, index) => {
+      if (index === 0) {
+        // Opening brace stays as is
+        return line;
+      }
+      // For all other lines, add baseIndent spaces
+      // The line already has its own indentation from JSON.stringify (2 spaces per level)
+      // We need to add baseIndent to get the correct absolute position
+      return baseSpaces + line;
+    })
+    .join('\n');
+}
+
+/**
  * Converts config object to JavaScript file content
  * @param {Object} configObj - Config object
  * @returns {string} - JavaScript file content
  */
 export function configToJsContent (configObj) {
-  const colorsStr = JSON.stringify(configObj.colors, null, 2).replace(/"/g, "'");
-  const headersStr = JSON.stringify(configObj.headers, null, 2)
-    .replace(/"([^"]+)":/g, '$1:')
-    .replace(/"/g, "'");
-  const linkStyleStr = JSON.stringify(configObj.markdown.linkStyle, null, 2)
-    .replace(/"([^"]+)":/g, '$1:')
-    .replace(/"/g, "'");
+  const colorsStr = formatObject(configObj.colors, 2);
+  const headersStr = formatObject(configObj.headers, 2);
+  const linkStyleStr = formatObject(configObj.markdown.linkStyle, 4);
 
   return `/**
  * @author ${escapeString(configObj.name)}
@@ -143,7 +170,7 @@ const config = {
     linkedin: '${escapeString(configObj.social.linkedin)}'
   },
   email: '${escapeString(configObj.email)}',
-  repo: '${escapeString(configObj.repoUrl)}',
+  repo: '${escapeString(configObj.repo)}',
   resume_url: '${escapeString(configObj.resume_url)}',
   // default content shown on the main page, /src/articles/[config.default].md
   default: '${escapeString(configObj.default)}',
