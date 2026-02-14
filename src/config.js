@@ -15,7 +15,7 @@ const config = {
   name: 'Tempest(Tao Ren)',
   // social links, on bottom of the page
   social: {
-    github: 'https://github.com/623059008',
+    github: 'https://github.com/tempest2023',
     linkedin: 'https://www.linkedin.com/in/taoren-pitt/'
   },
   email: 'tar118@pitt.edu',
@@ -70,14 +70,14 @@ const config = {
   themeChange: true,
   colors: {
     light: {
-      background: '#ffffff',
-      foreground: '#feb272',
-      gray: '#212529'
+      background: '#fdf2f8',
+      foreground: '#ec4899',
+      gray: '#1e293b'
     },
     dark: {
-      background: '#212020',
-      foreground: '#653208',
-      gray: '#a9a9b3'
+      background: '#500724',
+      foreground: '#f472b6',
+      gray: '#fbcfe8'
     }
   }
 }

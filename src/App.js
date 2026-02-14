@@ -20,6 +20,7 @@ import './styles/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import { applyThemeColors } from './util/applyTheme';
 
 const { debug } = config;
 
@@ -37,6 +38,9 @@ const App = () => {
     window.addEventListener('popstate', popstateHandler);
     // set document title
     document.title = config.title;
+
+    // Apply theme colors from config
+    applyThemeColors(config.colors);
 
     // url param navigation
     const params = getUrlParameters() || {};
