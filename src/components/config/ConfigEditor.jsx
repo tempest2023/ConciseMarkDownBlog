@@ -367,8 +367,8 @@ const TabHeaders = ({ formState, setFormState }) => {
         <p>For each <strong>article</strong> header, create a markdown file in <code>src/articles/</code>:</p>
         <ul>
           <li>Header &quot;About&quot; → create <code>src/articles/About.md</code></li>
-          <li>Header &quot;Projects&quot; with customUrl &quot;Projects/Project&quot; → create <code>src/articles/Projects/Project.md</code></li>
-          <li>Header &quot;Tech Stack&quot; with customUrl &quot;TechStack&quot; → create <code>src/articles/TechStack.md</code></li>
+          <li>Header &quot;Projects&quot; with customUrl &quot;mobile_app&quot; → create <code>src/articles/mobile_app.md</code></li>
+          <li>Header &quot;Work&quot; with customUrl &quot;Work/Experience&quot; → create <code>src/articles/Work/Experience.md</code></li>
         </ul>
       </div>
 
@@ -595,7 +595,7 @@ function ExportModal ({ configContent, onClose, onDownload, onCopy }) {
             </ol>
             <ul>
               <li>Header &quot;About&quot; → <code>src/articles/About.md</code></li>
-              <li>Header &quot;Projects&quot; with customUrl &quot;Projects/Project&quot; → <code>src/articles/Projects/Project.md</code></li>
+              <li>Header &quot;Work&quot; with customUrl &quot;Work/Experience&quot; → <code>src/articles/Work/Experience.md</code></li>
             </ul>
           </div>
           <div className={styles['export-actions']}>
