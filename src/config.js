@@ -84,14 +84,14 @@ const config = {
   themeChange: true,
   colors: {
     light: {
-      background: '#ffffff',
-      foreground: '#feb272',
-      gray: '#212529'
+      background: '#f0fdf4',
+      foreground: '#22c55e',
+      gray: '#1e293b'
     },
     dark: {
-      background: '#212020',
-      foreground: '#653208',
-      gray: '#a9a9b3'
+      background: '#052e16',
+      foreground: '#4ade80',
+      gray: '#86efac'
     }
   }
 }

@@ -9,26 +9,6 @@ import styles from './configEditor.module.css';
 import { hasConfigAccess } from '../../util/isLocal';
 import config from '../../config';
 
-// Theme presets
-const THEMES = {
-  default: {
-    light: { background: '#ffffff', foreground: '#feb272', gray: '#212529' },
-    dark: { background: '#212020', foreground: '#653208', gray: '#a9a9b3' }
-  },
-  ocean: {
-    light: { background: '#f0f9ff', foreground: '#0ea5e9', gray: '#1e293b' },
-    dark: { background: '#0f172a', foreground: '#38bdf8', gray: '#94a3b8' }
-  },
-  forest: {
-    light: { background: '#f0fdf4', foreground: '#22c55e', gray: '#1e293b' },
-    dark: { background: '#052e16', foreground: '#4ade80', gray: '#86efac' }
-  },
-  berry: {
-    light: { background: '#fdf2f8', foreground: '#ec4899', gray: '#1e293b' },
-    dark: { background: '#500724', foreground: '#f472b6', gray: '#fbcfe8' }
-  }
-};
-
 /**
  * Parses GitHub username from URL
  * @param {string} url - GitHub URL
@@ -38,63 +18,6 @@ function parseGithubUsername (url) {
   if (!url) return '';
   const match = url.match(/github\.com\/([^/]+)/);
   return match ? match[1] : '';
-}
-
-/**
- * Generates config object from form state
- * @param {Object} formState - Current form state
- * @returns {Object} - Config object
- */
-export function generateConfigFromState (formState) {
-  const githubUrl = formState.githubUsername
-    ? `https://github.com/${formState.githubUsername}`
-    : '';
-
-  const headers = [];
-  if (formState.pages.about) headers.push({ title: 'About', type: 'article' });
-  if (formState.pages.blog) headers.push({ title: 'Blog', type: 'article' });
-  if (formState.pages.projects) {
-    headers.push({ title: 'Projects', type: 'article', customUrl: 'Projects/Project' });
-  }
-  if (formState.pages.techstack) {
-    headers.push({ title: 'Tech Stack', type: 'article', customUrl: 'TechStack' });
-  }
-  if (formState.pages.links) headers.push({ title: 'Links', type: 'article' });
-  headers.push({ title: 'MarkDown', type: 'article' });
-  if (formState.pages.resume && formState.resumeUrl) {
-    headers.push({ title: 'Resume', type: 'link', customUrl: formState.resumeUrl });
-  }
-
-  return {
-    debug: formState.debug,
-    readmeUrl: formState.repoUrl ? `${formState.repoUrl}/blob/main/README.md` : '',
-    title: formState.blogTitle,
-    name: formState.authorName,
-    social: {
-      github: githubUrl,
-      linkedin: formState.linkedinUrl
-    },
-    email: formState.email,
-    repo: formState.repoUrl,
-    resume_url: formState.resumeUrl,
-    default: 'About',
-    headers,
-    markdown: {
-      enable: formState.markdownEnable,
-      loading: formState.markdownLoading,
-      renderDelay: parseInt(formState.markdownRenderDelay, 10) || 0,
-      tabSize: parseInt(formState.markdownTabSize, 10) || 2,
-      linkStyle: {
-        textDecoration: formState.markdownLinkUnderline ? 'underline' : 'none',
-        color: formState.markdownLinkColor
-      }
-    },
-    themeChange: formState.themeChange,
-    colors: {
-      light: { ...formState.colors.light },
-      dark: { ...formState.colors.dark }
-    }
-  };
 }
 
 /**
@@ -145,7 +68,6 @@ export function formatObject (obj, baseIndent = 2) {
  * @returns {string} - JavaScript file content
  */
 export function configToJsContent (configObj) {
-  const colorsStr = formatObject(configObj.colors, 2);
   const headersStr = formatObject(configObj.headers, 2);
   const linkStyleStr = formatObject(configObj.markdown.linkStyle, 4);
 
@@ -188,8 +110,7 @@ const config = {
     // the links in markdown does not have underlines, set it true to enable underline
     linkStyle: ${linkStyleStr}
   },
-  themeChange: ${configObj.themeChange},
-  colors: ${colorsStr}
+  themeChange: ${configObj.themeChange}
 }
 
 export default config;
@@ -203,13 +124,17 @@ export default config;
 function getInitialFormState () {
   const githubUsername = parseGithubUsername(config.social?.github);
 
+  // Preserve the actual headers array structure with all properties (type, customUrl)
+  const headers = config.headers?.map(h => ({ ...h })) || [];
+
+  // Calculate derived values for UI convenience
   const pages = {
-    about: config.headers?.some(h => h.title === 'About') || true,
-    blog: config.headers?.some(h => h.title === 'Blog') || false,
-    projects: config.headers?.some(h => h.title === 'Projects') || false,
-    techstack: config.headers?.some(h => h.title === 'Tech Stack') || false,
-    links: config.headers?.some(h => h.title === 'Links') || false,
-    resume: config.headers?.some(h => h.title === 'Resume') || false
+    about: headers.some(h => h.title === 'About'),
+    blog: headers.some(h => h.title === 'Blog'),
+    projects: headers.some(h => h.title === 'Projects'),
+    techstack: headers.some(h => h.title === 'Tech Stack'),
+    links: headers.some(h => h.title === 'Links'),
+    resume: headers.some(h => h.title === 'Resume')
   };
 
   return {
@@ -222,11 +147,9 @@ function getInitialFormState () {
     resumeUrl: config.resume_url || '',
     debug: config.debug || false,
     themeChange: config.themeChange !== false,
-    themePreset: 'custom',
-    colors: {
-      light: { ...config.colors?.light } || { background: '#ffffff', foreground: '#feb272', gray: '#212529' },
-      dark: { ...config.colors?.dark } || { background: '#212020', foreground: '#653208', gray: '#a9a9b3' }
-    },
+    // Preserve full headers array with type, customUrl, etc.
+    headers,
+    // UI convenience flags
     pages,
     markdownEnable: config.markdown?.enable !== false,
     markdownLoading: config.markdown?.loading || false,
@@ -234,6 +157,92 @@ function getInitialFormState () {
     markdownTabSize: config.markdown?.tabSize || 2,
     markdownLinkUnderline: config.markdown?.linkStyle?.textDecoration === 'underline',
     markdownLinkColor: config.markdown?.linkStyle?.color || '#0077ff'
+  };
+}
+
+/**
+ * Generates config object from form state
+ * Preserves all header properties including type and customUrl
+ * @param {Object} formState - Current form state
+ * @returns {Object} - Config object
+ */
+export function generateConfigFromState (formState) {
+  const githubUrl = formState.githubUsername
+    ? `https://github.com/${formState.githubUsername}`
+    : '';
+
+  // Build headers array preserving existing header objects when available
+  // This preserves customUrl, type, and any other properties
+  const headers = [];
+
+  // Helper to find existing header or create new one
+  const addHeader = (title, defaultType = 'article', defaultCustomUrl = null) => {
+    const existing = formState.headers.find(h => h.title === title);
+    if (existing) {
+      // Preserve the existing header with all its properties
+      headers.push({ ...existing });
+    } else {
+      // Create new header
+      const header = { title, type: defaultType };
+      if (defaultCustomUrl) {
+        header.customUrl = defaultCustomUrl;
+      }
+      headers.push(header);
+    }
+  };
+
+  // Add headers in order based on page toggles
+  if (formState.pages.about) addHeader('About', 'article');
+  if (formState.pages.techstack) addHeader('Tech Stack', 'article', 'TechStack');
+  if (formState.pages.blog) addHeader('Blog', 'article');
+  if (formState.pages.projects) addHeader('Projects', 'article', 'Projects/Project');
+
+  // Always add MarkDown if markdown is enabled
+  if (formState.markdownEnable) {
+    addHeader('MarkDown', 'article');
+  }
+
+  if (formState.pages.resume) {
+    // For Resume, use existing header with its customUrl (link URL) if available
+    const existingResume = formState.headers.find(h => h.title === 'Resume');
+    if (existingResume && existingResume.customUrl) {
+      headers.push({ ...existingResume });
+    } else if (formState.resumeUrl) {
+      headers.push({
+        title: 'Resume',
+        type: 'link',
+        customUrl: formState.resumeUrl
+      });
+    }
+  }
+
+  if (formState.pages.links) addHeader('Links', 'article');
+
+  return {
+    debug: formState.debug,
+    readmeUrl: formState.repoUrl ? `${formState.repoUrl}/blob/main/README.md` : '',
+    title: formState.blogTitle,
+    name: formState.authorName,
+    social: {
+      github: githubUrl,
+      linkedin: formState.linkedinUrl
+    },
+    email: formState.email,
+    repo: formState.repoUrl,
+    resume_url: formState.resumeUrl,
+    default: 'About',
+    headers,
+    markdown: {
+      enable: formState.markdownEnable,
+      loading: formState.markdownLoading,
+      renderDelay: parseInt(formState.markdownRenderDelay, 10) || 0,
+      tabSize: parseInt(formState.markdownTabSize, 10) || 2,
+      linkStyle: {
+        textDecoration: formState.markdownLinkUnderline ? 'underline' : 'none',
+        color: formState.markdownLinkColor
+      }
+    },
+    themeChange: formState.themeChange
   };
 }
 
@@ -327,7 +336,7 @@ const TabSocial = ({ formState, setFormState }) => (
         onChange={(e) => setFormState(prev => ({ ...prev, resumeUrl: e.target.value }))}
         placeholder="https://example.com/resume.pdf"
       />
-      <small>Add a Resume link to navigation</small>
+      <small>Add a Resume link to navigation. Must be a full URL (http:// or https://)</small>
     </div>
   </div>
 );
@@ -375,7 +384,7 @@ const TabPages = ({ formState, setFormState }) => {
               checked={formState.pages.projects}
               onChange={() => togglePage('projects')}
             />
-            Projects
+            Projects (custom path: Projects/Project)
           </label>
         </div>
 
@@ -386,7 +395,7 @@ const TabPages = ({ formState, setFormState }) => {
               checked={formState.pages.techstack}
               onChange={() => togglePage('techstack')}
             />
-            Tech Stack
+            Tech Stack (custom path: TechStack)
           </label>
         </div>
 
@@ -408,7 +417,7 @@ const TabPages = ({ formState, setFormState }) => {
               checked={formState.pages.resume}
               onChange={() => togglePage('resume')}
             />
-            Resume Link (requires Resume URL)
+            Resume Link (external link, requires Resume URL)
           </label>
         </div>
       </div>
@@ -421,7 +430,7 @@ const TabPages = ({ formState, setFormState }) => {
               checked={formState.markdownEnable}
               onChange={() => setFormState(prev => ({ ...prev, markdownEnable: !prev.markdownEnable }))}
             />
-            Enable Markdown Editor
+            Enable Markdown Editor (adds MarkDown page)
           </label>
           <small>The Markdown editor allows writing and previewing markdown</small>
         </div>
@@ -430,117 +439,75 @@ const TabPages = ({ formState, setFormState }) => {
   );
 };
 
-const TabTheme = ({ formState, setFormState }) => {
-  const applyThemePreset = (presetKey) => {
-    const preset = THEMES[presetKey];
-    if (preset) {
-      setFormState(prev => ({
-        ...prev,
-        themePreset: presetKey,
-        colors: {
-          light: { ...preset.light },
-          dark: { ...preset.dark }
-        }
-      }));
-    }
-  };
+const TabSettings = ({ formState, setFormState }) => (
+  <div className={styles['tab-content']}>
+    <h2>Settings</h2>
 
-  const updateColor = (mode, key, value) => {
-    setFormState(prev => ({
-      ...prev,
-      themePreset: 'custom',
-      colors: {
-        ...prev.colors,
-        [mode]: {
-          ...prev.colors[mode],
-          [key]: value
-        }
-      }
-    }));
-  };
-
-  return (
-    <div className={styles['tab-content']}>
-      <h2>Theme Settings</h2>
-
-      <div className={styles['form-group']}>
-        <div className={styles['checkbox-group']}>
-          <label>
-            <input
-              type="checkbox"
-              checked={formState.themeChange}
-              onChange={() => setFormState(prev => ({ ...prev, themeChange: !prev.themeChange }))}
-            />
-            Enable Theme Switcher (Light/Dark mode toggle)
-          </label>
-        </div>
-      </div>
-
-      <div className={styles['form-group']}>
-        <label htmlFor="themePreset">Theme Preset</label>
-        <select
-          id="themePreset"
-          value={formState.themePreset}
-          onChange={(e) => applyThemePreset(e.target.value)}
-        >
-          <option value="custom">Custom</option>
-          <option value="default">Default (Warm Orange)</option>
-          <option value="ocean">Ocean (Blue)</option>
-          <option value="forest">Forest (Green)</option>
-          <option value="berry">Berry (Pink)</option>
-        </select>
-      </div>
-
-      <div className={styles['color-section']}>
-        <h3>Light Mode Colors</h3>
-        <div className={styles['color-grid']}>
-          {['background', 'foreground', 'gray'].map(key => (
-            <div key={`light-${key}`} className={styles['color-input']}>
-              <label htmlFor={`light-${key}`}>
-                {key.charAt(0).toUpperCase() + key.slice(1)}
-              </label>
-              <input
-                type="color"
-                id={`light-${key}`}
-                value={formState.colors.light[key]}
-                onChange={(e) => updateColor('light', key, e.target.value)}
-              />
-              <input
-                type="text"
-                value={formState.colors.light[key]}
-                onChange={(e) => updateColor('light', key, e.target.value)}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className={styles['color-section']}>
-        <h3>Dark Mode Colors</h3>
-        <div className={styles['color-grid']}>
-          {['background', 'foreground', 'gray'].map(key => (
-            <div key={`dark-${key}`} className={styles['color-input']}>
-              <label htmlFor={`dark-${key}`}>
-                {key.charAt(0).toUpperCase() + key.slice(1)}
-              </label>
-              <input
-                type="color"
-                id={`dark-${key}`}
-                value={formState.colors.dark[key]}
-                onChange={(e) => updateColor('dark', key, e.target.value)}
-              />
-              <input
-                type="text"
-                value={formState.colors.dark[key]}
-                onChange={(e) => updateColor('dark', key, e.target.value)}
-              />
-            </div>
-          ))}
-        </div>
+    <div className={styles['form-group']}>
+      <div className={styles['checkbox-group']}>
+        <label>
+          <input
+            type="checkbox"
+            checked={formState.themeChange}
+            onChange={() => setFormState(prev => ({ ...prev, themeChange: !prev.themeChange }))}
+          />
+          Enable Theme Switcher (Light/Dark mode toggle)
+        </label>
       </div>
     </div>
-  );
-};
+
+    <div className={styles['form-group']}>
+      <div className={styles['checkbox-group']}>
+        <label>
+          <input
+            type="checkbox"
+            checked={formState.debug}
+            onChange={() => setFormState(prev => ({ ...prev, debug: !prev.debug }))}
+          />
+          Enable Debug Mode
+        </label>
+        <small>Shows debug messages in browser console</small>
+      </div>
+    </div>
+
+    <h3>Markdown Editor Settings</h3>
+
+    <div className={styles['form-group']}>
+      <label htmlFor="markdownTabSize">Tab Size</label>
+      <input
+        type="number"
+        id="markdownTabSize"
+        value={formState.markdownTabSize}
+        onChange={(e) => setFormState(prev => ({ ...prev, markdownTabSize: e.target.value }))}
+        min="1"
+        max="8"
+      />
+    </div>
+
+    <div className={styles['form-group']}>
+      <div className={styles['checkbox-group']}>
+        <label>
+          <input
+            type="checkbox"
+            checked={formState.markdownLinkUnderline}
+            onChange={() => setFormState(prev => ({ ...prev, markdownLinkUnderline: !prev.markdownLinkUnderline }))}
+          />
+          Underline Links in Markdown Preview
+        </label>
+      </div>
+    </div>
+
+    <div className={styles['form-group']}>
+      <label htmlFor="markdownLinkColor">Link Color</label>
+      <input
+        type="color"
+        id="markdownLinkColor"
+        value={formState.markdownLinkColor}
+        onChange={(e) => setFormState(prev => ({ ...prev, markdownLinkColor: e.target.value }))}
+      />
+    </div>
+  </div>
+);
 
 TabGeneral.propTypes = {
   formState: PropTypes.object.isRequired,
@@ -557,7 +524,7 @@ TabPages.propTypes = {
   setFormState: PropTypes.func.isRequired
 };
 
-TabTheme.propTypes = {
+TabSettings.propTypes = {
   formState: PropTypes.object.isRequired,
   setFormState: PropTypes.func.isRequired
 };
@@ -627,8 +594,8 @@ export default function ConfigEditor () {
   }, []);
 
   const handleDownload = useCallback(() => {
-    const config = generateConfigFromState(formState);
-    const content = configToJsContent(config);
+    const newConfig = generateConfigFromState(formState);
+    const content = configToJsContent(newConfig);
     const blob = new Blob([content], { type: 'application/javascript' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -641,8 +608,8 @@ export default function ConfigEditor () {
   }, [formState]);
 
   const handleCopy = useCallback(() => {
-    const config = generateConfigFromState(formState);
-    const content = configToJsContent(config);
+    const newConfig = generateConfigFromState(formState);
+    const content = configToJsContent(newConfig);
     navigator.clipboard.writeText(content);
   }, [formState]);
 
@@ -681,7 +648,7 @@ export default function ConfigEditor () {
     { id: 'general', label: 'General', component: TabGeneral },
     { id: 'social', label: 'Social', component: TabSocial },
     { id: 'pages', label: 'Pages', component: TabPages },
-    { id: 'theme', label: 'Theme', component: TabTheme }
+    { id: 'settings', label: 'Settings', component: TabSettings }
   ];
 
   const ActiveComponent = tabs.find(t => t.id === activeTab)?.component || TabGeneral;

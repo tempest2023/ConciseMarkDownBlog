@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import config from './config';
 import Article from './components/article';
 import MarkDownEditor from './components/editor/editor';
-import ConfigEditor from './components/config/ConfigEditor';
+import ConfigEditor from './components/config/configEditor';
 // import MarkDownEditor from './components/editor/slashEditor';
 import Header from './components/header';
 import { getUrlParameters, formatPage } from './util/url';
@@ -20,7 +20,6 @@ import './styles/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
-import { applyThemeColors } from './util/applyTheme';
 
 const { debug } = config;
 
@@ -38,9 +37,6 @@ const App = () => {
     window.addEventListener('popstate', popstateHandler);
     // set document title
     document.title = config.title;
-
-    // Apply theme colors from config
-    applyThemeColors(config.colors);
 
     // url param navigation
     const params = getUrlParameters() || {};

@@ -19,7 +19,7 @@ test.describe('GUI Config Editor', () => {
 
   test('should display tabs when accessed locally', async ({ page }) => {
     // Check for tab buttons - they should be present even if access denied content shows
-    const tabs = ['General', 'Social', 'Pages', 'Theme'];
+    const tabs = ['General', 'Social', 'Pages', 'Settings'];
 
     // The page will either show tabs (if local) or access denied message
     const hasAccessDenied = await page.locator('.access-denied').isVisible().catch(() => false);
@@ -108,13 +108,13 @@ test.describe('GUI Config Editor', () => {
       const githubInput = page.locator('input#githubUsername');
       await expect(githubInput).toBeVisible();
 
-      // Click on Theme tab
-      const themeTab = page.locator('button', { hasText: 'Theme' });
-      await themeTab.click();
+      // Click on Settings tab
+      const settingsTab = page.locator('button', { hasText: 'Settings' });
+      await settingsTab.click();
 
-      // Should show theme preset dropdown
-      const themePreset = page.locator('select#themePreset');
-      await expect(themePreset).toBeVisible();
+      // Should show theme change checkbox
+      const themeChangeCheckbox = page.locator('input[type="checkbox"]').first();
+      await expect(themeChangeCheckbox).toBeVisible();
     }
   });
 
@@ -206,6 +206,82 @@ test.describe('GUI Config Editor', () => {
       // Config should be displayed without errors
       const configPreview = page.locator('.export-preview pre');
       await expect(configPreview).toBeVisible();
+    }
+  });
+
+  test('should preserve header structure with customUrl', async ({ page }) => {
+    const hasEditor = await page.locator('.config-editor-container').isVisible().catch(() => false);
+
+    if (hasEditor) {
+      // Navigate to Pages tab
+      const pagesTab = page.locator('button', { hasText: 'Pages' });
+      await pagesTab.click();
+
+      // Enable Tech Stack page
+      const techStackCheckbox = page.locator('input[type="checkbox"]').filter({ hasText: /tech stack/i });
+      if (!await techStackCheckbox.isChecked().catch(() => false)) {
+        await techStackCheckbox.click();
+      }
+
+      // Enable Resume page and set URL
+      const resumeCheckbox = page.locator('input[type="checkbox"]').filter({ hasText: /resume/i });
+      if (!await resumeCheckbox.isChecked().catch(() => false)) {
+        await resumeCheckbox.click();
+      }
+
+      // Set Resume URL
+      const resumeUrlInput = page.locator('input#resumeUrl');
+      await resumeUrlInput.fill('https://example.com/my-resume.pdf');
+
+      // Export config
+      const exportButton = page.locator('button', { hasText: /export configuration/i });
+      await exportButton.click();
+
+      // Wait for modal
+      const modal = page.locator('.modal');
+      await expect(modal).toBeVisible();
+
+      // Get config content
+      const configPreview = page.locator('.export-preview pre');
+      const configContent = await configPreview.textContent();
+
+      // Verify Tech Stack header has customUrl
+      expect(configContent).toContain("title: 'Tech Stack'");
+      expect(configContent).toContain("customUrl: 'TechStack'");
+
+      // Verify Resume header has type: 'link' and customUrl
+      expect(configContent).toContain("title: 'Resume'");
+      expect(configContent).toContain("type: 'link'");
+      expect(configContent).toContain("customUrl: 'https://example.com/my-resume.pdf'");
+    }
+  });
+
+  test('should preserve existing header properties when regenerating', async ({ page }) => {
+    const hasEditor = await page.locator('.config-editor-container').isVisible().catch(() => false);
+
+    if (hasEditor) {
+      // Navigate to Pages tab
+      const pagesTab = page.locator('button', { hasText: 'Pages' });
+      await pagesTab.click();
+
+      // Export config
+      const exportButton = page.locator('button', { hasText: /export configuration/i });
+      await exportButton.click();
+
+      // Wait for modal
+      const modal = page.locator('.modal');
+      await expect(modal).toBeVisible();
+
+      // Get config content
+      const configPreview = page.locator('.export-preview pre');
+      const configContent = await configPreview.textContent();
+
+      // Verify Projects header has correct customUrl
+      expect(configContent).toContain("title: 'Projects'");
+      expect(configContent).toContain("customUrl: 'Projects/Project'");
+
+      // Verify headers array is properly formatted
+      expect(configContent).toMatch(/headers:\s*\[\s*\{[\s\S]*?\},?\s*\]/);
     }
   });
 });
