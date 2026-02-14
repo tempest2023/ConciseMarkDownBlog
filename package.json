@@ -29,6 +29,7 @@
     "test:e2e:ui": "playwright test --ui",
     "setup": "node scripts/setup.js",
     "lint": "eslint -c .eslintrc.json src/**/*.jsx",
+    "lint:fix": "eslint -c .eslintrc.json src/**/*.jsx --fix",
     "deploy": "gh-pages -d build"
   },
   "dependencies": {

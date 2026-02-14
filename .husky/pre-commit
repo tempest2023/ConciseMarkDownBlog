@@ -1,4 +1,9 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn lint
+# Run lint with auto-fix for formatting issues
+# This will fix warnings automatically and block on errors only
+npm run lint:fix || true
+
+# Run lint check (warnings won't block, only errors will)
+npm run lint

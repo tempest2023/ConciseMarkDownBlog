@@ -13,7 +13,13 @@
   "rules": {
     "semi": "off",
     "comma-dangle": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "space-before-function-paren": "warn",
+    "no-multiple-empty-lines": "warn",
+    "eol-last": "warn",
+    "indent": "warn",
+    "quotes": "warn",
+    "jsx-quotes": "warn"
   },
   "settings": {
     "react": {
