@@ -7,7 +7,7 @@
  * Checks if the application is running on localhost
  * @returns {boolean} True if running on localhost or 127.0.0.1
  */
-export function isLocalEnvironment() {
+export function isLocalEnvironment () {
   // Check window.location for browser environment
   if (typeof window !== 'undefined' && window.location) {
     const hostname = window.location.hostname;
@@ -27,7 +27,7 @@ export function isLocalEnvironment() {
  * Combines local environment check with other potential auth methods
  * @returns {boolean} True if user should have config access
  */
-export function hasConfigAccess() {
+export function hasConfigAccess () {
   // Primary check: must be local environment
   if (!isLocalEnvironment()) {
     return false;

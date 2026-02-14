@@ -1,4 +1,3 @@
-
 /**
  * @file Config Editor Component
  * @description GUI-based configuration editor for local development only
@@ -35,7 +34,7 @@ const THEMES = {
  * @param {string} url - GitHub URL
  * @returns {string} - Username or empty string
  */
-function parseGithubUsername(url) {
+function parseGithubUsername (url) {
   if (!url) return '';
   const match = url.match(/github\.com\/([^/]+)/);
   return match ? match[1] : '';
@@ -46,7 +45,7 @@ function parseGithubUsername(url) {
  * @param {Object} formState - Current form state
  * @returns {Object} - Config object
  */
-export function generateConfigFromState(formState) {
+export function generateConfigFromState (formState) {
   const githubUrl = formState.githubUsername
     ? `https://github.com/${formState.githubUsername}`
     : '';
@@ -103,7 +102,7 @@ export function generateConfigFromState(formState) {
  * @param {Object} configObj - Config object
  * @returns {string} - JavaScript file content
  */
-export function configToJsContent(configObj) {
+export function configToJsContent (configObj) {
   const colorsStr = JSON.stringify(configObj.colors, null, 2).replace(/"/g, "'");
   const headersStr = JSON.stringify(configObj.headers, null, 2)
     .replace(/"([^"]+)":/g, '$1:')
@@ -163,7 +162,7 @@ export default config;
  * Initializes form state from existing config
  * @returns {Object} - Initial form state
  */
-function getInitialFormState() {
+function getInitialFormState () {
   const githubUsername = parseGithubUsername(config.social?.github);
 
   const pages = {
@@ -526,7 +525,7 @@ TabTheme.propTypes = {
 };
 
 // Export Modal Component
-function ExportModal({ configContent, onClose, onDownload, onCopy }) {
+function ExportModal ({ configContent, onClose, onDownload, onCopy }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -575,7 +574,7 @@ ExportModal.propTypes = {
 };
 
 // Main Config Editor Component
-export default function ConfigEditor() {
+export default function ConfigEditor () {
   const [hasAccess, setHasAccess] = useState(null);
   const [activeTab, setActiveTab] = useState('general');
   const [formState, setFormState] = useState(getInitialFormState());
