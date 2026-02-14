@@ -27,6 +27,7 @@
     "test": "node scripts/test.js",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
+    "setup": "node scripts/setup.js",
     "lint": "eslint -c .eslintrc.json src/**/*.jsx",
     "deploy": "gh-pages -d build"
   },
