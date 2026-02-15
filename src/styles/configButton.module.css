@@ -1,0 +1,44 @@
+/**
+ * @file Config Button Styles
+ * @description Styles for the floating config button
+ */
+
+.config-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--accent-color, #0077ff);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+.config-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  background: var(--accent-hover, #0056b3);
+}
+
+.config-button:active {
+  transform: scale(0.95);
+}
+
+/* Dark theme support */
+:global(.dark-theme) .config-button {
+  background: var(--accent-color, #0d6efd);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+:global(.dark-theme) .config-button:hover {
+  background: var(--accent-hover, #0b5ed7);
+}
