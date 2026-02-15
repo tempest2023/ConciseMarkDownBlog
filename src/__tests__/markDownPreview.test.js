@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import MarkDownPreview from '../components/editor/markDownPreview';
+import MarkDownPreview from '../components/editor/MarkDownPreview';
 import config from '../config';
 
 // Mock config
@@ -24,7 +24,7 @@ jest.mock('../config', () => ({
 }));
 
 // Mock ColorLoading
-jest.mock('../components/colorLoading', () => {
+jest.mock('../components/ColorLoading', () => {
   return function MockColorLoading() {
     return <div data-testid="color-loading">Loading...</div>;
   };
