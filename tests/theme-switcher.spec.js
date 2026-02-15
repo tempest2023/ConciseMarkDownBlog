@@ -10,10 +10,10 @@ test.describe('Theme Switcher', () => {
     await page.waitForLoadState('networkidle');
   });
 
-  test('should show theme toggle button when themeChange is enabled', async ({ page }) => {
+  test('should show theme toggle button when themeEnable is enabled', async ({ page }) => {
     const themeToggle = page.locator('button[aria-label*="light mode"], button[aria-label*="dark mode"]');
 
-    // The toggle might not exist if themeChange is disabled
+    // The toggle might not exist if themeEnable is disabled
     const exists = await themeToggle.isVisible().catch(() => false);
 
     if (exists) {

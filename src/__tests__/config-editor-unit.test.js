@@ -103,7 +103,7 @@ describe('Config Editor Utils', () => {
             color: '#0077ff'
           }
         },
-        themeChange: true,
+        themeEnable: true,
         colors: {
           light: { background: '#ffffff', foreground: '#feb272', gray: '#212529' },
           dark: { background: '#212020', foreground: '#653208', gray: '#a9a9b3' }
@@ -125,7 +125,7 @@ describe('Config Editor Utils', () => {
       expect(content).toContain("title: 'Test Blog'");
       expect(content).toContain("name: 'Test Author'");
       expect(content).toContain('debug: false');
-      expect(content).toContain('themeChange: true');
+      expect(content).toContain('themeEnable: true');
 
       // Check headers
       expect(content).toContain("headers: [");
@@ -156,7 +156,7 @@ describe('Config Editor Utils', () => {
           tabSize: 2,
           linkStyle: { textDecoration: 'none', color: '#0077ff' }
         },
-        themeChange: true,
+        themeEnable: true,
         colors: {
           light: { background: '#ffffff', foreground: '#feb272', gray: '#212529' },
           dark: { background: '#212020', foreground: '#653208', gray: '#a9a9b3' }
@@ -181,7 +181,7 @@ describe('Config Editor Utils', () => {
         repoUrl: '',
         resumeUrl: '',
         debug: false,
-        themeChange: true,
+        themeEnable: true,
         // Preserve existing headers with customUrl
         headers: [
           { title: 'Tech Stack', type: 'article', customUrl: 'TechStack' }
@@ -220,7 +220,7 @@ describe('Config Editor Utils', () => {
         repoUrl: '',
         resumeUrl: '',
         debug: false,
-        themeChange: true,
+        themeEnable: true,
         headers: [
           { title: 'Projects', type: 'article', customUrl: 'Projects/Project' }
         ],
@@ -257,7 +257,7 @@ describe('Config Editor Utils', () => {
         repoUrl: '',
         resumeUrl: 'https://example.com/resume.pdf',
         debug: false,
-        themeChange: true,
+        themeEnable: true,
         headers: [
           { title: 'Resume', type: 'link', customUrl: 'https://example.com/resume.pdf' }
         ],
@@ -295,7 +295,7 @@ describe('Config Editor Utils', () => {
         repoUrl: '',
         resumeUrl: 'https://new-url.com/cv',
         debug: false,
-        themeChange: true,
+        themeEnable: true,
         headers: [
           { title: 'Resume', type: 'link', customUrl: 'https://new-url.com/cv' }
         ],
@@ -327,7 +327,7 @@ describe('Config Editor Utils', () => {
         repoUrl: '',
         resumeUrl: '',
         debug: false,
-        themeChange: true,
+        themeEnable: true,
         headers: [],
         pages: {
           about: false,
@@ -364,7 +364,7 @@ describe('Config Editor Utils', () => {
         repoUrl: '',
         resumeUrl: '',
         debug: false,
-        themeChange: true,
+        themeEnable: true,
         headers: [],
         pages: {
           about: false,
@@ -398,7 +398,7 @@ describe('Config Editor Utils', () => {
         repoUrl: 'https://github.com/user/repo',
         resumeUrl: '',
         debug: false,
-        themeChange: true,
+        themeEnable: true,
         headers: [],
         pages: {
           about: false,

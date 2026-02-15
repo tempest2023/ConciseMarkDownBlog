@@ -72,17 +72,24 @@ const config = {
       color: '#0077ff'
     }
   },
-  themeChange: true,
+  // show theme switch button in the header, default to true
+  themeEnable: true,
   colors: {
     light: {
-      background: '#f0fdf4',
-      foreground: '#22c55e',
-      gray: '#1e293b'
+      background: '#ffffff',
+      foreground: '#0077ff',
+      gray: '#6c757d',
+      text: '#212529',
+      border: '#dee2e6',
+      cardBg: '#f8f9fa'
     },
     dark: {
-      background: '#052e16',
-      foreground: '#4ade80',
-      gray: '#86efac'
+      background: '#212529',
+      foreground: '#0d6efd',
+      gray: '#adb5bd',
+      text: '#f8f9fa',
+      border: '#495057',
+      cardBg: '#343a40'
     }
   }
 }
