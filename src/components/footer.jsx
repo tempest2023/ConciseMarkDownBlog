@@ -8,10 +8,10 @@ import config from '../config';
 import styles from '../styles/footer.module.css';
 
 const Footer = () => {
-  const { social, email, resume_url, name, repo } = config;
+  const { social, email, resume_url: resumeUrl, name, repo } = config;
   const currentYear = new Date().getFullYear();
 
-  const hasSocialLinks = social?.github || social?.linkedin || email || resume_url;
+  const hasSocialLinks = social?.github || social?.linkedin || email || resumeUrl;
 
   if (!hasSocialLinks) {
     return null;
@@ -56,9 +56,9 @@ const Footer = () => {
             </a>
           )}
 
-          {resume_url && (
+          {resumeUrl && (
             <a
-              href={resume_url}
+              href={resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
               className={styles['social-link']}

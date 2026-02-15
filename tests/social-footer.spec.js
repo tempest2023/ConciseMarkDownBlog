@@ -15,8 +15,8 @@ test.describe('Social Footer', () => {
     const footer = page.locator('footer');
     await expect(footer).toBeVisible();
 
-    // Check for social links
-    const socialLinks = footer.locator('.social-links a');
+    // Check for social links using aria-label (not CSS classes which get hashed)
+    const socialLinks = footer.locator('a[aria-label]');
     const count = await socialLinks.count();
     expect(count).toBeGreaterThan(0);
   });
