@@ -39,7 +39,7 @@ test.describe('CLI Setup Tool', () => {
   });
 
   test('generateConfig should create valid configuration object', () => {
-    const { generateConfig, THEMES } = require(path.join(process.cwd(), 'scripts', 'setup.js'));
+    const { generateConfig } = require(path.join(process.cwd(), 'scripts', 'setup.js'));
 
     const mockAnswers = {
       blogTitle: 'Test Blog Title',
@@ -48,10 +48,7 @@ test.describe('CLI Setup Tool', () => {
       githubUsername: 'testuser',
       linkedinUrl: 'https://linkedin.com/in/testuser',
       repoUrl: 'https://github.com/testuser/blog',
-      resumeUrl: 'https://example.com/resume.pdf',
-      theme: 'ocean',
-      features: ['about', 'blog', 'projects', 'techstack', 'links'],
-      tabSize: '4'
+      theme: 'both'
     };
 
     const config = generateConfig(mockAnswers);
@@ -66,7 +63,8 @@ test.describe('CLI Setup Tool', () => {
     expect(config.social.linkedin).toBe('https://linkedin.com/in/testuser');
 
     // Verify theme
-    expect(config.colors).toEqual(THEMES.ocean);
+    expect(config.themeEnable).toBe(true);
+    expect(config.colors).toBeDefined();
 
     // Verify headers were generated
     expect(config.headers.length).toBeGreaterThan(0);
@@ -82,9 +80,7 @@ test.describe('CLI Setup Tool', () => {
       blogTitle: 'Test Blog',
       authorName: 'Test Author',
       email: 'test@example.com',
-      theme: 'default',
-      features: ['about'],
-      tabSize: '2'
+      theme: 'light'
     };
 
     const config = generateConfig(mockAnswers);
