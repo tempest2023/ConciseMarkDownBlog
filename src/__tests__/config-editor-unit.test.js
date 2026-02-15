@@ -8,7 +8,7 @@ import {
   formatObject,
   configToJsContent,
   generateConfigFromState
-} from '../components/config/configEditor';
+} from '../components/config/ConfigEditor';
 
 describe('Config Editor Utils', () => {
   describe('escapeString', () => {
