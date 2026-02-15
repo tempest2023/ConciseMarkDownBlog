@@ -26,7 +26,7 @@ export const useTheme = () => useContext(ThemeContext);
  */
 export const ThemeProvider = ({ children }) => {
   // Check if theme change is enabled in config
-  const themeEnabled = config.themeChange !== false;
+  const themeEnabled = config.themeEnable !== false;
 
   // Get initial theme from localStorage or default to light
   const getInitialTheme = useCallback(() => {

@@ -226,7 +226,7 @@ describe('CLI Setup Tool', () => {
       const config = generateConfig(mockAnswers);
       expect(config.debug).toBe(DEFAULT_CONFIG.debug);
       expect(config.markdown.enable).toBe(DEFAULT_CONFIG.markdown.enable);
-      expect(config.themeChange).toBe(DEFAULT_CONFIG.themeChange);
+      expect(config.themeEnable).toBe(DEFAULT_CONFIG.themeEnable);
     });
   });
 
@@ -331,7 +331,7 @@ describe('CLI Setup Tool', () => {
       expect(DEFAULT_CONFIG.default).toBeDefined();
       expect(DEFAULT_CONFIG.headers).toBeDefined();
       expect(DEFAULT_CONFIG.markdown).toBeDefined();
-      expect(DEFAULT_CONFIG.themeChange).toBeDefined();
+      expect(DEFAULT_CONFIG.themeEnable).toBeDefined();
       expect(DEFAULT_CONFIG.colors).toBeDefined();
     });
 

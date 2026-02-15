@@ -111,7 +111,7 @@ const config = {
     // the links in markdown does not have underlines, set it true to enable underline
     linkStyle: ${linkStyleStr}
   },
-  themeChange: ${configObj.themeChange},
+  themeEnable: ${configObj.themeEnable},
   colors: ${colorsStr}
 }
 
@@ -138,7 +138,7 @@ function getInitialFormState () {
     repoUrl: config.repo || '',
     resumeUrl: config.resume_url || '',
     debug: config.debug || false,
-    themeChange: config.themeChange !== false,
+    themeEnable: config.themeEnable !== false,
     // Preserve full headers array with type, customUrl, etc.
     headers,
     markdownEnable: config.markdown?.enable !== false,
@@ -192,7 +192,7 @@ export function generateConfigFromState (formState) {
         color: formState.markdownLinkColor
       }
     },
-    themeChange: formState.themeChange,
+    themeEnable: formState.themeEnable,
     // Include colors from form state
     colors: {
       light: {
@@ -496,8 +496,8 @@ const TabSettings = ({ formState, setFormState }) => (
         <label>
           <input
             type="checkbox"
-            checked={formState.themeChange}
-            onChange={() => setFormState(prev => ({ ...prev, themeChange: !prev.themeChange }))}
+            checked={formState.themeEnable}
+            onChange={() => setFormState(prev => ({ ...prev, themeEnable: !prev.themeEnable }))}
           />
           Enable Theme Switcher (Light/Dark mode toggle)
         </label>

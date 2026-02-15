@@ -19,12 +19,12 @@ test.describe('Config Editor - Settings', () => {
       await settingsTab.click();
 
       // Verify theme switcher checkbox exists
-      const themeChangeCheckbox = page.locator('input[type="checkbox"]').first();
-      await expect(themeChangeCheckbox).toBeVisible();
+      const themeEnableCheckbox = page.locator('input[type="checkbox"]').first();
+      await expect(themeEnableCheckbox).toBeVisible();
     }
   });
 
-  test('should persist themeChange setting in exported config', async ({ page }) => {
+  test('should persist themeEnable setting in exported config', async ({ page }) => {
     const hasEditor = await page.locator('.config-editor-container').isVisible().catch(() => false);
 
     if (hasEditor) {
@@ -33,10 +33,10 @@ test.describe('Config Editor - Settings', () => {
       await settingsTab.click();
 
       // Toggle theme change off (first checkbox)
-      const themeChangeCheckbox = page.locator('input[type="checkbox"]').first();
-      const isChecked = await themeChangeCheckbox.isChecked();
+      const themeEnableCheckbox = page.locator('input[type="checkbox"]').first();
+      const isChecked = await themeEnableCheckbox.isChecked();
       if (isChecked) {
-        await themeChangeCheckbox.click();
+        await themeEnableCheckbox.click();
       }
 
       // Export
@@ -46,8 +46,8 @@ test.describe('Config Editor - Settings', () => {
       const configPreview = page.locator('.export-preview pre');
       const configContent = await configPreview.textContent();
 
-      // Verify themeChange is false
-      expect(configContent).toContain('themeChange: false');
+      // Verify themeEnable is false
+      expect(configContent).toContain('themeEnable: false');
     }
   });
 
@@ -102,7 +102,7 @@ test.describe('Applied Theme', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    // Check if theme toggle exists (it's part of the blog UI when themeChange is enabled)
+    // Check if theme toggle exists (it's part of the blog UI when themeEnable is enabled)
     // The theme toggle is typically a button with an icon
     const themeToggle = page.locator('button, a').filter({ has: page.locator('i[class*="sun"], i[class*="moon"], i[class*="theme"]') });
 

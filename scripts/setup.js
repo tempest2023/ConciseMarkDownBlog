@@ -90,7 +90,7 @@ const DEFAULT_CONFIG = {
       color: '#0077ff'
     }
   },
-  themeChange: true,
+  themeEnable: true,
   colors: THEMES.default
 };
 
@@ -268,7 +268,7 @@ const config = {
     // the links in markdown does not have underlines, set it true to enable underline
     linkStyle: ${linkStyleStr}
   },
-  themeChange: ${config.themeChange},
+  themeEnable: ${config.themeEnable},
   colors: ${colorsStr}
 }
 

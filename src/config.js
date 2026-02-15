@@ -72,7 +72,8 @@ const config = {
       color: '#0077ff'
     }
   },
-  themeChange: true,
+  // show theme switch button in the header, default to true
+  themeEnable: true,
   colors: {
     light: {
       background: '#ffffff',

@@ -10,7 +10,7 @@ import config from '../config';
 
 // Mock config
 jest.mock('../config', () => ({
-  themeChange: true,
+  themeEnable: true,
   debug: false,
   colors: {
     light: {
@@ -163,19 +163,19 @@ describe('ThemeProvider', () => {
   });
 });
 
-describe('ThemeProvider with themeChange disabled', () => {
+describe('ThemeProvider with themeEnable disabled', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     localStorage.clear();
     // Override the mock to disable theme change
-    config.themeChange = false;
+    config.themeEnable = false;
   });
 
   afterEach(() => {
-    config.themeChange = true;
+    config.themeEnable = true;
   });
 
-  it('should show theme as disabled when themeChange is false', () => {
+  it('should show theme as disabled when themeEnable is false', () => {
     render(
       <ThemeProvider>
         <TestComponent />

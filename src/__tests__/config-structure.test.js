@@ -81,8 +81,8 @@ describe('Config Structure Validation', () => {
     expect(config.markdown.linkStyle.color).toBeDefined();
   });
 
-  it('should have themeChange boolean', () => {
-    expect(typeof config.themeChange).toBe('boolean');
+  it('should have themeEnable boolean', () => {
+    expect(typeof config.themeEnable).toBe('boolean');
   });
 
   it('should have colors object with light and dark', () => {
