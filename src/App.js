@@ -14,6 +14,7 @@ import ConfigEditor from './components/config/ConfigEditor';
 // import MarkDownEditor from './components/editor/SlashEditor';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ConfigButton from './components/ConfigButton';
 import { ThemeProvider, useTheme } from './components/ThemeProvider';
 import { getUrlParameters } from './util/url';
 import { compareLowerCase } from './util/str';
@@ -78,6 +79,7 @@ const AppContent = () => {
         {renderContent()}
       </div>
       <Footer />
+      <ConfigButton />
     </div>
   );
 };
