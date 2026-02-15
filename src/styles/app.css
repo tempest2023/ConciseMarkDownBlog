@@ -32,14 +32,13 @@ html, body, body > #root {
 }
 
 .page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  display: block;
   background-color: var(--bg-color, #ffffff);
   color: var(--text-color, #212529);
   width: 100%;
+  height: auto;
   box-sizing: border-box;
-  overflow-y: auto;
+  overflow-y: scroll;
   -ms-overflow-style: none;
   /* Disable scroll anchoring to prevent automatic scroll adjustments when layout changes */
   overflow-anchor: none;

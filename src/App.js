@@ -13,7 +13,6 @@ import MarkDownEditor from './components/editor/editor';
 import ConfigEditor from './components/config/configEditor';
 // import MarkDownEditor from './components/editor/slashEditor';
 import Header from './components/header';
-import Footer from './components/footer';
 import { ThemeProvider, useTheme } from './components/ThemeProvider';
 import { getUrlParameters } from './util/url';
 import { compareLowerCase } from './util/str';
@@ -77,7 +76,6 @@ const AppContent = () => {
       <div className='main-container'>
         {renderContent()}
       </div>
-      <Footer />
     </div>
   );
 };
