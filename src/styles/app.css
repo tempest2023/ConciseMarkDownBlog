@@ -17,11 +17,13 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(254, 178, 114, 0.7);
+  background: var(--accent-color, #0077ff);
+  opacity: 0.7;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(254, 178, 114);
+  background: var(--accent-color, #0077ff);
+  opacity: 1;
 }
 
 html, body, body > #root {
@@ -50,29 +52,89 @@ html, body, body > #root {
 .dark-theme {
   /* Override Bootstrap navbar for dark mode */
   .navbar.bg-light {
-    background-color: var(--bg-color, #212020) !important;
-    color: var(--text-color, #a9a9b3) !important;
-    border-bottom: 1px solid var(--border-color, #444);
+    background-color: var(--bg-color, #212529) !important;
+    color: var(--text-color, #f8f9fa) !important;
+    border-bottom: 1px solid var(--border-color, #495057);
   }
 
   .navbar-brand {
-    color: var(--accent-color, #feb272) !important;
+    color: var(--text-color, #f8f9fa) !important;
+  }
+
+  .navbar-brand:hover {
+    color: var(--accent-color, #0d6efd) !important;
   }
 
   .nav-link {
-    color: var(--text-color, #a9a9b3) !important;
+    color: var(--text-color, #f8f9fa) !important;
   }
 
   .nav-link:hover {
-    color: var(--accent-color, #feb272) !important;
+    color: var(--accent-color, #0d6efd) !important;
   }
 
   .navbar-toggler {
-    border-color: var(--border-color, #444);
+    border-color: var(--border-color, #495057);
   }
 
   .navbar-toggler-icon {
     filter: invert(1);
+  }
+
+  /* Links */
+  a {
+    color: var(--link-color, #6ea8fe);
+  }
+
+  a:hover {
+    color: var(--link-hover-color, #8bb9fe);
+  }
+
+  /* Form controls */
+  .form-control, .form-select {
+    background-color: var(--input-bg, #495057);
+    color: var(--text-color, #f8f9fa);
+    border-color: var(--border-color, #495057);
+  }
+
+  .form-control:focus, .form-select:focus {
+    background-color: var(--input-bg, #495057);
+    color: var(--text-color, #f8f9fa);
+    border-color: var(--accent-color, #0d6efd);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  }
+
+  /* Checkboxes */
+  .form-check-input {
+    background-color: var(--input-bg, #495057);
+    border-color: var(--border-color, #495057);
+  }
+
+  .form-check-input:checked {
+    background-color: var(--accent-color, #0d6efd);
+    border-color: var(--accent-color, #0d6efd);
+  }
+
+  /* Cards and blocks */
+  .card {
+    background-color: var(--card-bg, #343a40);
+    border-color: var(--border-color, #495057);
+  }
+
+  /* Code blocks */
+  pre, code {
+    background-color: var(--code-bg, #2d2d2d);
+    color: var(--text-color, #f8f9fa);
+  }
+
+  /* Images - apply brightness filter in dark mode */
+  img, svg {
+    filter: brightness(0.9) contrast(1.1);
+  }
+
+  /* Transparent images should not have filter */
+  img[src*=".png"], img[src*=".svg"] {
+    filter: brightness(0.95);
   }
 }
 

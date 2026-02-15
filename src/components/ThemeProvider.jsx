@@ -44,14 +44,24 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     const colors = isDark ? config.colors?.dark : config.colors?.light;
     if (colors) {
-      document.documentElement.style.setProperty('--bg-color', colors.background || '#ffffff');
-      document.documentElement.style.setProperty('--text-color', colors.gray || '#212529');
-      document.documentElement.style.setProperty('--accent-color', colors.foreground || '#feb272');
-      document.documentElement.style.setProperty('--heading-color', colors.gray || '#212529');
-      document.documentElement.style.setProperty('--muted-color', isDark ? '#a9a9b3' : '#6c757d');
-      document.documentElement.style.setProperty('--border-color', isDark ? '#444' : '#dee2e6');
+      // Main colors
+      document.documentElement.style.setProperty('--bg-color', colors.background || (isDark ? '#212529' : '#ffffff'));
+      document.documentElement.style.setProperty('--text-color', colors.text || (isDark ? '#f8f9fa' : '#212529'));
+      document.documentElement.style.setProperty('--accent-color', colors.foreground || '#0077ff');
+      document.documentElement.style.setProperty('--heading-color', colors.text || (isDark ? '#f8f9fa' : '#212529'));
+      document.documentElement.style.setProperty('--muted-color', colors.gray || (isDark ? '#adb5bd' : '#6c757d'));
+      document.documentElement.style.setProperty('--border-color', colors.border || (isDark ? '#495057' : '#dee2e6'));
+      document.documentElement.style.setProperty('--card-bg', colors.cardBg || (isDark ? '#343a40' : '#f8f9fa'));
       document.documentElement.style.setProperty('--code-bg', isDark ? '#2d2d2d' : '#f8f9fa');
-      document.documentElement.style.setProperty('--input-bg', isDark ? '#333' : '#ffffff');
+      document.documentElement.style.setProperty('--input-bg', isDark ? '#495057' : '#ffffff');
+      // Link colors
+      document.documentElement.style.setProperty('--link-color', isDark ? '#6ea8fe' : '#0d6efd');
+      document.documentElement.style.setProperty('--link-hover-color', isDark ? '#8bb9fe' : '#0a58ca');
+      // Button colors
+      document.documentElement.style.setProperty('--btn-primary-bg', colors.foreground || '#0d6efd');
+      document.documentElement.style.setProperty('--btn-secondary-bg', isDark ? '#495057' : '#6c757d');
+      // Secondary backgrounds for cards, blocks
+      document.documentElement.style.setProperty('--bg-secondary', colors.cardBg || (isDark ? '#343a40' : '#f8f9fa'));
     }
 
     // Apply dark class to body for CSS targeting

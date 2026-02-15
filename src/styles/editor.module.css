@@ -17,8 +17,9 @@
     margin: 1rem 0;
     padding: 0.5rem 1rem;
     border: none;
-    background-color: #FFF;
-    border-left: 4px solid #feb272;
+    background-color: var(--input-bg, #ffffff);
+    color: var(--text-color, #212529);
+    border-left: 4px solid var(--accent-color, #0077ff);
     resize: none;
     font: inherit;
 }
@@ -28,6 +29,8 @@
     overflow: hidden;
 }
 .preview-panel {
-    border-top: 4px solid #feb272;
+    border-top: 4px solid var(--accent-color, #0077ff);
     padding: 20px;
+    background-color: var(--bg-color, #ffffff);
+    color: var(--text-color, #212529);
 }

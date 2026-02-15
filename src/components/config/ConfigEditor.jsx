@@ -146,7 +146,14 @@ function getInitialFormState () {
     markdownRenderDelay: config.markdown?.renderDelay || 0,
     markdownTabSize: config.markdown?.tabSize || 2,
     markdownLinkUnderline: config.markdown?.linkStyle?.textDecoration === 'underline',
-    markdownLinkColor: config.markdown?.linkStyle?.color || '#0077ff'
+    markdownLinkColor: config.markdown?.linkStyle?.color || '#0077ff',
+    // Theme colors
+    lightBg: config.colors?.light?.background || '#ffffff',
+    lightAccent: config.colors?.light?.foreground || '#0077ff',
+    lightText: config.colors?.light?.text || '#212529',
+    darkBg: config.colors?.dark?.background || '#212529',
+    darkAccent: config.colors?.dark?.foreground || '#0d6efd',
+    darkText: config.colors?.dark?.text || '#f8f9fa'
   };
 }
 
@@ -186,10 +193,24 @@ export function generateConfigFromState (formState) {
       }
     },
     themeChange: formState.themeChange,
-    // Include colors from original config (preserved for components that use them)
-    colors: config.colors || {
-      light: { background: '#ffffff', foreground: '#feb272', gray: '#212529' },
-      dark: { background: '#212020', foreground: '#653208', gray: '#a9a9b3' }
+    // Include colors from form state
+    colors: {
+      light: {
+        background: formState.lightBg || '#ffffff',
+        foreground: formState.lightAccent || '#0077ff',
+        text: formState.lightText || '#212529',
+        gray: '#6c757d',
+        border: '#dee2e6',
+        cardBg: '#f8f9fa'
+      },
+      dark: {
+        background: formState.darkBg || '#212529',
+        foreground: formState.darkAccent || '#0d6efd',
+        text: formState.darkText || '#f8f9fa',
+        gray: '#adb5bd',
+        border: '#495057',
+        cardBg: '#343a40'
+      }
     }
   };
 }
@@ -545,6 +566,111 @@ const TabSettings = ({ formState, setFormState }) => (
         value={formState.markdownLinkColor}
         onChange={(e) => setFormState(prev => ({ ...prev, markdownLinkColor: e.target.value }))}
       />
+    </div>
+
+    <h3>Theme Colors</h3>
+    <p>Customize the colors for light and dark mode. Leave as default for standard white/dark theme.</p>
+
+    <div className={styles['color-section']}>
+      <h4>Light Mode</h4>
+      <div className={styles['color-grid']}>
+        <div className={styles['color-input']}>
+          <label htmlFor="lightBg">Background</label>
+          <input
+            type="color"
+            id="lightBg"
+            value={formState.lightBg || '#ffffff'}
+            onChange={(e) => setFormState(prev => ({ ...prev, lightBg: e.target.value }))}
+          />
+          <input
+            type="text"
+            value={formState.lightBg || '#ffffff'}
+            onChange={(e) => setFormState(prev => ({ ...prev, lightBg: e.target.value }))}
+            placeholder="#ffffff"
+          />
+        </div>
+        <div className={styles['color-input']}>
+          <label htmlFor="lightAccent">Accent</label>
+          <input
+            type="color"
+            id="lightAccent"
+            value={formState.lightAccent || '#0077ff'}
+            onChange={(e) => setFormState(prev => ({ ...prev, lightAccent: e.target.value }))}
+          />
+          <input
+            type="text"
+            value={formState.lightAccent || '#0077ff'}
+            onChange={(e) => setFormState(prev => ({ ...prev, lightAccent: e.target.value }))}
+            placeholder="#0077ff"
+          />
+        </div>
+        <div className={styles['color-input']}>
+          <label htmlFor="lightText">Text</label>
+          <input
+            type="color"
+            id="lightText"
+            value={formState.lightText || '#212529'}
+            onChange={(e) => setFormState(prev => ({ ...prev, lightText: e.target.value }))}
+          />
+          <input
+            type="text"
+            value={formState.lightText || '#212529'}
+            onChange={(e) => setFormState(prev => ({ ...prev, lightText: e.target.value }))}
+            placeholder="#212529"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div className={styles['color-section']}>
+      <h4>Dark Mode</h4>
+      <div className={styles['color-grid']}>
+        <div className={styles['color-input']}>
+          <label htmlFor="darkBg">Background</label>
+          <input
+            type="color"
+            id="darkBg"
+            value={formState.darkBg || '#212529'}
+            onChange={(e) => setFormState(prev => ({ ...prev, darkBg: e.target.value }))}
+          />
+          <input
+            type="text"
+            value={formState.darkBg || '#212529'}
+            onChange={(e) => setFormState(prev => ({ ...prev, darkBg: e.target.value }))}
+            placeholder="#212529"
+          />
+        </div>
+        <div className={styles['color-input']}>
+          <label htmlFor="darkAccent">Accent</label>
+          <input
+            type="color"
+            id="darkAccent"
+            value={formState.darkAccent || '#0d6efd'}
+            onChange={(e) => setFormState(prev => ({ ...prev, darkAccent: e.target.value }))}
+          />
+          <input
+            type="text"
+            value={formState.darkAccent || '#0d6efd'}
+            onChange={(e) => setFormState(prev => ({ ...prev, darkAccent: e.target.value }))}
+            placeholder="#0d6efd"
+          />
+        </div>
+        <div className={styles['color-input']}>
+          <label htmlFor="darkText">Text</label>
+          <input
+            type="color"
+            id="darkText"
+            value={formState.darkText || '#f8f9fa'}
+            onChange={(e) => setFormState(prev => ({ ...prev, darkText: e.target.value }))}
+          />
+          <input
+            type="text"
+            value={formState.darkText || '#f8f9fa'}
+            onChange={(e) => setFormState(prev => ({ ...prev, darkText: e.target.value }))}
+            placeholder="#f8f9fa"
+          />
+        </div>
+      </div>
     </div>
   </div>
 );
