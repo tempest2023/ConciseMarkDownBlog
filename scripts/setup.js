@@ -159,19 +159,20 @@ function generateConfig(answers) {
     config.readmeUrl = `${answers.repoUrl}/blob/main/README.md`;
   }
 
-  // Resume
-  if (answers.resumeUrl) {
-    config.resume_url = answers.resumeUrl;
-  }
+  // Theme configuration
+  config.themeEnable = answers.theme === 'both';
+  config.colors = answers.theme === 'dark' ? {
+    light: THEMES.default.dark,
+    dark: THEMES.default.dark
+  } : THEMES.default;
 
-  // Theme
-  config.colors = THEMES[answers.theme] || THEMES.default;
-
-  // Headers based on user selection
-  config.headers = generateHeaders(answers.features);
-
-  // Markdown editor settings
-  config.markdown.tabSize = parseInt(answers.tabSize, 10) || 2;
+  // Default headers
+  config.headers = [
+    { title: 'About', type: 'article' },
+    { title: 'Blog', type: 'article' },
+    { title: 'Projects', type: 'article' },
+    { title: 'MarkDown', type: 'article' }
+  ];
 
   return config;
 }
@@ -278,14 +279,11 @@ export default config;
 
 /**
  * Creates sample articles if they don't exist
- * @param {string[]} features - Selected features
  * @param {string} articlesDir - Articles directory path
  */
-function createSampleArticles(features, articlesDir) {
-  const samples = [];
-
-  if (features.includes('about')) {
-    samples.push({
+function createSampleArticles(articlesDir) {
+  const samples = [
+    {
       filename: 'About.md',
       content: `# About Me
 
@@ -303,11 +301,8 @@ Describe your work, interests, and passions.
 
 Feel free to reach out to me!
 `
-    });
-  }
-
-  if (features.includes('blog')) {
-    samples.push({
+    },
+    {
       filename: 'Blog.md',
       content: `# Blog
 
@@ -319,11 +314,8 @@ Welcome to my blog section!
 
 Stay tuned for more content.
 `
-    });
-  }
-
-  if (features.includes('projects')) {
-    samples.push({
+    },
+    {
       filename: 'Projects/Project.md',
       content: `# Projects
 
@@ -339,54 +331,8 @@ Description of your project.
 - **GitHub:** [Link to repo]
 - **Live Demo:** [Link to demo]
 `
-    });
-  }
-
-  if (features.includes('techstack')) {
-    samples.push({
-      filename: 'TechStack.md',
-      content: `# Tech Stack
-
-These are the technologies I work with.
-
-## Frontend
-
-- React
-- TypeScript
-- CSS/SCSS
-
-## Backend
-
-- Node.js
-- Python
-
-## Tools
-
-- Git
-- VS Code
-- Docker
-`
-    });
-  }
-
-  if (features.includes('links')) {
-    samples.push({
-      filename: 'Links.md',
-      content: `# Links
-
-## My Profiles
-
-- [GitHub](https://github.com)
-- [LinkedIn](https://linkedin.com)
-- [Twitter](https://twitter.com)
-
-## Resources
-
-- [Markdown Guide](https://www.markdownguide.org/)
-- [React Documentation](https://react.dev/)
-`
-    });
-  }
+    }
+  ];
 
   samples.forEach(({ filename, content }) => {
     const filePath = path.join(articlesDir, filename);
@@ -411,7 +357,9 @@ These are the technologies I work with.
  */
 async function runSetup() {
   console.log('\n🚀 Welcome to ConciseMarkDownBlog Setup!\n');
-  console.log('This wizard will help you configure your new blog.\n');
+  console.log('This wizard will help you quickly configure your new blog.\n');
+  console.log('For advanced configuration (colors, headers, markdown settings),\n');
+  console.log('you can use the GUI config editor after setup.\n');
 
   const questions = [
     {
@@ -451,47 +399,15 @@ async function runSetup() {
       hint: 'e.g., https://github.com/username/repo'
     },
     {
-      type: 'text',
-      name: 'resumeUrl',
-      message: 'Do you have a resume/CV URL? (optional)',
-      validate: (value) => validateUrl(value) || 'Please enter a valid URL'
-    },
-    {
       type: 'select',
       name: 'theme',
-      message: 'Choose a theme preset:',
+      message: 'Choose a theme preference:',
       choices: [
-        { title: 'Default (Warm Orange)', value: 'default' },
-        { title: 'Ocean (Blue)', value: 'ocean' },
-        { title: 'Forest (Green)', value: 'forest' },
-        { title: 'Berry (Pink)', value: 'berry' }
+        { title: 'Light', value: 'light' },
+        { title: 'Dark', value: 'dark' },
+        { title: 'Both (with toggle)', value: 'both' }
       ],
-      initial: 0
-    },
-    {
-      type: 'multiselect',
-      name: 'features',
-      message: 'Which pages do you want to include?',
-      choices: [
-        { title: 'About', value: 'about', selected: true },
-        { title: 'Blog', value: 'blog', selected: true },
-        { title: 'Projects', value: 'projects', selected: true },
-        { title: 'Tech Stack', value: 'techstack' },
-        { title: 'Links', value: 'links' },
-        { title: 'Resume Link', value: 'resume' }
-      ],
-      hint: 'Use space to select, enter to confirm',
-      min: 1
-    },
-    {
-      type: 'select',
-      name: 'tabSize',
-      message: 'Choose tab size for markdown editor:',
-      choices: [
-        { title: '2 spaces', value: '2' },
-        { title: '4 spaces', value: '4' }
-      ],
-      initial: 0
+      initial: 2
     }
   ];
 
@@ -516,13 +432,20 @@ async function runSetup() {
   // Create sample articles
   console.log('\n📝 Creating sample articles...');
   const articlesDir = path.join(process.cwd(), 'src', 'articles');
-  createSampleArticles(answers.features, articlesDir);
+  createSampleArticles(articlesDir);
 
   console.log('\n✅ Setup complete!\n');
   console.log('Next steps:');
   console.log('  1. Run "npm start" to preview your blog locally');
-  console.log('  2. Edit files in src/articles/ to add your content');
-  console.log('  3. Deploy using GitHub Pages or Vercel\n');
+  console.log('  2. Open http://localhost:3000/?page=config for GUI config editor');
+  console.log('     (You can customize colors, headers, markdown settings there)');
+  console.log('  3. Edit files in src/articles/ to add your content');
+  console.log('  4. Deploy using GitHub Pages or Vercel\n');
+  console.log('💡 Tip: Use the GUI config editor to:');
+  console.log('     - Customize theme colors');
+  console.log('     - Add/remove navigation headers');
+  console.log('     - Configure markdown editor settings');
+  console.log('     - Add social links and resume URL\n');
 
   return {
     success: true,
