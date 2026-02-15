@@ -354,7 +354,7 @@ const TabHeaders = ({ formState, setFormState }) => {
       <h2>Navigation Headers</h2>
       <p>Configure the navigation menu items. Each header represents a page or link in your blog.</p>
 
-      <div className={styles['help-section']}>
+      <div className={styles['help-section']} data-testid="headers-help-section">
         <h4>How Headers Work</h4>
         <ul>
           <li><strong>Article headers</strong> load markdown files from <code>src/articles/</code></li>
@@ -432,7 +432,7 @@ const TabHeaders = ({ formState, setFormState }) => {
         ))}
       </div>
 
-      <div className={styles['add-header-form']}>
+      <div className={styles['add-header-form']} data-testid="add-header-form">
         <h4>Add New Header</h4>
         <div className={styles['form-row']}>
           <input
@@ -440,10 +440,12 @@ const TabHeaders = ({ formState, setFormState }) => {
             value={newHeader.title}
             onChange={(e) => setNewHeader(prev => ({ ...prev, title: e.target.value }))}
             placeholder="Header title (e.g., Projects)"
+            data-testid="new-header-title"
           />
           <select
             value={newHeader.type}
             onChange={(e) => setNewHeader(prev => ({ ...prev, type: e.target.value }))}
+            data-testid="new-header-type"
           >
             <option value="article">Article</option>
             <option value="link">External Link</option>
@@ -454,8 +456,9 @@ const TabHeaders = ({ formState, setFormState }) => {
           value={newHeader.customUrl}
           onChange={(e) => setNewHeader(prev => ({ ...prev, customUrl: e.target.value }))}
           placeholder={newHeader.type === 'article' ? 'Custom path (optional, e.g., Projects/Project)' : 'Full URL (https://...)'}
+          data-testid="new-header-customurl"
         />
-        <button onClick={addHeader} className={styles['btn-secondary']}>
+        <button onClick={addHeader} className={styles['btn-secondary']} data-testid="add-header-button">
           Add Header
         </button>
       </div>
@@ -577,16 +580,16 @@ function ExportModal ({ configContent, onClose, onDownload, onCopy }) {
   };
 
   return (
-    <div className={styles.modal} onClick={onClose}>
+    <div className={styles.modal} onClick={onClose} data-testid="export-modal">
       <div className={styles['modal-content']} onClick={(e) => e.stopPropagation()}>
         <div className={styles['modal-header']}>
           <h2>Export Configuration</h2>
-          <button className={styles['modal-close']} onClick={onClose}>
+          <button className={styles['modal-close']} onClick={onClose} data-testid="modal-close">
             &times;
           </button>
         </div>
         <div className={styles['modal-body']}>
-          <div className={styles['export-info']}>
+          <div className={styles['export-info']} data-testid="export-info">
             <p><strong>After exporting:</strong></p>
             <ol>
               <li>Copy the config below or download the file</li>
@@ -667,7 +670,7 @@ export default function ConfigEditor () {
 
   if (hasAccess === null) {
     return (
-      <div className={styles.loading}>
+      <div className={styles.loading} data-testid="config-loading">
         <p>Checking access...</p>
       </div>
     );
@@ -675,7 +678,7 @@ export default function ConfigEditor () {
 
   if (!hasAccess) {
     return (
-      <div className={styles['access-denied']}>
+      <div className={styles['access-denied']} data-testid="access-denied">
         <div className={styles['access-denied-content']}>
           <h1>Access Denied</h1>
           <p>
@@ -700,7 +703,7 @@ export default function ConfigEditor () {
   const ActiveComponent = tabs.find(t => t.id === activeTab)?.component || TabGeneral;
 
   return (
-    <div className={styles['config-editor-container']}>
+    <div className={styles['config-editor-container']} data-testid="config-editor-container">
       <div className={styles['config-editor-header']}>
         <h1>Blog Configuration</h1>
         <p>Edit your blog settings. Changes will be exported as a config.js file.</p>
