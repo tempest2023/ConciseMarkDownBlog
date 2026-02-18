@@ -28,9 +28,9 @@ const FlipButton = ({ init = false, openElement, closeElement, size = 'normal', 
   return (
   <div className={buttonCSS.join(' ')}>
     <input type="checkbox" id="c2" />
-    <div className='flip-bg' onClick={onButtonClick}>
+    <div className="flip-bg" onClick={onButtonClick}>
       {open && <label className="before">{openElement}</label>}
-      {!open && <label className='after'>{closeElement}</label>}
+      {!open && <label className="after">{closeElement}</label>}
     </div>
   </div>
   )

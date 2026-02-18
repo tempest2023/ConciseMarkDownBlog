@@ -8,12 +8,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import config from './config';
-import Article from './components/article';
-import MarkDownEditor from './components/editor/editor';
-import ConfigEditor from './components/config/configEditor';
-// import MarkDownEditor from './components/editor/slashEditor';
-import Header from './components/header';
-import Footer from './components/footer';
+import Article from './components/Article';
+import MarkDownEditor from './components/editor/Editor';
+import ConfigEditor from './components/config/ConfigEditor';
+// import MarkDownEditor from './components/editor/SlashEditor';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import { ThemeProvider, useTheme } from './components/ThemeProvider';
 import { getUrlParameters } from './util/url';
 import { compareLowerCase } from './util/str';
@@ -74,7 +74,7 @@ const AppContent = () => {
   return (
     <div className={`page ${isDark ? 'dark-theme' : 'light-theme'}`}>
       <Header />
-      <div className='main-container'>
+      <div className="main-container">
         {renderContent()}
       </div>
       <Footer />

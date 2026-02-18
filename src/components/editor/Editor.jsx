@@ -9,8 +9,8 @@
 import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import MarkdownTextarea from './markDownTextarea';
-import MarkDownPreview from './markDownPreview';
+import MarkdownTextarea from './MarkDownTextarea';
+import MarkDownPreview from './MarkDownPreview';
 import config from '../../config';
 import introfile from '../../articles/markdown_intro.md'; // introduction of how to use markdown
 
@@ -198,15 +198,15 @@ export default function MarkDownEditor () {
 
   return (
     <div className="container-md">
-      <div className='row align-items-start'>
-        <div className='col-6'>
+      <div className="row align-items-start">
+        <div className="col-6">
           <MarkdownTextarea
             placeholder="Write your markdown content here."
             deafultValue={deafultValue}
             updatePreview={updatePreview}
           />
         </div>
-        <div className='col-6'>
+        <div className="col-6">
           <MarkDownPreview markdownString={markdownString} loading={triggerLoading} />
         </div>
       </div>

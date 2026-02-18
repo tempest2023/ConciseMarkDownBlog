@@ -11,10 +11,10 @@ import PropTypes from 'prop-types';
 import config from '../config';
 import { useDispatch, useSelector } from 'react-redux';
 import { navigate, goBack, selectPage, selectFilePath } from '../util/store'
-import MarkDownPreview from './editor/markDownPreview';
+import MarkDownPreview from './editor/MarkDownPreview';
 import FlipButton from './FlipButton';
-import MarkdownTextarea from './editor/markDownTextarea';
-import ColorLoading from './colorLoading';
+import MarkdownTextarea from './editor/MarkDownTextarea';
+import ColorLoading from './ColorLoading';
 import NotFound from '../articles/404.md';
 import { codeIcon, paragraphIcon } from '../util/icons';
 
@@ -92,7 +92,7 @@ const Article = () => {
   }, [filePath])
 
   return (
-    <div className='container'>
+    <div className="container">
       {filePath
         ? (
           <div>
