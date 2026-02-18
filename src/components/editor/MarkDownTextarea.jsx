@@ -144,7 +144,7 @@ export default function MarkdownTextarea ({
       {showHeader && <h1>Markdown Editor</h1>}
       <textarea
         className={styles['fancy-textarea']}
-        id='fancy-markdown-textarea'
+        id="fancy-markdown-textarea"
         onKeyDown={onKeyDown}
         onInput={handleInput}
         defaultValue={deafultValue}

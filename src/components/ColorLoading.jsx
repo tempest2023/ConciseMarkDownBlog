@@ -7,15 +7,15 @@ const ColorLoading = () => {
   const spinnerColor = config.colors?.light?.foreground || defaultColor;
 
   return (
-    <div className='col-6 offset-3 text-center'>
+    <div className="col-6 offset-3 text-center">
       <div
-        className='spinner-border'
+        className="spinner-border"
         style={{
           color: spinnerColor,
         }}
-        role='status'
+        role="status"
       >
-        <span className='sr-only'></span>
+        <span className="sr-only"></span>
       </div>
     </div>
   );

@@ -74,7 +74,7 @@ const AppContent = () => {
   return (
     <div className={`page ${isDark ? 'dark-theme' : 'light-theme'}`}>
       <Header />
-      <div className='main-container'>
+      <div className="main-container">
         {renderContent()}
       </div>
       <Footer />

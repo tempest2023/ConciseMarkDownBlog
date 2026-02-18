@@ -198,15 +198,15 @@ export default function MarkDownEditor () {
 
   return (
     <div className="container-md">
-      <div className='row align-items-start'>
-        <div className='col-6'>
+      <div className="row align-items-start">
+        <div className="col-6">
           <MarkdownTextarea
             placeholder="Write your markdown content here."
             deafultValue={deafultValue}
             updatePreview={updatePreview}
           />
         </div>
-        <div className='col-6'>
+        <div className="col-6">
           <MarkDownPreview markdownString={markdownString} loading={triggerLoading} />
         </div>
       </div>

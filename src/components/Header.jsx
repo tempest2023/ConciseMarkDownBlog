@@ -34,7 +34,7 @@ const Header = () => {
       headerLinks.push(
         <li className={styles['header-link-wrapper']} key={`navbar-link-${item.title}`}>
           <a
-            className='nav-link'
+            className="nav-link"
             data-active={compareLowerCase(item.title, page) || compareLowerCase(item.customUrl, page) ? 'active' : ''}
             onClick={() => pageUpdate(item)}
           >
@@ -52,25 +52,25 @@ const Header = () => {
   }, [page]);
 
   return (
-    <nav className='navbar navbar-expand-lg bg-light'>
-      <div className='container-fluid'>
-        <a className='navbar-brand' href='/'>
+    <nav className="navbar navbar-expand-lg bg-light">
+      <div className="container-fluid">
+        <a className="navbar-brand" href="/">
           {config.title || 'Tempest'}
         </a>
         <button
-          className='navbar-toggler'
-          type='button'
-          data-bs-toggle='collapse'
-          data-bs-target='#navbarNav'
-          aria-controls='navbarNav'
-          aria-expanded='false'
-          aria-label='Toggle navigation'
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-          <span className='navbar-toggler-icon'></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
         {headerLinks.length > 0 && (
-          <div className='collapse navbar-collapse' id='navbarNav' style={{ justifyContent: 'flex-end' }}>
-            <ul className='navbar-nav'>{headerLinks}</ul>
+          <div className="collapse navbar-collapse" id="navbarNav" style={{ justifyContent: 'flex-end' }}>
+            <ul className="navbar-nav">{headerLinks}</ul>
           </div>
         )}
         {themeEnabled && (

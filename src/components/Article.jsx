@@ -92,7 +92,7 @@ const Article = () => {
   }, [filePath])
 
   return (
-    <div className='container'>
+    <div className="container">
       {filePath
         ? (
           <div>
