@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.ce5580b7.css",
-    "main.js": "./static/js/main.cb6b0285.js",
+    "main.css": "./static/css/main.80dc4f06.css",
+    "main.js": "./static/js/main.e13cf00b.js",
     "static/js/358.b773cd29.chunk.js": "./static/js/358.b773cd29.chunk.js",
     "resources/src/articles/Blogs/JavaScript/images/maximum_call_stack_size_exceeded.png": "./resources/src/articles/Blogs/JavaScript/images/maximum_call_stack_size_exceeded.png",
     "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
@@ -110,12 +110,12 @@
     "index.html": "./index.html",
     "static/media/Use_Python_to_print_colorfully.md": "./static/media/Use_Python_to_print_colorfully.176d497a840ff936695b.md",
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
-    "main.ce5580b7.css.map": "./static/css/main.ce5580b7.css.map",
-    "main.cb6b0285.js.map": "./static/js/main.cb6b0285.js.map",
+    "main.80dc4f06.css.map": "./static/css/main.80dc4f06.css.map",
+    "main.e13cf00b.js.map": "./static/js/main.e13cf00b.js.map",
     "358.b773cd29.chunk.js.map": "./static/js/358.b773cd29.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ce5580b7.css",
-    "static/js/main.cb6b0285.js"
+    "static/css/main.80dc4f06.css",
+    "static/js/main.e13cf00b.js"
   ]
 }
