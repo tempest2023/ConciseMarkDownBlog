@@ -74,6 +74,8 @@ const config = {
   },
   // show theme switch button in the header, default to true
   themeEnable: true,
+  // show footer with social links and copyright, default to true
+  footer: true,
   colors: {
     light: {
       background: '#ffffff',

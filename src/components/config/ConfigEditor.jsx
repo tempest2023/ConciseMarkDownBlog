@@ -139,6 +139,7 @@ function getInitialFormState () {
     resumeUrl: config.resume_url || '',
     debug: config.debug || false,
     themeEnable: config.themeEnable !== false,
+    footer: config.footer !== false,
     // Preserve full headers array with type, customUrl, etc.
     headers,
     markdownEnable: config.markdown?.enable !== false,
@@ -193,6 +194,7 @@ export function generateConfigFromState (formState) {
       }
     },
     themeEnable: formState.themeEnable,
+    footer: formState.footer,
     // Include colors from form state
     colors: {
       light: {
@@ -500,6 +502,19 @@ const TabSettings = ({ formState, setFormState }) => (
             onChange={() => setFormState(prev => ({ ...prev, themeEnable: !prev.themeEnable }))}
           />
           Enable Theme Switcher (Light/Dark mode toggle)
+        </label>
+      </div>
+    </div>
+
+    <div className={styles['form-group']}>
+      <div className={styles['checkbox-group']}>
+        <label>
+          <input
+            type="checkbox"
+            checked={formState.footer}
+            onChange={() => setFormState(prev => ({ ...prev, footer: !prev.footer }))}
+          />
+          Show Footer (Social links and copyright)
         </label>
       </div>
     </div>

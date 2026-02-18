@@ -79,6 +79,7 @@ const config = {
 | Option | Type | Description |
 |--------|------|-------------|
 | `themeEnable` | boolean | Enable/disable theme toggle button |
+| `footer` | boolean | Show/hide footer with social links |
 | `markdown.enable` | boolean | Enable/disable built-in markdown editor |
 | `markdown.tabSize` | number | Tab size for editor (2 or 4) |
 | `markdown.renderDelay` | number | Delay before preview updates (ms) |

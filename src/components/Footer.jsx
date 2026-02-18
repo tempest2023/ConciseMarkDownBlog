@@ -8,8 +8,13 @@ import config from '../config';
 import styles from '../styles/footer.module.css';
 
 const Footer = () => {
-  const { social, email, resume_url: resumeUrl, name, repo } = config;
+  const { social, email, resume_url: resumeUrl, name, repo, footer } = config;
   const currentYear = new Date().getFullYear();
+
+  // Allow hiding footer via config.footer = false
+  if (footer === false) {
+    return null;
+  }
 
   const hasSocialLinks = social?.github || social?.linkedin || email || resumeUrl;
 
