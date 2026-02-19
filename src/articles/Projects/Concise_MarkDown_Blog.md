@@ -375,4 +375,4 @@ Thanks! ❤️
 [paypal-donations]: https://www.paypal.com/paypalme/TaoTempest
 [license]: /LICENSE
 [contributing]: https://github.com/623059008/ConciseMarkDownBlog/blob/main/CONTRIBUTING.md
-[website]: https://blog.epicanecdotes.games/
+[website]: https://tempest.fun/

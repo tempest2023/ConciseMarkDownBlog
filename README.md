@@ -123,7 +123,7 @@ npm run test:e2e
 
 ## 📜 License
 
-[MIT](LICENSE) © [Tempest](https://blog.epicanecdotes.games/)
+[MIT](LICENSE) © [Tempest](https://tempest.fun/)
 
 [badge_paypal_donate]: https://ionicabizau.github.io/badges/paypal_donate.svg
 [paypal-donations]: https://www.paypal.com/paypalme/TaoTempest

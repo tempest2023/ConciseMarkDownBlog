@@ -4,7 +4,7 @@ Tel: +1 412-983-9571
 
 Email: tar118@pitt.edu
 
-Website: https://blog.epicanecdotes.games
+Website: https://tempest.fun
 	 
 ### SKILLS
 Language: JavaScript/TypeScript, Node.js, Python, C++, C#, PHP, Java, Rust, HTML5, CSS3/Less, SQL
