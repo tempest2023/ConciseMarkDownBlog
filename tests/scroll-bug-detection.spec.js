@@ -11,7 +11,7 @@ test.describe('Scroll Jump Bug Detection', () => {
     await page.waitForTimeout(1000);
   });
 
-  test('BUG: Scroll jumps to top on every keystroke', async ({ page }) => {
+  test('Scroll jumps to top on every keystroke', async ({ page }) => {
     // Enter edit mode
     const flipButton = page.locator('.flip-switch, [class*="flip"]').first();
     await expect(flipButton).toBeVisible({ timeout: 5000 });
@@ -122,7 +122,7 @@ test.describe('Scroll Jump Bug Detection', () => {
     ).toBe(0);
   });
 
-  test('BUG: Scroll position oscillates rapidly', async ({ page }) => {
+  test('Scroll position oscillates rapidly', async ({ page }) => {
     const flipButton = page.locator('.flip-switch, [class*="flip"]').first();
     await expect(flipButton).toBeVisible({ timeout: 5000 });
     await flipButton.click();
@@ -201,7 +201,7 @@ test.describe('Scroll Jump Bug Detection', () => {
     ).toBeLessThanOrEqual(3); // Allow up to 3 for normal adjustments
   });
 
-  test('BUG: Min scroll position should not go to top', async ({ page }) => {
+  test('Scroll should not visit near-top region during typing', async ({ page }) => {
     const flipButton = page.locator('.flip-switch, [class*="flip"]').first();
     await expect(flipButton).toBeVisible({ timeout: 5000 });
     await flipButton.click();
@@ -210,66 +210,83 @@ test.describe('Scroll Jump Bug Detection', () => {
     const textarea = page.locator('#fancy-markdown-textarea');
     await expect(textarea).toBeVisible();
 
-    // Create content and scroll to middle-bottom
+    // Create long content
     await textarea.fill('# Long Document\n\n' + 'Content line here.\n'.repeat(70));
     await page.waitForTimeout(500);
 
+    // Scroll to bottom area
     const initialScroll = await page.evaluate(() => {
-      window.scrollTo(0, document.body.scrollHeight * 0.8);
+      window.scrollTo(0, document.body.scrollHeight);
       return window.scrollY;
     });
     await page.waitForTimeout(300);
 
     console.log(`Initial scroll: ${initialScroll}`);
 
-    // Track minimum scroll position during typing
+    // Track if scroll ever visits near-top (y < 300) using high-frequency sampling
     await page.evaluate(() => {
-      window.__minScroll = {
-        minY: window.scrollY,
-        samples: []
+      window.__topCheck = {
+        nearTopVisits: 0,
+        samplesNearTop: [],
+        allSamples: []
       };
 
-      window.__minInterval = setInterval(() => {
+      // Use multiple samples per frame for better accuracy
+      window.__topInterval = setInterval(() => {
         const y = window.scrollY;
-        window.__minScroll.samples.push(y);
-        if (y < window.__minScroll.minY) {
-          window.__minScroll.minY = y;
-        }
-      }, 16);
+        const now = Date.now();
 
-      setTimeout(() => clearInterval(window.__minInterval), 10000);
+        window.__topCheck.allSamples.push({ y, t: now });
+
+        // Detect if we're near top (within 300px)
+        if (y < 300) {
+          window.__topCheck.nearTopVisits++;
+          window.__topCheck.samplesNearTop.push({ y, t: now });
+        }
+      }, 8); // 125fps for better accuracy
+
+      setTimeout(() => clearInterval(window.__topInterval), 10000);
     });
 
-    // Type multiple lines
+    // Type at the bottom
     await textarea.focus();
     await textarea.press('End');
 
-    const lines = ['\nLine 1', '\nLine 2', '\nLine 3', '\nLine 4', '\nLine 5'];
-    for (const line of lines) {
-      for (const char of line) {
-        await textarea.press(char);
-        await page.waitForTimeout(30);
-      }
+    // Type multiple characters to trigger the bug
+    for (let i = 0; i < 25; i++) {
+      await textarea.press('x');
+      await page.waitForTimeout(25);
     }
 
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(300);
 
     await page.evaluate(() => {
-      if (window.__minInterval) clearInterval(window.__minInterval);
+      if (window.__topInterval) clearInterval(window.__topInterval);
     });
 
-    const minData = await page.evaluate(() => window.__minScroll);
+    const topData = await page.evaluate(() => window.__topCheck);
 
-    console.log(`\n=== MIN SCROLL DETECTION ===`);
+    console.log(`\n=== NEAR-TOP DETECTION ===`);
     console.log(`Initial scroll: ${initialScroll}`);
-    console.log(`Min scroll during typing: ${minData.minY}`);
-    console.log(`Drop amount: ${initialScroll - minData.minY}px`);
+    console.log(`Near-top visits (<300px): ${topData.nearTopVisits}`);
+    console.log(`Total samples: ${topData.allSamples.length}`);
 
-    // If min scroll went to near top (y < 300), that's the bug
+    if (topData.samplesNearTop.length > 0) {
+      console.log('Near-top samples:', JSON.stringify(topData.samplesNearTop.slice(0, 5), null, 2));
+    }
+
+    // Show scroll range
+    if (topData.allSamples.length > 0) {
+      const ys = topData.allSamples.map(s => s.y);
+      console.log(`Min Y sampled: ${Math.min(...ys)}, Max Y sampled: ${Math.max(...ys)}`);
+    }
+
+    // If we ever visited near-top while typing at bottom, that's the bug
     expect(
-      minData.minY,
-      `BUG DETECTED: Scroll dropped to Y=${minData.minY} during typing. ` +
-      `Started at Y=${initialScroll}. Scroll should not visit top of page.`
-    ).toBeGreaterThan(300);
+      topData.nearTopVisits,
+      `BUG DETECTED: Scroll visited near-top region ${topData.nearTopVisits} times while typing at bottom. ` +
+      `Scroll should stay near cursor position (Y~${initialScroll}), not jump to top. ` +
+      `Near-top samples: ${JSON.stringify(topData.samplesNearTop)}`
+    ).toBe(0);
   });
 });
