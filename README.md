@@ -22,11 +22,18 @@ Build your own blog in 5 minutes with Markdown. No server needed. Free hosting.
 
 ### 1. Create Your Blog
 
-**Option A: Use Template (Recommended)**
+**Option A: Use Template Branch (Recommended)**
 
-Click **[Use this template](https://github.com/623059008/ConciseMarkDownBlog/generate)** to create your own repository.
+Clone the `template` branch which comes with clean tutorial content instead of personal blog posts:
 
-**Option B: Clone**
+```bash
+git clone -b template https://github.com/623059008/ConciseMarkDownBlog.git my-blog
+cd my-blog
+git checkout -b main
+git push -u origin main
+```
+
+**Option B: Clone Main**
 
 ```bash
 git clone https://github.com/623059008/ConciseMarkDownBlog.git my-blog
