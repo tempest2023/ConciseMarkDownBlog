@@ -1,42 +1,27 @@
 # Concise MarkDown Blog
 
-[![PayPal][badge_paypal_donate]][paypal-donations]
-
-<a href="https://www.buymeacoffee.com/tempes666" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee"></a>
-
 ![demo](./demo.png)
 
 Build your own blog in 5 minutes with Markdown. No server needed. Free hosting.
 
-## ✨ Features
+## Features
 
-- 📝 **Write in Markdown** - Focus on content, not code
-- 🎨 **Customizable Themes** - Light/dark mode with color presets
-- ⚙️ **TUI Setup Wizard** - Interactive CLI for quick configuration
-- 🖥️ **GUI Config Editor** - Visual editor for settings (local only)
-- 🚀 **One-Click Deploy** - Deploy to GitHub Pages or Vercel instantly
-- 📱 **Mobile Responsive** - Works on all devices
-- 🆓 **Completely Free** - No hosting costs
+- Write in Markdown — focus on content, not code
+- Customizable themes — light/dark mode with color presets
+- TUI Setup Wizard — interactive CLI for quick configuration
+- GUI Config Editor — visual editor for settings (local only)
+- One-click deploy — GitHub Pages or Vercel
+- Mobile responsive
+- Completely free
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Create Your Blog
 
-**Option A: Use Template Branch (Recommended)**
-
-Clone the `template` branch which comes with clean tutorial content instead of personal blog posts:
+Click **"Use this template"** on GitHub to create your own repository, or clone directly:
 
 ```bash
-git clone -b template https://github.com/623059008/ConciseMarkDownBlog.git my-blog
-cd my-blog
-git checkout -b main
-git push -u origin main
-```
-
-**Option B: Clone Main**
-
-```bash
-git clone https://github.com/623059008/ConciseMarkDownBlog.git my-blog
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git my-blog
 cd my-blog
 ```
 
@@ -58,15 +43,19 @@ npm start
 
 **Or edit manually:** [`src/config.js`](./src/config.js)
 
-### 3. Add Content
+### 3. Replace Tutorial Content
 
-Create markdown files in [`src/articles/`](./src/articles/):
+This template comes with tutorial pages that teach you how to use the blog. Replace them with your own content:
 
-```bash
-echo "# Hello World\n\nMy first post!" > src/articles/Hello.md
-```
+| File | Purpose |
+|------|---------|
+| `src/articles/About.md` | Your about page |
+| `src/articles/Blog.md` | Blog post index with links to posts |
+| `src/articles/Projects/Project.md` | Your project showcase |
+| `src/articles/Blogs/` | Your blog posts, organized in folders |
+| `src/config.js` | Blog title, name, social links, navigation |
 
-Update `headers` in config to add navigation.
+Check out `src/articles/Blogs/GettingStarted/MyFirstPost.md` for a sample blog post demonstrating all supported Markdown features.
 
 ### 4. Deploy
 
@@ -78,7 +67,7 @@ git commit -m "Initial blog setup"
 git push
 ```
 
-Then enable Pages in repository Settings → Pages → Deploy from branch `gh-pages`.
+Then enable Pages in repository Settings > Pages > Deploy from branch `gh-pages`.
 
 **Vercel (Easier):**
 
@@ -86,7 +75,7 @@ Then enable Pages in repository Settings → Pages → Deploy from branch `gh-pa
 
 See [Deployment Guide](doc/deployment.md) for detailed instructions.
 
-## 📚 Documentation
+## Documentation
 
 | Topic | Description |
 |-------|-------------|
@@ -96,7 +85,7 @@ See [Deployment Guide](doc/deployment.md) for detailed instructions.
 | [Editor Guide](doc/editor.md) | Built-in markdown editor features |
 | [Tech Stack](doc/tech-stack.md) | Architecture and technologies used |
 
-## 🛠️ Development
+## Development
 
 ```bash
 # Install dependencies
@@ -110,27 +99,20 @@ npm run build
 
 # Run tests
 npm test
-npm run test:e2e
 ```
 
-## 🎯 Why This Blog?
+## Why This Blog?
 
-- **No Server Required** - Static site, host anywhere for free
-- **Easy Updates** - Write Markdown, git push, done
-- **Full Control** - Own your content, custom domain support
-- **Developer Friendly** - React-based, easily extensible
-- **Notion Compatible** - Export Notion docs as Markdown
+- **No Server Required** — Static site, host anywhere for free
+- **Easy Updates** — Write Markdown, git push, done
+- **Full Control** — Own your content, custom domain support
+- **Developer Friendly** — React-based, easily extensible
 
-## 🙋 Support
+## Support
 
-- ⭐ Star this repository
-- 🐛 [Report issues](https://github.com/tempest2023/ConciseMarkDownBlog/issues)
-- 💡 [Request features](https://github.com/tempest2023/ConciseMarkDownBlog/issues)
-- ☕ [Buy me a coffee](https://www.buymeacoffee.com/tempes666)
+- [Report issues](https://github.com/623059008/ConciseMarkDownBlog/issues)
+- [Request features](https://github.com/623059008/ConciseMarkDownBlog/issues)
 
-## 📜 License
+## License
 
-[MIT](LICENSE) © [Tempest](https://tempest.fun/)
-
-[badge_paypal_donate]: https://ionicabizau.github.io/badges/paypal_donate.svg
-[paypal-donations]: https://www.paypal.com/paypalme/TaoTempest
+[MIT](LICENSE)
