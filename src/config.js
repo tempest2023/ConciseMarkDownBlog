@@ -1,5 +1,5 @@
 /**
- * @author Tao Ren
+ * @author Tempest
  * @email tar118@pitt.edu
  * @create date 2026-02-14
  * @modify date 2026-05-13
@@ -10,9 +10,9 @@ const config = {
   // github readme url
   readmeUrl: 'https://github.com/tempest2023/ConciseMarkDownBlog/blob/main/README.md',
   // blog title, on left top of the page
-  title: 'Tao Ren',
+  title: 'Tempest\'s Blog',
   // author name
-  name: 'Tao Ren',
+  name: 'Tempest',
   // social links, on bottom of the page
   social: {
     github: 'https://github.com/tempest2023',

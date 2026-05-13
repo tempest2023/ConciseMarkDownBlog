@@ -1,55 +1,200 @@
-# Selected Work
+### Recent Projects
 
-Recent products, research, and operating bets.
+- [Tira AI](https://tira.tempest.fun/)
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">AI</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#2ecc71"/>
+    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">Founder</text>
+  </svg>
+  An AI-native execution startup I co-founded in summer 2025. We explored product execution workflows, refined the founder narrative quickly, and received top-10% feedback in YC S25 with strong investor and accelerator interest.
 
-## AI Systems and Product Work
+- [AgentShelf](https://github.com/tempest2023/AgentShelf)
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">AI</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#2ecc71"/>
+    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">Next.js</text>
+  </svg>
+  A GEO Readiness Console built during a recent hackathon to explore how Generative UI can make agent-user interaction visible, inspectable, and operational for commerce teams.
 
-### Placement AI Agent at Newfront
+- [Influ Agent](https://influagent.tempest.fun/)
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">AI</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#2ecc71"/>
+    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">React</text>
+  </svg>
+  An autonomous 24/7 AI Multi-Agents system that achieves your success in social growth. We are the Devin of Social Media.
 
-Since joining [Newfront](https://www.newfront.com/) in October 2025, I have been working as a Senior Full-stack Software Engineer on internal insurance AI systems. My work focuses on agent-assisted placement workflows, workflow automation, and high-trust software experiences for broker operations. On January 27, 2026, [WTW completed its acquisition of Newfront](https://investors.wtwco.com/news-releases/news-release-details/wtw-completes-acquisition-newfront), and Newfront's technology and AI capabilities became part of WTW's broader operating platform.
+### Awesome Projects
 
-- **Role:** Senior Full-stack Software Engineer
-- **Focus:** Placement AI Agent, workflow automation, and human-in-the-loop decision support
-- **Company:** [Newfront](https://www.newfront.com/)
+- [MockMyInterview](https://mockmyinterview-git-production-chatmetas-projects.vercel.app/#hero)
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">AI</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#2ecc71"/>
+    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">React</text>
+  </svg>
+  Using AI voice agents to help you mock your interview.
 
-### Tira AI
+- [Concise MarkDown Blog](https://github.com/623059008/ConciseMarkDownBlog): 
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#2ecc71"/>
+    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">React</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">MD</text>
+  </svg> 
+  A static, configurable, update by markdown, deploy on Github Page blog using React. Try it by yourself, 5 mins to set up your own concise markdown blog 🚀🚀🚀.
 
-[Tira AI](https://tira.tempest.fun) was a founder-led startup I built with Sam Liu in summer 2025. We explored AI-native execution products, sharpened the product and fundraising narrative quickly, and received top-10% feedback in YC S25. The company also attracted substantive conversations with PearX / Pear VC, Berkeley SkyDeck, Techstars, Antler, 500 Global, Afore, Kindred Ventures, Field Ventures, ODF, Beta University, Fay, and others, including preliminary investment interest from a subset of those firms.
+<a href="https://github.com/623059008/ConciseMarkDownBlog"><img style="margin-left:20px" src="https://github-readme-stats-623059008.vercel.app/api/pin/?username=tempest2023&repo=ConciseMarkDownBlog" alt="Concise Markdown Blog Github repo thumbnail" /></a>
 
-- **Role:** Co-Founder
-- **Focus:** AI-native product execution, founder-led GTM, and full-stack systems
-- **Website:** [tira.tempest.fun](https://tira.tempest.fun)
+- [Dark Forest Adventure](https://temepst-666.itch.io/darkforestadventure): 
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#A29F34"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="10" text-anchor="middle" alignment-baseline="central">Game</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="10" text-anchor="middle" alignment-baseline="central">Unity</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="10" text-anchor="middle" alignment-baseline="central">3D</text>
+  </svg>
+  A Unity 3rd perspetive 3D adventure game. Player explores the occult foggy forest and near village, collects different resources, changes the terrains for your combat strategy and challenges the various and cunning enemies hidden in the forest. 
 
-### AgentShelf
+<img src="https://img.itch.zone/aW1hZ2UvMTgzMzgwNS8xMDc2NDAxMy5wbmc=/794x1000/U5dYyt.png" width="240px" height="148.32px" style="margin: 5px;margin-left:calc(50% - 120px);" alt="Dark Forest Adventure preview picture" />
 
-[AgentShelf](https://github.com/tempest2023/AgentShelf) is a GEO Readiness Console built during a recent hackathon. The product uses Generative UI to show how agent-driven recommendations can be reviewed, corrected, and operationalized across AI-commerce channels such as ChatGPT and Google AI Mode.
+- [Chatty AI](https://www.chattyai.tech/)
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">AI</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#2ecc71"/>
+    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">React</text>
+  </svg>
+  An AI chatbot website (profit-making project)
 
-- **Theme:** GEO, AI commerce, and Generative UI
-- **Stack:** Next.js, TypeScript, Tailwind CSS
-- **Role:** Product design, frontend architecture, and implementation
+- [Happy Triplet Elimation - Algo](https://github.com/623059008/HappyTripleElimationProgramming):
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#A29F34"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="10" text-anchor="middle" alignment-baseline="central">Game</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#2ecc71"/>
+    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="8" text-anchor="middle" alignment-baseline="central">Electron</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">TS</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">Vite</text>
+  </svg>
+  A game teaches players what algorithm practise looks like. A triplet matching casual game. Hope you enjoy the Triplet erasing and learn some algorithm knowledge. Vite+Eletron, released on [itch](https://temepst-666.itch.io/happy-triple-elimation-programming-algorithm)
 
-## Research and Publications
+<a href="https://github.com/623059008/HappyTripleElimationProgramming"><img style="margin-left:20px" src="https://github-readme-stats-623059008.vercel.app/api/pin/?username=tempest2023&repo=HappyTripleElimationProgramming" alt="TripletErasingGame" /></a>
 
-### TreeDiff: AST-Guided Code Generation with Diffusion LLMs
+- [PythonCVDetection](https://github.com/623059008/PythonCVDetection): 
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#2ecc71"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">TCP</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#2ecc71"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">RTC</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">Py</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">CV</text>
+  </svg>
+  Through WebRTC to transmit video frames from server to the client for Object Detection tasks by OpenCV, Python.
 
-Accepted to SURGeLLM at ACL 2026.
+- [eBookFlip](https://github.com/623059008/ebookflip): 
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">JS</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#2ecc71"/>
+    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">React</text>
+  </svg>
+  An e-book flip player implemented by React and Canvas Updating with 60fps, also provides a version implemented by jQuery (not playable but flipable with animation, one-click flip) in jquery-impl branch.
 
-- **Paper:** [arXiv:2508.01473](https://arxiv.org/abs/2508.01473)
-- **Venue:** [SURGeLLM 2026](https://surgellm.github.io/acl2026/)
+<a href="https://github.com/623059008/ebookflip"><img style="margin-left:20px" src="https://github-readme-stats-623059008.vercel.app/api/pin/?username=tempest2023&repo=ebookflip" alt="eBookFlip" /></a>
 
-### RED: Adaptive Real-Time DAG Scheduling for Robotic Inference under Environmental Dynamics
+- [Mintal](https://github.com/623059008/mintal): 
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">JS</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#0077BD"/>
+    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">React</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#2ecc71"/>
+    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="10" text-anchor="middle" alignment-baseline="central">Node.js</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#0077BD"/>
+    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="10" text-anchor="middle" alignment-baseline="central">MySQL</text>
+  </svg>
+  A web application that provides questionnaire and psychotherapy advice for people who suffered from mental health problems, made for Pitt Hackathon
 
-Currently under review at ACM Transactions on Embedded Computing Systems.
+<a href="https://github.com/623059008/mintal"><img style="margin-left:20px" src="https://github-readme-stats-623059008.vercel.app/api/pin/?username=tempest2023&repo=mintal" alt="Mintal" /></a>
 
-### Other Papers
+### School Projects
 
-- [Bridging the Editing Gap in LLMs: FineEdit for Precise and Targeted Text Modifications](https://arxiv.org/abs/2502.13358)
-- [Infant Agent: A Tool-Integrated, Logic-Driven Agent with Cost-Effective API Usage](https://arxiv.org/abs/2411.01114)
-- [RED: A Systematic Real-Time Scheduling Approach for Robotic Environmental Dynamics](https://ieeexplore.ieee.org/abstract/document/10405986)
+> Some initial, for learning/homework purpose projects
+> Hope I have free time to complete them and push them to the Awesome Projects list.
 
-## Selected Earlier Products
+- [iOS/Android Chat App](https://github.com/623059008/sayHi):
+  This project is a chat & date mobile App which is for Full stack challenge event, including PostgreSQL/MySQL + Node.js backend services and React Native Mobile Frontend.
 
-- [Influ Agent](https://influagent.tempest.fun/): an AI multi-agent system for creator and social growth workflows
-- [MockMyInterview](https://mockmyinterview-git-production-chatmetas-projects.vercel.app/#hero): AI voice agents for interview practice
-- [Chatty AI](https://www.chattyai.tech/): a commercial AI chatbot product
-- [Concise MarkDown Blog](https://github.com/tempest2023/ConciseMarkDownBlog): the markdown-driven personal website framework behind this site
+- [Pusher](https://github.com/623059008/PusherDemo): A pusher demo includes two implementations, one is based on [pusher](https://github.com/pusher/pusher-js) and [slanger](https://github.com/stevegraham/slanger), and another is based on Vue, [Socket.IO](https://socket.io/) (my favorite websoket lib).
+
+- [Data Analysis for houses in Kansas](https://github.com/623059008/InfoVizProject)
+
+- [Best2buy](https://github.com/623059008/Best2Buy): A lightweight e-commerce web application powered by Egg.js, jQuery, Bootstrap and Mysql.
+
+- [Electron Particle Clock](https://github.com/623059008/ElectronParticleClock): An Electron particle clock application, supports Windows, MacoOS and Linux. Through this project, I figured out the way to package for different platforms, using Inno Setup to generate a Windows installer file. The particle animation is very fancy, not from me.
+
+- [FGO H5Game](https://github.com/623059008/FateGrend0rder): A FGO HTML5 game, I was planning to develop idle games (incremental games). It's not boring, but the technology is too naive to update: jQuery, Bootstrap, PHP and MySQL.
+
+<!-- <a href="https://github.com/623059008/FateGrend0rder"><img style="margin-left:20px" src="https://github-readme-stats-623059008.vercel.app/api/pin/?username=tempest2023&repo=FateGrend0rder" alt="FGO H5Game" /></a> -->
+
+- [Backlog](https://github.com/623059008/Backlog): A online memo web application using Django, React and PostgreSQL.
+
+- [Try Konva](https://github.com/623059008/KonvaExample): A React Canvas with draggable blocks powered by Konva.
+
+- [Horner's Method](https://github.com/623059008/Horner-s-Method/blob/master/Polynomials.html): Use Horner's Method to calculate the polynomial evaluation.
+
+## Github Status
+<div style="display:flex;flex-direction:row;justify-content:space-around;">
+<a href="https://github.com/623059008">
+  <img src="https://github-readme-stats-623059008.vercel.app/api?username=tempest2023" />
+</a>
+<a href="https://github.com/623059008">
+  <img src="https://github-readme-stats-623059008.vercel.app/api/top-langs/?username=tempest2023&layout=compact" />
+</a>
+</div>
+
+---------------

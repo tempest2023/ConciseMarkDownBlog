@@ -8,13 +8,6 @@
 - **Resume (PDF):** [Google Drive](https://drive.google.com/file/d/1aNJ-NPuk71x4xQgRo5Es2WPyNZA8kbCb/view?usp=sharing)
 - **Resume (Markdown):** [ResumeMarkdown](/?page=Blogs/Other/ResumeMarkdown.md)
 
-## Companies and Products
-
-- **Newfront:** [newfront.com](https://www.newfront.com/)
-- **WTW acquisition announcement:** [WTW Completes Acquisition of Newfront](https://investors.wtwco.com/news-releases/news-release-details/wtw-completes-acquisition-newfront)
-- **Tira AI:** [tira.tempest.fun](https://tira.tempest.fun)
-- **AgentShelf:** [github.com/tempest2023/AgentShelf](https://github.com/tempest2023/AgentShelf)
-
 ## Publications
 
 - [TreeDiff: AST-Guided Code Generation with Diffusion LLMs](https://arxiv.org/abs/2508.01473)
