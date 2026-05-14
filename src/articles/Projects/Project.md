@@ -161,6 +161,12 @@
 
 <a href="https://github.com/623059008/mintal"><img style="margin-left:20px" src="https://github-readme-stats-623059008.vercel.app/api/pin/?username=tempest2023&repo=mintal" alt="Mintal" /></a>
 
+### Research Projects
+
+- [Autopilot2PytorchSteering](https://github.com/623059008/Autopilot2PytorchSteering): A Pytorch implementation of Autopilot2 to determine the steering angle. For ATC’23 Robotic Environmental Dynamics(only part of module, may be open-source after publication), a pending paper under review.
+
+- [Taming Accessibility Issues in Web Application for the Disabled](https://drive.google.com/file/d/1OeUMlKKRzQRxBwwlv_h6faJBbqWykii8/view?usp=sharing): How to find and fix the web accessibility problems automatically? Look at my [Web Patch Tool](https://github.com/623059008/ApplyPatchOnWeb)
+
 ### School Projects
 
 > Some initial, for learning/homework purpose projects
