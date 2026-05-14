@@ -10,6 +10,10 @@ In summer 2025, I co-founded [Tira AI](https://tira.tempest.fun) with Sam Liu, a
 
 I also enjoy building fast, ambitious products around emerging interfaces. Most recently, I built [AgentShelf](https://github.com/tempest2023/AgentShelf), a GEO Readiness Console that uses Generative UI to make agent-user interaction visible, inspectable, and operational for commerce teams.
 
+Previously, I worked at TikTok on social and user relation features, at Ansys on digital twin tooling, and at Ant Group / Alibaba on large-scale financial product systems.
+
+At **[Ant Group](https://www.antgroup.com/en/)** and [Alibaba](https://www.alibabagroup.com/en-US/), I worked in mobile technology on low-code financial product systems, dynamic templates, and live-streaming components. One representative product surface was **[Wealth Shop](https://medium.com/alipay-and-the-world/how-alipay-changed-the-way-china-invests-and-helped-a-fund-grow-400-times-over-9c13f77af4b6)**, where I helped build software that supported financial institutions at meaningful scale.
+
 That mix of startup execution, product engineering, and research is what shapes how I build today.
 
 ## What I Focus On
@@ -23,14 +27,8 @@ That mix of startup execution, product engineering, and research is what shapes 
 
 - [TreeDiff: AST-Guided Code Generation with Diffusion LLMs](https://arxiv.org/abs/2508.01473), accepted to [SURGeLLM at ACL 2026](https://surgellm.github.io/acl2026/)
 - `RED: Adaptive Real-Time DAG Scheduling for Robotic Inference under Environmental Dynamics`, currently under review at ACM Transactions on Embedded Computing Systems
-- [Bridging the Editing Gap in LLMs: FineEdit for Precise and Targeted Text Modifications](https://arxiv.org/abs/2502.13358)
+- [Bridging the Editing Gap in LLMs: FineEdit for Precise and Targeted Text Modifications](https://aclanthology.org/2025.findings-emnlp.118/), published in Findings of EMNLP 2025
 - [Infant Agent: A Tool-Integrated, Logic-Driven Agent with Cost-Effective API Usage](https://arxiv.org/abs/2411.01114)
-- [RED: A Systematic Real-Time Scheduling Approach for Robotic Environmental Dynamics](https://ieeexplore.ieee.org/abstract/document/10405986)
-
-## Previous Experience
-
-Previously, I worked at TikTok on social and user relation features, at Ansys on digital twin tooling, and at Ant Group / Alibaba on large-scale financial product systems.
-
-At **[Ant Group](https://www.antgroup.com/en/)** and [Alibaba](https://www.alibabagroup.com/en-US/), I worked in mobile technology on low-code financial product systems, dynamic templates, and live-streaming components. One representative product surface was **[Wealth Shop](https://medium.com/alipay-and-the-world/how-alipay-changed-the-way-china-invests-and-helped-a-fund-grow-400-times-over-9c13f77af4b6)**, where I helped build software that supported financial institutions at meaningful scale.
+- [RED: A Systematic Real-Time Scheduling Approach for Robotic Environmental Dynamics](https://ieeexplore.ieee.org/abstract/document/10405986), published at RTSS 2023
 
 If you are interested in my work, feel free to [have a look](/?page=Projects/Project).

@@ -107,9 +107,9 @@ An AI multi-agent system for creator and social growth workflows.
 
 - TreeDiff: AST-Guided Code Generation with Diffusion LLMs. Accepted to SURGeLLM at ACL 2026.
 - RED: Adaptive Real-Time DAG Scheduling for Robotic Inference under Environmental Dynamics. Under review at ACM Transactions on Embedded Computing Systems.
-- Bridging the Editing Gap in LLMs: FineEdit for Precise and Targeted Text Modifications. https://arxiv.org/abs/2502.13358
+- Bridging the Editing Gap in LLMs: FineEdit for Precise and Targeted Text Modifications. Findings of EMNLP 2025. https://aclanthology.org/2025.findings-emnlp.118/
 - Infant Agent: A Tool-Integrated, Logic-Driven Agent with Cost-Effective API Usage. https://arxiv.org/abs/2411.01114
-- RED: A Systematic Real-Time Scheduling Approach for Robotic Environmental Dynamics. https://ieeexplore.ieee.org/abstract/document/10405986
+- RED: A Systematic Real-Time Scheduling Approach for Robotic Environmental Dynamics. RTSS 2023. https://ieeexplore.ieee.org/abstract/document/10405986
 
 ## Education
 
