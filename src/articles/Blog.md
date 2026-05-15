@@ -1,6 +1,6 @@
 ## Blog
 
-> I will post my study blogs here, and continually update them.
+This is an archive of my technical notes, experiments, and study logs across frontend engineering, algorithms, systems, and AI.
 
 
 ### Leetcode
@@ -74,4 +74,3 @@
 - [Recommendation Letter Template3](/?page=Blogs/Other/RecommendationLetter-Fellow.md)
 - [Third-Person perspective referal](/?page=Blogs/Other/referal3rd.md)
 - [Summer Internship Summary](/?page=Blogs/Other/SummerInternshipMidtermSummary.md)
-

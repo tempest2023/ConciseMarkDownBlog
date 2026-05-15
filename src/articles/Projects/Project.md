@@ -1,4 +1,26 @@
-### Awesome Projects
+### Recent Projects
+
+- [Tira AI](https://tira.tempest.fun/)
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">AI</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#2ecc71"/>
+    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">Founder</text>
+  </svg>
+  An AI-native execution startup I co-founded in summer 2025. We explored product execution workflows, refined the founder narrative quickly, and received top-10% feedback in YC S25 with strong investor and accelerator interest.
+
+- [AgentShelf](https://github.com/tempest2023/AgentShelf)
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
+    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">AI</text>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
+    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#2ecc71"/>
+    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">Next.js</text>
+  </svg>
+  A GEO Readiness Console built during a recent hackathon to explore how Generative UI can make agent-user interaction visible, inspectable, and operational for commerce teams.
 
 - [Influ Agent](https://influagent.tempest.fun/)
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
@@ -10,6 +32,8 @@
     <text x="24" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">React</text>
   </svg>
   An autonomous 24/7 AI Multi-Agents system that achieves your success in social growth. We are the Devin of Social Media.
+
+### Awesome Projects
 
 - [MockMyInterview](https://mockmyinterview-git-production-chatmetas-projects.vercel.app/#hero)
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
@@ -34,8 +58,6 @@
   A static, configurable, update by markdown, deploy on Github Page blog using React. Try it by yourself, 5 mins to set up your own concise markdown blog 🚀🚀🚀.
 
 <a href="https://github.com/623059008/ConciseMarkDownBlog"><img style="margin-left:20px" src="https://github-readme-stats-623059008.vercel.app/api/pin/?username=tempest2023&repo=ConciseMarkDownBlog" alt="Concise Markdown Blog Github repo thumbnail" /></a>
-
-
 
 - [Dark Forest Adventure](https://temepst-666.itch.io/darkforestadventure): 
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
@@ -139,13 +161,11 @@
 
 <a href="https://github.com/623059008/mintal"><img style="margin-left:20px" src="https://github-readme-stats-623059008.vercel.app/api/pin/?username=tempest2023&repo=mintal" alt="Mintal" /></a>
 
-### Academic Researches
+### Research Projects
 
 - [Autopilot2PytorchSteering](https://github.com/623059008/Autopilot2PytorchSteering): A Pytorch implementation of Autopilot2 to determine the steering angle. For ATC’23 Robotic Environmental Dynamics(only part of module, may be open-source after publication), a pending paper under review.
 
 - [Taming Accessibility Issues in Web Application for the Disabled](https://drive.google.com/file/d/1OeUMlKKRzQRxBwwlv_h6faJBbqWykii8/view?usp=sharing): How to find and fix the web accessibility problems automatically? Look at my [Web Patch Tool](https://github.com/623059008/ApplyPatchOnWeb)
-
-
 
 ### School Projects
 
