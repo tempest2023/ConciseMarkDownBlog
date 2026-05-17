@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.80dc4f06.css",
-    "main.js": "./static/js/main.3b784f34.js",
+    "main.js": "./static/js/main.c13a2a21.js",
     "static/js/358.b773cd29.chunk.js": "./static/js/358.b773cd29.chunk.js",
     "resources/src/articles/Blogs/JavaScript/images/maximum_call_stack_size_exceeded.png": "./resources/src/articles/Blogs/JavaScript/images/maximum_call_stack_size_exceeded.png",
     "resources/src/articles/Blogs/DeepLearning/images/png": "./resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png",
@@ -53,6 +53,7 @@
     "static/media/KaTeX_Size2-Regular.ttf": "./static/media/KaTeX_Size2-Regular.57f5c1837853986ea1db.ttf",
     "static/media/KaTeX_Fraktur-Bold.woff2": "./static/media/KaTeX_Fraktur-Bold.931d67ea207ab37ee693.woff2",
     "static/media/KaTeX_Fraktur-Regular.woff2": "./static/media/KaTeX_Fraktur-Regular.172d3529b26f8cedef6b.woff2",
+    "static/media/TechStack.md": "./static/media/TechStack.d95a29764d457e16b338.md",
     "static/media/KaTeX_Script-Regular.woff": "./static/media/KaTeX_Script-Regular.073b3402d036714b4370.woff",
     "static/media/KaTeX_Size4-Regular.ttf": "./static/media/KaTeX_Size4-Regular.4ad7c7e8bb8d10a34bb7.ttf",
     "static/media/KaTeX_SansSerif-Regular.woff2": "./static/media/KaTeX_SansSerif-Regular.cd5e231e0cc53b2cb2c0.woff2",
@@ -64,7 +65,6 @@
     "static/media/ReactAndCssPseudoClasses.md": "./static/media/ReactAndCssPseudoClasses.321c7a1872af28571d67.md",
     "static/media/KaTeX_Caligraphic-Bold.woff2": "./static/media/KaTeX_Caligraphic-Bold.a1abf90dfd72792a577a.woff2",
     "static/media/KaTeX_Caligraphic-Regular.woff2": "./static/media/KaTeX_Caligraphic-Regular.d6484fce1ef428d5bd94.woff2",
-    "static/media/TechStack.md": "./static/media/TechStack.69e8211db3f0117aebed.md",
     "static/media/Contest455.md": "./static/media/Contest455.d55350274459ab3e6c28.md",
     "static/media/KaTeX_Size1-Regular.woff": "./static/media/KaTeX_Size1-Regular.0108e89c9003e8c14ea3.woff",
     "static/media/KaTeX_Size2-Regular.woff": "./static/media/KaTeX_Size2-Regular.3a99e70aee4076660d38.woff",
@@ -111,11 +111,11 @@
     "static/media/Use_Python_to_print_colorfully.md": "./static/media/Use_Python_to_print_colorfully.176d497a840ff936695b.md",
     "static/media/404.md": "./static/media/404.6d4bd4046c21b4c3aab1.md",
     "main.80dc4f06.css.map": "./static/css/main.80dc4f06.css.map",
-    "main.3b784f34.js.map": "./static/js/main.3b784f34.js.map",
+    "main.c13a2a21.js.map": "./static/js/main.c13a2a21.js.map",
     "358.b773cd29.chunk.js.map": "./static/js/358.b773cd29.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.80dc4f06.css",
-    "static/js/main.3b784f34.js"
+    "static/js/main.c13a2a21.js"
   ]
 }
