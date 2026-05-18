@@ -5,6 +5,8 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Menu Navigation', () => {
+  const menuItem = (page, label) => page.locator(`nav a[aria-label="${label}"]`);
+
   test.beforeEach(async ({ page }) => {
     // Navigate to home page before each test
     await page.goto('/');
@@ -25,18 +27,17 @@ test.describe('Menu Navigation', () => {
     await expect(navLinks).toBeVisible();
 
     // Verify specific menu items from config are present
-    const expectedMenuItems = ['About', 'Tech Stack', 'Blog', 'Projects', 'MarkDown', 'Resume', 'Links'];
+    const expectedMenuItems = ['About', 'Tech Stack', 'Blog', 'Projects', 'Markdown Editor', '3D Portfolio', 'Links'];
 
     for (const menuItem of expectedMenuItems) {
-      // Menu items are rendered as links within the navbar
-      const menuLink = page.locator('nav').getByText(menuItem, { exact: true });
+      const menuLink = page.locator(`nav a[aria-label="${menuItem}"]`);
       await expect(menuLink, `Menu item "${menuItem}" should be visible`).toBeVisible();
     }
   });
 
   test('clicking About menu item should display About content', async ({ page }) => {
     // Click on About menu item
-    const aboutLink = page.locator('nav').getByText('About', { exact: true });
+    const aboutLink = menuItem(page, 'About');
     await aboutLink.click();
 
     // Wait for content to load
@@ -58,7 +59,7 @@ test.describe('Menu Navigation', () => {
   });
 
   test('clicking Tech Stack menu item should display Tech Stack content', async ({ page }) => {
-    const techStackLink = page.locator('nav').getByText('Tech Stack', { exact: true });
+    const techStackLink = menuItem(page, 'Tech Stack');
     await techStackLink.click();
 
     await page.waitForLoadState('networkidle');
@@ -70,11 +71,11 @@ test.describe('Menu Navigation', () => {
 
     // Verify the active state is applied
     const activeLink = page.locator('a[data-active="active"]');
-    await expect(activeLink).toContainText('Tech');
+    await expect(activeLink).toHaveAttribute('aria-label', 'Tech Stack');
   });
 
   test('clicking Blog menu item should display Blog content', async ({ page }) => {
-    const blogLink = page.locator('nav').getByText('Blog', { exact: true });
+    const blogLink = menuItem(page, 'Blog');
     await blogLink.click();
 
     await page.waitForLoadState('networkidle');
@@ -86,11 +87,11 @@ test.describe('Menu Navigation', () => {
 
     // Verify the active state is applied
     const activeLink = page.locator('a[data-active="active"]');
-    await expect(activeLink).toContainText('Blog');
+    await expect(activeLink).toHaveAttribute('aria-label', 'Blog');
   });
 
   test('clicking MarkDown menu item should show the markdown editor', async ({ page }) => {
-    const markdownLink = page.locator('nav').getByText('MarkDown', { exact: true });
+    const markdownLink = menuItem(page, 'Markdown Editor');
     await markdownLink.click();
 
     await page.waitForLoadState('networkidle');
@@ -106,11 +107,11 @@ test.describe('Menu Navigation', () => {
 
     // Verify the active state is applied
     const activeLink = page.locator('a[data-active="active"]');
-    await expect(activeLink).toContainText('MarkDown');
+    await expect(activeLink).toHaveAttribute('aria-label', 'Markdown Editor');
   });
 
   test('clicking Projects menu item should display Projects content', async ({ page }) => {
-    const projectsLink = page.locator('nav').getByText('Projects', { exact: true });
+    const projectsLink = menuItem(page, 'Projects');
     await projectsLink.click();
 
     await page.waitForLoadState('networkidle');
@@ -122,11 +123,11 @@ test.describe('Menu Navigation', () => {
 
     // Verify the active state is applied
     const activeLink = page.locator('a[data-active="active"]');
-    await expect(activeLink).toContainText('Projects');
+    await expect(activeLink).toHaveAttribute('aria-label', 'Projects');
   });
 
   test('clicking Links menu item should display Links content', async ({ page }) => {
-    const linksLink = page.locator('nav').getByText('Links', { exact: true });
+    const linksLink = menuItem(page, 'Links');
     await linksLink.click();
 
     await page.waitForLoadState('networkidle');
@@ -138,20 +139,20 @@ test.describe('Menu Navigation', () => {
 
     // Verify the active state is applied
     const activeLink = page.locator('a[data-active="active"]');
-    await expect(activeLink).toContainText('Links');
+    await expect(activeLink).toHaveAttribute('aria-label', 'Links');
   });
 
-  test('clicking Resume menu item should open external link in new tab', async ({ page, context }) => {
+  test('clicking 3D Portfolio menu item should open external link in new tab', async ({ page, context }) => {
     // Wait for any potential popup
     const [newPage] = await Promise.all([
       context.waitForEvent('page', { timeout: 5000 }).catch(() => null),
-      page.locator('nav').getByText('Resume', { exact: true }).click()
+      menuItem(page, '3D Portfolio').click()
     ]);
 
     if (newPage) {
-      // If a new page was opened, verify it's the resume link
+      // If a new page was opened, verify it's the portfolio link
       await newPage.waitForLoadState('networkidle');
-      await expect(newPage).toHaveURL(/drive.google.com/);
+      await expect(newPage).toHaveURL(/3d\.tempest\.fun/);
       await newPage.close();
     } else {
       // For external links that might not open in new tab in test environment,
@@ -162,22 +163,22 @@ test.describe('Menu Navigation', () => {
 
   test('menu item should show active state for current page', async ({ page }) => {
     // Click on Blog
-    await page.locator('nav').getByText('Blog', { exact: true }).click();
+    await menuItem(page, 'Blog').click();
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(300);
 
     // Verify the active state is applied to Blog link
     const activeLink = page.locator('a[data-active="active"]');
-    await expect(activeLink).toContainText('Blog');
+    await expect(activeLink).toHaveAttribute('aria-label', 'Blog');
 
     // Navigate to another page
-    await page.locator('nav').getByText('About', { exact: true }).click();
+    await menuItem(page, 'About').click();
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(300);
 
     // Verify active state is now on About
     const newActiveLink = page.locator('a[data-active="active"]');
-    await expect(newActiveLink).toContainText('About');
+    await expect(newActiveLink).toHaveAttribute('aria-label', 'About');
   });
 
   test('navigation should work correctly on mobile viewport', async ({ page }) => {
@@ -195,7 +196,7 @@ test.describe('Menu Navigation', () => {
     await page.waitForTimeout(300);
 
     // Menu items should be visible in the collapsed menu
-    const aboutLink = page.locator('nav').getByText('About', { exact: true });
+    const aboutLink = menuItem(page, 'About');
     await expect(aboutLink).toBeVisible();
 
     // Navigate via mobile menu

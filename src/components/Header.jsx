@@ -10,8 +10,8 @@ import config from '../config';
 import styles from '../styles/header.module.css';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { handleUrl } from '../util/url';
-import { navigate, goBack, selectPage } from '../util/store'
+import { externalValidator, formatLink, handleUrl } from '../util/url';
+import { navigate, selectPage } from '../util/store'
 import { compareLowerCase } from '../util/str';
 import { useTheme } from './ThemeProvider';
 
@@ -21,24 +21,45 @@ const Header = () => {
   const dispatch = useDispatch();
   const { isDark, toggleTheme, themeEnabled } = useTheme();
 
+  const getHeaderLabel = (item) => item.ariaLabel || item.title;
+
   const setPage = (page) => {
     dispatch(navigate(page));
   }
   const pageUpdate = (item) => {
     handleUrl(item.customUrl || item.title, setPage)
   }
+  const getHeaderUrl = (item) => {
+    const destination = item.customUrl || item.title;
+    return externalValidator(destination) ? destination : formatLink(destination);
+  }
   // render header links with the active page
   const getHeaders = () => {
     const headerLinks = [];
     config.headers.forEach(item => {
+      const destination = item.customUrl || item.title;
+      const external = externalValidator(destination);
+
       headerLinks.push(
         <li className={styles['header-link-wrapper']} key={`navbar-link-${item.title}`}>
           <a
-            className="nav-link"
+            className={`nav-link ${styles['header-link-anchor']} ${item.icon ? styles['header-link-icon-only'] : ''}`}
             data-active={compareLowerCase(item.title, page) || compareLowerCase(item.customUrl, page) ? 'active' : ''}
-            onClick={() => pageUpdate(item)}
+            aria-label={getHeaderLabel(item)}
+            title={getHeaderLabel(item)}
+            href={getHeaderUrl(item)}
+            target={external ? '_blank' : undefined}
+            rel={external ? 'noreferrer noopener' : undefined}
+            onClick={(e) => {
+              e.preventDefault();
+              pageUpdate(item);
+            }}
           >
-            {item.title}
+            {
+              item.icon
+                ? <i className={`bi ${item.icon} ${styles['header-link-icon']}`} aria-hidden="true"></i>
+                : item.title
+            }
           </a>
         </li>
       );
