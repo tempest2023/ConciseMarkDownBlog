@@ -43,17 +43,21 @@ const config = {
       customUrl: 'Projects/Project'
     },
     {
-      title: 'MarkDown',
-      type: 'article'
-    },
-    {
-      title: 'Resume',
-      type: 'link',
-      customUrl: 'https://drive.google.com/file/d/1aNJ-NPuk71x4xQgRo5Es2WPyNZA8kbCb/view?usp=sharing'
-    },
-    {
       title: 'Links',
       type: 'article'
+    },
+    {
+      title: 'MarkDown',
+      type: 'article',
+      icon: 'bi-markdown',
+      ariaLabel: 'Markdown Editor'
+    },
+    {
+      title: '3D Portfolio',
+      type: 'link',
+      customUrl: 'https://3d.tempest.fun/',
+      icon: 'bi-badge-3d',
+      ariaLabel: '3D Portfolio'
     }
   ],
   // markdown settings

@@ -47,12 +47,9 @@ describe('Config Structure Validation', () => {
     expect(projectsHeader.customUrl).toBe('Projects/Project');
   });
 
-  it('should have Resume as link type with customUrl', () => {
+  it('should not have Resume in the menu headers', () => {
     const resumeHeader = config.headers.find(h => h.title === 'Resume');
-    expect(resumeHeader).toBeDefined();
-    expect(resumeHeader.type).toBe('link');
-    expect(resumeHeader.customUrl).toBeDefined();
-    expect(resumeHeader.customUrl).toMatch(/^https?:\/\//);
+    expect(resumeHeader).toBeUndefined();
   });
 
   it('should have Links header', () => {
@@ -65,6 +62,7 @@ describe('Config Structure Validation', () => {
     const markdownHeader = config.headers.find(h => h.title === 'MarkDown');
     expect(markdownHeader).toBeDefined();
     expect(markdownHeader.type).toBe('article');
+    expect(markdownHeader.icon).toBe('bi-markdown');
   });
 
   it('should have Blog header', () => {

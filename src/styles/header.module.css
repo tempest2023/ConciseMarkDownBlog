@@ -27,6 +27,24 @@
     color: #feb272!important;
 }
 
+.header-link-anchor {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+}
+
+.header-link-icon-only {
+    min-width: 2rem;
+    font-size: 1.15rem;
+    line-height: 1;
+}
+
+.header-link-icon {
+    display: block;
+    line-height: 1;
+}
+
 .header-controller {
     display: flex;
     flex-direction: row;
