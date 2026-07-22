@@ -54,7 +54,7 @@ This is where my research and engineering background reinforce each other. Resea
 
 - Nova Agent at [Newfront](https://www.newfront.com/) / [WTW](https://www.wtwco.com/en-us): a domain-specific AI coworker for insurance operators, long document workflows, contract generation, email drafting, tool use, and human-in-the-loop operations
 - Internal LLM coding agent at TikTok: Objective-C to Swift migration with prompt engineering, code-generation loops, and custom evaluation harnesses
-- [TreeDiff: AST-Guided Code Generation with Diffusion LLMs](https://arxiv.org/abs/2508.01473): syntax-aware diffusion LLM research for code generation, accepted to [SURGeLLM at ACL 2026](https://surgellm.github.io/acl2026/)
+- [TreeDiff: AST-Guided Code Generation with Diffusion LLMs](https://aclanthology.org/2026.surgellm-1.5/): syntax-aware diffusion LLM research for code generation, accepted to [SURGeLLM at ACL 2026](https://surgellm.github.io/acl2026/)
 - [Bridging the Editing Gap in LLMs: FineEdit for Precise and Targeted Text Modifications](https://aclanthology.org/2025.findings-emnlp.118/): Findings of EMNLP 2025
 - [Infant Agent: A Tool-Integrated, Logic-Driven Agent with Cost-Effective API Usage](https://arxiv.org/abs/2411.01114)
 - [RED: A Systematic Real-Time Scheduling Approach for Robotic Environmental Dynamics](https://ieeexplore.ieee.org/abstract/document/10405986): RTSS 2023
