@@ -1,5 +1,5 @@
 import { createSlice, configureStore, current } from '@reduxjs/toolkit';
-import { formatPage } from './url';
+import { formatLink, formatPage } from './url';
 import config from '../config';
 
 const { debug } = config;
@@ -65,7 +65,7 @@ export const AppSlice = createSlice({
       const filePath = getFilePath(page, state.articles);
       // push current page to history
       history.push(state.page);
-      window.history.pushState(null, null, `?page=${page}`);
+      window.history.pushState(null, null, formatLink(page));
       // window.location.hash = `?page=${page}`;
       debug && console.log('[debug] navigate page: ', page, 'history', history);
       return {

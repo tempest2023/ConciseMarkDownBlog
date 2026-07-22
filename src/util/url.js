@@ -11,7 +11,7 @@ const { debug } = config;
 
 // describe how to format a link.
 export function formatLink (link) {
-  return `?page=${link}`;
+  return `?page=${encodeURIComponent(link)}`;
 }
 
 // check a string starts with '/', if not, add '/' to it.
@@ -43,7 +43,12 @@ export function getUrlParameters () {
   const vars = query.split('&');
   for (let i = 0; i < vars.length; i++) {
     const pair = vars[i].split('=');
-    params[pair[0]] = pair[1];
+    if (!pair[0]) continue;
+    try {
+      params[decodeURIComponent(pair[0])] = decodeURIComponent(pair.slice(1).join('=') || '');
+    } catch (error) {
+      params[pair[0]] = pair.slice(1).join('=');
+    }
   }
   return params;
 }
@@ -96,7 +101,12 @@ export function handleUrl (url, setPage) {
   const vars = query.split('&');
   for (let i = 0; i < vars.length; i++) {
     const pair = vars[i].split('=');
-    params[pair[0]] = pair[1];
+    if (!pair[0]) continue;
+    try {
+      params[decodeURIComponent(pair[0])] = decodeURIComponent(pair.slice(1).join('=') || '');
+    } catch (error) {
+      params[pair[0]] = pair.slice(1).join('=');
+    }
   }
   debug && console.log('[debug][5] jump to internal page with page param:', url);
   setPage(params.page)
