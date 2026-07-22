@@ -18,7 +18,8 @@ import ConfigButton from './components/ConfigButton';
 import { ThemeProvider, useTheme } from './components/ThemeProvider';
 import { getUrlParameters } from './util/url';
 import { compareLowerCase } from './util/str';
-import { navigate, goBack, selectHistory, selectPage } from './util/store'
+import { navigate, goBack, selectPage } from './util/store'
+import { updateSeoMetadata } from './util/seo';
 import './styles/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -29,7 +30,6 @@ const { debug } = config;
 const AppContent = () => {
   const dispatch = useDispatch();
   const page = useSelector(selectPage);
-  const history = useSelector(selectHistory);
   const { isDark } = useTheme();
 
   const popstateHandler = (e) => {
@@ -41,21 +41,27 @@ const AppContent = () => {
   useEffect(() => {
     debug && console.log('[debug] component reload as page: ', page);
     window.addEventListener('popstate', popstateHandler);
-    // set document title
-    document.title = config.title;
-
     // url param navigation
     const params = getUrlParameters() || {};
     // internal links
-    if (!params.page || params.page === page) {
-      return;
+    if (params.page && params.page !== page) {
+      dispatch(navigate(params.page));
     }
-    dispatch(navigate(params.page));
 
     return () => {
       window.removeEventListener('popstate', popstateHandler);
     };
   }, []);
+
+  useEffect(() => {
+    if (compareLowerCase(page, 'config') || compareLowerCase(page, 'Markdown')) {
+      updateSeoMetadata({
+        page,
+        noIndex: true,
+        title: compareLowerCase(page, 'config') ? 'Blog configuration' : 'Markdown editor'
+      });
+    }
+  }, [page]);
 
   const renderContent = () => {
     // Config editor page (local access only)

@@ -7,11 +7,24 @@
     <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
     <!-- <link href="https://fonts.googleapis.com/css2?family=Explora&family=Libre+Franklin:wght@200;500&family=Roboto:ital,wght@0,400;1,300&display=swap" rel="stylesheet"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="author" content="Tao Ren (Tempest)" />
+    <meta name="description" content="Tao Ren (Tempest) writes about AI research engineering, LLM agents, code generation, production software systems, and technical projects." />
+    <meta name="keywords" content="Tao Ren, Tempest, AI research engineer, LLM agents, code generation, software engineering, machine learning" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://tempest.fun/" />
+    <link rel="alternate" type="application/rss+xml" title="Tempest's Blog RSS Feed" href="https://tempest.fun/rss.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tempest's Blog" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Tempest's Blog" />
+    <meta property="og:description" content="Tao Ren (Tempest) writes about AI research engineering, LLM agents, code generation, production software systems, and technical projects." />
+    <meta property="og:url" content="https://tempest.fun/" />
+    <meta property="og:image" content="https://tempest.fun/logo512.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tempest's Blog" />
+    <meta name="twitter:description" content="Tao Ren (Tempest) writes about AI research engineering, LLM agents, code generation, production software systems, and technical projects." />
+    <meta name="twitter:image" content="https://tempest.fun/logo512.png" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -28,9 +41,41 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Tempest's Blog</title>
+    <script id="seo-structured-data" type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://tempest.fun/#website",
+            "url": "https://tempest.fun/",
+            "name": "Tempest's Blog",
+            "description": "AI research engineering, LLM agents, code generation, and production software systems by Tao Ren."
+          },
+          {
+            "@type": "Person",
+            "@id": "https://tempest.fun/#person",
+            "name": "Tao Ren (Tempest)",
+            "url": "https://tempest.fun/",
+            "sameAs": [
+              "https://github.com/tempest2023",
+              "https://www.linkedin.com/in/taoren-pitt/"
+            ]
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://tempest.fun/#profile",
+            "url": "https://tempest.fun/",
+            "name": "Tempest's Blog",
+            "mainEntity": { "@id": "https://tempest.fun/#person" },
+            "isPartOf": { "@id": "https://tempest.fun/#website" }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>Tempest's Blog covers AI research engineering, LLM agents, code generation, software systems, and technical projects by Tao Ren.</noscript>
     <div id="root"></div>
   </body>
 </html>

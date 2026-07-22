@@ -1,0 +1,18 @@
+{
+  "siteUrl": "https://tempest.fun",
+  "siteName": "Tempest's Blog",
+  "author": "Tao Ren (Tempest)",
+  "defaultDescription": "Tao Ren (Tempest) writes about AI research engineering, LLM agents, code generation, production software systems, and technical projects.",
+  "defaultImage": "/logo512.png",
+  "locale": "en_US",
+  "language": "en",
+  "keywords": [
+    "Tao Ren",
+    "Tempest",
+    "AI research engineer",
+    "LLM agents",
+    "code generation",
+    "software engineering",
+    "machine learning"
+  ]
+}

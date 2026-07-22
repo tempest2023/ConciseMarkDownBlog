@@ -132,10 +132,25 @@ export default function MarkDownPreview (props) {
                 // It's to avoid the influence from different deployment root directory.
                 a ({ node, children, ...props }) {
                   // determine if the link is external or internal
+                  const href = node?.properties?.href;
+                  const external = href ? externalValidator(href) : false;
                   return (
-                    <span title={node?.properties?.href} style={{ cursor: 'pointer', ...markdownConfig.linkStyle }} onClick={() => handleUrl(node?.properties?.href, setPage)} {...props} >
+                    <a
+                      href={href}
+                      title={href}
+                      target={external ? '_blank' : undefined}
+                      rel={external ? 'noreferrer noopener' : undefined}
+                      style={markdownConfig.linkStyle}
+                      onClick={(event) => {
+                        if (!external && href) {
+                          event.preventDefault();
+                          handleUrl(href, setPage);
+                        }
+                      }}
+                      {...props}
+                    >
                       {children}
-                    </span>
+                    </a>
                   );
                 },
                 // transform the image path to /resources/[absolute path].

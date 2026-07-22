@@ -10,18 +10,20 @@ import styles from '../styles/article.module.css';
 import PropTypes from 'prop-types';
 import config from '../config';
 import { useDispatch, useSelector } from 'react-redux';
-import { navigate, goBack, selectPage, selectFilePath } from '../util/store'
+import { navigate, selectPage, selectFilePath } from '../util/store'
 import MarkDownPreview from './editor/MarkDownPreview';
 import FlipButton from './FlipButton';
 import MarkdownTextarea from './editor/MarkDownTextarea';
 import ColorLoading from './ColorLoading';
 import NotFound from '../articles/404.md';
 import { codeIcon, paragraphIcon } from '../util/icons';
+import { updateSeoMetadata } from '../util/seo';
 
 const { debug } = config;
 
 const Article = () => {
   const filePath = useSelector(selectFilePath);
+  const page = useSelector(selectPage);
   const [markdownContent, setMarkdownContent] = useState('');
   const [loading, setLoading] = useState(!filePath);
   const [mode, setMode] = useState('preview');
@@ -78,18 +80,29 @@ const Article = () => {
   useEffect(() => {
     if (!filePath) {
       setLoading(true);
+      updateSeoMetadata({ page, noIndex: true, title: 'Page not found' });
       setTimeout(() => {
         setLoading(false);
       }, 500)
+      return;
     }
     debug && console.log('[debug][article.jsx] filePath update:', filePath)
 
+    let cancelled = false;
     fetch(filePath)
       .then((response) => response.text())
       .then((text) => {
-        setMarkdownContent(text);
+        if (!cancelled) {
+          setMarkdownContent(text);
+          setLoading(false);
+          updateSeoMetadata({ page, markdown: text });
+        }
       });
-  }, [filePath])
+
+    return () => {
+      cancelled = true;
+    };
+  }, [filePath, page])
 
   return (
     <div className="container">
