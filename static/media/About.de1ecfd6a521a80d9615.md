@@ -1,22 +1,22 @@
 # About Me
 
-My name is Tempest (Tao Ren).
+My name is Tempest (Tao Ren). I'm an independent researcher and a senior AI full-stack engineer.
 
-I build AI systems where models need to do real work: read long context, use tools, follow domain constraints, produce artifacts, and stay reliable enough for people to trust. My strongest professional direction is AI Research Engineering, especially the space between LLM research, agent system design, evaluation, and production software.
+I build AI systems to help models to do real work: read long context, use tools, follow domain constraints, produce artifacts, and stay reliable enough for people to trust. My strongest professional direction is AI Research Engineering, especially the space between LLM research, agent system design, evaluation, and production software.
 
-The through line in my career is not simply "software engineer who moved into AI." It is a long-running interest in how intelligent systems behave when they leave clean demos and enter structured, messy, real-world tasks.
+AGI/ASI is my lifelong pursuit. 
 
-## Early Research Roots
+## Early Research Experiences
 
-My first deep learning-related project started in 2014, when I used the Face++ API to build a face recognition app. It was early and application-driven, but it gave me my first concrete contact with machine perception.
+My first deep learning-related project started in 2014, when I used the Face++ API to build a face recognition app. It was early and application-driven, but it gave me my first concrete contact with deep learning.
 
-In 2017-2018, I took Andrew Ng's Machine Learning and Deep Learning courses on Coursera. Those courses became the real beginning of my deep learning journey. At Southern University of Science and Technology, I then worked with [Prof. Ran Cheng](https://chengran.tech/) on computer vision research, especially GAN-based face generation. That period shaped how I think about representation, data, model behavior, and visual generation.
+In 2017-2018, I took Andrew Ng's Machine Learning and Deep Learning courses on Coursera. Those courses became the real beginning of my deep learning journey. At Southern University of Science and Technology, I worked with [Prof. Ran Cheng](https://chengran.tech/) on computer vision research, especially GAN-based face generation. That period shaped how I think about deeplearning neural network and AI.
 
 Later, I worked with [Yi Liu](https://www.linkedin.com/in/yi-liu-755692145/) and [Prof. Yepang Liu](https://yepangliu.github.io/)'s lab on JavaScript performance-related issues and web accessibility. We explored how constraint solving and linear programming could be used to address accessibility problems in JavaScript and web applications. That work led to [Taming Accessibility Issues in Web Application for the Disabled](https://drive.google.com/file/d/1OeUMlKKRzQRxBwwlv_h6faJBbqWykii8/view), and it gave me an important research instinct: good engineering problems can often be reframed into formal structures that can be analyzed, optimized, and repaired.
 
-## Engineering Discipline
+## Engineering Experience
 
-After graduating from SUSTech, I joined Ant Group / Alibaba in 2020 and worked on Alipay financial product systems, low-code content infrastructure, live-streaming components, backend services, and mobile-web integration. That period made me much stronger as a software engineer. I learned how to build systems for real business workflows, real users, and real operational pressure.
+After graduating from SUSTech, I joined Ant Group (Alibaba) in 2020 and worked on Alipay financial product systems, low-code content infrastructure, live-streaming components, backend services, and mobile-web integration. That period made me much stronger as a software engineer. I learned how to build systems for real business workflows, real users, and real operational pressure.
 
 In 2021, I moved to the University of Pittsburgh and worked in [Prof. Dan Ding](https://www.shrs.pitt.edu/people/dan-ding)'s lab on software systems for human rehabilitation research. I built web, mobile, data collection, visualization, and low-code research platforms that helped researchers and clinical partners run rehabilitation studies and training programs. That work kept me close to applied research while deepening my ability to deliver full-stack systems.
 
@@ -32,7 +32,7 @@ These projects reflect the same professional taste from different angles. I like
 
 ## Nova Agent
 
-Today, at [Newfront](https://www.newfront.com/) / WTW, I work on insurance AI systems and agentic workflows. I have also worked on Quoting and Placement Service, which are more traditional SDE systems but are essential to understanding the insurance domain, operator workflows, and the service boundaries that an AI agent has to respect.
+Today, at [Newfront](https://www.ycombinator.com/companies/newfront-insurance) / WTW, I work on insurance AI systems and agentic workflows. I have also worked on Quoting and Placement Service, which are more traditional SDE systems but are essential to understanding the insurance domain, operator workflows, and the service boundaries that an AI agent has to respect.
 
 My main AI work is Nova Agent, an internal AI coworker platform for insurance operators.
 
@@ -52,9 +52,9 @@ This is where my research and engineering background reinforce each other. Resea
 
 ## Work Highlights
 
-- Nova Agent at Newfront / WTW: a domain-specific AI coworker for insurance operators, long document workflows, contract generation, email drafting, tool use, and human-in-the-loop operations
+- Nova Agent at [Newfront](https://www.newfront.com/) / [WTW](https://www.wtwco.com/en-us): a domain-specific AI coworker for insurance operators, long document workflows, contract generation, email drafting, tool use, and human-in-the-loop operations
 - Internal LLM coding agent at TikTok: Objective-C to Swift migration with prompt engineering, code-generation loops, and custom evaluation harnesses
-- [TreeDiff: AST-Guided Code Generation with Diffusion LLMs](https://arxiv.org/abs/2508.01473): syntax-aware diffusion LLM research for code generation, accepted to [SURGeLLM at ACL 2026](https://surgellm.github.io/acl2026/)
+- [TreeDiff: AST-Guided Code Generation with Diffusion LLMs](https://aclanthology.org/2026.surgellm-1.5/): syntax-aware diffusion LLM research for code generation, accepted to [SURGeLLM at ACL 2026](https://surgellm.github.io/acl2026/)
 - [Bridging the Editing Gap in LLMs: FineEdit for Precise and Targeted Text Modifications](https://aclanthology.org/2025.findings-emnlp.118/): Findings of EMNLP 2025
 - [Infant Agent: A Tool-Integrated, Logic-Driven Agent with Cost-Effective API Usage](https://arxiv.org/abs/2411.01114)
 - [RED: A Systematic Real-Time Scheduling Approach for Robotic Environmental Dynamics](https://ieeexplore.ieee.org/abstract/document/10405986): RTSS 2023
