@@ -1,0 +1,25 @@
+.personal-agent { margin: 2.5rem 0; padding: clamp(1.25rem, 3vw, 2rem); border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-color); font-family: var(--ui-font); }
+.agent-heading { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.personal-agent h2 { margin: 1rem 0 .6rem; font-size: clamp(1.5rem, 3vw, 1.9rem); }
+.agent-badge { font-size: .8rem; color: var(--muted-color); }
+.personal-agent .agent-intro { font-size: 1rem; line-height: 1.6; margin-bottom: 1.25rem; }
+.agent-suggestions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.personal-agent button { border: 1px solid var(--border-color); color: var(--text-color); background: transparent; padding: .6rem .8rem; min-height: 44px; border-radius: 5px; font-size: .875rem; line-height: 1.4; text-align: left; }
+.personal-agent button:hover:not(:disabled) { border-color: var(--accent-color); }
+.personal-agent button:disabled { opacity: .6; cursor: not-allowed; }
+.agent-transcript { max-height: 32rem; overflow-y: auto; overscroll-behavior: contain; margin-block: 1rem; }
+.agent-message { padding: 1rem 0; border-bottom: 1px solid var(--border-color); font-size: 1rem; line-height: 1.65; overflow-wrap: anywhere; }
+.agent-message.user { padding: 1rem; background: var(--code-bg); border: 0; border-radius: 5px; }
+.agent-message p:last-child { margin-bottom: 0; }
+.message-role { display: block; font-size: .8rem; color: var(--muted-color); margin-bottom: .5rem; }
+.personal-agent label { display: block; margin-bottom: .5rem; font-size: .9rem; }
+.personal-agent textarea { width: 100%; padding: .8rem; resize: vertical; min-height: 96px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color); border-radius: 5px; font: 1rem/1.6 var(--ui-font); }
+.agent-actions { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; justify-content: space-between; margin-top: .6rem; }
+.agent-actions > div { display: flex; flex-wrap: wrap; gap: .5rem; }
+.agent-actions small { color: var(--muted-color); font-size: .8rem; }
+.personal-agent .agent-send { color: var(--bg-color); background: var(--text-color); padding-inline: 1.2rem; }
+.personal-agent .agent-privacy { font-size: .8rem; line-height: 1.6; color: var(--muted-color); margin: 1rem 0 0; }
+.personal-agent .agent-notice { padding: .75rem; background: var(--code-bg); border-radius: 4px; font-size: .9rem; line-height: 1.6; margin: 1rem 0; }
+.agent-notice button { margin-left: .5rem; }
+.agent-disclosure { margin: 2rem 0; }
+.agent-disclosure summary { cursor: pointer; font-family: var(--ui-font); color: var(--link-color); min-height: 44px; display: list-item; padding-block: .75rem; }

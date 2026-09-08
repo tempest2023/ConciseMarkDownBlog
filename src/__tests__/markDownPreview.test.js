@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import MarkDownPreview from '../components/editor/MarkDownPreview';
 import config from '../config';
 
@@ -39,10 +39,16 @@ jest.mock('../components/ColorLoading', () => {
 
 // Mock ReactMarkdown
 jest.mock('react-markdown', () => {
-  return function MockReactMarkdown({ children }) {
+  return function MockReactMarkdown({ children, components }) {
+    if (children === 'agent-marker') {
+      const Div = components.div;
+      return <Div node={{ properties: { dataPersonalAgent: 'true' } }} />;
+    }
     return <div data-testid="markdown-content">{children}</div>;
   };
 });
+
+jest.mock('../components/PersonalAgent', () => ({ __esModule: true, default: () => <input aria-label="Agent draft" defaultValue="" /> }));
 
 describe('MarkDownPreview', () => {
   beforeEach(() => {
@@ -66,6 +72,15 @@ describe('MarkDownPreview', () => {
 
     expect(screen.getByTestId('color-loading')).toBeInTheDocument();
     expect(screen.queryByTestId('markdown-content')).not.toBeInTheDocument();
+  });
+
+  it('keeps the agent mounted across parent re-renders such as a theme change', async () => {
+    const { rerender } = render(<MarkDownPreview markdownString="agent-marker" showHeader={false} />);
+    const draft = await screen.findByLabelText('Agent draft');
+    fireEvent.change(draft, { target: { value: 'Keep my conversation' } });
+    rerender(<MarkDownPreview markdownString="agent-marker" showHeader={false} />);
+    expect(screen.getByLabelText('Agent draft')).toBe(draft);
+    expect(screen.getByLabelText('Agent draft')).toHaveValue('Keep my conversation');
   });
 });
 

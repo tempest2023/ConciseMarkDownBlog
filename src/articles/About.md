@@ -6,10 +6,18 @@
 
 I'm Tao Ren (Tempest), an independent researcher and senior full-stack engineer working at the intersection of LLM research, agent systems, and production software.
 
-<nav class="profile-actions" aria-label="Explore my work"><a class="primary-link" href="/?page=Work">Explore my work ↗</a><a href="https://drive.google.com/file/d/1aNJ-NPuk71x4xQgRo5Es2WPyNZA8kbCb/view?usp=sharing">Read my résumé ↗</a><a href="mailto:tar118@pitt.edu">Get in touch ↗</a></nav>
+<nav class="profile-actions" aria-label="Explore my work"><a class="primary-link" href="/?page=Work">Explore my work ↗</a><a href="/?page=Ask">Ask my agent ↗</a><a href="https://drive.google.com/file/d/1aNJ-NPuk71x4xQgRo5Es2WPyNZA8kbCb/view?usp=sharing">Read my résumé ↗</a></nav>
 </div>
 
 I build systems that connect model capabilities to tools, documents, and the constraints of a real workflow. My interests include structured code generation, precise editing, evaluation, and human review. I care about what happens after a model produces an answer: whether the result is useful, testable, and reliable enough to use.
+
+<details class="agent-disclosure" id="ask-tempest"><summary>Ask my agent about my experience and research</summary>
+<div data-personal-agent="true">
+
+[Open Ask Tempest](/ask/) for a conversation, or [explore my work](/work/) directly.
+
+</div>
+</details>
 
 ## Currently building
 

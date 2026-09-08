@@ -12,6 +12,18 @@
     "sourceKind": "article"
   },
   {
+    "page": "Ask",
+    "path": "/ask/",
+    "title": "Ask Tempest",
+    "description": "An AI guide to my public research, engineering experience, projects, and writing. You can ask in English or Chinese and follow the source links to read more.",
+    "publishedAt": "2026-09-08T22:09:38.628Z",
+    "updatedAt": "2026-09-08T22:09:38.628Z",
+    "category": "Pages",
+    "readingMinutes": 1,
+    "isPost": false,
+    "sourceKind": "article"
+  },
+  {
     "page": "Blogs/AI/My_AI_Research_and_Engineering_Journey",
     "path": "/blog/ai/my-ai-research-and-engineering-journey/",
     "title": "From Deep Learning to Production AI Agents: My Research and Engineering Journey",
@@ -473,7 +485,7 @@
     "title": "Concise MarkDown Blog",
     "description": "[![PayPal][badgepaypaldonate]][paypal-donations]",
     "publishedAt": "2022-09-03T03:33:44-04:00",
-    "updatedAt": "2026-02-18T22:38:39-08:00",
+    "updatedAt": "2026-09-08T15:07:07-07:00",
     "category": "Pages",
     "readingMinutes": 9,
     "isPost": false,
@@ -509,7 +521,7 @@
     "title": "Writing",
     "description": "Notes on agents, research, engineering, and the things I learn while building.",
     "publishedAt": "2022-09-02T18:50:19-04:00",
-    "updatedAt": "2026-09-08T14:56:39-07:00",
+    "updatedAt": "2026-09-08T15:07:07-07:00",
     "category": "Pages",
     "readingMinutes": 2,
     "isPost": false,

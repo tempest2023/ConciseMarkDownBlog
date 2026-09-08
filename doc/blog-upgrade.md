@@ -10,6 +10,8 @@
 6. Start `tempest/personal-agent` from that work. Add a small Vercel AI SDK endpoint and streaming interface, with bounded context and cost controls. No RAG, vector database, or external personal-data enrichment.
 7. Verify agent behavior, document deployment configuration, commit and push.
 
+See [Personal Agent setup and verification](personal-agent.md) for the optional server endpoint, cost limits, local preview and live-model acceptance checklist.
+
 ## Content ownership
 
 Edit `src/data/profile.json` to update public profile facts. `npm run content` generates About and Work; the original biography is preserved verbatim after the archive introduction in `Blogs/AI/My_AI_Research_and_Engineering_Journey.md`.

@@ -6,7 +6,11 @@
 
 ![demo](./demo.png)
 
-Build your own blog in 5 minutes with Markdown. No server needed. Free hosting.
+Build a Markdown-first blog with complete static article HTML. Static hosting needs no application server; the optional Personal Agent uses a server endpoint and metered model calls.
+
+This personal-site branch includes a public profile, readable About and Work pages, a complete Writing index, clean article URLs and an optional Vercel AI guide. See the [upgrade notes](doc/blog-upgrade.md) and [Personal Agent setup](doc/personal-agent.md).
+
+Use **Node 22** and `yarn install --frozen-lockfile`. Edit `src/data/profile.json` for public biographical facts; About and Work are generated from it, so direct edits to those two Markdown files will be overwritten. Add articles under `src/articles/Blogs/`; `npm run build` generates their directory, metadata, sitemap, RSS and static HTML. Test the production output with `npm run preview`.
 
 ## ✨ Features
 
@@ -16,7 +20,7 @@ Build your own blog in 5 minutes with Markdown. No server needed. Free hosting.
 - 🖥️ **GUI Config Editor** - Visual editor for settings (local only)
 - 🚀 **One-Click Deploy** - Deploy to GitHub Pages or Vercel instantly
 - 📱 **Mobile Responsive** - Works on all devices
-- 🆓 **Completely Free** - No hosting costs
+- 🆓 **Static Hosting** - Compatible with GitHub Pages; optional chat has separate provider/hosting costs
 
 ## 🚀 Quick Start
 

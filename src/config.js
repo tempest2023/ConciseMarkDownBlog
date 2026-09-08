@@ -42,6 +42,11 @@ const config = {
       title: 'Projects',
       type: 'article',
       customUrl: 'Projects/Project'
+    },
+    {
+      title: 'Ask Tempest',
+      type: 'article',
+      customUrl: 'Ask'
     }
   ],
   // markdown settings
