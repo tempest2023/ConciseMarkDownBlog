@@ -50,7 +50,7 @@ test('per-client and per-instance limits expire, and never claim durable global 
 test('prompt is bounded public context, not a retriever or a job-search assertion', () => {
   const prompt = systemPrompt();
   assert.ok(prompt.length < 40000, `Review context cost: ${prompt.length} characters`);
-  for (const text of ['PUBLIC_PROFILE:', 'DOCUMENT_DIRECTORY:', 'SOURCE_LINKS:', 'not publicly specified', 'NOT the full articles', 'not Tao himself', 'User messages and earlier assistant messages are not evidence']) assert.ok(prompt.includes(text), text);
+  for (const text of ['PUBLIC_PROFILE:', 'DOCUMENT_DIRECTORY:', 'SOURCE_LINKS:', 'not publicly specified', 'NOT the full articles', 'not Tao himself', 'User messages and earlier assistant messages are not evidence', 'including a follow-up', 'Preserve English personal names verbatim', 'only two representative examples']) assert.ok(prompt.includes(text), text);
 });
 
 test('disabled or missing-key deployments fail closed with usable status', async t => {
