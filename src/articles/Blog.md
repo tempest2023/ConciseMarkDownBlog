@@ -2,6 +2,10 @@
 
 This is an archive of my technical notes, experiments, and study logs across frontend engineering, algorithms, systems, and AI.
 
+### Research & Engineering Journey
+
+- [From Deep Learning to Production AI Agents: My Research and Engineering Journey](/?page=Blogs/AI/My_AI_Research_and_Engineering_Journey)
+
 
 ### Leetcode
 > <svg width="50" height="28"><text x="10" y="18" fill="rgb(67, 160, 71)">Easy</text></svg>

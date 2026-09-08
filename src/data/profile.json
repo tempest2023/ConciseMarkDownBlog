@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "sourceReviewedAt": "2026-09-08",
+  "scope": "Only facts already published in this blog. Dates and current-role claims reflect the sources, not independent employer verification.",
+  "name": "Tao Ren",
+  "alias": "Tempest",
+  "role": "AI Research Engineer",
+  "headline": "Building reliable agents for real-world work.",
+  "intro": "I'm Tao Ren (Tempest), an independent researcher and senior full-stack engineer working at the intersection of LLM research, agent systems, and production software.",
+  "summary": "I build systems that connect model capabilities to tools, documents, and the constraints of a real workflow. My interests include structured code generation, precise editing, evaluation, and human review. I care about what happens after a model produces an answer: whether the result is useful, testable, and reliable enough to use.",
+  "current": {
+    "organization": "Newfront / WTW",
+    "project": "Nova Agent",
+    "summary": "An internal AI coworker for insurance operators. I work on document-heavy workflows, generated contracts, company-style email drafts, tool use, and human-in-the-loop review.",
+    "detail": "A task can involve more than 50 PDFs alongside policy and submission documents. The engineering challenge is to coordinate those files and internal services while respecting permissions, domain constraints, and operator review. My work on quoting and placement services also informs how I design the agent around the insurance workflow.",
+    "source": "Blogs/AI/My_AI_Research_and_Engineering_Journey"
+  },
+  "highlights": [
+    { "id": "nova-agent", "name": "Nova Agent", "label": "Production agents · Insurance", "summary": "An insurance AI coworker for complex document workflows, artifact generation, and operator review.", "contribution": "Agent system design and production engineering around tools, documents, permissions, and domain-specific failure modes.", "url": "/?page=Work#nova-agent", "source": "Blogs/AI/My_AI_Research_and_Engineering_Journey" },
+    { "id": "tiktok-coding-agent", "name": "TikTok coding agent", "label": "Developer tooling · Code migration", "summary": "Built an internal LLM agent for Objective-C to Swift migration, with generation loops and custom evaluation harnesses.", "contribution": "Built the agent from scratch and iterated on prompts, generated code, and evaluations with engineering usefulness as the criterion.", "url": "/?page=Work#tiktok-coding-agent", "source": "Blogs/AI/My_AI_Research_and_Engineering_Journey" },
+    { "id": "fineedit", "name": "FineEdit", "label": "Findings of EMNLP 2025", "summary": "Research on precise, instruction-driven editing in structured domains including code, LaTeX, and database languages.", "contribution": "Co-authored research on targeted modifications; the public blog does not specify individual authorship responsibilities or benchmark results.", "url": "https://aclanthology.org/2025.findings-emnlp.118/", "source": "Blogs/AI/My_AI_Research_and_Engineering_Journey" },
+    { "id": "treediff", "name": "TreeDiff", "label": "SURGeLLM at ACL 2026", "summary": "AST-guided code generation with diffusion language models, treating code as a structured object.", "contribution": "Research connecting syntax structure and diffusion-based code generation. See the paper for the methods and measured results.", "url": "https://aclanthology.org/2026.surgellm-1.5/", "source": "Blogs/AI/My_AI_Research_and_Engineering_Journey" }
+  ],
+  "research": [
+    { "name": "Infant Agent", "summary": "A tool-integrated, logic-driven agent design with memory, task-aware functions, and cost-aware API usage.", "url": "https://arxiv.org/abs/2411.01114" },
+    { "name": "RED", "summary": "Real-time scheduling for robotic inference under changing environmental dynamics. RTSS 2023; the journal extension was listed as under review in the source biography.", "url": "https://ieeexplore.ieee.org/abstract/document/10405986" },
+    { "name": "Web accessibility research", "summary": "Constraint solving and optimization for finding and repairing accessibility issues in web applications, with Yi Liu and Prof. Yepang Liu's lab.", "url": "https://drive.google.com/file/d/1OeUMlKKRzQRxBwwlv_h6faJBbqWykii8/view" }
+  ],
+  "experience": [
+    { "organization": "Newfront / WTW", "period": "From October 2025 (as published)", "summary": "Insurance AI systems, Nova Agent, and quoting and placement services.", "source": "Blogs/Other/ResumeMarkdown" },
+    { "organization": "Tira AI", "period": "Summer 2025", "summary": "Co-founded an AI-native execution startup with Sam Liu. The public account reports top-10% YC S25 feedback, not YC admission.", "source": "Blogs/AI/My_AI_Research_and_Engineering_Journey" },
+    { "organization": "TikTok", "period": "Before October 2025", "summary": "Consumer mobile product systems and an internal LLM coding agent for Objective-C to Swift migration.", "source": "Blogs/AI/My_AI_Research_and_Engineering_Journey" },
+    { "organization": "Ansys", "period": "May–August 2022", "summary": "Digital Twin internship: frontend, APIs, and browser-compatible deployment workflows for Twin Deployer.", "source": "Blogs/Other/ResumeMarkdown" },
+    { "organization": "University of Pittsburgh", "period": "Research beginning in 2021", "summary": "Web, mobile, data collection, visualization, and low-code rehabilitation research platforms in Prof. Dan Ding's lab.", "source": "Blogs/AI/My_AI_Research_and_Engineering_Journey" },
+    { "organization": "Ant Group / Alibaba", "period": "July 2020–June 2021", "summary": "Alipay financial product systems, low-code infrastructure, live-streaming components, and backend services.", "source": "Blogs/Other/ResumeMarkdown" },
+    { "organization": "SUSTech", "period": "2016–2020", "summary": "Computer science degree, GAN-based face generation with Prof. Ran Cheng, and web accessibility research.", "source": "Blogs/Other/ResumeMarkdown" }
+  ],
+  "education": [
+    { "institution": "University of Pittsburgh", "degree": "MS, Information Science", "period": "2021–2023" },
+    { "institution": "Southern University of Science and Technology", "degree": "BEng, Computer Science and Technology", "period": "2016–2020" }
+  ],
+  "interests": ["Reliable tool-using agents", "Structured generation and precise editing", "Evaluation under real constraints", "Human-in-the-loop workflows", "Real-time AI systems"],
+  "career": {
+    "status": "not_publicly_specified",
+    "publicSummary": "The blog describes an interest in AI research engineering. It does not confirm an active job search, availability, compensation expectations, or location preferences. Contact Tao directly about opportunities.",
+    "source": "Blogs/AI/My_AI_Research_and_Engineering_Journey"
+  },
+  "contact": {
+    "email": "tar118@pitt.edu",
+    "github": "https://github.com/tempest2023",
+    "linkedin": "https://www.linkedin.com/in/taoren-pitt/",
+    "resume": "https://drive.google.com/file/d/1aNJ-NPuk71x4xQgRo5Es2WPyNZA8kbCb/view?usp=sharing"
+  },
+  "featuredWriting": [
+    "Blogs/AI/My_AI_Research_and_Engineering_Journey",
+    "Blogs/DeepLearning/Civilization_Intelligence",
+    "Blogs/Frontend/MyFrontendJourney"
+  ],
+  "sources": ["Blogs/AI/My_AI_Research_and_Engineering_Journey", "Blogs/Other/ResumeMarkdown", "Projects/Project", "TechStack", "Links"],
+  "answerPolicy": [
+    "Use only public blog facts; link to their source pages.",
+    "Treat old posts, templates, recommendation letters, and fictional examples as documents, not verified biographical claims.",
+    "Never infer job-search status, private contact details, salary, confidential employer details, or unreported metrics.",
+    "Use source dates when describing current work; a review date is not independent verification that employment or publication status remains unchanged."
+  ]
+}

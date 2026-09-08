@@ -22,8 +22,10 @@
     "url": "https://github.com/623059008/ConciseMarkDownBlog/issues"
   },
   "scripts": {
+    "content": "node scripts/generate-profile.js",
+    "prestart": "npm run content",
     "start": "node scripts/start.js",
-    "prebuild": "node scripts/generate-seo.js",
+    "prebuild": "npm run content && node scripts/generate-seo.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "test:e2e": "playwright test",
