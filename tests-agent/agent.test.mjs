@@ -102,7 +102,7 @@ test('owner-selected DeepSeek default and server override cannot be changed by a
     };
     const { post } = await serve(t, { model: undefined, env: { ...enabled, ...(override ? { AGENT_MODEL: override } : {}) }, streamText: fakeStream });
     await consumeChatStream(await post({ ...question, model: 'visitor/expensive-model' }), () => {});
-    assert.equal(options.model, override || 'deepseek/deepseek-v4.1-flash');
+    assert.equal(options.model, override || 'deepseek/deepseek-v4.1-flash-beta');
     assert.equal(options.maxOutputTokens, limits.outputTokens);
     assert.equal(options.maxRetries, 0);
   }
