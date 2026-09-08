@@ -12,11 +12,13 @@ The prompt asks for short replies in the visitor's language, source links and an
 
 1. Use Node 22 and `yarn install --frozen-lockfile`.
 2. Create a dedicated AI Gateway API key and configure a budget for that key in the Vercel dashboard. Choose the amount yourself; this project does not purchase credits or change billing settings.
-3. For local preview, create a gitignored `.env.local` using `.env.example` as the template. For deployment, add the same server-only variables in the target Vercel project's environment settings: `AI_GATEWAY_API_KEY`, `PERSONAL_AGENT_ENABLED=true`, and optionally `AGENT_MODEL` (default `openai/gpt-4.1-mini`). Never use a `REACT_APP_` prefix and never commit credentials.
+3. For local preview, create a gitignored `.env.local` using `.env.example` as the template. For deployment, add the same server-only variables in the target Vercel project's environment settings: `AI_GATEWAY_API_KEY`, `PERSONAL_AGENT_ENABLED=true`, and optionally `AGENT_MODEL` (default `deepseek/deepseek-v4.1-flash`, selected by the owner). Never use a `REACT_APP_` prefix and never commit credentials.
 4. Run `npm run build && npm run preview`; open `http://127.0.0.1:4173/ask/`. The regular React development server does not run the chat endpoint. Restart preview after changing server environment variables.
 5. On Vercel, deploy this branch with the repository's `vercel.json` and verify `/api/chat`, `/ask/`, a nested article URL and a legacy `?page=` URL. API key changes require a new deployment. Keep chat disabled on public deployments until the live-answer checklist below passes.
 
 GitHub Pages serves the full static articles but cannot run `/api/chat`. Chat gracefully shows links to the profile and contact details when unavailable. Disabling `PERSONAL_AGENT_ENABLED` also disables the endpoint; static content remains usable. No production deployment is performed by the test commands.
+
+Model availability note (checked September 8, 2026): [Vercel's model page](https://vercel.com/ai-gateway/models/deepseek-v4.1-flash) labels this model experimental and says it expires September 10. Treat it as a temporary test choice, not a confirmed long-lived production model. Recheck availability before deployment and replace it through `AGENT_MODEL` with the owner's chosen successor. The application does not silently switch to another paid model when a model fails.
 
 ## Cost and privacy boundaries
 

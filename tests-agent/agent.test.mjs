@@ -93,6 +93,21 @@ test('real AI SDK + mock provider + HTTP + client parser streams Unicode and enf
   assert.ok(!call.tools?.length);
 });
 
+test('owner-selected DeepSeek default and server override cannot be changed by a visitor', async t => {
+  for (const override of [undefined, 'owner/configured-model']) {
+    let options;
+    const fakeStream = input => {
+      options = input;
+      return { fullStream: (async function* () { yield { type: 'text-delta', text: 'Test reply' }; yield { type: 'finish', finishReason: 'stop' }; })() };
+    };
+    const { post } = await serve(t, { model: undefined, env: { ...enabled, ...(override ? { AGENT_MODEL: override } : {}) }, streamText: fakeStream });
+    await consumeChatStream(await post({ ...question, model: 'visitor/expensive-model' }), () => {});
+    assert.equal(options.model, override || 'deepseek/deepseek-v4.1-flash');
+    assert.equal(options.maxOutputTokens, limits.outputTokens);
+    assert.equal(options.maxRetries, 0);
+  }
+});
+
 test('empty, truncated and provider-error replies are incomplete without exposing provider errors', async t => {
   for (const model of [mockModel({ text: '' }), mockModel({ reason: 'length' }), mockModel({ error: true })]) {
     const { post } = await serve(t, { model });

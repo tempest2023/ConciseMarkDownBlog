@@ -91,7 +91,7 @@ function createHandler({ env = process.env, streamText, model, limiter = createL
     try {
       const sdk = streamText ? null : await import('ai');
       // The SDK's default error callback logs provider errors, which can contain request data.
-      const result = (streamText || sdk.streamText)({ model: model || env.AGENT_MODEL || 'openai/gpt-4.1-mini', system: systemPrompt(), messages, maxOutputTokens: limits.outputTokens, maxRetries: 0, abortSignal: abort.signal, temperature: 0.2, onError: () => {} });
+      const result = (streamText || sdk.streamText)({ model: model || env.AGENT_MODEL || 'deepseek/deepseek-v4.1-flash', system: systemPrompt(), messages, maxOutputTokens: limits.outputTokens, maxRetries: 0, abortSignal: abort.signal, temperature: 0.2, onError: () => {} });
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/event-stream; charset=utf-8');
       res.setHeader('X-Accel-Buffering', 'no');
