@@ -93,7 +93,7 @@ test('real AI SDK + mock provider + HTTP + client parser streams Unicode and enf
   assert.ok(!call.tools?.length);
 });
 
-test('owner-selected DeepSeek default and server override cannot be changed by a visitor', async t => {
+test('owner-selected GLM default and server override cannot be changed by a visitor', async t => {
   for (const override of [undefined, 'owner/configured-model']) {
     let options;
     const fakeStream = input => {
@@ -102,7 +102,7 @@ test('owner-selected DeepSeek default and server override cannot be changed by a
     };
     const { post } = await serve(t, { model: undefined, env: { ...enabled, ...(override ? { AGENT_MODEL: override } : {}) }, streamText: fakeStream });
     await consumeChatStream(await post({ ...question, model: 'visitor/expensive-model' }), () => {});
-    assert.equal(options.model, override || 'deepseek/deepseek-v4.1-flash-beta');
+    assert.equal(options.model, override || 'zai/glm-5.3-flash');
     assert.equal(options.maxOutputTokens, limits.outputTokens);
     assert.equal(options.maxRetries, 0);
   }
@@ -112,6 +112,24 @@ test('empty, truncated and provider-error replies are incomplete without exposin
   for (const model of [mockModel({ text: '' }), mockModel({ reason: 'length' }), mockModel({ error: true })]) {
     const { post } = await serve(t, { model });
     await assert.rejects(consumeChatStream(await post(), () => {}), /interrupted/);
+  }
+});
+
+test('upstream rate limits give a safe wait-and-retry message for streamed and thrown errors', async t => {
+  const privateError = Object.assign(new Error('private provider account detail'), { statusCode: 429 });
+  for (const mode of ['stream', 'throw', 'nested']) {
+    const fakeStream = () => {
+      if (mode === 'throw') throw privateError;
+      return { fullStream: (async function* () {
+        yield { type: 'error', error: mode === 'nested' ? { cause: privateError } : privateError };
+      })() };
+    };
+    const { post } = await serve(t, { streamText: fakeStream });
+    await assert.rejects(consumeChatStream(await post(), () => {}), error => {
+      assert.match(error.message, /Chat is busy.*wait a minute/);
+      assert.ok(!error.message.includes('private'));
+      return true;
+    });
   }
 });
 
