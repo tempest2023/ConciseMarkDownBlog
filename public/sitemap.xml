@@ -2,11 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tempest.fun/</loc>
-    <lastmod>2026-07-22T09:20:09.000Z</lastmod>
+    <lastmod>2026-09-08T21:56:39.000Z</lastmod>
   </url>
   <url>
     <loc>https://tempest.fun/?page=Blog</loc>
-    <lastmod>2026-07-22T09:20:09.000Z</lastmod>
+    <lastmod>2026-09-08T21:56:39.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tempest.fun/?page=Blogs%2FAI%2FMy_AI_Research_and_Engineering_Journey</loc>
+    <lastmod>2026-09-08T21:56:39.000Z</lastmod>
   </url>
   <url>
     <loc>https://tempest.fun/?page=Blogs%2FC%2Fpinitos_error</loc>
@@ -30,7 +34,7 @@
   </url>
   <url>
     <loc>https://tempest.fun/?page=Blogs%2FDeepLearning%2FCivilization_Intelligence</loc>
-    <lastmod>2026-07-22T09:30:12.000Z</lastmod>
+    <lastmod>2026-07-22T17:53:19.000Z</lastmod>
   </url>
   <url>
     <loc>https://tempest.fun/?page=Blogs%2FFrontend%2FFancyIdeas</loc>
@@ -163,5 +167,9 @@
   <url>
     <loc>https://tempest.fun/?page=TechStack</loc>
     <lastmod>2026-05-17T05:00:16.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tempest.fun/?page=Work</loc>
+    <lastmod>2026-09-08T21:56:39.000Z</lastmod>
   </url>
 </urlset>

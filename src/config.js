@@ -10,7 +10,7 @@ const config = {
   // github readme url
   readmeUrl: 'https://github.com/tempest2023/ConciseMarkDownBlog/blob/main/README.md',
   // blog title, on left top of the page
-  title: 'Tempest\'s Blog',
+  title: 'Tao Ren / Tempest',
   // author name
   name: 'Tempest',
   // social links, on bottom of the page
@@ -29,35 +29,19 @@ const config = {
       type: 'article'
     },
     {
-      title: 'Tech Stack',
+      title: 'Work & Research',
       type: 'article',
-      customUrl: 'TechStack'
+      customUrl: 'Work'
     },
     {
-      title: 'Blog',
-      type: 'article'
+      title: 'Writing',
+      type: 'article',
+      customUrl: 'Blog'
     },
     {
       title: 'Projects',
       type: 'article',
       customUrl: 'Projects/Project'
-    },
-    {
-      title: 'Links',
-      type: 'article'
-    },
-    {
-      title: 'MarkDown',
-      type: 'article',
-      icon: 'bi-markdown',
-      ariaLabel: 'Markdown Editor'
-    },
-    {
-      title: '3D Portfolio',
-      type: 'link',
-      customUrl: 'https://3d.tempest.fun/',
-      icon: 'bi-badge-3d',
-      ariaLabel: '3D Portfolio'
     }
   ],
   // markdown settings
@@ -72,8 +56,8 @@ const config = {
     tabSize: 4,
     // the links in markdown does not have underlines, set it true to enable underline
     linkStyle: {
-      textDecoration: 'none',
-      color: '#0077ff'
+      textDecoration: 'underline',
+      color: 'var(--link-color, #174bb8)'
     }
   },
   // show theme switch button in the header, default to true
@@ -82,8 +66,8 @@ const config = {
   footer: true,
   colors: {
     light: {
-      background: '#ffffff',
-      foreground: '#0077ff',
+      background: '#fcfcfa',
+      foreground: '#174bb8',
       gray: '#6c757d',
       text: '#212529',
       border: '#dee2e6',
@@ -91,7 +75,7 @@ const config = {
     },
     dark: {
       background: '#212529',
-      foreground: '#0d6efd',
+      foreground: '#93b9ff',
       gray: '#adb5bd',
       text: '#f8f9fa',
       border: '#495057',

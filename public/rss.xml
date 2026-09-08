@@ -7,10 +7,17 @@
     <language>en</language>
     <atom:link href="https://tempest.fun/rss.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>From Deep Learning to Production AI Agents: My Research and Engineering Journey</title>
+      <link>https://tempest.fun/?page=Blogs%2FAI%2FMy_AI_Research_and_Engineering_Journey</link>
+      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FAI%2FMy_AI_Research_and_Engineering_Journey</guid>
+      <pubDate>Tue, 08 Sep 2026 21:56:39 GMT</pubDate>
+      <description>Archived September 8, 2026 from my former About page. The account below is preserved as it appeared at that time; current details are on the homepage.</description>
+    </item>
+    <item>
       <title>Civilizational Intelligence: From The Odyssey to an Evolving Mathematical Civilization</title>
       <link>https://tempest.fun/?page=Blogs%2FDeepLearning%2FCivilization_Intelligence</link>
       <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FDeepLearning%2FCivilization_Intelligence</guid>
-      <pubDate>Wed, 22 Jul 2026 09:30:12 GMT</pubDate>
+      <pubDate>Wed, 22 Jul 2026 17:53:19 GMT</pubDate>
       <description>Published: 2026-07-22</description>
     </item>
     <item>
@@ -208,13 +215,6 @@
       <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FPython%2FUse_Python_to_print_colorfully</guid>
       <pubDate>Tue, 13 Sep 2022 18:51:39 GMT</pubDate>
       <description>In Deep Learning homework, I found there is a weird print.</description>
-    </item>
-    <item>
-      <title>2227. Encrypt and Decrypt Strings</title>
-      <link>https://tempest.fun/?page=Blogs%2FLeetcode%2FEncrypt_and_Decrypt_Strings</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FLeetcode%2FEncrypt_and_Decrypt_Strings</guid>
-      <pubDate>Tue, 13 Sep 2022 00:48:47 GMT</pubDate>
-      <description>def encrypt(self, word1: str) -&gt; str: res = &apos;&apos; for c in word1: res += self.values[self.keysDict[c]-1] return res</description>
     </item>
   </channel>
 </rss>

@@ -18,6 +18,7 @@ import ColorLoading from './ColorLoading';
 import NotFound from '../articles/404.md';
 import { codeIcon, paragraphIcon } from '../util/icons';
 import { updateSeoMetadata } from '../util/seo';
+import { hasConfigAccess } from '../util/isLocal';
 
 const { debug } = config;
 
@@ -109,14 +110,7 @@ const Article = () => {
       {filePath
         ? (
           <div>
-            <div className={styles['top-right-button']}>
-              <FlipButton
-                onClick={switchMode}
-                open={false}
-                closeElement={<img className={styles['small-icon']} src={paragraphIcon} />}
-                openElement={<img className={styles['small-icon']} src={codeIcon} />}
-                size="small" />
-            </div>
+            {hasConfigAccess() && <div className="article-tools"><button onClick={switchMode} aria-pressed={mode === 'raw'}>{mode === 'raw' ? 'Read article' : 'View Markdown'}</button></div>}
             {mode !== 'preview' && (
               <MarkdownTextarea
                 showHeader={false}

@@ -90,7 +90,7 @@ export default function MarkDownPreview (props) {
   return (
     <div className={styles['markdown-preview-container']} ref={previewContainerRef}>
     {showHeader && <h1>Markdown Preview</h1>}
-    <div className={styles['preview-panel']} style={!showHeader ? { border: 0 } : {}}>
+    <div className={`${styles['preview-panel']} article-content`} style={!showHeader ? { border: 0 } : {}}>
       {!markdownContent || externalLoading || isDelayedLoading
         ? <ColorLoading />
         : (<ReactMarkdown
@@ -120,13 +120,13 @@ export default function MarkDownPreview (props) {
                 // custom h1, h2 behaviors, add anchor automatically with the title text.
                 // Add a  divider behind h1 and h2
                 h1 ({ children, node, ...props }) {
-                  return <><h1 {...props}>{children}</h1><a name={getInfoByChildren(children)} /><hr /></>
+                  return <h1 id={getInfoByChildren(children)} {...props}>{children}</h1>
                 },
                 h2 ({ children, node, ...props }) {
-                  return <><h2 {...props}>{children}</h2><a name={getInfoByChildren(children)} /><hr /></>
+                  return <h2 id={getInfoByChildren(children)} {...props}>{children}</h2>
                 },
                 blockquote ({ children, node, ...props }) {
-                  return <blockquote style={ { borderLeft: '3px solid #ddd', paddingLeft: '0.5em', color: '#bbb' } } {...props}>{children}</blockquote>
+                  return <blockquote {...props}>{children}</blockquote>
                 },
                 // custom the link behavior, all internal links will be loaded by setPage from App Component.
                 // It's to avoid the influence from different deployment root directory.

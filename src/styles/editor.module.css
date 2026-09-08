@@ -26,11 +26,11 @@
 
 .markdown-preview-container {
     height: auto;
-    overflow: hidden;
+    min-width: 0;
 }
 .preview-panel {
     border-top: 4px solid var(--accent-color, #0077ff);
-    padding: 20px;
+    padding: 0;
     background-color: var(--bg-color, #ffffff);
     color: var(--text-color, #212529);
 }

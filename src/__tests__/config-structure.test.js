@@ -33,42 +33,11 @@ describe('Config Structure Validation', () => {
     expect(aboutHeader.type).toBe('article');
   });
 
-  it('should have Tech Stack header with customUrl', () => {
-    const techStackHeader = config.headers.find(h => h.title === 'Tech Stack');
-    expect(techStackHeader).toBeDefined();
-    expect(techStackHeader.type).toBe('article');
-    expect(techStackHeader.customUrl).toBe('TechStack');
-  });
-
-  it('should have Projects header with customUrl', () => {
-    const projectsHeader = config.headers.find(h => h.title === 'Projects');
-    expect(projectsHeader).toBeDefined();
-    expect(projectsHeader.type).toBe('article');
-    expect(projectsHeader.customUrl).toBe('Projects/Project');
-  });
-
-  it('should not have Resume in the menu headers', () => {
-    const resumeHeader = config.headers.find(h => h.title === 'Resume');
-    expect(resumeHeader).toBeUndefined();
-  });
-
-  it('should have Links header', () => {
-    const linksHeader = config.headers.find(h => h.title === 'Links');
-    expect(linksHeader).toBeDefined();
-    expect(linksHeader.type).toBe('article');
-  });
-
-  it('should have MarkDown header', () => {
-    const markdownHeader = config.headers.find(h => h.title === 'MarkDown');
-    expect(markdownHeader).toBeDefined();
-    expect(markdownHeader.type).toBe('article');
-    expect(markdownHeader.icon).toBe('bi-markdown');
-  });
-
-  it('should have Blog header', () => {
-    const blogHeader = config.headers.find(h => h.title === 'Blog');
-    expect(blogHeader).toBeDefined();
-    expect(blogHeader.type).toBe('article');
+  it('prioritizes work, writing and projects without exposing utilities in the menu', () => {
+    expect(config.headers.map(h => h.title)).toEqual(['About', 'Work & Research', 'Writing', 'Projects']);
+    expect(config.headers.find(h => h.title === 'Work & Research').customUrl).toBe('Work');
+    expect(config.headers.find(h => h.title === 'Writing').customUrl).toBe('Blog');
+    expect(config.headers.find(h => h.title === 'Projects').customUrl).toBe('Projects/Project');
   });
 
   it('should have valid markdown settings', () => {

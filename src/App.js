@@ -20,10 +20,9 @@ import { getUrlParameters } from './util/url';
 import { compareLowerCase } from './util/str';
 import { navigate, goBack, selectPage } from './util/store'
 import { updateSeoMetadata } from './util/seo';
-import './styles/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import './styles/app.css';
 
 const { debug } = config;
 
@@ -80,10 +79,11 @@ const AppContent = () => {
 
   return (
     <div className={`page ${isDark ? 'dark-theme' : 'light-theme'}`}>
+      <a className="skip-link" href="#main-content">Skip to content</a>
       <Header />
-      <div className="main-container">
+      <main className="main-container" id="main-content" tabIndex={-1}>
         {renderContent()}
-      </div>
+      </main>
       <Footer />
       <ConfigButton />
     </div>

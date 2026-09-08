@@ -1,115 +1,27 @@
-/**
- * @author Tempest
- * @email tar118@pitt.edu
- * @create date 2022-08-31 14:38:47
- * @modify date 2022-08-31 14:38:47
- * @desc Header component, include content block switching, theme switching, etc.
- */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import config from '../config';
-import styles from '../styles/header.module.css';
-import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
-import { externalValidator, formatLink, handleUrl } from '../util/url';
-import { navigate, selectPage } from '../util/store'
-import { compareLowerCase } from '../util/str';
+import { useSelector } from 'react-redux';
+import { selectPage } from '../util/store';
+import { formatLink } from '../util/url';
 import { useTheme } from './ThemeProvider';
 
-const Header = () => {
-  const [headerLinks, setHeaderLinks] = useState([]);
+export default function Header () {
   const page = useSelector(selectPage);
-  const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
   const { isDark, toggleTheme, themeEnabled } = useTheme();
-
-  const getHeaderLabel = (item) => item.ariaLabel || item.title;
-
-  const setPage = (page) => {
-    dispatch(navigate(page));
-  }
-  const pageUpdate = (item) => {
-    handleUrl(item.customUrl || item.title, setPage)
-  }
-  const getHeaderUrl = (item) => {
-    const destination = item.customUrl || item.title;
-    return externalValidator(destination) ? destination : formatLink(destination);
-  }
-  // render header links with the active page
-  const getHeaders = () => {
-    const headerLinks = [];
-    config.headers.forEach(item => {
-      const destination = item.customUrl || item.title;
-      const external = externalValidator(destination);
-
-      headerLinks.push(
-        <li className={styles['header-link-wrapper']} key={`navbar-link-${item.title}`}>
-          <a
-            className={`nav-link ${styles['header-link-anchor']} ${item.icon ? styles['header-link-icon-only'] : ''}`}
-            data-active={compareLowerCase(item.title, page) || compareLowerCase(item.customUrl, page) ? 'active' : ''}
-            aria-label={getHeaderLabel(item)}
-            title={getHeaderLabel(item)}
-            href={getHeaderUrl(item)}
-            target={external ? '_blank' : undefined}
-            rel={external ? 'noreferrer noopener' : undefined}
-            onClick={(e) => {
-              e.preventDefault();
-              pageUpdate(item);
-            }}
-          >
-            {
-              item.icon
-                ? <i className={`bi ${item.icon} ${styles['header-link-icon']}`} aria-hidden="true"></i>
-                : item.title
-            }
-          </a>
-        </li>
-      );
-    });
-    setHeaderLinks(headerLinks);
-  };
-
-  // generate header links with the active page
-  useEffect(() => {
-    getHeaders();
-  }, [page]);
-
   return (
-    <nav className="navbar navbar-expand-lg bg-light">
-      <div className="container-fluid">
-        <a className="navbar-brand" href="/">
-          {config.title || 'Tempest'}
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        {headerLinks.length > 0 && (
-          <div className="collapse navbar-collapse" id="navbarNav" style={{ justifyContent: 'flex-end' }}>
-            <ul className="navbar-nav">{headerLinks}</ul>
-          </div>
-        )}
-        {themeEnabled && (
-          <div className={styles['header-controller']}>
-            <button
-              className={styles['header-theme-toggler']}
-              onClick={toggleTheme}
-              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-              title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-            >
-              <i className={`bi ${isDark ? 'bi-sun' : 'bi-moon'}`}></i>
-            </button>
-          </div>
-        )}
+    <header className="site-header">
+      <a className="site-brand" href="/">{config.title}</a>
+      <div className="header-controls">
+        <button className="menu-toggle" aria-expanded={open} aria-controls="site-navigation" onClick={() => setOpen(!open)}>Menu</button>
+        <nav id="site-navigation" aria-label="Main navigation" className={open ? 'site-nav is-open' : 'site-nav'}>
+          {config.headers.map(item => {
+            const destination = item.customUrl || item.title;
+            return <a key={item.title} href={/^https?:/.test(destination) ? destination : formatLink(destination)} aria-current={destination.toLowerCase() === page.toLowerCase() ? 'page' : undefined}>{item.title}</a>;
+          })}
+        </nav>
+        {themeEnabled && <button className="theme-toggle" onClick={toggleTheme} aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'} title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}><span aria-hidden="true">{isDark ? '☀' : '☾'}</span></button>}
       </div>
-    </nav>
+    </header>
   );
-};
-
-Header.propTypes = {};
-export default Header;
+}
