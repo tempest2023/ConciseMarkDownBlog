@@ -3,6 +3,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../.env.local') });
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const legacy = require('../api/legacy');
 const chat = require('../api/chat');
 const root = path.resolve(__dirname, '../build');

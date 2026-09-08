@@ -18,6 +18,10 @@ The prompt asks for short replies in the visitor's language, source links and an
 
 GitHub Pages serves the full static articles but cannot run `/api/chat`. Chat gracefully shows links to the profile and contact details when unavailable. Disabling `PERSONAL_AGENT_ENABLED` also disables the endpoint; static content remains usable. No production deployment is performed by the test commands.
 
+Local preview also accepts a gitignored `.env`. Existing process variables take precedence, followed by `.env.local`, then `.env`. Neither local file is uploaded as a substitute for Vercel project environment variables.
+
+A key and a spend budget alone do not prove the account is ready to serve models. If live requests are rejected with `403 customer_verification_required`, complete the account verification requested by AI Gateway in the Vercel dashboard. Keep payment information out of the repository and chat. The public chat intentionally shows a generic interruption message instead of exposing raw provider/account errors.
+
 Model availability note (checked September 8, 2026): [Vercel's model page](https://vercel.com/ai-gateway/models/deepseek-v4.1-flash) labels this model experimental and says it expires September 10. Treat it as a temporary test choice, not a confirmed long-lived production model. Recheck availability before deployment and replace it through `AGENT_MODEL` with the owner's chosen successor. The application does not silently switch to another paid model when a model fails.
 
 ## Cost and privacy boundaries
