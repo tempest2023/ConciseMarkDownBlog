@@ -4,6 +4,7 @@
   "author": "Temepst <tar118@pitt.edu> (https://tempest.fun)",
   "contributors": [],
   "version": "0.1.1",
+  "engines": { "node": "22.x" },
   "homepage": "/",
   "license": "MIT",
   "repository": {
@@ -26,6 +27,7 @@
     "prestart": "npm run content && node scripts/generate-seo.js",
     "postbuild": "node scripts/render-static.mjs",
     "test:static": "node scripts/verify-static.mjs",
+    "test:agent": "node --test tests-agent/*.test.mjs",
     "preview": "node scripts/preview.cjs",
     "start": "node scripts/start.js",
     "prebuild": "npm run content && node scripts/generate-seo.js",
@@ -46,6 +48,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "ai": "7.0.94",
     "babel-jest": "^27.4.2",
     "babel-loader": "^8.2.3",
     "babel-plugin-named-asset-import": "^0.3.8",
@@ -103,7 +106,8 @@
     "webpack": "^5.64.4",
     "webpack-dev-server": "^4.6.0",
     "webpack-manifest-plugin": "^4.0.2",
-    "workbox-webpack-plugin": "^6.4.1"
+    "workbox-webpack-plugin": "^6.4.1",
+    "zod": "4.1.8"
   },
   "eslintConfig": {
     "extends": [

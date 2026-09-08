@@ -16,5 +16,6 @@ jobs:
           cache: yarn
       - run: yarn install --frozen-lockfile
       - run: CI=true yarn test --watchAll=false --runInBand
+      - run: yarn test:agent
       - run: yarn build
       - run: yarn test:static
