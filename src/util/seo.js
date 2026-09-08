@@ -1,5 +1,8 @@
 import config from '../config';
 import seoConfig from '../seo.config.json';
+import { pagePath } from './routes';
+import catalog from '../data/articles.json';
+import profile from '../data/profile.json';
 
 const DESCRIPTION_MAX_LENGTH = 160;
 
@@ -57,7 +60,7 @@ export const getCanonicalUrl = (page = config.default) => {
     return `${baseUrl}/`;
   }
 
-  return `${baseUrl}/?page=${encodeURIComponent(normalizedPage)}`;
+  return `${baseUrl}${pagePath(normalizedPage)}`;
 };
 
 const setMeta = (key, value, attribute = 'name') => {
@@ -112,6 +115,8 @@ const setStructuredData = ({ page, title, description, canonicalUrl, noIndex }) 
         headline: isBlogPost ? title : undefined,
         description,
         inLanguage: seoConfig.language,
+        datePublished: isBlogPost ? catalog.find(entry => entry.page === normalizedPage)?.publishedAt : undefined,
+        dateModified: catalog.find(entry => entry.page === normalizedPage)?.updatedAt,
         author: { '@id': `${seoConfig.siteUrl.replace(/\/$/, '')}/#person` },
         mainEntity: pageType === 'ProfilePage'
           ? { '@id': `${seoConfig.siteUrl.replace(/\/$/, '')}/#person` }
@@ -130,8 +135,8 @@ const setStructuredData = ({ page, title, description, canonicalUrl, noIndex }) 
 export const updateSeoMetadata = ({ page, markdown = '', noIndex = false, title: suppliedTitle }) => {
   const articleTitle = suppliedTitle || extractArticleTitle(markdown, page);
   const isHome = normalizePage(page).toLowerCase() === normalizePage(config.default).toLowerCase();
-  const title = isHome ? seoConfig.siteName : `${articleTitle} | ${seoConfig.siteName}`;
-  const description = markdown ? extractArticleDescription(markdown) : seoConfig.defaultDescription;
+  const title = isHome ? `${profile.name} — ${profile.role}` : `${articleTitle} | ${seoConfig.siteName}`;
+  const description = isHome ? profile.intro : (catalog.find(entry => entry.page === normalizePage(page))?.description || (markdown ? extractArticleDescription(markdown) : seoConfig.defaultDescription));
   const canonicalUrl = getCanonicalUrl(page);
   const imageUrl = new URL(seoConfig.defaultImage, seoConfig.siteUrl).toString();
 

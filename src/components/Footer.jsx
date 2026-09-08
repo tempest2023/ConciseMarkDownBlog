@@ -76,8 +76,8 @@ const Footer = () => {
 
         {/* Copyright */}
         <nav aria-label="More links" className={styles['extra-links']}>
-          <a href="/?page=Links">Links & publications</a>
-          <a href="/?page=TechStack">Technical background</a>
+          <a href="/links/">Links & publications</a>
+          <a href="/technical-background/">Technical background</a>
           <a href="https://3d.tempest.fun/">3D Portfolio</a>
           <a href="/rss.xml">RSS</a>
         </nav>

@@ -6,13 +6,10 @@
  * @desc markdown preview component
  */
 /* eslint-disable react/no-children-prop */
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
 import ColorLoading from '../ColorLoading';
 import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark, vs } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
 import rehypeKatex from 'rehype-katex';
@@ -21,19 +18,16 @@ import 'katex/dist/katex.min.css';
 
 import { handleUrl, externalValidator } from '../../util/url';
 import { getInfoByChildren } from '../../util/str';
-import { navigate } from '../../util/store'
 import config from '../../config';
 import styles from '../../styles/editor.module.css';
+import markdownPolicy from '../../util/markdown-policy';
 
 const markdownConfig = config.markdown;
+const CodeBlock = lazy(() => import('./CodeBlock'));
 
 export default function MarkDownPreview (props) {
-  const dispatch = useDispatch();
-  const setPage = (page) => {
-    dispatch(navigate(page));
-  }
   const { markdownFile, markdownString, loading: externalLoading, showHeader = true } = props;
-  const [markdownContent, setMarkdownContent] = useState('');
+  const [markdownContent, setMarkdownContent] = useState(markdownString || '');
   const [isDelayedLoading, setIsDelayedLoading] = useState(false);
   const previewContainerRef = useRef(null);
   const debounceTimerRef = useRef(null);
@@ -96,20 +90,13 @@ export default function MarkDownPreview (props) {
         : (<ReactMarkdown
               children={markdownContent}
               remarkPlugins={[remarkGfm, remarkMath]}
-              rehypePlugins={[rehypeKatex, rehypeRaw]}
+              rehypePlugins={[rehypeRaw, rehypeKatex, markdownPolicy]}
               components={{
                 code ({ node, inline, className, children, ...props }) {
                   const match = /language-(\w+)/.exec(className || '');
                   return !inline && match
                     ? (
-                    <SyntaxHighlighter
-                      // eslint-disable-next-line react/no-children-prop
-                      children={String(children).replace(/\n$/, '')}
-                      style={oneDark}
-                      language={match[1]}
-                      PreTag="div"
-                      {...props}
-                    />
+                    <Suspense fallback={<code className={className}>{children}</code>}><CodeBlock language={match[1]}>{String(children).replace(/\n$/, '')}</CodeBlock></Suspense>
                       )
                     : (
                     <code className={className} {...props}>
@@ -120,10 +107,10 @@ export default function MarkDownPreview (props) {
                 // custom h1, h2 behaviors, add anchor automatically with the title text.
                 // Add a  divider behind h1 and h2
                 h1 ({ children, node, ...props }) {
-                  return <h1 id={getInfoByChildren(children)} {...props}>{children}</h1>
+                  return <h1 {...props}>{children}</h1>
                 },
                 h2 ({ children, node, ...props }) {
-                  return <h2 id={getInfoByChildren(children)} {...props}>{children}</h2>
+                  return <h2 {...props}>{children}</h2>
                 },
                 blockquote ({ children, node, ...props }) {
                   return <blockquote {...props}>{children}</blockquote>
@@ -140,13 +127,7 @@ export default function MarkDownPreview (props) {
                       title={href}
                       target={external ? '_blank' : undefined}
                       rel={external ? 'noreferrer noopener' : undefined}
-                      style={markdownConfig.linkStyle}
-                      onClick={(event) => {
-                        if (!external && href) {
-                          event.preventDefault();
-                          handleUrl(href, setPage);
-                        }
-                      }}
+                      style={node?.properties?.className ? undefined : markdownConfig.linkStyle}
                       {...props}
                     >
                       {children}
@@ -162,7 +143,7 @@ export default function MarkDownPreview (props) {
                     // external link
                     return (<img style={{ width: 'auto', maxWidth: '100%' }} {...props}></img>)
                   }
-                  const finalSrc = `/resources${node?.properties.src}`
+                  const finalSrc = node?.properties.src
                   return (
                     <img style={{ width: 'auto', maxWidth: '100%' }} title={node?.properties.alt} alt={node?.properties.alt} {...props} src={finalSrc}>{children}</img>
                   )

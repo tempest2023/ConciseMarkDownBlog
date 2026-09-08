@@ -4,7 +4,7 @@
   "author": "Temepst <tar118@pitt.edu> (https://tempest.fun)",
   "contributors": [],
   "version": "0.1.1",
-  "homepage": ".",
+  "homepage": "/",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -23,7 +23,10 @@
   },
   "scripts": {
     "content": "node scripts/generate-profile.js",
-    "prestart": "npm run content",
+    "prestart": "npm run content && node scripts/generate-seo.js",
+    "postbuild": "node scripts/render-static.mjs",
+    "test:static": "node scripts/verify-static.mjs",
+    "preview": "node scripts/preview.cjs",
     "start": "node scripts/start.js",
     "prebuild": "npm run content && node scripts/generate-seo.js",
     "build": "node scripts/build.js",
@@ -121,6 +124,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "7.21.11",
     "@playwright/test": "^1.58.2",
     "eslint": "^8.0.1",
     "eslint-config-standard": "^17.0.0",
@@ -130,6 +134,7 @@
     "eslint-plugin-react": "^7.31.1",
     "gh-pages": "^4.0.0",
     "husky": "^8.0.1",
+    "jsdom": "16.7.0",
     "prettier": "^2.6.2",
     "serve": "^14.2.5"
   },

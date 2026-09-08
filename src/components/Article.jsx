@@ -19,13 +19,15 @@ import NotFound from '../articles/404.md';
 import { codeIcon, paragraphIcon } from '../util/icons';
 import { updateSeoMetadata } from '../util/seo';
 import { hasConfigAccess } from '../util/isLocal';
+import bootstrap from '../util/bootstrap';
+import catalog from '../data/articles.json';
 
 const { debug } = config;
 
 const Article = () => {
   const filePath = useSelector(selectFilePath);
   const page = useSelector(selectPage);
-  const [markdownContent, setMarkdownContent] = useState('');
+  const [markdownContent, setMarkdownContent] = useState(bootstrap?.page === page ? bootstrap.markdown : '');
   const [loading, setLoading] = useState(!filePath);
   const [mode, setMode] = useState('preview');
   const scrollRestoreRef = useRef(null);
@@ -79,6 +81,12 @@ const Article = () => {
 
   // load article with filePath
   useEffect(() => {
+    if (bootstrap?.page === page && bootstrap.markdown) {
+      updateSeoMetadata({ page, markdown: bootstrap.markdown });
+      setMarkdownContent(bootstrap.markdown);
+      setLoading(false);
+      return;
+    }
     if (!filePath) {
       setLoading(true);
       updateSeoMetadata({ page, noIndex: true, title: 'Page not found' });
@@ -91,12 +99,20 @@ const Article = () => {
 
     let cancelled = false;
     fetch(filePath)
-      .then((response) => response.text())
+      .then((response) => {
+        if (!response.ok) throw new Error('Article unavailable');
+        return response.text();
+      })
       .then((text) => {
         if (!cancelled) {
           setMarkdownContent(text);
           setLoading(false);
           updateSeoMetadata({ page, markdown: text });
+        }
+      }).catch(() => {
+        if (!cancelled) {
+          setMarkdownContent('# Unable to load this article\n\nPlease reload the page or [browse all writing](/writing/).');
+          setLoading(false);
         }
       });
 
@@ -110,7 +126,12 @@ const Article = () => {
       {filePath
         ? (
           <div>
-            {hasConfigAccess() && <div className="article-tools"><button onClick={switchMode} aria-pressed={mode === 'raw'}>{mode === 'raw' ? 'Read article' : 'View Markdown'}</button></div>}
+            {catalog.find(entry => entry.page === page)?.isPost && (() => {
+              const entry = catalog.find(item => item.page === page);
+              return <div className="article-meta"><span>Tao Ren (Tempest)</span><span>Published <time dateTime={entry.publishedAt}>{entry.publishedAt.slice(0, 10)}</time></span><span>Updated <time dateTime={entry.updatedAt}>{entry.updatedAt.slice(0, 10)}</time></span><span>{entry.readingMinutes} min read</span></div>;
+            })()}
+            {!/^#\s/m.test(markdownContent) && catalog.find(entry => entry.page === page) && <h1>{catalog.find(entry => entry.page === page).title}</h1>}
+            {process.env.NODE_ENV !== 'production' && hasConfigAccess() && <div className="article-tools"><button onClick={switchMode} aria-pressed={mode === 'raw'}>{mode === 'raw' ? 'Read article' : 'View Markdown'}</button></div>}
             {mode !== 'preview' && (
               <MarkdownTextarea
                 showHeader={false}

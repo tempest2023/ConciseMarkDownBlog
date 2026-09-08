@@ -8,8 +8,9 @@
   "framework": "create-react-app",
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/",
+      "has": [{ "type": "query", "key": "page" }],
+      "destination": "/api/legacy"
     }
   ],
   "headers": [

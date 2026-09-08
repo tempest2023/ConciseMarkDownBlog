@@ -8,6 +8,13 @@ import { render, screen, waitFor } from '@testing-library/react';
 import MarkDownPreview from '../components/editor/MarkDownPreview';
 import config from '../config';
 
+// This suite tests loading/debounce behavior; actual Markdown plugins are covered
+// by the static publisher test, which executes the real ESM packages.
+jest.mock('remark-math', () => () => {});
+jest.mock('remark-gfm', () => () => {});
+jest.mock('rehype-katex', () => () => {});
+jest.mock('rehype-raw', () => () => {});
+
 // Mock config
 jest.mock('../config', () => ({
   debug: false,
