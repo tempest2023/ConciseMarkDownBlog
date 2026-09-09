@@ -94,6 +94,12 @@ test.describe('Deployment Configuration', () => {
 });
 
 test.describe('Build Output', () => {
+  test('404 page remains noindex after client hydration', async ({ page }) => {
+    await page.goto('/404.html');
+    await expect(page.getByRole('button', { name: 'Open Ask Tempest' })).toBeVisible();
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, nofollow');
+  });
+
   test('build directory structure should be correct', () => {
     const buildPath = path.join(process.cwd(), 'build');
 

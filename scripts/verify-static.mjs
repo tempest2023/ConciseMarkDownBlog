@@ -49,6 +49,8 @@ for (const entry of entries.filter(item => item.isPost)) assert.ok([...writing.q
 const notFound = { setHeader() {}, end() {} };
 legacy({ url: '/?page=does-not-exist' }, notFound);
 assert.equal(notFound.statusCode, 404);
-assert.equal(new JSDOM(fs.readFileSync(path.join(root, 'build/404.html'), 'utf8')).window.document.querySelector('meta[name="robots"]').content, 'noindex, follow');
+const notFoundDocument = new JSDOM(fs.readFileSync(path.join(root, 'build/404.html'), 'utf8')).window.document;
+assert.equal(notFoundDocument.querySelector('meta[name="robots"]').content, 'noindex, follow');
+assert.equal(JSON.parse(notFoundDocument.querySelector('#blog-bootstrap').textContent).noIndex, true);
 assert.deepEqual(failures, [], failures.join('\n'));
 console.log(`Verified ${entries.length} pages without JavaScript, ${links} local links, source completeness, metadata, writing discovery, legacy redirects and 404 metadata.`);

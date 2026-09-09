@@ -81,7 +81,7 @@ const Article = () => {
   // load article with filePath
   useEffect(() => {
     if (bootstrap?.page === page && bootstrap.markdown) {
-      updateSeoMetadata({ page, markdown: bootstrap.markdown });
+      updateSeoMetadata({ page, markdown: bootstrap.markdown, noIndex: Boolean(bootstrap.noIndex) });
       setMarkdownContent(bootstrap.markdown);
       setLoading(false);
       return;
