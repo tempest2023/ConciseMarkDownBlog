@@ -63,7 +63,7 @@ This is an archive of my technical notes, experiments, and study logs across fro
 
 ### Deep Learning
 
-- [文明智能：从《奥德赛》到可演化的数学文明](/?page=Blogs/DeepLearning/Civilization_Intelligence.md)
+- [Civilizational Intelligence: From The Odyssey to an Evolving Mathematical Civilization](/?page=Blogs/DeepLearning/Civilization_Intelligence.md)
 - [A cat recognizer works wrong in which pictures?](/?page=Blogs/DeepLearning/A_cat_recognizer_works_wrong_in_which_pictures.md)
 - [Bard is Amazing](/?page=Blogs/DeepLearning/BardConversation.md)
 
