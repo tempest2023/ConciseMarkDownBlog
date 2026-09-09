@@ -18,7 +18,6 @@ import ColorLoading from './ColorLoading';
 import NotFound from '../articles/404.md';
 import { codeIcon, paragraphIcon } from '../util/icons';
 import { updateSeoMetadata } from '../util/seo';
-import { hasConfigAccess } from '../util/isLocal';
 import bootstrap from '../util/bootstrap';
 import catalog from '../data/articles.json';
 
@@ -131,16 +130,21 @@ const Article = () => {
               return <div className="article-meta"><span>Tao Ren (Tempest)</span><span>Published <time dateTime={entry.publishedAt}>{entry.publishedAt.slice(0, 10)}</time></span><span>Updated <time dateTime={entry.updatedAt}>{entry.updatedAt.slice(0, 10)}</time></span><span>{entry.readingMinutes} min read</span></div>;
             })()}
             {!/^#\s/m.test(markdownContent) && catalog.find(entry => entry.page === page) && <h1>{catalog.find(entry => entry.page === page).title}</h1>}
-            {process.env.NODE_ENV !== 'production' && hasConfigAccess() && <div className="article-tools"><button onClick={switchMode} aria-pressed={mode === 'raw'}>{mode === 'raw' ? 'Read article' : 'View Markdown'}</button></div>}
+            <div className="article-tools"><FlipButton onClick={switchMode} open={mode === 'raw'} label={mode === 'raw' ? 'Read article' : 'Switch to Markdown'} closeElement={<img src={codeIcon} alt="" />} openElement={<img src={paragraphIcon} alt="" />} size="small" /></div>
+            <div className={`article-view article-view-${mode}`} key={mode}>
             {mode !== 'preview' && (
+              <>
+              <p className="markdown-note">The page behind the prose. Edits here are temporary, just for you.</p>
               <MarkdownTextarea
                 showHeader={false}
                 deafultValue={markdownContent}
                 updatePreview={updateRawMarkdown}
               />
+              </>
             )}
             {mode === 'preview' &&
             <MarkDownPreview markdownString={markdownContent} showHeader={false} setPage={setPage} />}
+            </div>
           </div>
           )
         : loading

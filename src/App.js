@@ -12,6 +12,8 @@ import Article from './components/Article';
 // import MarkDownEditor from './components/editor/SlashEditor';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import NotebookSidebar from './components/NotebookSidebar';
+import AgentDock from './components/AgentDock';
 import ConfigButton from './components/ConfigButton';
 import { ThemeProvider, useTheme } from './components/ThemeProvider';
 import { getUrlParameters } from './util/url';
@@ -81,11 +83,15 @@ const AppContent = () => {
     <div className={`page ${isDark ? 'dark-theme' : 'light-theme'}`}>
       <a className="skip-link" href="#main-content">Skip to content</a>
       <Header />
+      <div className="notebook-layout">
+      <NotebookSidebar />
       <main className="main-container" id="main-content" tabIndex={-1}>
         <Suspense fallback={<p role="status">Loading…</p>}>{renderContent()}</Suspense>
       </main>
+      </div>
       <Footer />
       <ConfigButton />
+      <AgentDock />
     </div>
   );
 };

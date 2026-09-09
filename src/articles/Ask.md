@@ -2,11 +2,7 @@
 
 An AI guide to my public research, engineering experience, projects, and writing. You can ask in English or Chinese and follow the source links to read more.
 
-<div data-personal-agent="true">
-
-The interactive guide requires JavaScript. You can also [explore my work](/work/), [read my research and engineering journey](/blog/ai/my-ai-research-and-engineering-journey/), or [browse all writing](/writing/).
-
-</div>
+Click the little companion in the bottom-right corner to open a conversation. The guide lives above the site, separate from the articles, and requires JavaScript. You can always [explore my work](/work/), [read my research and engineering journey](/blog/ai/my-ai-research-and-engineering-journey/), or [browse all writing](/writing/) without it.
 
 ## What this guide knows
 

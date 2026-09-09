@@ -11,7 +11,7 @@ export default function Header () {
   const { isDark, toggleTheme, themeEnabled } = useTheme();
   return (
     <header className="site-header">
-      <a className="site-brand" href="/">{config.title}</a>
+      <div className="site-identity"><a className="site-brand" href="/">{config.title}</a><span className="site-tagline">thoughts, in Markdown <span aria-hidden="true">❧</span></span></div>
       <div className="header-controls">
         <button className="menu-toggle" aria-expanded={open} aria-controls="site-navigation" onClick={() => setOpen(!open)}>Menu</button>
         <nav id="site-navigation" aria-label="Main navigation" className={open ? 'site-nav is-open' : 'site-nav'}>

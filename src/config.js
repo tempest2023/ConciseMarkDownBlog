@@ -10,7 +10,7 @@ const config = {
   // github readme url
   readmeUrl: 'https://github.com/tempest2023/ConciseMarkDownBlog/blob/main/README.md',
   // blog title, on left top of the page
-  title: 'Tao Ren / Tempest',
+  title: 'Tempest’s notes',
   // author name
   name: 'Tempest',
   // social links, on bottom of the page
@@ -42,11 +42,6 @@ const config = {
       title: 'Projects',
       type: 'article',
       customUrl: 'Projects/Project'
-    },
-    {
-      title: 'Ask Tempest',
-      type: 'article',
-      customUrl: 'Ask'
     }
   ],
   // markdown settings
@@ -71,20 +66,20 @@ const config = {
   footer: true,
   colors: {
     light: {
-      background: '#fcfcfa',
-      foreground: '#174bb8',
-      gray: '#6c757d',
-      text: '#212529',
-      border: '#dee2e6',
-      cardBg: '#f8f9fa'
+      background: '#fdfcf9',
+      foreground: '#ad4b35',
+      gray: '#716d65',
+      text: '#302e2a',
+      border: '#e8e5de',
+      cardBg: '#f4f1eb'
     },
     dark: {
-      background: '#212529',
-      foreground: '#93b9ff',
-      gray: '#adb5bd',
-      text: '#f8f9fa',
-      border: '#495057',
-      cardBg: '#343a40'
+      background: '#242522',
+      foreground: '#f0a58e',
+      gray: '#b9b5ab',
+      text: '#eeeae1',
+      border: '#41423b',
+      cardBg: '#30312c'
     }
   }
 }

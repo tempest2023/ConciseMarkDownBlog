@@ -24,15 +24,6 @@ import markdownPolicy from '../../util/markdown-policy';
 
 const markdownConfig = config.markdown;
 const CodeBlock = lazy(() => import('./CodeBlock'));
-const PersonalAgent = lazy(() => import('../PersonalAgent'));
-
-// Stable identity keeps an active conversation mounted when the page theme changes.
-function MarkdownDiv ({ node, children, ...props }) {
-  return node?.properties?.dataPersonalAgent
-    ? <Suspense fallback={<p role="status">Loading the conversation guide…</p>}><PersonalAgent /></Suspense>
-    : <div {...props}>{children}</div>;
-}
-MarkdownDiv.propTypes = { node: PropTypes.object, children: PropTypes.node };
 
 export default function MarkDownPreview (props) {
   const { markdownFile, markdownString, loading: externalLoading, showHeader = true } = props;
@@ -101,7 +92,6 @@ export default function MarkDownPreview (props) {
               remarkPlugins={[remarkGfm, remarkMath]}
               rehypePlugins={[rehypeRaw, rehypeKatex, markdownPolicy]}
               components={{
-                div: MarkdownDiv,
                 code ({ node, inline, className, children, ...props }) {
                   const match = /language-(\w+)/.exec(className || '');
                   return !inline && match

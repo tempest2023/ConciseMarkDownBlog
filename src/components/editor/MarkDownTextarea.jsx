@@ -143,6 +143,7 @@ export default function MarkdownTextarea ({
     <div className={styles['markdown-editor-container']}>
       {showHeader && <h1>Markdown Editor</h1>}
       <textarea
+        aria-label="Markdown source"
         className={styles['fancy-textarea']}
         id="fancy-markdown-textarea"
         onKeyDown={onKeyDown}
