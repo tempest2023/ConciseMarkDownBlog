@@ -20,7 +20,7 @@ export default function Header () {
             return <a key={item.title} href={/^https?:/.test(destination) ? destination : formatLink(destination)} aria-current={destination.toLowerCase() === page.toLowerCase() ? 'page' : undefined}>{item.title}</a>;
           })}
         </nav>
-        {themeEnabled && <button className="theme-toggle" onClick={toggleTheme} aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'} title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}><span aria-hidden="true">{isDark ? '☀' : '☾'}</span></button>}
+        {themeEnabled && <button className="theme-toggle" onClick={toggleTheme} aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'} title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}><svg viewBox="0 0 24 24" aria-hidden="true">{isDark ? <><circle cx="12" cy="12" r="3.5" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></> : <path d="M20 15.2A8.2 8.2 0 0 1 8.8 4 8.2 8.2 0 1 0 20 15.2Z" />}</svg></button>}
       </div>
     </header>
   );

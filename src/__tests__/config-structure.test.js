@@ -34,10 +34,11 @@ describe('Config Structure Validation', () => {
   });
 
   it('prioritizes work, writing and projects without exposing utilities in the menu', () => {
-    expect(config.headers.map(h => h.title)).toEqual(['About', 'Work & Research', 'Writing', 'Projects', 'Ask Tempest']);
+    expect(config.headers.map(h => h.title)).toEqual(['About', 'Work & Research', 'Writing', 'Projects']);
     expect(config.headers.find(h => h.title === 'Work & Research').customUrl).toBe('Work');
     expect(config.headers.find(h => h.title === 'Writing').customUrl).toBe('Blog');
     expect(config.headers.find(h => h.title === 'Projects').customUrl).toBe('Projects/Project');
+    expect(config.headers.find(h => h.title === 'Ask Tempest')).toBeUndefined();
   });
 
   it('should have valid markdown settings', () => {

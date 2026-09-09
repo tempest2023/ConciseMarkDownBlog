@@ -20,7 +20,7 @@ test.describe('Deployment Configuration', () => {
     expect(config.outputDirectory).toBe('build');
   });
 
-  test('vercel.json should have proper rewrites for SPA', () => {
+  test('vercel.json should redirect legacy page queries without shadowing static pages', () => {
     const vercelJsonPath = path.join(process.cwd(), 'vercel.json');
     const content = fs.readFileSync(vercelJsonPath, 'utf8');
     const config = JSON.parse(content);
@@ -29,8 +29,9 @@ test.describe('Deployment Configuration', () => {
     expect(config.rewrites.length).toBeGreaterThan(0);
 
     const rewrite = config.rewrites[0];
-    expect(rewrite.source).toBe('/(.*)');
-    expect(rewrite.destination).toBe('/index.html');
+    expect(rewrite.source).toBe('/');
+    expect(rewrite.has).toEqual([{ type: 'query', key: 'page' }]);
+    expect(rewrite.destination).toBe('/api/legacy');
   });
 
   test('vercel.json should have security headers', () => {

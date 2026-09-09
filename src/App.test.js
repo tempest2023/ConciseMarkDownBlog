@@ -11,5 +11,6 @@ test('renders app navigation', () => {
   render(<App />);
   const navigation = screen.getByRole('navigation', { name: 'Main navigation' });
   expect(navigation).toBeInTheDocument();
-  expect(screen.getByText(/about/i)).toBeInTheDocument();
+  expect(screen.getByRole('link', { name: 'About' })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'Open Ask Tempest' })).toBeInTheDocument();
 });
