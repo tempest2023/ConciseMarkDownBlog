@@ -49,4 +49,9 @@ test.describe('Notebook and agent companion', () => {
     await expect(companion.locator('.companion-brows path')).toHaveCount(2);
     await expect(companion.locator('.companion-eyes ellipse')).toHaveCount(4);
   });
+
+  test('keeps the companion above the local settings button area', async ({ page }) => {
+    const bottomGap = await page.locator('.agent-dock').evaluate(element => innerHeight - element.getBoundingClientRect().bottom);
+    expect(bottomGap).toBeGreaterThanOrEqual(80);
+  });
 });

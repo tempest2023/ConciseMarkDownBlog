@@ -12,17 +12,23 @@ test.describe('Menu Navigation', () => {
 
   test('shows the focused personal-blog navigation', async ({ page }) => {
     await expect(page.locator('.site-header')).toBeVisible();
-    await expect(page.locator('.site-brand')).toHaveText('Tempest’s notes');
+    await expect(page.locator('.site-brand')).toHaveText("Tempest's blog");
 
     const navigation = page.getByRole('navigation', { name: 'Main navigation' });
     await expect(navigation).toBeVisible();
-    await expect(navigation.getByRole('link')).toHaveCount(4);
-    for (const name of ['About', 'Work & Research', 'Writing', 'Projects']) {
+    await expect(navigation.getByRole('link')).toHaveCount(6);
+    for (const name of ['About', 'Work & Research', 'Writing', 'Projects', 'Links']) {
       await expect(navigation.getByRole('link', { name, exact: true })).toBeVisible();
     }
+    const portfolio = navigation.getByRole('link', { name: '3D Portfolio' });
+    await expect(portfolio).toHaveAttribute('href', 'https://3d.tempest.fun/');
+    await expect(portfolio.locator('svg')).toBeVisible();
 
     await expect(navigation.getByRole('link', { name: 'Ask Tempest' })).toHaveCount(0);
     await expect(page.getByRole('button', { name: 'Open Ask Tempest' })).toBeVisible();
+
+    const sidebarWidth = await page.locator('.notebook-sidebar').evaluate(element => element.getBoundingClientRect().width);
+    expect(sidebarWidth).toBeLessThanOrEqual(230);
   });
 
   test('navigates between About, Writing, Work and Projects', async ({ page }) => {
@@ -41,9 +47,13 @@ test.describe('Menu Navigation', () => {
     await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Projects', exact: true }).click();
     await expect(page).toHaveURL(/\/projects\/$/);
     await expect(page.locator('.article-content')).toBeVisible();
+
+    await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Links', exact: true }).click();
+    await expect(page).toHaveURL(/\/links\/$/);
+    await expect(page.getByRole('heading', { name: 'Links', exact: true })).toBeVisible();
   });
 
-  test('keeps utility destinations in the footer instead of the main menu', async ({ page }) => {
+  test('keeps utility destinations available in the footer', async ({ page }) => {
     const footerNavigation = page.getByRole('navigation', { name: 'More links' });
     await expect(footerNavigation.getByRole('link', { name: 'Links & publications' })).toHaveAttribute('href', '/links/');
     await expect(footerNavigation.getByRole('link', { name: 'Technical background' })).toHaveAttribute('href', '/technical-background/');
@@ -59,6 +69,8 @@ test.describe('Menu Navigation', () => {
 
     const navigation = page.getByRole('navigation', { name: 'Main navigation' });
     await expect(navigation.getByRole('link', { name: 'Writing', exact: true })).toBeVisible();
+    await expect(navigation.getByRole('link', { name: 'Links', exact: true })).toBeVisible();
+    await expect(navigation.getByRole('link', { name: '3D Portfolio' })).toBeVisible();
     await navigation.getByRole('link', { name: 'Writing', exact: true }).click();
     await expect(page).toHaveURL(/\/writing\/$/);
     await expect(page.locator('.article-content')).toBeVisible();

@@ -33,11 +33,12 @@ describe('Config Structure Validation', () => {
     expect(aboutHeader.type).toBe('article');
   });
 
-  it('prioritizes work, writing and projects without exposing utilities in the menu', () => {
-    expect(config.headers.map(h => h.title)).toEqual(['About', 'Work & Research', 'Writing', 'Projects']);
+  it('keeps the main pages, links and 3D portfolio in the menu without exposing the agent', () => {
+    expect(config.headers.map(h => h.title)).toEqual(['About', 'Work & Research', 'Writing', 'Projects', 'Links', '3D Portfolio']);
     expect(config.headers.find(h => h.title === 'Work & Research').customUrl).toBe('Work');
     expect(config.headers.find(h => h.title === 'Writing').customUrl).toBe('Blog');
     expect(config.headers.find(h => h.title === 'Projects').customUrl).toBe('Projects/Project');
+    expect(config.headers.find(h => h.title === '3D Portfolio').customUrl).toBe('https://3d.tempest.fun/');
     expect(config.headers.find(h => h.title === 'Ask Tempest')).toBeUndefined();
   });
 

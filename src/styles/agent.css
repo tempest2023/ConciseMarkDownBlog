@@ -2,7 +2,7 @@
   position: fixed;
   z-index: 80;
   right: clamp(.8rem, 2vw, 2rem);
-  bottom: clamp(.8rem, 2vw, 1.8rem);
+  bottom: clamp(5.25rem, 7vw, 6.25rem);
   width: clamp(38px, 3vw, 42px);
   filter: drop-shadow(0 6px 10px rgba(89, 61, 36, .13));
 }
@@ -191,7 +191,7 @@
 @keyframes companion-shadow-pulse { 0%, 16%, 100% { transform: scaleX(1); opacity: .13; } 5% { transform: scaleX(.84); opacity: .08; } }
 
 @media (max-width: 760px) {
-  .agent-dock { right: .75rem; bottom: .75rem; width: 36px; }
+  .agent-dock { right: .75rem; bottom: 5rem; width: 36px; }
   .companion-bubble { right: -4px; min-width: 122px; padding: .52rem .58rem; font-size: .62rem; }
   .companion-chat-icon { width: 26px; height: 26px; }
   .agent-dialog { width: 94vw; height: 90dvh; border-radius: 17px; }

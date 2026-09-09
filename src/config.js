@@ -10,7 +10,7 @@ const config = {
   // github readme url
   readmeUrl: 'https://github.com/tempest2023/ConciseMarkDownBlog/blob/main/README.md',
   // blog title, on left top of the page
-  title: 'Tempest’s notes',
+  title: "Tempest's blog",
   // author name
   name: 'Tempest',
   // social links, on bottom of the page
@@ -42,6 +42,15 @@ const config = {
       title: 'Projects',
       type: 'article',
       customUrl: 'Projects/Project'
+    },
+    {
+      title: 'Links',
+      type: 'article'
+    },
+    {
+      title: '3D Portfolio',
+      type: 'link',
+      customUrl: 'https://3d.tempest.fun/'
     }
   ],
   // markdown settings
