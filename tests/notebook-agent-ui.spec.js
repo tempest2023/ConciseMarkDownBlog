@@ -38,4 +38,15 @@ test.describe('Notebook and agent companion', () => {
     await expect(dialog).not.toBeVisible();
     await expect(launcher).toBeFocused();
   });
+
+  test('uses a small forward-leaning companion with an eyes-and-brows expression', async ({ page }) => {
+    const companion = page.locator('.companion-art');
+    const size = await companion.evaluate(element => element.getBoundingClientRect().width);
+
+    expect(size).toBeLessThanOrEqual(42);
+    await expect(companion.locator('.companion-pose')).toHaveAttribute('transform', /rotate\(-11/);
+    await expect(companion.locator('.companion-face > *')).toHaveCount(2);
+    await expect(companion.locator('.companion-brows path')).toHaveCount(2);
+    await expect(companion.locator('.companion-eyes ellipse')).toHaveCount(4);
+  });
 });

@@ -3,8 +3,8 @@
   z-index: 80;
   right: clamp(.8rem, 2vw, 2rem);
   bottom: clamp(.8rem, 2vw, 1.8rem);
-  width: clamp(126px, 11vw, 164px);
-  filter: drop-shadow(0 10px 18px rgba(89, 61, 36, .12));
+  width: clamp(38px, 3vw, 42px);
+  filter: drop-shadow(0 6px 10px rgba(89, 61, 36, .13));
 }
 .agent-dock[hidden] { display: none; }
 .companion-launcher {
@@ -19,36 +19,36 @@
   transform-origin: 50% 100%;
   animation: companion-five-second-beat 5s ease-in-out infinite;
 }
-.companion-launcher:hover { animation-play-state: paused; transform: translateY(-5px) rotate(-1deg); }
+.companion-launcher:hover { animation-play-state: paused; transform: translateY(-3px) rotate(-2deg); }
 .companion-art { display: block; width: 100%; height: auto; overflow: visible; }
-.companion-body { transform-origin: 91px 151px; animation: companion-breathe 5s ease-in-out infinite; }
-.companion-tuft { transform-origin: 88px 32px; animation: companion-tuft-wave 5s ease-in-out infinite; }
-.companion-hand { transform-origin: 126px 141px; animation: companion-wave 5s ease-in-out infinite; }
+.companion-body { transform-origin: 60px 121px; animation: companion-breathe 5s ease-in-out infinite; }
+.companion-ribbon { transform-origin: 87px 52px; animation: companion-ribbon-wave 5s ease-in-out infinite; }
 .companion-eyes { transform-origin: center; animation: companion-blink 5s linear infinite; }
-.companion-sparks { opacity: 0; animation: companion-spark 5s ease-out infinite; }
+.companion-brows { transform-origin: center; animation: companion-brow-lift 5s ease-in-out infinite; }
+.companion-motion-lines { opacity: 0; animation: companion-motion-line 5s ease-out infinite; }
 .companion-shadow { transform-origin: center; animation: companion-shadow-pulse 5s ease-in-out infinite; }
 .companion-bubble {
   position: absolute;
   z-index: 2;
-  right: 4px;
-  bottom: 88%;
-  min-width: 144px;
-  padding: .72rem .85rem;
+  right: -4px;
+  bottom: calc(100% + 5px);
+  min-width: 138px;
+  padding: .62rem .72rem;
   border: 1px solid rgba(233, 146, 114, .16);
   border-radius: 48% 48% 48% 40%;
   background: rgba(255, 238, 230, .94);
   box-shadow: 0 7px 20px rgba(98, 69, 47, .08);
   color: #433630;
-  font: .73rem/1.25 var(--ui-font);
+  font: .68rem/1.25 var(--ui-font);
   text-align: center;
   transform: rotate(-4deg);
 }
 .companion-bubble::after {
   position: absolute;
-  right: 30px;
-  bottom: -10px;
-  width: 18px;
-  height: 18px;
+  right: 14px;
+  bottom: -8px;
+  width: 14px;
+  height: 14px;
   border-right: 1px solid rgba(233, 146, 114, .16);
   border-bottom: 1px solid rgba(233, 146, 114, .16);
   background: inherit;
@@ -57,19 +57,19 @@
 }
 .companion-chat-icon {
   position: absolute;
-  right: -1px;
-  bottom: 0;
-  width: 49px;
-  height: 49px;
+  right: -8px;
+  bottom: -4px;
+  width: 28px;
+  height: 28px;
   display: grid;
   place-items: center;
-  border: 3px solid color-mix(in srgb, var(--bg-color) 85%, white);
+  border: 2px solid color-mix(in srgb, var(--bg-color) 85%, white);
   border-radius: 50%;
   background: #f07f62;
   box-shadow: 0 7px 18px rgba(191, 91, 65, .28);
   color: #fffaf4;
 }
-.companion-chat-icon svg { width: 22px; height: 22px; }
+.companion-chat-icon svg { width: 13px; height: 13px; }
 .dark-theme .companion-bubble { border-color: #765a4e; background: rgba(74, 58, 50, .96); color: #fff1e8; }
 
 .agent-dialog {
@@ -179,21 +179,21 @@
 @keyframes conversation-open { from { opacity: 0; transform: translateY(18px) scale(.975); } to { opacity: 1; transform: none; } }
 @keyframes companion-five-second-beat {
   0%, 16%, 100% { transform: translateY(0) rotate(0); }
-  4% { transform: translateY(-8px) rotate(-2deg); }
+  4% { transform: translate(-3px, -3px) rotate(-5deg); }
   8% { transform: translateY(0) rotate(1deg); }
-  12% { transform: translateY(-3px) rotate(0); }
+  12% { transform: translate(-1px, -1px) rotate(-2deg); }
 }
-@keyframes companion-breathe { 0%, 16%, 100% { transform: scaleY(1); } 6% { transform: scaleY(.97); } 11% { transform: scaleY(1.015); } }
-@keyframes companion-tuft-wave { 0%, 16%, 100% { transform: rotate(0); } 5% { transform: rotate(-8deg); } 10% { transform: rotate(5deg); } }
-@keyframes companion-wave { 0%, 2%, 15%, 100% { transform: rotate(0); } 5% { transform: rotate(-16deg); } 9% { transform: rotate(9deg); } 12% { transform: rotate(-7deg); } }
+@keyframes companion-breathe { 0%, 16%, 100% { transform: translateY(0); } 6% { transform: translateY(2px) rotate(1deg); } 11% { transform: translate(-2px, -1px) rotate(-2deg); } }
+@keyframes companion-ribbon-wave { 0%, 16%, 100% { transform: rotate(0); } 5% { transform: rotate(9deg); } 10% { transform: rotate(-5deg); } }
 @keyframes companion-blink { 0%, 7%, 9%, 100% { transform: scaleY(1); } 8% { transform: scaleY(.08); } }
-@keyframes companion-spark { 0%, 2%, 15%, 100% { opacity: 0; } 6%, 11% { opacity: 1; } }
+@keyframes companion-brow-lift { 0%, 4%, 13%, 100% { transform: translateY(0); } 7%, 10% { transform: translateY(-2px); } }
+@keyframes companion-motion-line { 0%, 2%, 15%, 100% { opacity: 0; transform: translateX(3px); } 6%, 11% { opacity: .85; transform: translateX(0); } }
 @keyframes companion-shadow-pulse { 0%, 16%, 100% { transform: scaleX(1); opacity: .13; } 5% { transform: scaleX(.84); opacity: .08; } }
 
 @media (max-width: 760px) {
-  .agent-dock { right: .55rem; bottom: .6rem; width: 112px; }
-  .companion-bubble { right: -1px; min-width: 126px; padding: .6rem; font-size: .65rem; }
-  .companion-chat-icon { width: 43px; height: 43px; }
+  .agent-dock { right: .75rem; bottom: .75rem; width: 36px; }
+  .companion-bubble { right: -4px; min-width: 122px; padding: .52rem .58rem; font-size: .62rem; }
+  .companion-chat-icon { width: 26px; height: 26px; }
   .agent-dialog { width: 94vw; height: 90dvh; border-radius: 17px; }
   .agent-dialog-header { min-height: 62px; padding-left: 1rem; }
   .agent-dialog-header > div { grid-template-columns: auto auto; }
@@ -210,5 +210,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .companion-launcher, .companion-body, .companion-tuft, .companion-hand, .companion-eyes, .companion-sparks, .companion-shadow { animation: none; }
+  .companion-launcher, .companion-body, .companion-ribbon, .companion-eyes, .companion-brows, .companion-motion-lines, .companion-shadow { animation: none; }
 }
