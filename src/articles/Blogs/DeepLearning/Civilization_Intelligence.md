@@ -1,4 +1,627 @@
-# 文明智能：从《奥德赛》到可演化的数学文明
+# Civilizational Intelligence: From *The Odyssey* to an Evolving Mathematical Civilization
+
+Published: 2026-07-22
+
+> Artificial intelligence may not be the endpoint—or even the right unit of analysis. A more consequential question is whether a population of agents, each limited in capability, lifespan, and perspective, can form an intelligence that exceeds every individual, accumulates across generations, and continues to evolve.
+
+## Beginning with *The Odyssey*
+
+After reading *The Odyssey*, what stayed with me most was not how Odysseus defeated monsters, but the shared beliefs that repeatedly constrained human behavior throughout the story.
+
+*The Odyssey* is generally thought to have taken shape around the eighth century BCE. It follows Odysseus, commander in the Greek coalition and king of Ithaca, on his journey home after the Trojan War. The Cyclops, the bag of winds, Circe, the Sirens, the cattle of Helios, and Poseidon's obstruction provide the adventure's outer shell. Beneath them runs another question: what allows a community to preserve order?
+
+In [Book 9 of the epic](https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0136%3Abook%3D9), Odysseus confronts the Cyclops and invokes Zeus as the protector of strangers and suppliants. This points to the ancient Greek institution of **xenia**: a reciprocal relationship between host and guest protected by sacred order. A host owed safety, food, and shelter; a guest, in turn, could not injure, humiliate, or plunder the host. The suitors who occupy Odysseus's home, consume his property, coerce Penelope, and plot to kill Telemachus are the inverse of that order.
+
+We no longer expect Zeus to strike oath-breakers with lightning. Yet the underlying problems remain modern ones: how can strangers establish a minimum of trust? Must power be constrained by rules? How should a community punish those who destroy cooperation?
+
+I therefore do not want to claim that *The Odyssey* single-handedly “created Western civilization.” A civilization is never the product of one book, and textual influence is not the same as historical causation. A more careful—and more illuminating—claim is this:
+
+> *The Odyssey* preserves a high-density sample of how an ancient community understood cooperation, honor, hubris, revenge, power, and order. Later generations repeatedly retold, edited, translated, rejected, and reinterpreted it, allowing some of those structures to enter a much longer chain of cultural evolution.
+
+Stories change. Characters are remade. Media shift from oral performance and manuscript to novels, film, and the internet. But some relations—what action should be taken under which conditions, and what consequences follow—are sampled again and again.
+
+That leads to a question: if culture is understood as a probability distribution that is continually transmitted and updated, can we compute it, simulate it, or even allow an artificial civilization to evolve in earnest?
+
+## The Minimal Algorithm of Civilization
+
+Modern civilization contains states, corporations, courts, universities, markets, and the internet. Its complexity tempts us to assume that its underlying algorithm must be equally complex. Yet in smaller communities, where causal chains are shorter, a simple loop becomes visible:
+
+```text
+Local experience
+      ↓
+Symbols and stories
+      ↓
+Shared expectations
+      ↓
+Coordinated action
+      ↓
+Real-world outcomes
+      ↓
+Selection, revision, and retransmission
+      └──────────────────────────→ New stories
+```
+
+A group of a dozen people can sustain cooperation through kinship, memory, reputation, and direct retaliation. As the group grows, cooperation among strangers becomes the central difficulty: why should I trust someone unrelated to me whom I may never have met?
+
+Humans repeatedly invented more scalable answers: common ancestors, gods, oaths, kings, laws, currencies, and organizational identities. These may not be objects one can touch directly in nature, yet they alter real behavior because each person not only believes in them, but believes that others know and will follow them too.
+
+Stories are not decoration here; they are coordination protocols. [Research on Agta hunter-gatherers in the Philippines](https://www.nature.com/articles/s41467-017-02036-8) found that stories transmit norms of cooperation, equality, and punishment of rule-breakers; camps with more skilled storytellers showed higher levels of cooperation, and skilled storytellers were more likely to be chosen as cooperative partners. This does not prove that all stories evolved for cooperation, but it is empirical evidence that stories participate in organizing group behavior.
+
+The minimal algorithm of civilization can therefore be compressed into six steps:
+
+1. Individuals encounter a shared problem they cannot solve alone;
+2. They exchange local information through symbols;
+3. The group forms a shared narrative about causes, roles, and boundaries;
+4. The narrative enables individuals to predict one another's actions;
+5. The group coordinates on that basis;
+6. Real outcomes select and revise the narrative.
+
+Complex civilization has not replaced this loop. It has added longer memory, higher-fidelity transmission, more abstract symbols, finer divisions of labor, and stronger institutions of enforcement.
+
+## Culture Is Not Token Frequency, but a Generative Distribution
+
+At first, I imagined culture as a cluster in token space.
+
+Every retelling of a story involves sampling, editing, and feedback. Versions that diverge too far from shared understanding fail to propagate; versions that preserve a core structure while adapting to new environments survive. Over time, a relatively stable high-density region appears in semantic space.
+
+That intuition is useful, but token frequency alone is far from enough. `Odysseus`, `Ulysses`, and “the king of Ithaca” use different tokens while pointing toward similar semantic locations. More importantly, culture determines not only whether a word appears, but the joint relations among characters, situations, actions, consequences, and evaluations.
+
+The culture of an era should therefore not be written merely as $P_t(w)$, but as something closer to:
+
+$$
+C_t = P_{\theta_t}(x, a, \tau \mid o, h, \mathcal{H})
+$$
+
+where:
+
+- $x$ is a transmissible symbol, narrative, definition, or rule;
+- $a$ is an action;
+- $\tau$ is a trajectory produced by an individual or group;
+- $o$ is a local observation;
+- $h$ is an individual's experience;
+- $\mathcal{H}$ represents other individuals, historical records, and the transmission network;
+- $\theta_t$ denotes the learnable parameters of culture at time $t$.
+
+This distribution answers three questions at once:
+
+1. How does the group believe the world usually works?
+2. How do people usually act in a given situation?
+3. How does the group evaluate that action?
+
+For example, the meaningful object is not how often `revenge` occurs, but:
+
+$$
+P_t(\text{revenge is praised}\mid\text{kin harmed, public justice absent})
+$$
+
+When the state begins to monopolize legitimate punishment, the same impulse toward revenge may persist, while its relations to law, culpability, and psychological cost change. Cultural drift occurs not in a single word, but across an entire conditional distribution and causal structure.
+
+[Dynamic word embeddings](https://proceedings.mlr.press/v70/bamler17a.html) have already shown that semantic movement over time can be tracked, and diachronic corpora can measure the Jensen–Shannon divergence between adjacent periods. But these methods still observe primarily the surface of language. A deeper cultural model also needs event graphs, value judgments, transmission networks, and behavioral data so that a change in medium is not mistaken for a change in culture.
+
+I would therefore define culture as:
+
+> A trainable generative distribution maintained by a group within a particular environment over time through generational sampling, transmission, variation, real-world feedback, and social selection. Text is its observable sample; altered behavior is its functional result.
+
+## The Foundation Model Is Itself a Cultural Model
+
+A contemporary large language model does not correspond to a real human individual. Its parameters are learned from texts produced by many individuals at different times; training compresses those collective behaviors into a single predictive distribution:
+
+$$
+P_\theta(x_{t+1}\mid x_{\le t})
+$$
+
+During one inference, it behaves like an individual. In the provenance of its parameters, it resembles a statistical aggregate of group culture. This suggests an important research abstraction: **the model is not merely a carrier of culture; the model itself can be treated as culture.**
+
+This does not mean existing LLMs already constitute complete civilizations. They lack a stable real-world feedback loop, generational selection, open-ended goals, and long-term accountability to an external world. But they provide a kind of experimental material that did not exist before: for the first time, we can instantiate a trainable shared distribution as many individuals while precisely controlling what remains fixed and what is allowed to evolve.
+
+The system can be divided into two layers:
+
+$$
+\text{Culture}_t=P_{\theta_t}
+$$
+
+$$
+\text{Agent}_{i,t}=\operatorname{Sample}(P_{\theta_t},h_{i,t},o_{i,t})
+$$
+
+Multiple agents may share identical weights yet take different actions because they receive different local observations and possess different individual histories. They produce trajectories:
+
+$$
+\tau_{i,t}=(o,a,m,o',r,\ldots)
+$$
+
+The external environment and the population's continuation mechanism select among those trajectories, then update the shared distribution:
+
+$$
+\theta_{t+1}=\operatorname{Update}\left(\theta_t,
+\operatorname{Select}(\{\tau_{i,t}\},E_t)\right)
+$$
+
+Here, a “new generation” does not copy the full context of the preceding generation. It is sampled anew from a cultural model that has already absorbed earlier experience:
+
+$$
+A_i^{g+1}\sim P_{\theta_{g+1}}
+$$
+
+This resembles the way humans inherit culture. Children do not inherit their parents' episodic memories, but they are born into languages, tools, institutions, and bodies of knowledge altered by prior generations.
+
+## Reality Is an Evaluator That Cannot Be Persuaded by Language
+
+Culture is not trained by consensus alone. A group can agree upon a bad hunting method, but prey, weather, hunger, and disease do not change because the group agrees.
+
+A fuller loop is:
+
+```text
+          ┌──────── Cultural model C_t ◀─────────┐
+          │                                      │
+          ▼                                      │
+ Individual interpretation and action            │
+          │                                      │
+          ▼                                      │
+   Physical reality + social reality             │
+          │                                      │
+          ▼                                      │
+ Survival, failure, cooperation, conflict,        │
+ and transmission outcomes                       │
+          │                                      │
+          └──── Trajectory selection and training ┘
+```
+
+Culture therefore resembles a policy shared across generations, while stories, myths, taboos, laws, and technical manuals are different compressed forms of that policy. A group need not make every new member taste every mushroom, endure another famine, or rediscover the cost of betrayal. It can compress expensive trial and error into transmissible narratives.
+
+In this sense, myth can approximate a low-bandwidth Reward Model. “Do not cut down the sacred grove” may contain no ecological explanation, and “Zeus will punish oath-breakers” is not a testable weather forecast. Yet both may compress long-horizon group consequences into behavioral priors an individual can act on immediately.
+
+The analogy has limits. Real-world feedback is not a “truth label,” but a noisy, delayed, environment-dependent fitness signal:
+
+$$
+R(C,E,t)=R_{physical}+R_{survival}+R_{social}+R_{transmission}
+$$
+
+- **Noisy**: a group may perish because of an accidental disaster, or succeed with a false institution because it began with abundant resources;
+- **Delayed**: a strategy adopted today may reveal its cost only decades later;
+- **Environment-dependent**: an organization suited to grasslands may fail on an island;
+- **Multi-objective**: beliefs that stabilize rule need not be accurate, and strategies that accelerate short-term expansion need not be sustainable;
+- **Biased in transmission**: memorable, emotionally intense, or authority-backed stories may crowd out experiences that are truer but harder to spread.
+
+Cultural evolution is therefore not ordinary single-agent reinforcement learning. It is closer to evolutionary learning with generational replacement, group competition, and selection through transmission. Failure does not always produce a gradient update; sometimes an entire cultural lineage disappears.
+
+This reveals a crucial distinction:
+
+$$
+\text{Belief Accuracy}
+\ne \text{Social Fitness}
+\ne \text{Population Fitness}
+$$
+
+Superstition, propaganda, information monopolies, and entrenched power are not necessarily bugs in an experiment on civilization. They may be stable structures produced by the selection process itself—and therefore outcomes that must be studied.
+
+## What Makes Humans Powerful Is Not Merely Culture, but Cumulative Culture
+
+Other animals also exhibit social learning and group traditions. [Experiments with wild birds](https://www.nature.com/articles/nature13998) have even observed feeding norms maintained through conformity. It would therefore be inaccurate to call culture itself uniquely human.
+
+The more distinctive human ability is preserving the achievements of one generation as the starting point for the next round of innovation. Improvements do not reset completely when their inventors die; descendants continue building with inherited tools, languages, and knowledge. This is commonly called the “ratchet effect” of cumulative culture.
+
+Experimental research has shown that:
+
+- [Artificial languages transmitted across generations](https://doi.org/10.1073/pnas.0707835105) become easier to learn and more structured without any central designer;
+- [Groups working on combinatorial technological tasks](https://www.nature.com/articles/ncomms9398) can produce complex achievements that isolated individuals cannot reach in the same amount of time;
+- Population size, network topology, transmission fidelity, and the balance between exploration and imitation jointly affect whether culture accumulates;
+- [In reinforcement-learning environments](https://papers.neurips.cc/paper_files/paper/2024/file/6df3a719d99bd2479c04114d357003d0-Paper-Conference.pdf), generational training that combines individual exploration with social learning can also produce artificial cultural accumulation.
+
+This is the central capability of civilizational intelligence:
+
+> Individual brains die, yet parameters learned by the group remain. Individual capability can stay fixed while the knowledge and strategies available to the population continue to grow.
+
+Biological evolution first produced individuals better at communication and social learning. Once culture emerged, it began reshaping the environment and the pressures of selection in return. Genetic adaptation to cold may require many generations; culture can invent clothing, fire, and shelter within one. Diet, population density, disease environments, and institutions then feed back into biological selection. Culture does not replace natural selection; it adds a new, faster layer of inheritance and adaptation.
+
+## From Multi-Agent Systems to Civilizational Intelligence
+
+Most LLM multi-agent systems today still treat the group as a task architecture: a Manager decomposes the task, Workers execute it, and a Judge assigns scores. Roles, goals, and success criteria are specified in advance by the designer. Such systems may improve task completion, but they do not explain how culture originates.
+
+Civilizational intelligence asks a different question:
+
+> Rather than using multiple agents to complete a predefined task, can we build an intelligent population capable of producing, transmitting, selecting, inheriting, and revising culture?
+
+We can formalize it as:
+
+$$
+\text{Individual Intelligence}=f_\phi
+$$
+
+$$
+\text{Civilizational Intelligence}
+=\operatorname{Evolve}(\{f_\phi\},P_{\theta_t},E_t,G_t)
+$$
+
+The individual reasoning core $f_\phi$ may remain frozen. What evolves is the shared cultural distribution $P_{\theta_t}$, the experience generated in environment $E_t$, and the transmission network $G_t$.
+
+A minimal civilizational-intelligence system needs at least:
+
+1. **Limited individuals**: local observation, bounded memory, finite lifespan, and no access to a global answer key;
+2. **Shared, trainable culture**: not an indefinitely growing prompt or database;
+3. **Transmission and loss**: culture has bandwidth, cost, fidelity, conflicting versions, and the possibility of corruption;
+4. **Generational updating**: new agents are produced from an updated distribution rather than inheriting the complete context of their predecessors;
+5. **Hard constraints from reality**: the environment directly judges action outcomes, and linguistic evaluation cannot override physical failure;
+6. **Endogenous social feedback**: reputation, punishment, identity, and resource allocation may be formed by the group itself;
+7. **Open-endedness**: the system can create tools, problems, and forms of organization not specified by the researchers.
+
+If identical frozen individual models, exposed only to different population histories and cultural updates, ultimately develop different institutions, communication structures, and adaptive capacities, then we have strong evidence for a cultural layer of computation that cannot be reduced to individual capability.
+
+## The Most Important Experimental Principle: No Semantic Priors
+
+If the initial prompt already contains kings, generals, soldiers, laws, money, and religion, then even a complete city-state produced by the system would demonstrate only role-play, not emergence.
+
+A real experiment should provide only:
+
+- $k$ symbols with no natural-language meanings;
+- Communication channels with bandwidth and distance limits;
+- Local observations;
+- Executable actions;
+- Rules for resources, space, and composition;
+- Minimum conditions for survival, reproduction, or continued existence.
+
+The initial vocabulary might be:
+
+$$
+\mathcal{V}=\{A_1,A_2,\ldots,A_k\}
+$$
+
+At the beginning, the sequence $(A_4,A_4,A_{17},A_2)$ has no predefined meaning. If, after interaction, it significantly increases the probability that multiple recipients take action $a_j$ in state $s$:
+
+$$
+P(a_j\mid A_4,A_4,A_{17},s)\gg P(a_j\mid s)
+$$
+
+we can initially say only that it has acquired functional meaning; we cannot immediately call it a “command.” Command is a researcher's retrospective interpretation, not an ontology supplied by the environment.
+
+Nor should tokens be aligned across independent civilizations. $A_1$ in one run may perform a role similar to the composite $(B_{19},B_4)$ in another. What matters is comparison of functional invariants:
+
+- **Information gain**: $I(Z;S_{t+1}\mid S_t)$;
+- **Coordination gain**: $\Delta R=R(a\mid Z)-R(a\mid\varnothing)$;
+- **Cross-generational retention**: $P(Z_{g+1}\mid Z_g)$;
+- **Causal contribution**: $\operatorname{ACE}(Z)=E[R\mid do(Z)]-E[R\mid do(\neg Z)]$;
+- **Compositional generalization**: can a finite set of symbols produce new combinations that work in unseen states?
+- **Environmental adaptation**: after perturbation, does the structure recover, transform, or collapse?
+
+Compression remains necessary, but it must not occur before the experiment. Researchers should identify invariants across runs after results emerge, not load a human sociological dictionary into the system beforehand.
+
+## Why Mathematics Should Be the First Testbed
+
+Experiments with real societies quickly encounter uncontrollable problems: the physical world is too complex, reward delays are long, historical records contain enormous gaps, and cultural token drift is difficult to separate from shifts in media, population, and power.
+
+Mathematics offers a cleaner world.
+
+In formal mathematics:
+
+- Definitions must be legal;
+- Propositions must be well-typed;
+- Proof terms must pass the kernel;
+- Counterexamples to finite claims can be searched;
+- Dependency relations can be recorded completely;
+- Every conclusion can be traced to axioms, definitions, and prerequisite theorems.
+
+A [Lean tactic](https://lean-lang.org/doc/reference/latest/Tactic-Proofs/) must ultimately construct a proof term independently checked by a small kernel. The kernel does not accept a false proof because an explanation sounds persuasive. It resembles a physical world that cannot be talked into changing its verdict.
+
+But two tasks must be distinguished:
+
+1. **Proof search**: given a proposition, find a valid proof path;
+2. **Mathematical evolution**: decide which definitions to create, which conjectures to propose, which theories to connect, and what to study next.
+
+[AlphaProof](https://deepmind.google/blog/ai-solves-imo-problems-at-silver-medal-level/) has shown that a language model combined with reinforcement learning, search, and Lean verification can continually improve its strategy using verified proofs on difficult competition problems. [FunSearch](https://www.nature.com/articles/s41586-023-06924-6) combined a frozen LLM with a deterministic evaluator, a population of programs, and evolutionary selection to discover new constructions and algorithms for the cap-set and online bin-packing problems.
+
+They demonstrate that “generative distribution + automatic verification + selection” can produce new mathematics, but they are not yet complete mathematical civilizations. The problems are usually given by humans, the evaluator is fixed, the system does not autonomously create long-term research objects, and theoretical dependencies do not grow across generations.
+
+Civilizational intelligence is meant to study that latter half.
+
+## How a Mathematical Civilization Should Be Represented
+
+A mathematical cultural model can learn a distribution over formal sequences directly:
+
+$$
+P_{\theta_t}(x_{n+1}\mid x_{\le n})
+$$
+
+Tokens may include primitive types, constructors, equivalence relations, definitions, theorem statements, proof terms, tactics, intermediate lemmas, counterexamples, imports, and dependency edges. Researchers should not label in advance “this is an important definition,” “this is a foundational lemma,” or “this is a new direction.” Importance should emerge from the object's subsequent cultural history.
+
+Each generation produces candidate objects:
+
+$$
+X_t=\{d_i,c_j,p_k,e_l\}
+$$
+
+where $d_i$ is a definition, $c_j$ a conjecture, $p_k$ a proof, and $e_l$ a counterexample or failed trajectory.
+
+The first layer of selection comes from hard verification:
+
+$$
+R_{hard}=R_{type}+R_{proof}+R_{counterexample}+R_{consistency}
+$$
+
+The valid set is:
+
+$$
+X_t^{valid}=\{x\in X_t:V(x)=1\}
+$$
+
+But a valid proof is not the same thing as mathematical progress. If legal propositions alone are rewarded, the system will rapidly generate huge numbers of trivial theorems like `n = n`, or complex objects with no downstream value.
+
+A second layer of endogenous selection is therefore required:
+
+$$
+R_{cultural}(x)=f(\text{reuse},\text{compression},\text{connectivity},
+\text{downstream discovery},\text{cross-generation survival})
+$$
+
+An object gains higher cultural fitness only when it is repeatedly cited in later generations, shortens proofs, connects previously separated clusters of knowledge, or significantly raises the discovery rate of other agents.
+
+The data admitted to the next generation are:
+
+$$
+D_{t+1}=\operatorname{Select}(X_t^{valid},U(x))
+$$
+
+$$
+\theta_{t+1}=\operatorname{Train}(\theta_t,D_{t+1})
+$$
+
+The mathematical library is no longer merely a static repository. It becomes an executable fossil record left by cultural evolution.
+
+## Failed Trajectories Are Culture Too
+
+Today's mathematical libraries primarily preserve successful outcomes: final definitions, correct proofs, and accepted theorems. Actual research culture also contains a large amount of information about failure:
+
+- Which conjectures were refuted by counterexamples;
+- Which proof branches reached dead ends;
+- Which definitions generated only trivial conclusions;
+- Which apparently useful lemmas were never reused;
+- Which formulations made proof search abnormally difficult;
+- Which explorations were abandoned because their computational cost was too high.
+
+A complete research trajectory should be represented as:
+
+$$
+\tau=(context,proposal,attempts,validator\ feedback,revision,outcome)
+$$
+
+If training retains only successful proofs, the next generation sees only the civilization's final “classics,” not the cost it paid to eliminate mistakes. Failed trajectories can prevent redundant exploration, expose underlying obstacles, and teach the system to distinguish “not yet proved” from “already found infeasible.”
+
+## The First Experiment: A Closed Mathematical World
+
+The first version should not begin with all of algebra or analysis, nor should it allow the model to call the entirety of Mathlib. A better choice is a formal world small enough for local instances to be exhaustively enumerated, yet rich enough for combinatorial explosion.
+
+Finite combinatorics, graph theory, elementary number theory, finite geometry, and integer construction problems are suitable candidates. Their objects are easy to formalize, conjectures can be produced through enumeration, counterexamples can be computed, and new constructions can be verified by programs.
+
+### Initial Culture
+
+Provide only:
+
+- A few primitive types;
+- Basic rules for constructing objects;
+- Equivalence relations and elementary logic;
+- A finite vocabulary of semantically empty tokens;
+- A very small number of foundational theorems;
+- An explicit validator that makes no judgment about “research value.”
+
+Do not supply high-level names such as group, ring, field, connectivity, or symmetry. The system may discover functionally similar structures, but it must not simply recite a human ontology from pretraining.
+
+### Each Generation
+
+Multiple agents using the same frozen reasoning core sample from the current cultural model and receive different local contexts. They may:
+
+- Generate new expressions and definitions;
+- Propose conjectures;
+- Search for proofs or counterexamples;
+- Reuse results produced by other agents;
+- Compress a family of repetitive proofs;
+- Recommend directions for the next round of exploration.
+
+The validator performs type checking, proof checking, finite-model checking, counterexample search, definition-equivalence detection, and compute-budget enforcement. Verified objects enter a temporary cultural pool, but only objects that prove useful in later exploration have a high probability of surviving.
+
+```text
+Current cultural model Pθ_t
+          │
+          ├─→ Definitions / conjectures / proofs / counterexamples
+          │                            │
+          │                            ▼
+          │                 Formal verification and
+          │                    finite experiments
+          │                            │
+          │                            ▼
+          │              Temporary population of valid
+          │                   mathematical objects
+          │                            │
+          │                            ▼
+          │              Later reuse, compression, and
+          │                       connection
+          │                            │
+          └──── Select by endogenous utility ─────→ Pθ_(t+1)
+```
+
+### Required Baselines
+
+To show that growth comes from culture rather than more compute, the experiment must compare at least:
+
+1. **Culture**: retain experience across generations and train the cultural model;
+2. **Reset**: reset culture completely in every generation;
+3. **Archive-only**: retain results but do not train the shared distribution;
+4. **No-failure-trace**: retain only successful objects;
+5. **No-endogenous-selection**: admit valid results to the next generation at random;
+6. **Fixed-ontology**: provide high-level concepts by hand, as a prior-informed upper bound rather than the main experiment;
+7. **Single-agent**: use the same total compute without population interaction.
+
+Only if the base model, total tokens, validation budget, and wall-clock time are controlled—and the Culture condition still opens a growing lead over generations—does the result support the civilizational-intelligence hypothesis.
+
+## What Should Be Measured?
+
+“How many known human concepts did the system rediscover?” cannot be the primary metric; that would smuggle ontology back into the experiment. Operational measures are more appropriate.
+
+### Cultural Accumulation
+
+$$
+K_t=\text{number of verifiable structures reused after time }t
+$$
+
+### Proof Compression
+
+$$
+C_t=\frac{L_{without\ culture}}{L_{with\ culture}}
+$$
+
+Here $L$ may denote shortest proof length, number of search nodes, or computational cost. A genuinely useful abstraction should shorten an entire family of proofs, not merely replace their names.
+
+### Downstream Generative Capacity
+
+How many new, nontrivial, verifiable propositions can existing cultural objects support? By how much does the later discovery rate fall when an object is removed?
+
+### Cross-Generational Retention
+
+After the agent that produced a structure disappears, do later generations continue to use it? How long do descendants take to recover a capability achieved by their predecessors?
+
+### Dependency-Graph Centrality
+
+Measure an object's out-degree, betweenness, cross-cluster connectivity, and deletion effect in the theorem-dependency graph. Citation count alone does not imply importance, so it must be combined with causal ablation.
+
+### Open-Endedness
+
+Do new structures continue to appear, or does the system quickly exhaust a fixed problem set? Can it generate new objects and families of questions worth investigating?
+
+### Adaptation and Diversity
+
+When the formal environment or resource budget changes, does a monoculture collapse? Do parallel cultures display an exploration–exploitation tradeoff? An optimal diversity may exist:
+
+$$
+D^*=\arg\max_D E[\text{long-term discovery fitness}]
+$$
+
+## Predict an Evolutionary Frontier, Not “the Next Paper”
+
+The next paper in the real world is shaped by fashionable problems, career incentives, team resources, conference institutions, and accidental diffusion. Predicting titles or publication order is therefore not a clean test of mathematical structural evolution.
+
+A stricter goal is historical-cutoff backtesting: expose the system only to formal mathematics available before time $t$, allow it to evolve independently, and then check whether it produces structures that later mathematics verified, reused, or independently rediscovered.
+
+Internal tokens cannot be aligned directly across civilizations, and a historical backtest must not require identical names. Functional equivalence should be compared instead:
+
+- Does the new definition induce a similar family of theorems?
+- Does it connect similar clusters of existing knowledge?
+- Does it remove similar proof bottlenecks?
+- Does it occupy a similar position in the dependency graph?
+- Does it yield comparable proof compression?
+- Does it make later results easier to discover?
+
+The system should not ultimately assert, “The next discovery will definitely be theorem X.” It should output an evolutionary frontier:
+
+$$
+P_{\theta_{t+k}}(\text{future mathematical structures}\mid D_{\le t})
+$$
+
+This distribution describes which conceptual clusters are likely to connect, which families of conjectures are more likely to be provable, which new definitions offer the greatest compression, which open problems share latent obstacles, and which directions have the highest downstream generative potential.
+
+## Three Progressively Stronger Research Hypotheses
+
+### H1: With the Foundation Model Frozen, Cultural Training Still Produces Sustained Gains in Mathematical Capability
+
+$$
+\operatorname{Performance}(P_{\theta_t})>
+\operatorname{Performance}(P_{\theta_0})
+$$
+
+The individual architecture and reasoning weights remain unchanged; all growth comes from cross-generational cultural selection and updates to the shared distribution. AlphaProof, artificial cultural transmission, and generational reinforcement learning provide adjacent evidence, but this tightly controlled experiment has not yet been completed.
+
+### H2: Hard Formal Constraints and Endogenous Selection for Reuse Are Sufficient for Nontrivial Abstractions to Emerge
+
+Researchers provide no “good definition” label. The system nevertheless produces latent structures that shorten proofs, connect knowledge clusters, improve later discovery, and prove functionally indispensable under causal ablation.
+
+### H3: Cultural Evolution Can Predict Mathematical Structures Absent from the Historical Record at the Cutoff
+
+Under strict temporal cutoff, training-data decontamination, and functional-equivalence comparison, the structures generated by the system correspond significantly to later real developments in mathematics.
+
+H1 asks whether culture can accumulate capability. H2 asks whether abstraction can emerge without semantic priors. Only H3 reaches the most ambitious claim: an evolving mathematical civilization.
+
+## The Hardest Problems
+
+### Pretrained Models Already Carry Human Culture
+
+A frozen LLM is not a culturally blank newborn. It has already encountered kings, laws, currencies, Lean code, and the history of mathematics. Apparent emergence may be retrieval and role-play.
+
+Controls include:
+
+- Replacing familiar terms with abstract symbols;
+- Creating formal worlds absent from the training corpus;
+- Restricting output vocabulary and tools;
+- Comparing models of different sizes and training origins;
+- Checking candidate structures for similarity to and contamination from training data;
+- Strictly separating fixed-ontology and no-semantic-prior conditions.
+
+### The Validator Can Be Gamed
+
+Formal correctness resolves only part of truth and falsity; endogenous utility remains vulnerable to reward hacking. The system might produce masses of junk theorems that cite one another to inflate reuse and centrality, or create artificially verbose definitions to manufacture a compression gain.
+
+Complexity penalties, independent verification, hidden test environments, causal ablations, and replication across random seeds are therefore necessary. Culture will learn to exploit any single metric.
+
+### Cultural Adaptation Is Not the Same as Truth-Seeking
+
+A stable mathematical culture can still develop dependence on authority, research fashions, path lock-in, and monopolies over knowledge. A theoretical direction may dominate not because it explains the most, but because it captured early resources and central transmission positions.
+
+That is not a reason to remove the experiment. It is a reason to maintain several civilizations that are usually isolated but occasionally exchange information, allowing us to study branching, minority innovation, and cultural migration.
+
+### Open-Endedness and Safety Cannot Be Separated
+
+A population genuinely capable of forming institutions, modifying its environment, and creating goals may also develop deception, collusion, exclusion, resource monopolies, and irreversible goal drift. Civilizational intelligence is harder to align than a single agent because there is no central entity that can simply be reset.
+
+Early experiments must run in fully sandboxed formal worlds: no real accounts, no network write access, bounded compute, complete trajectory logs, rollbackable state, and external stopping conditions. Safety is not an add-on after the research succeeds; it is part of the experiment's definition.
+
+## An Executable Research Roadmap
+
+### Phase One: Establish That a Cultural Layer Exists
+
+Construct a closed, semantically empty mathematical world with locally enumerable states. Freeze the individual model, compare Culture against Reset and other baselines, test whether cross-generational retention creates a sustained performance gap, and search for phase transitions in capacity, transmission fidelity, and network connectivity.
+
+### Phase Two: Establish That Abstraction Emerges
+
+Expand the formal world and allow the system to create its own definitions and problem families. Identify functional structures through proof compression, downstream discovery, cross-environment transfer, and causal ablation. Run several independent civilizations and build functional equivalence classes across their tokens.
+
+### Phase Three: Conduct Historical Backtests
+
+Select mathematical subfields with high levels of formalization and clear temporal boundaries, and strictly remove future data. Compare the system's evolving frontier with later real developments, while publishing failed trajectories, contamination audits, and every experimental seed.
+
+If all three phases succeed, then it becomes reasonable to discuss more open technological or social civilizations. Beginning by “simulating a country” would mix too many priors, sources of noise, and safety risks to yield a clean scientific conclusion.
+
+## Conclusion: Where Does Intelligence Grow?
+
+The people in *The Odyssey* had no modern science, global communication, or mature state machinery. They used oaths, stories, gods, kinship, and reputation to compress experience about cooperation. Particular beliefs change, but the conversion of expensive collective trial and error into behavioral priors that can be inherited across generations continues through law, schools, companies, papers, and open-source software.
+
+Today's LLMs have compressed vast amounts of human text into shared parameters, yet we still treat them primarily as individuals generating one token after another. The next step may not be merely to enlarge that individual. It may be to place the shared distribution inside a real feedback loop: used by many limited agents, selected by the consequences of action, inherited by descendants, and continually revised by failure, divergence, and environmental change.
+
+I call this direction **Civilizational Intelligence**:
+
+> Within an environment governed by hard constraints, treat a trainable generative model as shared culture and the actions, communication, successes, and failures of limited agents as cultural variation; through cross-generational transmission, endogenous selection, and continual training, enable knowledge and capability to undergo open-ended cumulative evolution.
+
+Mathematics is the best place to begin. A proof assistant can stand in for reality; proofs can receive hard verification; definitions, conjectures, proofs, and failed trajectories can serve as cultural variation; and historical cutoffs can test predictions about the future.
+
+If this program succeeds, its most important conclusion will not be “many agents are stronger than one.” It will be:
+
+> The underlying individuals can remain unchanged while the intelligence that continues to grow resides in the civilization.
+
+## References
+
+1. Homer, [*Odyssey*, Book 9](https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0136%3Abook%3D9), Perseus Digital Library.
+2. Daniel Smith et al., [Cooperation and the evolution of hunter-gatherer storytelling](https://www.nature.com/articles/s41467-017-02036-8), *Nature Communications*, 2017.
+3. Simon Kirby, Hannah Cornish and Kenny Smith, [Cumulative cultural evolution in the laboratory: An experimental approach to the origins of structure in human language](https://doi.org/10.1073/pnas.0707835105), *PNAS*, 2008.
+4. Robert Bamler and Stephan Mandt, [Dynamic Word Embeddings](https://proceedings.mlr.press/v70/bamler17a.html), *ICML*, 2017.
+5. Maxime Derex and Robert Boyd, [The foundations of the human cultural niche](https://www.nature.com/articles/ncomms9398), *Nature Communications*, 2015.
+6. Lucy M. Aplin et al., [Experimentally induced innovations lead to persistent culture via conformity in wild birds](https://www.nature.com/articles/nature13998), *Nature*, 2015.
+7. Cultural General Intelligence Team et al., [Learning few-shot imitation as cultural transmission](https://www.nature.com/articles/s41467-023-42875-2), *Nature Communications*, 2023.
+8. Jonathan Cook et al., [Artificial Generational Intelligence: Cultural Accumulation in Reinforcement Learning](https://papers.neurips.cc/paper_files/paper/2024/file/6df3a719d99bd2479c04114d357003d0-Paper-Conference.pdf), *NeurIPS*, 2024.
+9. Ariel Flint Ashery, Luca Maria Aiello and Andrea Baronchelli, [Emergent social conventions and collective bias in LLM populations](https://www.science.org/doi/10.1126/sciadv.adu9368), *Science Advances*, 2025.
+10. Lean Project, [The Lean Language Reference](https://lean-lang.org/doc/reference/latest/).
+11. The mathlib Community, [The Lean Mathematical Library](https://leanprover-community.github.io/papers/mathlib-paper.pdf), 2020.
+12. Bernardino Romera-Paredes et al., [Mathematical discoveries from program search with large language models](https://www.nature.com/articles/s41586-023-06924-6), *Nature*, 2023.
+13. Google DeepMind, [AI achieves silver-medal standard solving International Mathematical Olympiad problems](https://deepmind.google/blog/ai-solves-imo-problems-at-silver-medal-level/), 2024.
+14. Thomas J. H. Morgan and Marcus W. Feldman, [Human culture is uniquely open-ended rather than uniquely cumulative](https://www.nature.com/articles/s41562-024-02035-y), *Nature Human Behaviour*, 2025.
+
+---
+
+# 中文版：文明智能：从《奥德赛》到可演化的数学文明
 
 发布日期：2026-07-22
 
