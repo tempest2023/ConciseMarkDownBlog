@@ -28,9 +28,7 @@ export default function AgentDock () {
   return <>
     <div className="agent-dock" hidden={open}>
       <button className="companion-launcher" ref={launcher} onClick={show} aria-label="Open Ask Tempest" aria-haspopup="dialog" aria-expanded={open} aria-controls="agent-dialog">
-        <span className="companion-bubble">Ask me anything<br /><strong>about my work!</strong></span>
         <AgentCompanion />
-        <span className="companion-chat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M5 4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 3v-3H3V6a2 2 0 0 1 2-2Z" /><path d="M7 9h10M7 13h6" /></svg></span>
       </button>
     </div>
     <dialog ref={dialog} id="agent-dialog" className="agent-dialog" aria-labelledby="agent-dialog-title" onCancel={event => { event.preventDefault(); close(); }} onClose={() => { setOpen(false); (previousFocus.current?.isConnected ? previousFocus.current : launcher.current)?.focus(); }} onClick={event => {

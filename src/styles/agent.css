@@ -4,7 +4,6 @@
   right: clamp(.8rem, 2vw, 2rem);
   bottom: clamp(5.25rem, 7vw, 6.25rem);
   width: clamp(38px, 3vw, 42px);
-  filter: drop-shadow(0 6px 10px rgba(89, 61, 36, .13));
 }
 .agent-dock[hidden] { display: none; }
 .companion-launcher {
@@ -20,57 +19,31 @@
   animation: companion-five-second-beat 5s ease-in-out infinite;
 }
 .companion-launcher:hover { animation-play-state: paused; transform: translateY(-3px) rotate(-2deg); }
-.companion-art { display: block; width: 100%; height: auto; overflow: visible; }
-.companion-body { transform-origin: 60px 121px; animation: companion-breathe 5s ease-in-out infinite; }
-.companion-ribbon { transform-origin: 87px 52px; animation: companion-ribbon-wave 5s ease-in-out infinite; }
-.companion-eyes { transform-origin: center; animation: companion-blink 5s linear infinite; }
-.companion-brows { transform-origin: center; animation: companion-brow-lift 5s ease-in-out infinite; }
-.companion-motion-lines { opacity: 0; animation: companion-motion-line 5s ease-out infinite; }
-.companion-shadow { transform-origin: center; animation: companion-shadow-pulse 5s ease-in-out infinite; }
-.companion-bubble {
-  position: absolute;
-  z-index: 2;
-  right: -4px;
-  bottom: calc(100% + 5px);
-  min-width: 138px;
-  padding: .62rem .72rem;
-  border: 1px solid rgba(233, 146, 114, .16);
-  border-radius: 48% 48% 48% 40%;
-  background: rgba(255, 238, 230, .94);
-  box-shadow: 0 7px 20px rgba(98, 69, 47, .08);
-  color: #433630;
-  font: .68rem/1.25 var(--ui-font);
-  text-align: center;
-  transform: rotate(-4deg);
-}
-.companion-bubble::after {
-  position: absolute;
-  right: 14px;
-  bottom: -8px;
-  width: 14px;
-  height: 14px;
-  border-right: 1px solid rgba(233, 146, 114, .16);
-  border-bottom: 1px solid rgba(233, 146, 114, .16);
-  background: inherit;
-  content: '';
-  transform: rotate(45deg) skew(-12deg, -12deg);
-}
-.companion-chat-icon {
-  position: absolute;
-  right: -8px;
-  bottom: -4px;
-  width: 28px;
-  height: 28px;
-  display: grid;
-  place-items: center;
-  border: 2px solid color-mix(in srgb, var(--bg-color) 85%, white);
+.companion-launcher:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent-color) 72%, transparent);
+  outline-offset: 4px;
   border-radius: 50%;
-  background: #f07f62;
-  box-shadow: 0 7px 18px rgba(191, 91, 65, .28);
-  color: #fffaf4;
 }
-.companion-chat-icon svg { width: 13px; height: 13px; }
-.dark-theme .companion-bubble { border-color: #765a4e; background: rgba(74, 58, 50, .96); color: #fff1e8; }
+.companion-avatar {
+  position: absolute;
+  inset: 0;
+  display: block;
+  aspect-ratio: 1;
+  filter: drop-shadow(0 5px 6px rgba(71, 50, 34, .2));
+}
+.companion-launcher, .companion-avatar { aspect-ratio: 1; }
+.companion-avatar-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity .12s ease;
+  user-select: none;
+}
+.companion-avatar-image.is-current { opacity: 1; }
 
 .agent-dialog {
   width: min(80vw, 1120px);
@@ -183,17 +156,8 @@
   8% { transform: translateY(0) rotate(1deg); }
   12% { transform: translate(-1px, -1px) rotate(-2deg); }
 }
-@keyframes companion-breathe { 0%, 16%, 100% { transform: translateY(0); } 6% { transform: translateY(2px) rotate(1deg); } 11% { transform: translate(-2px, -1px) rotate(-2deg); } }
-@keyframes companion-ribbon-wave { 0%, 16%, 100% { transform: rotate(0); } 5% { transform: rotate(9deg); } 10% { transform: rotate(-5deg); } }
-@keyframes companion-blink { 0%, 7%, 9%, 100% { transform: scaleY(1); } 8% { transform: scaleY(.08); } }
-@keyframes companion-brow-lift { 0%, 4%, 13%, 100% { transform: translateY(0); } 7%, 10% { transform: translateY(-2px); } }
-@keyframes companion-motion-line { 0%, 2%, 15%, 100% { opacity: 0; transform: translateX(3px); } 6%, 11% { opacity: .85; transform: translateX(0); } }
-@keyframes companion-shadow-pulse { 0%, 16%, 100% { transform: scaleX(1); opacity: .13; } 5% { transform: scaleX(.84); opacity: .08; } }
-
 @media (max-width: 760px) {
   .agent-dock { right: .75rem; bottom: 5rem; width: 36px; }
-  .companion-bubble { right: -4px; min-width: 122px; padding: .52rem .58rem; font-size: .62rem; }
-  .companion-chat-icon { width: 26px; height: 26px; }
   .agent-dialog { width: 94vw; height: 90dvh; border-radius: 17px; }
   .agent-dialog-header { min-height: 62px; padding-left: 1rem; }
   .agent-dialog-header > div { grid-template-columns: auto auto; }
@@ -210,5 +174,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .companion-launcher, .companion-body, .companion-ribbon, .companion-eyes, .companion-brows, .companion-motion-lines, .companion-shadow { animation: none; }
+  .companion-launcher { animation: none; }
+  .companion-avatar-image { transition: none; }
 }

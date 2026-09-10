@@ -66,7 +66,7 @@ test('Enter submits but Shift+Enter and IME composition do not', async () => {
   expect(global.fetch).toHaveBeenCalledTimes(2);
 });
 
-test('the SVG companion opens and closes the window-sized conversation dialog', async () => {
+test('the avatar-only companion opens and closes the window-sized conversation dialog', async () => {
   render(<AgentDock />);
   const dialog = document.querySelector('dialog');
   dialog.showModal = () => dialog.setAttribute('open', '');
@@ -74,7 +74,10 @@ test('the SVG companion opens and closes the window-sized conversation dialog', 
     dialog.removeAttribute('open');
     fireEvent(dialog, new Event('close'));
   };
-  expect(document.querySelector('.companion-art')).toBeInTheDocument();
+  expect(document.querySelector('.companion-avatar')).toHaveAttribute('data-state', 'idle');
+  expect(document.querySelectorAll('.companion-avatar-image')).toHaveLength(4);
+  expect(document.querySelector('.companion-bubble')).not.toBeInTheDocument();
+  expect(document.querySelector('.companion-chat-icon')).not.toBeInTheDocument();
   fireEvent.click(screen.getByRole('button', { name: 'Open Ask Tempest' }));
   expect(dialog).toHaveAttribute('open');
   fireEvent.click(screen.getByRole('button', { name: 'Close conversation' }));
