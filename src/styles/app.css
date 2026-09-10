@@ -179,8 +179,7 @@ a:hover { text-decoration-thickness: 2px; }
 .profile-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1.5rem; margin-top: 1.75rem; font-family: var(--ui-font); font-size: .91rem; }
 .profile-actions a { min-height: 44px; display: inline-flex; align-items: center; }
 .profile-actions .primary-link { padding: .7rem 1rem; border-radius: 7px; background: var(--text-color); color: var(--bg-color); text-decoration: none; }
-.article-tools { position: absolute; z-index: 2; top: -.75rem; right: 0; display: flex; align-items: center; }
-.article-shell > h1, .article-content > h1:first-child { padding-right: 4.25rem; }
+.article-tools { position: absolute; z-index: 2; top: -3rem; right: 0; display: flex; align-items: center; }
 .markdown-note { margin: 0 0 1rem; color: var(--muted-color); font-family: var(--hand-font); font-size: .9rem; font-style: italic; text-align: left; }
 .article-view { animation: paper-arrive .34s ease both; }
 .article-view-raw { padding: 1.25rem; border: 1px solid var(--border-color); border-radius: 12px; background: color-mix(in srgb, var(--paper-color) 80%, transparent); }
@@ -226,12 +225,11 @@ a:hover { text-decoration-thickness: 2px; }
   .notebook-links svg { width: 17px; height: 17px; }
   .notebook-links small { display: none; }
   .notebook-topics { display: none; }
-  .main-container { padding: 2.15rem 1.15rem 4rem; }
+  .main-container { padding: 3.25rem 1.15rem 4rem; }
   .article-content { font-size: 1.05rem; }
   .article-content h1 { font-size: clamp(2.2rem, 12vw, 3.35rem); }
   .article-content h2 { margin-top: 2.5rem; }
   .profile-actions { gap: .4rem 1rem; }
-  .article-tools { top: -.55rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

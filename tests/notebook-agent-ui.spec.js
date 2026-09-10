@@ -32,13 +32,15 @@ test.describe('Notebook and agent companion', () => {
         availableWidth: main.clientWidth - parseFloat(mainStyle.paddingLeft) - parseFloat(mainStyle.paddingRight),
         articleWidth: articleRect.width,
         toolsPosition: getComputedStyle(tools).position,
-        rightGap: shellRect.right - toolsRect.right
+        rightGap: shellRect.right - toolsRect.right,
+        topGap: shellRect.top - toolsRect.bottom
       };
     });
 
     expect(layout.articleWidth).toBeCloseTo(layout.availableWidth, 0);
     expect(layout.toolsPosition).toBe('absolute');
     expect(Math.abs(layout.rightGap)).toBeLessThanOrEqual(1);
+    expect(layout.topGap).toBeGreaterThanOrEqual(3);
   });
 
   test('keeps the interactive agent outside article Markdown', async ({ page }) => {
