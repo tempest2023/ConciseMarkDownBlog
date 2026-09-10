@@ -1,10 +1,12 @@
 .agent-dock {
+  --agent-dock-size: clamp(66.5px, 5.25vw, 73.5px);
   position: fixed;
   z-index: 80;
-  right: clamp(.8rem, 2vw, 2rem);
-  bottom: clamp(5.25rem, 7vw, 6.25rem);
-  width: clamp(66.5px, 5.25vw, 73.5px);
+  right: clamp(8.25px, calc(45px - 2.625vw), 11.75px);
+  bottom: clamp(.75rem, 2vw, 1.25rem);
+  width: var(--agent-dock-size);
 }
+.agent-dock--above-config { bottom: 84px; }
 .agent-dock[hidden] { display: none; }
 .companion-launcher {
   position: relative;
@@ -157,7 +159,7 @@
   12% { transform: translate(-1px, -1px) rotate(-2deg); }
 }
 @media (max-width: 760px) {
-  .agent-dock { right: .75rem; bottom: 5rem; width: 63px; }
+  .agent-dock { --agent-dock-size: 63px; right: 13.5px; }
   .agent-dialog { width: 94vw; height: 90dvh; border-radius: 17px; }
   .agent-dialog-header { min-height: 62px; padding-left: 1rem; }
   .agent-dialog-header > div { grid-template-columns: auto auto; }

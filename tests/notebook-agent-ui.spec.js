@@ -78,8 +78,16 @@ test.describe('Notebook and agent companion', () => {
     await expect(page.getByRole('button', { name: 'Open Ask Tempest' }).locator('svg')).toHaveCount(0);
   });
 
-  test('keeps the companion above the local settings button area', async ({ page }) => {
-    const bottomGap = await page.locator('.agent-dock').evaluate(element => innerHeight - element.getBoundingClientRect().bottom);
-    expect(bottomGap).toBeGreaterThanOrEqual(80);
+  test('keeps the companion in the bottom-right corner when settings are absent', async ({ page }) => {
+    await expect(page.getByRole('button', { name: 'Open Config Editor' })).toHaveCount(0);
+    const position = await page.locator('.agent-dock').evaluate(element => {
+      const rect = element.getBoundingClientRect();
+      return {
+        bottomGap: innerHeight - rect.bottom,
+        rightGap: innerWidth - rect.right
+      };
+    });
+    expect(position.bottomGap).toBeLessThanOrEqual(20);
+    expect(position.rightGap).toBeLessThanOrEqual(14);
   });
 });

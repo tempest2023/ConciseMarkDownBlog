@@ -74,6 +74,7 @@ test('the avatar-only companion opens and closes the window-sized conversation d
     dialog.removeAttribute('open');
     fireEvent(dialog, new Event('close'));
   };
+  expect(document.querySelector('.agent-dock')).toHaveClass('agent-dock--above-config');
   expect(document.querySelector('.companion-avatar')).toHaveAttribute('data-state', 'idle');
   expect(document.querySelectorAll('.companion-avatar-image')).toHaveLength(4);
   expect(document.querySelector('.companion-bubble')).not.toBeInTheDocument();

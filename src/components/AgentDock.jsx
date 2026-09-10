@@ -1,5 +1,6 @@
 import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import AgentCompanion from './AgentCompanion';
+import { hasConfigAccess } from '../util/isLocal';
 import '../styles/agent.css';
 
 const PersonalAgent = lazy(() => import('./PersonalAgent'));
@@ -9,6 +10,7 @@ export default function AgentDock () {
   const previousFocus = useRef(null);
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const hasFloatingConfigButton = process.env.NODE_ENV !== 'production' && hasConfigAccess();
   useEffect(() => {
     if (!open) return;
     const overflow = document.body.style.overflow;
@@ -26,7 +28,7 @@ export default function AgentDock () {
     if (dialog.current?.open) dialog.current.close();
   }
   return <>
-    <div className="agent-dock" hidden={open}>
+    <div className={`agent-dock${hasFloatingConfigButton ? ' agent-dock--above-config' : ''}`} hidden={open}>
       <button className="companion-launcher" ref={launcher} onClick={show} aria-label="Open Ask Tempest" aria-haspopup="dialog" aria-expanded={open} aria-controls="agent-dialog">
         <AgentCompanion />
       </button>
