@@ -3,7 +3,7 @@
   z-index: 80;
   right: clamp(.8rem, 2vw, 2rem);
   bottom: clamp(5.25rem, 7vw, 6.25rem);
-  width: clamp(38px, 3vw, 42px);
+  width: clamp(66.5px, 5.25vw, 73.5px);
 }
 .agent-dock[hidden] { display: none; }
 .companion-launcher {
@@ -157,7 +157,7 @@
   12% { transform: translate(-1px, -1px) rotate(-2deg); }
 }
 @media (max-width: 760px) {
-  .agent-dock { right: .75rem; bottom: 5rem; width: 36px; }
+  .agent-dock { right: .75rem; bottom: 5rem; width: 63px; }
   .agent-dialog { width: 94vw; height: 90dvh; border-radius: 17px; }
   .agent-dialog-header { min-height: 62px; padding-left: 1rem; }
   .agent-dialog-header > div { grid-template-columns: auto auto; }

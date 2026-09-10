@@ -43,7 +43,8 @@ test.describe('Notebook and agent companion', () => {
     const companion = page.locator('.companion-avatar');
     const size = await companion.evaluate(element => element.getBoundingClientRect().width);
 
-    expect(size).toBeLessThanOrEqual(42);
+    expect(size).toBeLessThanOrEqual(73.5);
+    expect(size).toBeGreaterThanOrEqual(66.5);
     await expect(companion.locator('img')).toHaveCount(4);
     await expect(companion.locator('[data-avatar-state="idle"]')).toHaveAttribute('src', '/assets/agent-avatar/idle.png');
     await expect(companion.locator('[data-avatar-state="blink"]')).toHaveAttribute('src', '/assets/agent-avatar/blink.png');
