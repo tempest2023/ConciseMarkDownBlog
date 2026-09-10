@@ -53,11 +53,13 @@ test.describe('Menu Navigation', () => {
     await expect(page.getByRole('heading', { name: 'Links', exact: true })).toBeVisible();
   });
 
-  test('keeps utility destinations available in the footer', async ({ page }) => {
+  test('keeps only RSS and the notebook colophon in the footer utilities', async ({ page }) => {
     const footerNavigation = page.getByRole('navigation', { name: 'More links' });
-    await expect(footerNavigation.getByRole('link', { name: 'Links & publications' })).toHaveAttribute('href', '/links/');
-    await expect(footerNavigation.getByRole('link', { name: 'Technical background' })).toHaveAttribute('href', '/technical-background/');
-    await expect(footerNavigation.getByRole('link', { name: '3D Portfolio' })).toHaveAttribute('href', 'https://3d.tempest.fun/');
+    await expect(footerNavigation.getByRole('link')).toHaveCount(1);
+    await expect(footerNavigation.getByRole('link', { name: 'RSS' })).toHaveAttribute('href', '/rss.xml');
+    await expect(page.locator('footer')).toContainText('A small space');
+    await expect(page.locator('footer').getByRole('link', { name: /Made of Markdown/ })).toHaveAttribute('href', 'https://github.com/tempest2023/ConciseMarkDownBlog');
+    await expect(page.locator('.notebook-sidebar .notebook-colophon')).toHaveCount(0);
   });
 
   test('opens the compact navigation on mobile', async ({ page }) => {

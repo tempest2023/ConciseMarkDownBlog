@@ -51,10 +51,12 @@ describe('Footer', () => {
     expect(screen.getByText(/© \d{4} Test Author/)).toBeInTheDocument();
   });
 
-  it('should render repo link if configured', () => {
+  it('should move the notebook colophon and repo link into the footer', () => {
     render(<Footer />);
 
-    const repoLink = screen.getByText('View Source');
+    expect(screen.getByText(/A small space/)).toBeInTheDocument();
+    expect(screen.getByText('— Tempest')).toBeInTheDocument();
+    const repoLink = screen.getByText(/Made of Markdown/);
     expect(repoLink).toBeInTheDocument();
     expect(repoLink.closest('a')).toHaveAttribute('href', config.repo);
   });
@@ -73,4 +75,3 @@ describe('Footer', () => {
     Object.assign(config, originalConfig);
   });
 });
-

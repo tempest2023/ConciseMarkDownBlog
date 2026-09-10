@@ -74,24 +74,19 @@ const Footer = () => {
           )}
         </div>
 
-        {/* Copyright */}
+        <div className={styles.colophon}>
+          <p>A small space<br />for unfinished thoughts<br />and things worth sharing.</p>
+          <span>— Tempest</span>
+          {repo && <a href={repo} target="_blank" rel="noopener noreferrer">Made of Markdown <span aria-hidden="true">↗</span></a>}
+        </div>
+
         <nav aria-label="More links" className={styles['extra-links']}>
-          <a href="/links/">Links & publications</a>
-          <a href="/technical-background/">Technical background</a>
-          <a href="https://3d.tempest.fun/">3D Portfolio</a>
           <a href="/rss.xml">RSS</a>
         </nav>
         <div className={styles.copyright}>
           <p>
             © {currentYear} {name || 'Blog'}. All rights reserved.
           </p>
-          {repo && (
-            <p className={styles['repo-link']}>
-              <a href={repo} target="_blank" rel="noopener noreferrer">
-                <i className="bi bi-github"></i> View Source
-              </a>
-            </p>
-          )}
         </div>
       </div>
     </footer>

@@ -15,6 +15,30 @@ test.describe('Notebook and agent companion', () => {
     await flip.click();
     await expect(page.getByRole('textbox', { name: 'Markdown source' })).toBeVisible();
     await expect(page.getByRole('button', { name: 'Read article' }).locator('.flip-bg')).toHaveCSS('animation-name', 'markdown-flip');
+    await expect(page.locator('.markdown-note')).toHaveCSS('text-align', 'left');
+  });
+
+  test('uses the padded right section width and floats the Markdown switch', async ({ page }) => {
+    const layout = await page.evaluate(() => {
+      const main = document.querySelector('.main-container');
+      const article = document.querySelector('.article-content');
+      const shell = document.querySelector('.article-shell');
+      const tools = document.querySelector('.article-tools');
+      const mainStyle = getComputedStyle(main);
+      const articleRect = article.getBoundingClientRect();
+      const shellRect = shell.getBoundingClientRect();
+      const toolsRect = tools.getBoundingClientRect();
+      return {
+        availableWidth: main.clientWidth - parseFloat(mainStyle.paddingLeft) - parseFloat(mainStyle.paddingRight),
+        articleWidth: articleRect.width,
+        toolsPosition: getComputedStyle(tools).position,
+        rightGap: shellRect.right - toolsRect.right
+      };
+    });
+
+    expect(layout.articleWidth).toBeCloseTo(layout.availableWidth, 0);
+    expect(layout.toolsPosition).toBe('absolute');
+    expect(Math.abs(layout.rightGap)).toBeLessThanOrEqual(1);
   });
 
   test('keeps the interactive agent outside article Markdown', async ({ page }) => {

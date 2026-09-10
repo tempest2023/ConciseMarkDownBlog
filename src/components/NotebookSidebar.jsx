@@ -17,6 +17,5 @@ export default function NotebookSidebar () {
       <a href="/work/"><Icon name="work" /><span>Work & research</span></a>
     </nav>
     <div className="notebook-topics"><p className="sidebar-label">Filed under</p>{topics.slice(0, 7).map(topic => <a key={topic.name} href={topic.href}>{topic.name === 'DeepLearning' ? 'Deep learning' : topic.name}<small>{topic.count}</small></a>)}<a href="/writing/" className="all-topics">All topics <span aria-hidden="true">↗</span></a></div>
-    <div className="notebook-colophon"><p>A small space<br />for unfinished thoughts<br />and things worth sharing.</p><span>— Tempest</span><a href="https://github.com/tempest2023/ConciseMarkDownBlog">Made of Markdown <span aria-hidden="true">↗</span></a></div>
   </aside>;
 }

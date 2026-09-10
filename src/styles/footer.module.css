@@ -57,23 +57,11 @@
   margin: 0.25rem 0;
 }
 
-.repo-link {
-  margin-top: 0.5rem;
-}
-
-.repo-link a {
-  color: var(--muted-color, #6c757d);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.repo-link a:hover {
-  color: var(--accent-color, #feb272);
-}
-
-.repo-link i {
-  margin-right: 0.25rem;
-}
+.colophon { width: max-content; max-width: 100%; color: var(--muted-color, #6c757d); font-family: var(--hand-font); font-size: .9rem; font-style: italic; line-height: 1.65; text-align: left; }
+.colophon p { margin: 0 0 .3rem; }
+.colophon > span { display: block; margin-bottom: .65rem; }
+.colophon a { color: var(--muted-color, #6c757d); font-family: var(--ui-font); font-size: .76rem; font-style: normal; text-decoration: none; transition: color .2s ease; }
+.colophon a:hover { color: var(--accent-color, #feb272); }
 
 .extra-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .25rem 1.25rem; font-size: .875rem; }
 .extra-links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--link-color); }

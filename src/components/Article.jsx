@@ -124,7 +124,7 @@ const Article = () => {
     <div className="container">
       {filePath
         ? (
-          <div>
+          <div className="article-shell">
             {catalog.find(entry => entry.page === page)?.isPost && (() => {
               const entry = catalog.find(item => item.page === page);
               return <div className="article-meta"><span>Tao Ren (Tempest)</span><span>Published <time dateTime={entry.publishedAt}>{entry.publishedAt.slice(0, 10)}</time></span><span>Updated <time dateTime={entry.updatedAt}>{entry.updatedAt.slice(0, 10)}</time></span><span>{entry.readingMinutes} min read</span></div>;
