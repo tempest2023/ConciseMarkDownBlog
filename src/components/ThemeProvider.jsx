@@ -52,11 +52,11 @@ export const ThemeProvider = ({ children }) => {
       document.documentElement.style.setProperty('--muted-color', colors.gray || (isDark ? '#adb5bd' : '#6c757d'));
       document.documentElement.style.setProperty('--border-color', colors.border || (isDark ? '#495057' : '#dee2e6'));
       document.documentElement.style.setProperty('--card-bg', colors.cardBg || (isDark ? '#343a40' : '#f8f9fa'));
-      document.documentElement.style.setProperty('--code-bg', isDark ? '#2d2d2d' : '#f8f9fa');
-      document.documentElement.style.setProperty('--input-bg', isDark ? '#495057' : '#ffffff');
+      document.documentElement.style.setProperty('--code-bg', colors.cardBg);
+      document.documentElement.style.setProperty('--input-bg', colors.background);
       // Link colors
-      document.documentElement.style.setProperty('--link-color', isDark ? '#6ea8fe' : '#0d6efd');
-      document.documentElement.style.setProperty('--link-hover-color', isDark ? '#8bb9fe' : '#0a58ca');
+      document.documentElement.style.setProperty('--link-color', colors.foreground);
+      document.documentElement.style.setProperty('--link-hover-color', colors.foreground);
       // Button colors
       document.documentElement.style.setProperty('--btn-primary-bg', colors.foreground || '#0d6efd');
       document.documentElement.style.setProperty('--btn-secondary-bg', isDark ? '#495057' : '#6c757d');

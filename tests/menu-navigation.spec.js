@@ -1,211 +1,80 @@
 /**
  * @file Menu Navigation Test
- * @description Verifies main menu functionality and navigation
+ * @description Verifies the current editorial header and responsive navigation.
  */
 import { test, expect } from '@playwright/test';
 
 test.describe('Menu Navigation', () => {
-  const menuItem = (page, label) => page.locator(`nav a[aria-label="${label}"]`);
-
   test.beforeEach(async ({ page }) => {
-    // Navigate to home page before each test
     await page.goto('/');
     await page.waitForLoadState('networkidle');
   });
 
-  test('should display navigation header with configured menu items', async ({ page }) => {
-    // Verify the navbar is present
-    const navbar = page.locator('nav.navbar');
-    await expect(navbar).toBeVisible();
+  test('shows the focused personal-blog navigation', async ({ page }) => {
+    await expect(page.locator('.site-header')).toBeVisible();
+    await expect(page.locator('.site-brand')).toHaveText("Tempest's blog");
 
-    // Verify the brand/title is displayed
-    const brand = page.locator('a.navbar-brand');
-    await expect(brand).toBeVisible();
-
-    // Verify navigation links container exists
-    const navLinks = page.locator('#navbarNav');
-    await expect(navLinks).toBeVisible();
-
-    // Verify specific menu items from config are present
-    const expectedMenuItems = ['About', 'Tech Stack', 'Blog', 'Projects', 'Markdown Editor', '3D Portfolio', 'Links'];
-
-    for (const menuItem of expectedMenuItems) {
-      const menuLink = page.locator(`nav a[aria-label="${menuItem}"]`);
-      await expect(menuLink, `Menu item "${menuItem}" should be visible`).toBeVisible();
+    const navigation = page.getByRole('navigation', { name: 'Main navigation' });
+    await expect(navigation).toBeVisible();
+    await expect(navigation.getByRole('link')).toHaveCount(6);
+    for (const name of ['About', 'Work & Research', 'Writing', 'Projects', 'Links']) {
+      await expect(navigation.getByRole('link', { name, exact: true })).toBeVisible();
     }
+    const portfolio = navigation.getByRole('link', { name: '3D Portfolio' });
+    await expect(portfolio).toHaveAttribute('href', 'https://3d.tempest.fun/');
+    await expect(portfolio.locator('svg')).toBeVisible();
+
+    await expect(navigation.getByRole('link', { name: 'Ask Tempest' })).toHaveCount(0);
+    await expect(page.getByRole('button', { name: 'Open Ask Tempest' })).toBeVisible();
+
+    const sidebarWidth = await page.locator('.notebook-sidebar').evaluate(element => element.getBoundingClientRect().width);
+    expect(sidebarWidth).toBeLessThanOrEqual(230);
   });
 
-  test('clicking About menu item should display About content', async ({ page }) => {
-    // Click on About menu item
-    const aboutLink = menuItem(page, 'About');
-    await aboutLink.click();
+  test('navigates between About, Writing, Work and Projects', async ({ page }) => {
+    const navigation = page.getByRole('navigation', { name: 'Main navigation' });
+    await expect(navigation.getByRole('link', { name: 'About', exact: true })).toHaveAttribute('aria-current', 'page');
 
-    // Wait for content to load
-    await page.waitForLoadState('networkidle');
-    await page.waitForTimeout(500);
+    await navigation.getByRole('link', { name: 'Writing', exact: true }).click();
+    await expect(page).toHaveURL(/\/writing\/$/);
+    await expect(page.getByRole('heading', { name: 'Writing', exact: true })).toBeVisible();
+    await expect(page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Writing', exact: true })).toHaveAttribute('aria-current', 'page');
 
-    // Verify URL contains the page parameter (either via pushState or already present)
-    const currentUrl = page.url();
-    // URL should either have the query param or we're on a client-side routed page
-    expect(currentUrl).toMatch(/(\?page=About|$)/);
+    await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Work & Research', exact: true }).click();
+    await expect(page).toHaveURL(/\/work\/$/);
+    await expect(page.getByRole('heading', { name: 'Work & Research', exact: true })).toBeVisible();
 
-    // Verify the content changed (About article loaded)
-    const articleContent = page.locator('.article-content, .container');
-    await expect(articleContent).toBeVisible();
+    await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Projects', exact: true }).click();
+    await expect(page).toHaveURL(/\/projects\/$/);
+    await expect(page.locator('.article-content')).toBeVisible();
 
-    // The content should have loaded and be different from initial or contain expected structure
-    const contentText = await page.locator('.container').textContent();
-    expect(contentText.length).toBeGreaterThan(0);
+    await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Links', exact: true }).click();
+    await expect(page).toHaveURL(/\/links\/$/);
+    await expect(page.getByRole('heading', { name: 'Links', exact: true })).toBeVisible();
   });
 
-  test('clicking Tech Stack menu item should display Tech Stack content', async ({ page }) => {
-    const techStackLink = menuItem(page, 'Tech Stack');
-    await techStackLink.click();
-
-    await page.waitForLoadState('networkidle');
-    await page.waitForTimeout(500);
-
-    // Verify content loaded
-    const articleContent = page.locator('.article-content, .container');
-    await expect(articleContent).toBeVisible();
-
-    // Verify the active state is applied
-    const activeLink = page.locator('a[data-active="active"]');
-    await expect(activeLink).toHaveAttribute('aria-label', 'Tech Stack');
+  test('keeps RSS and Made of Markdown together below the notebook colophon', async ({ page }) => {
+    const footerNavigation = page.getByRole('navigation', { name: 'More links' });
+    await expect(footerNavigation.getByRole('link')).toHaveCount(2);
+    await expect(footerNavigation.getByRole('link', { name: 'RSS' })).toHaveAttribute('href', '/rss.xml');
+    await expect(page.locator('footer')).toContainText('A small space');
+    await expect(footerNavigation.getByRole('link', { name: /Made of Markdown/ })).toHaveAttribute('href', 'https://github.com/tempest2023/ConciseMarkDownBlog');
+    await expect(page.locator('.notebook-sidebar .notebook-colophon')).toHaveCount(0);
   });
 
-  test('clicking Blog menu item should display Blog content', async ({ page }) => {
-    const blogLink = menuItem(page, 'Blog');
-    await blogLink.click();
-
-    await page.waitForLoadState('networkidle');
-    await page.waitForTimeout(500);
-
-    // Verify content loaded
-    const articleContent = page.locator('.article-content, .container');
-    await expect(articleContent).toBeVisible();
-
-    // Verify the active state is applied
-    const activeLink = page.locator('a[data-active="active"]');
-    await expect(activeLink).toHaveAttribute('aria-label', 'Blog');
-  });
-
-  test('clicking MarkDown menu item should show the markdown editor', async ({ page }) => {
-    const markdownLink = menuItem(page, 'Markdown Editor');
-    await markdownLink.click();
-
-    await page.waitForLoadState('networkidle');
-    await page.waitForTimeout(500);
-
-    // Verify the markdown editor textarea is visible
-    const textarea = page.locator('#fancy-markdown-textarea');
-    await expect(textarea).toBeVisible();
-
-    // Verify the preview area is also present
-    const preview = page.locator('.col-6').nth(1);
-    await expect(preview).toBeVisible();
-
-    // Verify the active state is applied
-    const activeLink = page.locator('a[data-active="active"]');
-    await expect(activeLink).toHaveAttribute('aria-label', 'Markdown Editor');
-  });
-
-  test('clicking Projects menu item should display Projects content', async ({ page }) => {
-    const projectsLink = menuItem(page, 'Projects');
-    await projectsLink.click();
-
-    await page.waitForLoadState('networkidle');
-    await page.waitForTimeout(500);
-
-    // Verify content loaded
-    const articleContent = page.locator('.article-content, .container');
-    await expect(articleContent).toBeVisible();
-
-    // Verify the active state is applied
-    const activeLink = page.locator('a[data-active="active"]');
-    await expect(activeLink).toHaveAttribute('aria-label', 'Projects');
-  });
-
-  test('clicking Links menu item should display Links content', async ({ page }) => {
-    const linksLink = menuItem(page, 'Links');
-    await linksLink.click();
-
-    await page.waitForLoadState('networkidle');
-    await page.waitForTimeout(500);
-
-    // Verify content loaded
-    const articleContent = page.locator('.article-content, .container');
-    await expect(articleContent).toBeVisible();
-
-    // Verify the active state is applied
-    const activeLink = page.locator('a[data-active="active"]');
-    await expect(activeLink).toHaveAttribute('aria-label', 'Links');
-  });
-
-  test('clicking 3D Portfolio menu item should open external link in new tab', async ({ page, context }) => {
-    // Wait for any potential popup
-    const [newPage] = await Promise.all([
-      context.waitForEvent('page', { timeout: 5000 }).catch(() => null),
-      menuItem(page, '3D Portfolio').click()
-    ]);
-
-    if (newPage) {
-      // If a new page was opened, verify it's the portfolio link
-      await newPage.waitForLoadState('networkidle');
-      await expect(newPage).toHaveURL(/3d\.tempest\.fun/);
-      await newPage.close();
-    } else {
-      // For external links that might not open in new tab in test environment,
-      // just verify the click doesn't cause errors
-      await page.waitForLoadState('networkidle');
-    }
-  });
-
-  test('menu item should show active state for current page', async ({ page }) => {
-    // Click on Blog
-    await menuItem(page, 'Blog').click();
-    await page.waitForLoadState('networkidle');
-    await page.waitForTimeout(300);
-
-    // Verify the active state is applied to Blog link
-    const activeLink = page.locator('a[data-active="active"]');
-    await expect(activeLink).toHaveAttribute('aria-label', 'Blog');
-
-    // Navigate to another page
-    await menuItem(page, 'About').click();
-    await page.waitForLoadState('networkidle');
-    await page.waitForTimeout(300);
-
-    // Verify active state is now on About
-    const newActiveLink = page.locator('a[data-active="active"]');
-    await expect(newActiveLink).toHaveAttribute('aria-label', 'About');
-  });
-
-  test('navigation should work correctly on mobile viewport', async ({ page }) => {
-    // Set mobile viewport
+  test('opens the compact navigation on mobile', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
-
-    // Mobile menu toggle should be visible
-    const menuToggle = page.locator('button.navbar-toggler');
+    const menuToggle = page.getByRole('button', { name: 'Menu' });
     await expect(menuToggle).toBeVisible();
-
-    // Click to open mobile menu
     await menuToggle.click();
+    await expect(menuToggle).toHaveAttribute('aria-expanded', 'true');
 
-    // Wait for menu animation
-    await page.waitForTimeout(300);
-
-    // Menu items should be visible in the collapsed menu
-    const aboutLink = menuItem(page, 'About');
-    await expect(aboutLink).toBeVisible();
-
-    // Navigate via mobile menu
-    await aboutLink.click();
-    await page.waitForLoadState('networkidle');
-    await page.waitForTimeout(500);
-
-    // Verify navigation worked - content should be visible
-    const articleContent = page.locator('.article-content, .container');
-    await expect(articleContent).toBeVisible();
+    const navigation = page.getByRole('navigation', { name: 'Main navigation' });
+    await expect(navigation.getByRole('link', { name: 'Writing', exact: true })).toBeVisible();
+    await expect(navigation.getByRole('link', { name: 'Links', exact: true })).toBeVisible();
+    await expect(navigation.getByRole('link', { name: '3D Portfolio' })).toBeVisible();
+    await navigation.getByRole('link', { name: 'Writing', exact: true }).click();
+    await expect(page).toHaveURL(/\/writing\/$/);
+    await expect(page.locator('.article-content')).toBeVisible();
   });
 });

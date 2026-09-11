@@ -1,0 +1,21 @@
+name: Blog quality
+on:
+  pull_request:
+  push:
+    branches: ['tempest/blog-foundation', 'tempest/static-articles', 'tempest/personal-agent']
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: yarn
+      - run: yarn install --frozen-lockfile
+      - run: CI=true yarn test --watchAll=false --runInBand
+      - run: yarn test:agent
+      - run: yarn build
+      - run: yarn test:static

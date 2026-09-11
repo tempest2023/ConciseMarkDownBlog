@@ -1,220 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tempest&apos;s Blog</title>
-    <link>https://tempest.fun/</link>
-    <description>Tao Ren (Tempest) writes about AI research engineering, LLM agents, code generation, production software systems, and technical projects.</description>
-    <language>en</language>
-    <atom:link href="https://tempest.fun/rss.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Civilizational Intelligence: From The Odyssey to an Evolving Mathematical Civilization</title>
-      <link>https://tempest.fun/?page=Blogs%2FDeepLearning%2FCivilization_Intelligence</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FDeepLearning%2FCivilization_Intelligence</guid>
-      <pubDate>Wed, 22 Jul 2026 09:30:12 GMT</pubDate>
-      <description>Published: 2026-07-22</description>
-    </item>
-    <item>
-      <title>Tempest (Tao Ren)</title>
-      <link>https://tempest.fun/?page=Blogs%2FOther%2FResumeMarkdown</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FOther%2FResumeMarkdown</guid>
-      <pubDate>Thu, 14 May 2026 04:57:40 GMT</pubDate>
-      <description>Senior Full-stack Software Engineer | Founder | Researcher</description>
-    </item>
-    <item>
-      <title>A SocketIO Error troubled me for a lot time</title>
-      <link>https://tempest.fun/?page=Blogs%2FJavaScript%2Fsocketio_error</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FJavaScript%2Fsocketio_error</guid>
-      <pubDate>Thu, 31 Jul 2025 08:51:22 GMT</pubDate>
-      <description>Got this error when send data with socket.io</description>
-    </item>
-    <item>
-      <title>Contest 455</title>
-      <link>https://tempest.fun/?page=Blogs%2FLeetcode%2FContest455</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FLeetcode%2FContest455</guid>
-      <pubDate>Mon, 23 Jun 2025 18:51:46 GMT</pubDate>
-      <description>https://leetcode.com/problems/inverse-coin-change/description/</description>
-    </item>
-    <item>
-      <title>Contest 454</title>
-      <link>https://tempest.fun/?page=Blogs%2FLeetcode%2FContest454</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FLeetcode%2FContest454</guid>
-      <pubDate>Tue, 17 Jun 2025 08:28:08 GMT</pubDate>
-      <description>A special triplet is defined as a triplet of indices (i, j, k) such that:</description>
-    </item>
-    <item>
-      <title>My Frontend Journey</title>
-      <link>https://tempest.fun/?page=Blogs%2FFrontend%2FMyFrontendJourney</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FFrontend%2FMyFrontendJourney</guid>
-      <pubDate>Wed, 07 Aug 2024 04:11:25 GMT</pubDate>
-      <description>I have been in Full Stack Community more than 10 years.</description>
-    </item>
-    <item>
-      <title>Bard is Amazing</title>
-      <link>https://tempest.fun/?page=Blogs%2FDeepLearning%2FBardConversation</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FDeepLearning%2FBardConversation</guid>
-      <pubDate>Thu, 01 Jun 2023 20:13:19 GMT</pubDate>
-      <description>Here is a conversation I had with Bard about the latest tasks in Fortnite. I asked for a visual and geographic answer.</description>
-    </item>
-    <item>
-      <title>SaaS Product</title>
-      <link>https://tempest.fun/?page=Blogs%2FFrontend%2FFancyIdeas</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FFrontend%2FFancyIdeas</guid>
-      <pubDate>Thu, 02 Mar 2023 07:54:07 GMT</pubDate>
-      <description>监控链上合约地址的资金流动，通过短信、App推送、邮件的方式通知</description>
-    </item>
-    <item>
-      <title>React and CSS Pseudo-Classes</title>
-      <link>https://tempest.fun/?page=Blogs%2FFrontend%2FReactAndCssPseudoClasses</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FFrontend%2FReactAndCssPseudoClasses</guid>
-      <pubDate>Thu, 02 Mar 2023 07:54:07 GMT</pubDate>
-      <description>I found a pretty component in codepen, implemented by pure CSS and HTML.</description>
-    </item>
-    <item>
-      <title>Summer Internship Midterm Report</title>
-      <link>https://tempest.fun/?page=Blogs%2FOther%2FSummerInternshipMidtermSummary</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FOther%2FSummerInternshipMidtermSummary</guid>
-      <pubDate>Thu, 02 Mar 2023 07:10:13 GMT</pubDate>
-      <description>Name: Tao Ren People Soft: xxx Major: Information Science Intern Company: Ansys Inc.</description>
-    </item>
-    <item>
-      <title>Third-Person perspective referal</title>
-      <link>https://tempest.fun/?page=Blogs%2FOther%2Freferal3rd</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FOther%2Freferal3rd</guid>
-      <pubDate>Tue, 28 Feb 2023 08:16:52 GMT</pubDate>
-      <description>Tao Ren is a highly skilled full-stack software engineer with expertise in developing web and iOS applications using various technologies such as React, React Native, Node.js, Python, and Java. He is </description>
-    </item>
-    <item>
-      <title>RecommendationLetter</title>
-      <link>https://tempest.fun/?page=Blogs%2FOther%2FRecommendationLetter</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FOther%2FRecommendationLetter</guid>
-      <pubDate>Tue, 24 Jan 2023 09:37:31 GMT</pubDate>
-      <description>Dear Sir or Madam,</description>
-    </item>
-    <item>
-      <title>RecommendationLetter Fellow</title>
-      <link>https://tempest.fun/?page=Blogs%2FOther%2FRecommendationLetter-Fellow</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FOther%2FRecommendationLetter-Fellow</guid>
-      <pubDate>Tue, 24 Jan 2023 09:37:31 GMT</pubDate>
-      <description>Dear Sir or Madam,</description>
-    </item>
-    <item>
-      <title>RecommendationLetter Lab</title>
-      <link>https://tempest.fun/?page=Blogs%2FOther%2FRecommendationLetter-Lab</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FOther%2FRecommendationLetter-Lab</guid>
-      <pubDate>Tue, 24 Jan 2023 09:37:31 GMT</pubDate>
-      <description>To Whom It May Concern:</description>
-    </item>
-    <item>
-      <title>204. Count Primes</title>
-      <link>https://tempest.fun/?page=Blogs%2FLeetcode%2F204_Count_Primes</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FLeetcode%2F204_Count_Primes</guid>
-      <pubDate>Sat, 19 Nov 2022 04:39:51 GMT</pubDate>
-      <description>Count Primes - LeetCode</description>
-    </item>
-    <item>
-      <title>295. Find Median from Data Stream</title>
-      <link>https://tempest.fun/?page=Blogs%2FLeetcode%2F295_Find_Median_from_Data_Stream</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FLeetcode%2F295_Find_Median_from_Data_Stream</guid>
-      <pubDate>Sat, 19 Nov 2022 04:39:51 GMT</pubDate>
-      <description>Find Median from Data Stream - LeetCode</description>
-    </item>
-    <item>
-      <title>1531. String Compression II</title>
-      <link>https://tempest.fun/?page=Blogs%2FLeetcode%2F1531_String_Compression_II</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FLeetcode%2F1531_String_Compression_II</guid>
-      <pubDate>Wed, 09 Nov 2022 00:46:27 GMT</pubDate>
-      <description>String Compression II - LeetCode</description>
-    </item>
-    <item>
-      <title>76. Minimum Window Substring</title>
-      <link>https://tempest.fun/?page=Blogs%2FLeetcode%2F76_Minimum_Window_Substring</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FLeetcode%2F76_Minimum_Window_Substring</guid>
-      <pubDate>Tue, 08 Nov 2022 20:00:18 GMT</pubDate>
-      <description>Minimum Window Substring - LeetCode</description>
-    </item>
-    <item>
-      <title>1293. Shortest Path in a Grid with Obstacles Elimination</title>
-      <link>https://tempest.fun/?page=Blogs%2FLeetcode%2F1293_Shortest_Path_in_a_Grid_with_Obstacles_Elimin_cf144d0b51e84c79899b68208d590e3a</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FLeetcode%2F1293_Shortest_Path_in_a_Grid_with_Obstacles_Elimin_cf144d0b51e84c79899b68208d590e3a</guid>
-      <pubDate>Tue, 01 Nov 2022 00:27:15 GMT</pubDate>
-      <description>Shortest Path in a Grid with Obstacles Elimination - LeetCode</description>
-    </item>
-    <item>
-      <title>766. Toeplitz Matrix</title>
-      <link>https://tempest.fun/?page=Blogs%2FLeetcode%2F766_Toeplitz_Matrix</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FLeetcode%2F766_Toeplitz_Matrix</guid>
-      <pubDate>Tue, 01 Nov 2022 00:27:15 GMT</pubDate>
-      <description>Toeplitz Matrix - LeetCode</description>
-    </item>
-    <item>
-      <title>2458. Height of Binary Tree After Subtree Removal Queries</title>
-      <link>https://tempest.fun/?page=Blogs%2FLeetcode%2FHeight_of_Binary_Tree_After_Subtree_Removal_Queries</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FLeetcode%2FHeight_of_Binary_Tree_After_Subtree_Removal_Queries</guid>
-      <pubDate>Sun, 30 Oct 2022 06:47:15 GMT</pubDate>
-      <description>For each node, we record his neighbors&apos; height in DFS.</description>
-    </item>
-    <item>
-      <title>2456. Most Popular Video Creator</title>
-      <link>https://tempest.fun/?page=Blogs%2FLeetcode%2FMost_Popular_Video_Creator</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FLeetcode%2FMost_Popular_Video_Creator</guid>
-      <pubDate>Sun, 30 Oct 2022 06:34:08 GMT</pubDate>
-      <description>I&apos;m pretty sure you know how to solve this problem, using hashmap. But even you know it, it&apos;s hard to pass this problem, because its poor and ambiguous description of problem. If you don&apos;t know why yo</description>
-    </item>
-    <item>
-      <title>12. Integer to Roman</title>
-      <link>https://tempest.fun/?page=Blogs%2FLeetcode%2FInt_to_Roman</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FLeetcode%2FInt_to_Roman</guid>
-      <pubDate>Fri, 21 Oct 2022 00:08:07 GMT</pubDate>
-      <description>Due to array operators and the range of num(1-3999), the normal answer runs faster than the smart one.</description>
-    </item>
-    <item>
-      <title>Best Practice for React Native Project</title>
-      <link>https://tempest.fun/?page=Blogs%2FReactNative%2Fbest_practice</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FReactNative%2Fbest_practice</guid>
-      <pubDate>Wed, 12 Oct 2022 06:53:46 GMT</pubDate>
-      <description>In recent, I&apos;m working on React Native application setup. That&apos;s the work for my lab, SHRS-Rehab Sci &amp; Tech Lab in the University of Pittsburgh.</description>
-    </item>
-    <item>
-      <title>A cat recognizer works wrong in which pictures?</title>
-      <link>https://tempest.fun/?page=Blogs%2FDeepLearning%2FA_cat_recognizer_works_wrong_in_which_pictures</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FDeepLearning%2FA_cat_recognizer_works_wrong_in_which_pictures</guid>
-      <pubDate>Tue, 20 Sep 2022 06:11:38 GMT</pubDate>
-      <description>I took a break from my busy schedule and finished the first DL course on Coursera in a few days.</description>
-    </item>
-    <item>
-      <title>Errors when compile pintos on Ubuntu</title>
-      <link>https://tempest.fun/?page=Blogs%2FC%2Fpinitos_error</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FC%2Fpinitos_error</guid>
-      <pubDate>Tue, 13 Sep 2022 18:51:39 GMT</pubDate>
-      <description>Install bochs and pintos on ubuntu.</description>
-    </item>
-    <item>
-      <title>Use Python script to help multi C++ files compile on Windows (no make)</title>
-      <link>https://tempest.fun/?page=Blogs%2FC%2FPython_C_compile_script</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FC%2FPython_C_compile_script</guid>
-      <pubDate>Tue, 13 Sep 2022 18:51:39 GMT</pubDate>
-      <description>Because there is no make on my Windows, so I write this script to help me to compile C++ files.</description>
-    </item>
-    <item>
-      <title>CSS The gradient font</title>
-      <link>https://tempest.fun/?page=Blogs%2FCSS%2Fcolorfont</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FCSS%2Fcolorfont</guid>
-      <pubDate>Tue, 13 Sep 2022 18:51:39 GMT</pubDate>
-      <description>I found that Animation.css they use a gradient color font, very interesting. So I inspect the css they used.</description>
-    </item>
-    <item>
-      <title>Use Python to print colorfully</title>
-      <link>https://tempest.fun/?page=Blogs%2FPython%2FUse_Python_to_print_colorfully</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FPython%2FUse_Python_to_print_colorfully</guid>
-      <pubDate>Tue, 13 Sep 2022 18:51:39 GMT</pubDate>
-      <description>In Deep Learning homework, I found there is a weird print.</description>
-    </item>
-    <item>
-      <title>2227. Encrypt and Decrypt Strings</title>
-      <link>https://tempest.fun/?page=Blogs%2FLeetcode%2FEncrypt_and_Decrypt_Strings</link>
-      <guid isPermaLink="true">https://tempest.fun/?page=Blogs%2FLeetcode%2FEncrypt_and_Decrypt_Strings</guid>
-      <pubDate>Tue, 13 Sep 2022 00:48:47 GMT</pubDate>
-      <description>def encrypt(self, word1: str) -&gt; str: res = &apos;&apos; for c in word1: res += self.values[self.keysDict[c]-1] return res</description>
-    </item>
-  </channel>
-</rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tempest's Blog</title><link>https://tempest.fun/</link><description>Tao Ren (Tempest) writes about AI research engineering, LLM agents, code generation, production software systems, and technical projects.</description><language>en</language><atom:link href="https://tempest.fun/rss.xml" rel="self" type="application/rss+xml"/>
+<item><title>Civilizational Intelligence: From The Odyssey to an Evolving Mathematical Civilization</title><link>https://tempest.fun/blog/deeplearning/civilization-intelligence/</link><guid isPermaLink="true">https://tempest.fun/blog/deeplearning/civilization-intelligence/</guid><pubDate>Wed, 22 Jul 2026 09:30:12 GMT</pubDate><description>Published: 2026-07-22</description></item>
+<item><title>Contest 455</title><link>https://tempest.fun/blog/leetcode/contest455/</link><guid isPermaLink="true">https://tempest.fun/blog/leetcode/contest455/</guid><pubDate>Mon, 23 Jun 2025 18:51:46 GMT</pubDate><description>https://leetcode.com/problems/inverse-coin-change/description/</description></item>
+<item><title>Contest 454</title><link>https://tempest.fun/blog/leetcode/contest454/</link><guid isPermaLink="true">https://tempest.fun/blog/leetcode/contest454/</guid><pubDate>Tue, 17 Jun 2025 03:33:27 GMT</pubDate><description>A special triplet is defined as a triplet of indices (i, j, k) such that:</description></item>
+<item><title>Bard is Amazing</title><link>https://tempest.fun/blog/deeplearning/bardconversation/</link><guid isPermaLink="true">https://tempest.fun/blog/deeplearning/bardconversation/</guid><pubDate>Thu, 01 Jun 2023 20:13:19 GMT</pubDate><description>Here is a conversation I had with Bard about the latest tasks in Fortnite. I asked for a visual and geographic answer.</description></item>
+<item><title>React and CSS Pseudo-Classes</title><link>https://tempest.fun/blog/frontend/reactandcsspseudoclasses/</link><guid isPermaLink="true">https://tempest.fun/blog/frontend/reactandcsspseudoclasses/</guid><pubDate>Thu, 02 Mar 2023 07:54:07 GMT</pubDate><description>I found a pretty component in codepen, implemented by pure CSS and HTML.</description></item>
+<item><title>Summer Internship Midterm Report</title><link>https://tempest.fun/blog/other/summerinternshipmidtermsummary/</link><guid isPermaLink="true">https://tempest.fun/blog/other/summerinternshipmidtermsummary/</guid><pubDate>Thu, 02 Mar 2023 07:10:13 GMT</pubDate><description>Name: Tao Ren People Soft: xxx Major: Information Science Intern Company: Ansys Inc.</description></item>
+<item><title>Third-Person perspective referal</title><link>https://tempest.fun/blog/other/referal3rd/</link><guid isPermaLink="true">https://tempest.fun/blog/other/referal3rd/</guid><pubDate>Tue, 28 Feb 2023 08:16:52 GMT</pubDate><description>Tao Ren is a highly skilled full-stack software engineer with expertise in developing web and iOS applications using various technologies such as React, React Native, Node.js, Pyth</description></item>
+<item><title>Tempest (Tao Ren)</title><link>https://tempest.fun/blog/other/resumemarkdown/</link><guid isPermaLink="true">https://tempest.fun/blog/other/resumemarkdown/</guid><pubDate>Tue, 28 Feb 2023 07:47:29 GMT</pubDate><description>Senior Full-stack Software Engineer Founder Researcher</description></item>
+<item><title>RecommendationLetter-Fellow</title><link>https://tempest.fun/blog/other/recommendationletter-fellow/</link><guid isPermaLink="true">https://tempest.fun/blog/other/recommendationletter-fellow/</guid><pubDate>Tue, 24 Jan 2023 09:37:31 GMT</pubDate><description>Dear Sir or Madam,</description></item>
+<item><title>RecommendationLetter-Lab</title><link>https://tempest.fun/blog/other/recommendationletter-lab/</link><guid isPermaLink="true">https://tempest.fun/blog/other/recommendationletter-lab/</guid><pubDate>Tue, 24 Jan 2023 09:37:31 GMT</pubDate><description>To Whom It May Concern:</description></item>
+<item><title>RecommendationLetter</title><link>https://tempest.fun/blog/other/recommendationletter/</link><guid isPermaLink="true">https://tempest.fun/blog/other/recommendationletter/</guid><pubDate>Tue, 24 Jan 2023 09:37:31 GMT</pubDate><description>Dear Sir or Madam,</description></item>
+<item><title>SaaS Product</title><link>https://tempest.fun/blog/frontend/fancyideas/</link><guid isPermaLink="true">https://tempest.fun/blog/frontend/fancyideas/</guid><pubDate>Sat, 31 Dec 2022 08:44:59 GMT</pubDate><description>监控链上合约地址的资金流动，通过短信、App推送、邮件的方式通知</description></item>
+<item><title>204. Count Primes</title><link>https://tempest.fun/blog/leetcode/204-count-primes/</link><guid isPermaLink="true">https://tempest.fun/blog/leetcode/204-count-primes/</guid><pubDate>Sat, 19 Nov 2022 04:39:51 GMT</pubDate><description>Count Primes - LeetCode</description></item>
+<item><title>295. Find Median from Data Stream</title><link>https://tempest.fun/blog/leetcode/295-find-median-from-data-stream/</link><guid isPermaLink="true">https://tempest.fun/blog/leetcode/295-find-median-from-data-stream/</guid><pubDate>Sat, 19 Nov 2022 04:39:51 GMT</pubDate><description>Find Median from Data Stream - LeetCode</description></item>
+<item><title>1531. String Compression II</title><link>https://tempest.fun/blog/leetcode/1531-string-compression-ii/</link><guid isPermaLink="true">https://tempest.fun/blog/leetcode/1531-string-compression-ii/</guid><pubDate>Wed, 09 Nov 2022 00:46:27 GMT</pubDate><description>String Compression II - LeetCode</description></item>
+<item><title>My Frontend Journey</title><link>https://tempest.fun/blog/frontend/myfrontendjourney/</link><guid isPermaLink="true">https://tempest.fun/blog/frontend/myfrontendjourney/</guid><pubDate>Tue, 08 Nov 2022 20:00:18 GMT</pubDate><description>I have been in Full Stack Community more than 10 years.</description></item>
+<item><title>76. Minimum Window Substring</title><link>https://tempest.fun/blog/leetcode/76-minimum-window-substring/</link><guid isPermaLink="true">https://tempest.fun/blog/leetcode/76-minimum-window-substring/</guid><pubDate>Tue, 08 Nov 2022 20:00:18 GMT</pubDate><description>Minimum Window Substring - LeetCode</description></item>
+<item><title>1293. Shortest Path in a Grid with Obstacles Elimination</title><link>https://tempest.fun/blog/leetcode/1293-shortest-path-in-a-grid-with-obstacles-elimin-cf144d0b51e84c79899b68208d590e3a/</link><guid isPermaLink="true">https://tempest.fun/blog/leetcode/1293-shortest-path-in-a-grid-with-obstacles-elimin-cf144d0b51e84c79899b68208d590e3a/</guid><pubDate>Tue, 01 Nov 2022 00:27:15 GMT</pubDate><description>Shortest Path in a Grid with Obstacles Elimination - LeetCode</description></item>
+<item><title>766. Toeplitz Matrix</title><link>https://tempest.fun/blog/leetcode/766-toeplitz-matrix/</link><guid isPermaLink="true">https://tempest.fun/blog/leetcode/766-toeplitz-matrix/</guid><pubDate>Tue, 01 Nov 2022 00:27:15 GMT</pubDate><description>Toeplitz Matrix - LeetCode</description></item>
+<item><title>2458. Height of Binary Tree After Subtree Removal Queries</title><link>https://tempest.fun/blog/leetcode/height-of-binary-tree-after-subtree-removal-queries/</link><guid isPermaLink="true">https://tempest.fun/blog/leetcode/height-of-binary-tree-after-subtree-removal-queries/</guid><pubDate>Sun, 30 Oct 2022 06:34:08 GMT</pubDate><description>For each node, we record his neighbors' height in DFS.</description></item>
+<item><title>2456. Most Popular Video Creator</title><link>https://tempest.fun/blog/leetcode/most-popular-video-creator/</link><guid isPermaLink="true">https://tempest.fun/blog/leetcode/most-popular-video-creator/</guid><pubDate>Sun, 30 Oct 2022 06:34:08 GMT</pubDate><description>I'm pretty sure you know how to solve this problem, using hashmap. But even you know it, it's hard to pass this problem, because its poor and ambiguous description of problem. If y</description></item>
+<item><title>12. Integer to Roman</title><link>https://tempest.fun/blog/leetcode/int-to-roman/</link><guid isPermaLink="true">https://tempest.fun/blog/leetcode/int-to-roman/</guid><pubDate>Fri, 21 Oct 2022 00:08:07 GMT</pubDate><description>Due to array operators and the range of num(1-3999), the normal answer runs faster than the smart one.</description></item>
+<item><title>Best Practice for React Native Project</title><link>https://tempest.fun/blog/reactnative/best-practice/</link><guid isPermaLink="true">https://tempest.fun/blog/reactnative/best-practice/</guid><pubDate>Wed, 12 Oct 2022 06:53:46 GMT</pubDate><description>In recent, I'm working on React Native application setup. That's the work for my lab, SHRS-Rehab Sci &amp; Tech Lab in the University of Pittsburgh.</description></item>
+<item><title>A cat recognizer works wrong in which pictures?</title><link>https://tempest.fun/blog/deeplearning/a-cat-recognizer-works-wrong-in-which-pictures/</link><guid isPermaLink="true">https://tempest.fun/blog/deeplearning/a-cat-recognizer-works-wrong-in-which-pictures/</guid><pubDate>Tue, 20 Sep 2022 06:11:38 GMT</pubDate><description>I took a break from my busy schedule and finished the first DL course on Coursera in a few days.</description></item>
+<item><title>Errors when compile pintos on Ubuntu</title><link>https://tempest.fun/blog/c/pinitos-error/</link><guid isPermaLink="true">https://tempest.fun/blog/c/pinitos-error/</guid><pubDate>Tue, 13 Sep 2022 18:51:39 GMT</pubDate><description>Install bochs and pintos on ubuntu.</description></item>
+<item><title>Use Python script to help multi C++ files compile on Windows (no make)</title><link>https://tempest.fun/blog/c/python-c-compile-script/</link><guid isPermaLink="true">https://tempest.fun/blog/c/python-c-compile-script/</guid><pubDate>Tue, 13 Sep 2022 18:51:39 GMT</pubDate><description>Because there is no make on my Windows, so I write this script to help me to compile C++ files.</description></item>
+<item><title>CSS The gradient font</title><link>https://tempest.fun/blog/css/colorfont/</link><guid isPermaLink="true">https://tempest.fun/blog/css/colorfont/</guid><pubDate>Tue, 13 Sep 2022 18:51:39 GMT</pubDate><description>I found that Animation.css they use a gradient color font, very interesting. So I inspect the css they used.</description></item>
+<item><title>A SocketIO Error troubled me for a lot time</title><link>https://tempest.fun/blog/javascript/socketio-error/</link><guid isPermaLink="true">https://tempest.fun/blog/javascript/socketio-error/</guid><pubDate>Tue, 13 Sep 2022 18:51:39 GMT</pubDate><description>Got this error when send data with socket.io</description></item>
+<item><title>Use Python to print colorfully</title><link>https://tempest.fun/blog/python/use-python-to-print-colorfully/</link><guid isPermaLink="true">https://tempest.fun/blog/python/use-python-to-print-colorfully/</guid><pubDate>Tue, 13 Sep 2022 18:51:39 GMT</pubDate><description>In Deep Learning homework, I found there is a weird print.</description></item>
+<item><title>2227. Encrypt and Decrypt Strings</title><link>https://tempest.fun/blog/leetcode/encrypt-and-decrypt-strings/</link><guid isPermaLink="true">https://tempest.fun/blog/leetcode/encrypt-and-decrypt-strings/</guid><pubDate>Tue, 13 Sep 2022 00:48:47 GMT</pubDate><description>def encrypt(self, word1: str) - str: res = '' for c in word1: res += self.values[self.keysDict[c]-1] return res</description></item>
+<item><title>2321. Maximum Score Of Spliced Array</title><link>https://tempest.fun/blog/leetcode/maximum-score-of-spliced-array/</link><guid isPermaLink="true">https://tempest.fun/blog/leetcode/maximum-score-of-spliced-array/</guid><pubDate>Tue, 13 Sep 2022 00:48:47 GMT</pubDate><description>According to the description of this problem, we need to find the max value of</description></item>
+<item><title>Paint House III</title><link>https://tempest.fun/blog/leetcode/paint-house-iii/</link><guid isPermaLink="true">https://tempest.fun/blog/leetcode/paint-house-iii/</guid><pubDate>Tue, 13 Sep 2022 00:48:47 GMT</pubDate><description>Obviously we need 3D dp array to cover group changes!</description></item>
+<item><title>838. Push Dominoes</title><link>https://tempest.fun/blog/leetcode/pushdominoes/</link><guid isPermaLink="true">https://tempest.fun/blog/leetcode/pushdominoes/</guid><pubDate>Tue, 13 Sep 2022 00:48:47 GMT</pubDate><description>After each second, each domino that is falling to the left pushes the adjacent domino on the left. Similarly, the dominoes falling to the right push their adjacent dominoes standin</description></item>
+<item><title>820. Short Encoding of Words</title><link>https://tempest.fun/blog/leetcode/short-encoding-of-words/</link><guid isPermaLink="true">https://tempest.fun/blog/leetcode/short-encoding-of-words/</guid><pubDate>Tue, 13 Sep 2022 00:48:47 GMT</pubDate><description>A valid encoding of an array of words is any reference string s and array of indices indices such that:</description></item>
+<item><title>581. Shortest Unsorted Continuous Subarray</title><link>https://tempest.fun/blog/leetcode/shortest-unsorted-continuous-subarray/</link><guid isPermaLink="true">https://tempest.fun/blog/leetcode/shortest-unsorted-continuous-subarray/</guid><pubDate>Tue, 13 Sep 2022 00:48:47 GMT</pubDate><description>Given an integer array nums, you need to find one continuous subarray that if you only sort this subarray in ascending order, then the whole array will be sorted in ascending order</description></item>
+<item><title>From Deep Learning to Production AI Agents: My Research and Engineering Journey</title><link>https://tempest.fun/blog/ai/my-ai-research-and-engineering-journey/</link><guid isPermaLink="true">https://tempest.fun/blog/ai/my-ai-research-and-engineering-journey/</guid><pubDate>Fri, 02 Sep 2022 22:50:19 GMT</pubDate><description>Archived September 8, 2026 from my former About page. The account below is preserved as it appeared at that time; current details are on the homepage.</description></item>
+</channel></rss>

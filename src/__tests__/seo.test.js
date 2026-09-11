@@ -17,7 +17,7 @@ describe('SEO utilities', () => {
   it('normalizes Markdown page names and creates stable canonical URLs', () => {
     expect(normalizePage('./Blogs/agent.md')).toBe('Blogs/agent');
     expect(getCanonicalUrl('About')).toBe('https://tempest.fun/');
-    expect(getCanonicalUrl('Blogs/Deep Learning/agent.md')).toBe('https://tempest.fun/?page=Blogs%2FDeep%20Learning%2Fagent');
+    expect(getCanonicalUrl('Blogs/Deep Learning/agent.md')).toBe('https://tempest.fun/blog/deep-learning/agent/');
   });
 
   it('updates document metadata for an article', () => {
@@ -29,7 +29,7 @@ describe('SEO utilities', () => {
     expect(document.title).toBe("Building an LLM Agent | Tempest's Blog");
     expect(document.querySelector('meta[name="description"]').content).toBe('A practical guide to reliable tool use.');
     expect(document.querySelector('meta[property="og:type"]').content).toBe('article');
-    expect(document.querySelector('link[rel="canonical"]').href).toBe('https://tempest.fun/?page=Blogs%2Fagent');
+    expect(document.querySelector('link[rel="canonical"]').href).toBe('https://tempest.fun/blog/agent/');
     expect(document.querySelector('#seo-structured-data').textContent).toContain('BlogPosting');
   });
 });

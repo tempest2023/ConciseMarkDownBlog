@@ -373,6 +373,6 @@ Thanks! ❤️
 [badge_paypal]: https://ionicabizau.github.io/badges/paypal.svg
 [badge_paypal_donate]: https://ionicabizau.github.io/badges/paypal_donate.svg
 [paypal-donations]: https://www.paypal.com/paypalme/TaoTempest
-[license]: /LICENSE
+[license]: https://github.com/tempest2023/ConciseMarkDownBlog/blob/main/LICENSE
 [contributing]: https://github.com/623059008/ConciseMarkDownBlog/blob/main/CONTRIBUTING.md
 [website]: https://tempest.fun/

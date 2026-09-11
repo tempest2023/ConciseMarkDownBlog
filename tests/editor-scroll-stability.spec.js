@@ -109,8 +109,19 @@ test.describe('Editor Scroll Stability', () => {
       });
     });
 
-    // Click/focus at the end of the textarea
-    await textarea.click();
+    // Click the part of the oversized textarea that is actually visible. A default
+    // Playwright click targets the element's off-screen geometric center and creates
+    // an artificial scroll jump that a person cannot trigger.
+    const textareaBeforeFocus = await textarea.boundingBox();
+    expect(textareaBeforeFocus).not.toBeNull();
+    const visibleTop = Math.max(0, textareaBeforeFocus.y);
+    const visibleBottom = Math.min(windowHeight, textareaBeforeFocus.y + textareaBeforeFocus.height);
+    await textarea.click({
+      position: {
+        x: Math.min(20, textareaBeforeFocus.width / 2),
+        y: (visibleTop + visibleBottom) / 2 - textareaBeforeFocus.y
+      }
+    });
 
     // Wait for any focus-induced scroll behavior
     await page.waitForTimeout(500);

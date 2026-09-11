@@ -74,18 +74,19 @@ const Footer = () => {
           )}
         </div>
 
-        {/* Copyright */}
+        <div className={styles.colophon}>
+          <p>A small space for unfinished thoughts and things worth sharing.</p>
+          <span>— Tempest</span>
+        </div>
+
+        <nav aria-label="More links" className={styles['extra-links']}>
+          {repo && <a href={repo} target="_blank" rel="noopener noreferrer">Made of Markdown <span aria-hidden="true">↗</span></a>}
+          <a href="/rss.xml">RSS</a>
+        </nav>
         <div className={styles.copyright}>
           <p>
             © {currentYear} {name || 'Blog'}. All rights reserved.
           </p>
-          {repo && (
-            <p className={styles['repo-link']}>
-              <a href={repo} target="_blank" rel="noopener noreferrer">
-                <i className="bi bi-github"></i> View Source
-              </a>
-            </p>
-          )}
         </div>
       </div>
     </footer>

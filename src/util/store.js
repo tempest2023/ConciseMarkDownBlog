@@ -1,10 +1,10 @@
 import { createSlice, configureStore, current } from '@reduxjs/toolkit';
-import { formatLink, formatPage } from './url';
+import { formatLink, formatPage, pageFromLocation } from './url';
 import config from '../config';
 
 const { debug } = config;
 
-const defaultPage = config.default;
+const defaultPage = typeof window === 'undefined' ? config.default : pageFromLocation();
 
 const articleContext = require.context('../articles/', true, /\.(md|jpg|png|gif|jpeg|mp4|mp3|avi|ogg)$/);
 const articles = {}
@@ -31,6 +31,10 @@ export const AppSlice = createSlice({
   name: 'router',
   initialState: routerInitialState,
   reducers: {
+    syncLocation: (state) => {
+      state.page = pageFromLocation();
+      state.filePath = getFilePath(state.page, state.articles);
+    },
     goBack: (state, action) => {
       // go back to last page based on history list
       if (state.history.length === 0) {
@@ -79,7 +83,7 @@ export const AppSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { goBack, navigate } = AppSlice.actions
+export const { goBack, navigate, syncLocation } = AppSlice.actions
 export const selectHistory = (state) => state.router.history;
 export const selectPage = (state) => state.router.page;
 export const selectFilePath = (state) => state.router.filePath;

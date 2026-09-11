@@ -20,7 +20,7 @@ test.describe('Deployment Configuration', () => {
     expect(config.outputDirectory).toBe('build');
   });
 
-  test('vercel.json should have proper rewrites for SPA', () => {
+  test('vercel.json should redirect legacy page queries without shadowing static pages', () => {
     const vercelJsonPath = path.join(process.cwd(), 'vercel.json');
     const content = fs.readFileSync(vercelJsonPath, 'utf8');
     const config = JSON.parse(content);
@@ -29,8 +29,9 @@ test.describe('Deployment Configuration', () => {
     expect(config.rewrites.length).toBeGreaterThan(0);
 
     const rewrite = config.rewrites[0];
-    expect(rewrite.source).toBe('/(.*)');
-    expect(rewrite.destination).toBe('/index.html');
+    expect(rewrite.source).toBe('/');
+    expect(rewrite.has).toEqual([{ type: 'query', key: 'page' }]);
+    expect(rewrite.destination).toBe('/api/legacy');
   });
 
   test('vercel.json should have security headers', () => {
@@ -90,9 +91,28 @@ test.describe('Deployment Configuration', () => {
     expect(packageJson.scripts.build).toBeDefined();
     expect(packageJson.scripts.build).toBe('node scripts/build.js');
   });
+
+  test('uses the generated Saber avatar as the favicon', () => {
+    const index = fs.readFileSync(path.join(process.cwd(), 'public', 'index.html'), 'utf8');
+    const manifest = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'public', 'manifest.json'), 'utf8'));
+
+    expect(index).toContain('%PUBLIC_URL%/assets/agent-avatar/idle.png');
+    expect(manifest.icons[0]).toEqual({ src: 'assets/agent-avatar/idle.png', sizes: '256x256', type: 'image/png' });
+  });
 });
 
 test.describe('Build Output', () => {
+  test('serves the Saber favicon on static pages', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.locator('link[rel="icon"]')).toHaveAttribute('href', '/assets/agent-avatar/idle.png');
+  });
+
+  test('404 page remains noindex after client hydration', async ({ page }) => {
+    await page.goto('/404.html');
+    await expect(page.getByRole('button', { name: 'Open Ask Tempest' })).toBeVisible();
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, nofollow');
+  });
+
   test('build directory structure should be correct', () => {
     const buildPath = path.join(process.cwd(), 'build');
 

@@ -144,6 +144,8 @@ function generateConfig(answers) {
   config.title = answers.blogTitle;
   config.name = answers.authorName;
   config.email = answers.email || '';
+  config.resume_url = answers.resumeUrl || '';
+  config.markdown.tabSize = Number.parseInt(answers.tabSize, 10) || DEFAULT_CONFIG.markdown.tabSize;
 
   // Social links
   if (answers.githubUsername) {
@@ -160,11 +162,11 @@ function generateConfig(answers) {
   }
 
   // Theme configuration
-  config.themeEnable = answers.theme === 'both';
+  config.themeEnable = ['light', 'dark'].includes(answers.theme) ? false : DEFAULT_CONFIG.themeEnable;
   config.colors = answers.theme === 'dark' ? {
     light: THEMES.default.dark,
     dark: THEMES.default.dark
-  } : THEMES.default;
+  } : (THEMES[answers.theme] || THEMES.default);
 
   // Default headers
   config.headers = [
@@ -281,7 +283,9 @@ export default config;
  * Creates sample articles if they don't exist
  * @param {string} articlesDir - Articles directory path
  */
-function createSampleArticles(articlesDir) {
+function createSampleArticles(articlesDir, selectedDirectory) {
+  const features = Array.isArray(articlesDir) ? articlesDir : ['about', 'blog', 'projects'];
+  if (Array.isArray(articlesDir)) articlesDir = selectedDirectory;
   const samples = [
     {
       filename: 'About.md',
@@ -334,7 +338,10 @@ Description of your project.
     }
   ];
 
-  samples.forEach(({ filename, content }) => {
+  samples.push({ filename: 'TechStack.md', content: '# Tech Stack\n\nDescribe the tools you use.\n' });
+  samples.push({ filename: 'Links.md', content: '# Links\n\nAdd your public profiles and resources.\n' });
+  const featureForFile = { 'About.md': 'about', 'Blog.md': 'blog', 'Projects/Project.md': 'projects', 'TechStack.md': 'techstack', 'Links.md': 'links' };
+  samples.filter(sample => features.includes(featureForFile[sample.filename])).forEach(({ filename, content }) => {
     const filePath = path.join(articlesDir, filename);
     const dir = path.dirname(filePath);
 

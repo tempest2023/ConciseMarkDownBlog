@@ -1,77 +1,87 @@
-## Blog
+# Writing
 
-This is an archive of my technical notes, experiments, and study logs across frontend engineering, algorithms, systems, and AI.
+Notes on agents, research, engineering, and the things I learn while building.
 
+## Start here
 
-### Leetcode
-> <svg width="50" height="28"><text x="10" y="18" fill="rgb(67, 160, 71)">Easy</text></svg>
+### [From Deep Learning to Production AI Agents: My Research and Engineering Journey](/blog/ai/my-ai-research-and-engineering-journey/)
 
-- <svg width="50" height="28"><text x="10" y="18" fill="rgb(67, 160, 71)">Easy</text></svg> [766. Toeplitz Matrix](/?page=Blogs/Leetcode/766_Toeplitz_Matrix)
+Archived September 8, 2026 from my former About page. The account below is preserved as it appeared at that time; current details are on the homepage.
 
-> <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg>
+### [Civilizational Intelligence: From The Odyssey to an Evolving Mathematical Civilization](/blog/deeplearning/civilization-intelligence/)
 
-- <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg> [838. Push Dominoes](/?page=Blogs/Leetcode/PushDominoes)
-- <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg> [581. Shortest Unsorted Continuous Subarray](/?page=Blogs/Leetcode/Shortest_Unsorted_Continuous_Subarray)
-- <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg> [820. Short Encoding of Words](/?page=Blogs/Leetcode/Short_Encoding_of_Words)
-- <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg> [12. Int to Roman](/?page=Blogs/Leetcode/Int_to_Roman)
-- <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg> [2456. Most Popular Video Creator](/?page=Blogs/Leetcode/Most_Popular_Video_Creator)
-- <svg width="80" height="28"><text x="10" y="18" fill="rgb(239, 108, 0)">Medium</text></svg> [204. Count Primes](/?page=Blogs/Leetcode/204_Count_Primes.md)
+Published: 2026-07-22
 
+### [My Frontend Journey](/blog/frontend/myfrontendjourney/)
 
-> <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg>
+I have been in Full Stack Community more than 10 years.
 
-- <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [2227. Encrypt and Decrypt Strings](/?page=Blogs/Leetcode/Encrypt_and_Decrypt_Strings)
-- <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [2321. Maximum Score Of Spliced Array](/?page=Blogs/Leetcode/Maximum_Score_Of_Spliced_Array)
-- <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [1473. Paint House III](/?page=Blogs/Leetcode/Paint_House_III)
-- <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [2458. Height of Binary Tree After Subtree Removal Queries](/?page=Blogs/Leetcode/Height_of_Binary_Tree_After_Subtree_Removal_Queries)
-- <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [1293. Shortest Path in a Grid with Obstacles Elimination](/?page=Blogs/Leetcode/1293_Shortest_Path_in_a_Grid_with_Obstacles_Elimin_cf144d0b51e84c79899b68208d590e3a.md)
-- <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [76. Minimum Window Substring](/?page=Blogs/Leetcode/76_Minimum_Window_Substring)
-- <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [1531. String Compression II](/?page=Blogs/Leetcode/1531_String_Compression_II.md)
-- <svg width="50" height="28"><text x="10" y="18" fill="rgb(233, 30, 99)">Hard</text></svg> [295. Find Median from Data Stream](/?page=Blogs/Leetcode/295_Find_Median_from_Data_Stream.md)
+## All writing
 
-### Contest
+### AI
 
-[Contest 454](/?page=Blogs/Leetcode/Contest454)
+- [From Deep Learning to Production AI Agents: My Research and Engineering Journey](/blog/ai/my-ai-research-and-engineering-journey/) — 2022-09-02
 
-[Contest 455](/?page=Blogs/Leetcode/Contest455)
+### C
 
-### Python
+- [Errors when compile pintos on Ubuntu](/blog/c/pinitos-error/) — 2022-09-13
+- [Use Python script to help multi C++ files compile on Windows (no make)](/blog/c/python-c-compile-script/) — 2022-09-13
 
-- [Use Python to print colorfully](?page=Blogs/Python/Use_Python_to_print_colorfully)
+### CSS
 
-### HTML/CSS
+- [CSS The gradient font](/blog/css/colorfont/) — 2022-09-13
 
-- [CSS Colorful Fonts](/?page=Blogs/CSS/colorfont.md)
+### DeepLearning
+
+- [Civilizational Intelligence: From The Odyssey to an Evolving Mathematical Civilization](/blog/deeplearning/civilization-intelligence/) — 2026-07-22
+- [Bard is Amazing](/blog/deeplearning/bardconversation/) — 2023-06-01
+- [A cat recognizer works wrong in which pictures?](/blog/deeplearning/a-cat-recognizer-works-wrong-in-which-pictures/) — 2022-09-20
+
+### Frontend
+
+- [React and CSS Pseudo-Classes](/blog/frontend/reactandcsspseudoclasses/) — 2023-03-02
+- [SaaS Product](/blog/frontend/fancyideas/) — 2022-12-31
+- [My Frontend Journey](/blog/frontend/myfrontendjourney/) — 2022-11-08
 
 ### JavaScript
 
-- [Fancy Ideas](/?page=Blogs/Frontend/FancyIdeas.md)
-- [Socket.IO Error, RangeError: Maximum call stack size exceeded](/?page=Blogs/JavaScript/socketio_error)
+- [A SocketIO Error troubled me for a lot time](/blog/javascript/socketio-error/) — 2022-09-13
 
-### React
+### Leetcode
 
-- [My Frontend journey](/?page=Blogs/Frontend/MyFrontendJourney)
-
-- [Best Practice for React Native](/?page=Blogs/ReactNative/best_practice)
-
-- [React And Css Pseudo-Classes](/?page=Blogs/Frontend/ReactAndCssPseudoClasses.md)
-
-### C++
-
-- [Use Python script to help multi C++ files compile on Windows](/?page=Blogs/C/Python_C_compile_script)
-- [Errors when compile pintos on Ubuntu](/?page=Blogs/C/pinitos_error)
-
-### Deep Learning
-
-- [Civilizational Intelligence: From The Odyssey to an Evolving Mathematical Civilization](/?page=Blogs/DeepLearning/Civilization_Intelligence.md)
-- [A cat recognizer works wrong in which pictures?](/?page=Blogs/DeepLearning/A_cat_recognizer_works_wrong_in_which_pictures.md)
-- [Bard is Amazing](/?page=Blogs/DeepLearning/BardConversation.md)
+- [Contest 455](/blog/leetcode/contest455/) — 2025-06-23
+- [Contest 454](/blog/leetcode/contest454/) — 2025-06-16
+- [204. Count Primes](/blog/leetcode/204-count-primes/) — 2022-11-18
+- [295. Find Median from Data Stream](/blog/leetcode/295-find-median-from-data-stream/) — 2022-11-18
+- [1531. String Compression II](/blog/leetcode/1531-string-compression-ii/) — 2022-11-08
+- [76. Minimum Window Substring](/blog/leetcode/76-minimum-window-substring/) — 2022-11-08
+- [1293. Shortest Path in a Grid with Obstacles Elimination](/blog/leetcode/1293-shortest-path-in-a-grid-with-obstacles-elimin-cf144d0b51e84c79899b68208d590e3a/) — 2022-10-31
+- [766. Toeplitz Matrix](/blog/leetcode/766-toeplitz-matrix/) — 2022-10-31
+- [2458. Height of Binary Tree After Subtree Removal Queries](/blog/leetcode/height-of-binary-tree-after-subtree-removal-queries/) — 2022-10-30
+- [2456. Most Popular Video Creator](/blog/leetcode/most-popular-video-creator/) — 2022-10-30
+- [12. Integer to Roman](/blog/leetcode/int-to-roman/) — 2022-10-20
+- [2227. Encrypt and Decrypt Strings](/blog/leetcode/encrypt-and-decrypt-strings/) — 2022-09-12
+- [2321. Maximum Score Of Spliced Array](/blog/leetcode/maximum-score-of-spliced-array/) — 2022-09-12
+- [Paint House III](/blog/leetcode/paint-house-iii/) — 2022-09-12
+- [838. Push Dominoes](/blog/leetcode/pushdominoes/) — 2022-09-12
+- [820. Short Encoding of Words](/blog/leetcode/short-encoding-of-words/) — 2022-09-12
+- [581. Shortest Unsorted Continuous Subarray](/blog/leetcode/shortest-unsorted-continuous-subarray/) — 2022-09-12
 
 ### Other
-- [Fancy Ideas](/?page=Blogs/Frontend/FancyIdeas.md)
-- [Resume(Markdown Style)](/?page=Blogs/Other/ResumeMarkdown.md)
-- [Recommendation Letter Template](/?page=Blogs/Other/RecommendationLetter.md)
-- [Recommendation Letter Template2](/?page=Blogs/Other/RecommendationLetter-Lab.md)
-- [Recommendation Letter Template3](/?page=Blogs/Other/RecommendationLetter-Fellow.md)
-- [Third-Person perspective referal](/?page=Blogs/Other/referal3rd.md)
-- [Summer Internship Summary](/?page=Blogs/Other/SummerInternshipMidtermSummary.md)
+
+- [Summer Internship Midterm Report](/blog/other/summerinternshipmidtermsummary/) — 2023-03-02
+- [Third-Person perspective referal](/blog/other/referal3rd/) — 2023-02-28
+- [Tempest (Tao Ren)](/blog/other/resumemarkdown/) — 2023-02-28
+- [RecommendationLetter-Fellow](/blog/other/recommendationletter-fellow/) — 2023-01-24
+- [RecommendationLetter-Lab](/blog/other/recommendationletter-lab/) — 2023-01-24
+- [RecommendationLetter](/blog/other/recommendationletter/) — 2023-01-24
+
+### Python
+
+- [Use Python to print colorfully](/blog/python/use-python-to-print-colorfully/) — 2022-09-13
+
+### ReactNative
+
+- [Best Practice for React Native Project](/blog/reactnative/best-practice/) — 2022-10-12
+
+[Subscribe via RSS](/rss.xml)

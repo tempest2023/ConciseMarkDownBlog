@@ -8,6 +8,13 @@ import { render, screen, waitFor } from '@testing-library/react';
 import MarkDownPreview from '../components/editor/MarkDownPreview';
 import config from '../config';
 
+// This suite tests loading/debounce behavior; actual Markdown plugins are covered
+// by the static publisher test, which executes the real ESM packages.
+jest.mock('remark-math', () => () => {});
+jest.mock('remark-gfm', () => () => {});
+jest.mock('rehype-katex', () => () => {});
+jest.mock('rehype-raw', () => () => {});
+
 // Mock config
 jest.mock('../config', () => ({
   debug: false,
@@ -59,6 +66,12 @@ describe('MarkDownPreview', () => {
 
     expect(screen.getByTestId('color-loading')).toBeInTheDocument();
     expect(screen.queryByTestId('markdown-content')).not.toBeInTheDocument();
+  });
+
+  it('does not compile an interactive agent from article Markdown', () => {
+    render(<MarkDownPreview markdownString={'<div data-personal-agent="true">Static article content</div>'} showHeader={false} />);
+    expect(screen.getByTestId('markdown-content')).toHaveTextContent('Static article content');
+    expect(screen.queryByLabelText('Ask Tempest')).not.toBeInTheDocument();
   });
 });
 

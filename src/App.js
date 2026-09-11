@@ -5,25 +5,26 @@
  * @modify date 2023-02-19 18:03:59
  * @desc App
  */
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import config from './config';
 import Article from './components/Article';
-import MarkDownEditor from './components/editor/Editor';
-import ConfigEditor from './components/config/ConfigEditor';
 // import MarkDownEditor from './components/editor/SlashEditor';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import NotebookSidebar from './components/NotebookSidebar';
+import AgentDock from './components/AgentDock';
 import ConfigButton from './components/ConfigButton';
 import { ThemeProvider, useTheme } from './components/ThemeProvider';
 import { getUrlParameters } from './util/url';
 import { compareLowerCase } from './util/str';
-import { navigate, goBack, selectPage } from './util/store'
+import { navigate, syncLocation, selectPage } from './util/store'
 import { updateSeoMetadata } from './util/seo';
-import './styles/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import './styles/app.css';
+const MarkDownEditor = lazy(() => import('./components/editor/Editor'));
+const ConfigEditor = lazy(() => import('./components/config/ConfigEditor'));
 
 const { debug } = config;
 
@@ -35,7 +36,7 @@ const AppContent = () => {
   const popstateHandler = (e) => {
     // click the goBack button on browser
     // go back to the previous page in history list.
-    dispatch(goBack());
+    dispatch(syncLocation());
   }
 
   useEffect(() => {
@@ -80,12 +81,17 @@ const AppContent = () => {
 
   return (
     <div className={`page ${isDark ? 'dark-theme' : 'light-theme'}`}>
+      <a className="skip-link" href="#main-content">Skip to content</a>
       <Header />
-      <div className="main-container">
-        {renderContent()}
+      <div className="notebook-layout">
+        <NotebookSidebar />
+        <main className="main-container" id="main-content" tabIndex={-1}>
+          <Suspense fallback={<p role="status">Loading…</p>}>{renderContent()}</Suspense>
+        </main>
       </div>
       <Footer />
       <ConfigButton />
+      <AgentDock />
     </div>
   );
 };

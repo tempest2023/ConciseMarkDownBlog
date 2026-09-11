@@ -4,12 +4,14 @@
   "name": "concise-markdown-blog",
   "buildCommand": "npm run build",
   "outputDirectory": "build",
-  "installCommand": "npm install",
+  "installCommand": "yarn install --frozen-lockfile",
   "framework": "create-react-app",
+  "functions": { "api/chat.js": { "maxDuration": 30 } },
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/",
+      "has": [{ "type": "query", "key": "page" }],
+      "destination": "/api/legacy"
     }
   ],
   "headers": [

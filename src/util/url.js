@@ -6,12 +6,23 @@
  * @desc format link
  */
 import config from '../config';
+import { pagePath } from './routes';
+import catalog from '../data/articles.json';
 
 const { debug } = config;
 
 // describe how to format a link.
 export function formatLink (link) {
-  return `?page=${encodeURIComponent(link)}`;
+  return pagePath(link);
+}
+
+export function pageFromLocation () {
+  const url = new URL(window.location.href);
+  const legacy = url.searchParams.get('page');
+  if (legacy) return legacy.replace(/^\.\//, '').replace(/\.md$/i, '');
+  if (/^\/(config|markdown)\/?$/i.test(url.pathname)) return url.pathname.toLowerCase().includes('config') ? 'config' : 'Markdown';
+  const pathname = url.pathname.endsWith('/') || url.pathname.endsWith('.html') ? url.pathname : url.pathname + '/';
+  return catalog.find(entry => entry.path === pathname)?.page || '404';
 }
 
 // check a string starts with '/', if not, add '/' to it.

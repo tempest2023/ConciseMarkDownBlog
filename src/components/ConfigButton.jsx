@@ -13,7 +13,7 @@ const ConfigButton = () => {
   const dispatch = useDispatch();
 
   // Only show in local development
-  if (!hasConfigAccess()) {
+  if (process.env.NODE_ENV === 'production' || !hasConfigAccess()) {
     return null;
   }
 
