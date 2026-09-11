@@ -14,6 +14,6 @@ My blog describes my professional interests, but does not confirm an active job 
 
 ## Your conversation
 
-The guide is AI, not Tao. It cannot contact me or act on my behalf. Replies can contain mistakes; check the linked source for important details.
+The guide is AI, not Tempest. It cannot contact anyone or act on Tempest's behalf. Replies can contain mistakes; check the linked source for important details.
 
 Messages are sent through Vercel AI Gateway to the configured model provider to generate a reply. This blog does not store chat history or use analytics to record conversations. Provider retention policies still apply. Please do not include sensitive or private information.

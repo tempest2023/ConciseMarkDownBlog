@@ -4,7 +4,7 @@ import { consumeChatStream } from '../util/chat-stream';
 import { conversationHistory, safeAgentHref } from '../util/agent-client';
 import '../styles/agent.css';
 
-const suggestions = ['What AI systems has Tao built?', 'Tell me about his research.', 'What is his industry experience?', 'Is Tao open to new roles?'];
+const suggestions = ['What AI systems has Tempest built?', 'Tell me about Tempest’s research.', 'What is Tempest’s industry experience?', 'Is Tempest open to new roles?'];
 export default function PersonalAgent () {
   const [available, setAvailable] = useState(null);
   const [messages, setMessages] = useState([]);
@@ -53,16 +53,16 @@ export default function PersonalAgent () {
     <section className="personal-agent" aria-label="Ask Tempest">
       <div className="agent-heading"><span className="eyebrow">ASK TEMPEST</span><span className="agent-badge">AI guide</span></div>
       <h2>What would you like to know?</h2>
-      <p className="agent-intro">Ask about my research, engineering work, or the stories behind my projects.</p>
+      <p className="agent-intro">Ask about Tempest’s research, engineering work, or the stories behind Tempest’s projects.</p>
       <div className="agent-suggestions">{suggestions.map(text => <button key={text} onClick={() => ask(text)} disabled={busy || available !== true}>{text}</button>)}</div>
       <div className="agent-transcript" ref={transcript} onScroll={event => { const area = event.currentTarget; followReply.current = area.scrollHeight - area.scrollTop - area.clientHeight < 64; }} role="log" aria-label="Conversation" aria-live="polite" aria-relevant="additions text" tabIndex={messages.length ? 0 : undefined}>
         {messages.map(message => <div className={`agent-message ${message.role}`} key={message.id}><span className="message-role">{message.role === 'user' ? 'You' : 'Tempest’s AI guide'}</span><ReactMarkdown skipHtml transformLinkUri={safeAgentHref} components={{ img: () => null, a: ({ href, children }) => href ? <a href={href} rel="nofollow noreferrer">{children}</a> : <span>{children}</span> }}>{message.content || (message.status === 'streaming' ? 'Thinking…' : 'No reply received.')}</ReactMarkdown>{message.status === 'error' && message.content && <small>Incomplete reply</small>}</div>)}
       </div>
-      {available === false && <p className="agent-notice" role="status">Chat is not available right now. <a href="/work/">Explore my work</a> or <a href="mailto:tar118@pitt.edu">contact me directly</a>.</p>}
+      {available === false && <p className="agent-notice" role="status">Chat is not available right now. <a href="/work/">Explore Tempest’s work</a> or <a href="mailto:tar118@pitt.edu">contact Tempest directly</a>.</p>}
       {error && <div className="agent-notice" role="alert">{error} {!busy && available && <button onClick={() => ask(lastQuestion.current, true)}>Retry</button>}</div>}
       <form onSubmit={event => { event.preventDefault(); ask(question); }}>
         <label htmlFor="agent-question">Your question</label>
-        <textarea id="agent-question" ref={input} value={question} onChange={event => setQuestion(event.target.value)} maxLength={2000} rows={3} placeholder="Ask about Tao’s work…" disabled={available !== true} onKeyDown={event => { if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); ask(question); } }} />
+        <textarea id="agent-question" ref={input} value={question} onChange={event => setQuestion(event.target.value)} maxLength={2000} rows={3} placeholder="Ask about Tempest’s work…" disabled={available !== true} onKeyDown={event => { if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); ask(question); } }} />
         <div className="agent-actions"><small>{available === null ? 'Connecting…' : `${question.length}/2,000 · Shift + Enter for a new line`}</small><div>{messages.length > 0 && <button type="button" disabled={busy} onClick={() => { setMessages([]); setError(''); input.current?.focus(); }}>New conversation</button>}{busy ? <button type="button" onClick={() => controller.current?.abort()}>Stop</button> : <button className="agent-send" type="submit" disabled={!question.trim() || available !== true}>Send ↗</button>}</div></div>
       </form>
       <p className="agent-privacy">Answers use public blog information and may be mistaken. Messages are sent to the AI provider; this blog does not save conversations. Avoid sharing private information. <a href="/ask/">About this guide</a></p>

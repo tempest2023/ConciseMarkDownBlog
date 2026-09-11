@@ -21,16 +21,17 @@ test('unavailable status offers static alternatives and disables submission', as
   global.fetch.mockResolvedValue({ ok: false });
   render(<PersonalAgent />);
   expect(await screen.findByRole('status')).toHaveTextContent('Chat is not available');
-  expect(screen.getByRole('link', { name: 'Explore my work' })).toHaveAttribute('href', '/work/');
+  expect(screen.getByRole('link', { name: 'Explore Tempest’s work' })).toHaveAttribute('href', '/work/');
   expect(screen.getByLabelText('Your question')).toBeDisabled();
 });
 test('a suggested question sends one request, renders the reply and supports a clean new conversation', async () => {
   await ready();
-  fireEvent.click(screen.getByRole('button', { name: 'Tell me about his research.' }));
+  expect(screen.getByPlaceholderText('Ask about Tempest’s work…')).toBeInTheDocument();
+  fireEvent.click(screen.getByRole('button', { name: 'Tell me about Tempest’s research.' }));
   expect(await screen.findByText('A public answer.')).toBeInTheDocument();
   await waitFor(() => expect(screen.queryByRole('button', { name: 'Stop' })).not.toBeInTheDocument());
   expect(global.fetch).toHaveBeenCalledTimes(2);
-  expect(JSON.parse(global.fetch.mock.calls[1][1].body).messages).toEqual([{ role: 'user', content: 'Tell me about his research.' }]);
+  expect(JSON.parse(global.fetch.mock.calls[1][1].body).messages).toEqual([{ role: 'user', content: 'Tell me about Tempest’s research.' }]);
   fireEvent.click(screen.getByRole('button', { name: 'New conversation' }));
   expect(screen.queryByText('A public answer.')).not.toBeInTheDocument();
   expect(screen.getByLabelText('Your question')).toHaveFocus();
@@ -38,17 +39,17 @@ test('a suggested question sends one request, renders the reply and supports a c
 test('failed replies can be retried without duplicate questions', async () => {
   consumeChatStream.mockRejectedValueOnce(new Error('Temporary failure'));
   await ready();
-  fireEvent.click(screen.getByRole('button', { name: 'Tell me about his research.' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Tell me about Tempest’s research.' }));
   expect(await screen.findByRole('alert')).toHaveTextContent('Temporary failure');
   fireEvent.click(screen.getByRole('button', { name: 'Retry' }));
   expect(await screen.findByText('A public answer.')).toBeInTheDocument();
-  expect(screen.getAllByText('Tell me about his research.')).toHaveLength(2); // suggestion + one message
+  expect(screen.getAllByText('Tell me about Tempest’s research.')).toHaveLength(2); // suggestion + one message
   expect(screen.queryByRole('alert')).not.toBeInTheDocument();
 });
 test('Stop aborts the request and restores usable controls', async () => {
   await ready();
   global.fetch.mockImplementation((_, options) => new Promise((resolve, reject) => options.signal.addEventListener('abort', () => reject(new Error('aborted')))));
-  fireEvent.click(screen.getByRole('button', { name: 'Tell me about his research.' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Tell me about Tempest’s research.' }));
   fireEvent.click(await screen.findByRole('button', { name: 'Stop' }));
   expect(await screen.findByRole('alert')).toHaveTextContent('Reply stopped.');
   expect(global.fetch.mock.calls[1][1].signal.aborted).toBe(true);
