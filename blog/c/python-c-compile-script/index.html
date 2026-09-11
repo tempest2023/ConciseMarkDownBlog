@@ -1,0 +1,79 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Use Python script to help multi C++ files compile on Windows (no make) | Tempest's Blog</title><meta name="description" content="Because there is no make on my Windows, so I write this script to help me to compile C++ files."><meta name="author" content="Tao Ren (Tempest)"><meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="https://tempest.fun/blog/c/python-c-compile-script/"><link rel="icon" type="image/png" sizes="256x256" href="/assets/agent-avatar/idle.png"><link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"><meta property="og:type" content="article"><meta property="og:title" content="Use Python script to help multi C++ files compile on Windows (no make) | Tempest's Blog"><meta property="og:description" content="Because there is no make on my Windows, so I write this script to help me to compile C++ files."><meta property="og:url" content="https://tempest.fun/blog/c/python-c-compile-script/"><meta property="og:image" content="https://tempest.fun/logo512.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Use Python script to help multi C++ files compile on Windows (no make) | Tempest's Blog"><meta name="twitter:description" content="Because there is no make on my Windows, so I write this script to help me to compile C++ files."><meta name="twitter:image" content="https://tempest.fun/logo512.png"><script id="seo-structured-data" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://tempest.fun/#person","name":"Tao Ren","alternateName":"Tempest","url":"https://tempest.fun","sameAs":["https://github.com/tempest2023","https://www.linkedin.com/in/taoren-pitt/"]},{"@type":"BlogPosting","@id":"https://tempest.fun/blog/c/python-c-compile-script/#page","url":"https://tempest.fun/blog/c/python-c-compile-script/","name":"Use Python script to help multi C++ files compile on Windows (no make)","headline":"Use Python script to help multi C++ files compile on Windows (no make)","description":"Because there is no make on my Windows, so I write this script to help me to compile C++ files.","author":{"@id":"https://tempest.fun/#person"},"datePublished":"2022-09-13T14:51:39-04:00","dateModified":"2022-09-13T14:51:39-04:00","inLanguage":"en"}]}</script><script defer="defer" src="/static/js/main.1f37b029.js"></script><link href="/static/css/main.2a4a268b.css" rel="stylesheet"><noscript><style>.site-nav{display:flex;position:static;flex-wrap:wrap}.site-header{flex-wrap:wrap}.header-controls{flex-wrap:wrap}</style></noscript></head><body><div id="root"><div class="page"><a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><a class="site-brand" href="/">Tempest's blog</a><nav class="site-nav" aria-label="Main navigation"><a href="/">About</a><a href="/work/">Work &amp; Research</a><a href="/writing/">Writing</a><a href="/projects/">Projects</a><a href="/links/">Links</a><a href="https://3d.tempest.fun/">3D Portfolio</a></nav></header><main id="main-content" class="main-container"><article class="article-content"><div class="article-meta"><span>Tao Ren (Tempest)</span><span>Published <time datetime="2022-09-13T14:51:39-04:00">2022-09-13</time></span><span>Updated <time datetime="2022-09-13T14:51:39-04:00">2022-09-13</time></span><span>1 min read</span></div><h1>Use Python script to help multi C++ files compile on Windows (no make)</h1><h2 id="use-python-script-to-help-multi-c-files-compile-on-windows-no-make">Use Python script to help multi C++ files compile on Windows (no make)</h2>
+<blockquote>
+<p>2017-10-25 11:49:30</p>
+</blockquote>
+<p>Because there is no make on my Windows, so I write this script to help me to compile C++ files.</p>
+<p>Comparing make, it can not detect the updates, maybe later I can add diff to it.</p>
+<p>Only for small C++ projects compilation</p>
+<p>What it supports：</p>
+<ol>
+<li><strong>Delete the old files in compilation</strong></li>
+<li><strong>Automatically generate compilig .exe files</strong></li>
+<li><strong>Automatically run the final .exe file</strong></li>
+</ol>
+<hr/>
+<h3 id="code">Code</h3>
+<pre><code class="language-python">#coding=utf-8
+import os,sys
+def delfile(file):
+    if(os.path.exists(file)):
+        print(file)
+        os.remove(file)
+
+#Config
+#The files you want to compile
+files=[&#x27;Rational.h&#x27;,&#x27;Rational.cpp&#x27;,&#x27;test.cpp&#x27;]
+# output file name, will be [output].exe
+output=&quot;Test&quot;
+
+# if you want to delete the old exe files in last compilation. 0 not 1 yes
+isdel=1
+# if you want to compile them. 0 not 1 yes
+ismake=1
+# if you want to run after compilation. 0 not 1 yes
+isrun=0
+
+# del old files
+if(isdel&gt;0):
+    files_name=[]
+    print(&quot;[*] Start to delete files&quot;)
+    for i in files:
+        if(i.find(&quot;.&quot;)&gt;=0):
+            files_name.append(i[0:i.find(&quot;.&quot;)])
+    for root,dirs,allfiles in os.walk(&quot;.&quot;):
+        for i in allfiles:
+            for j in files_name:
+                if(i.find(j)&gt;=0):
+                    if(i.find(&quot;.cpp&quot;)==-1 and i.find(&quot;.h&quot;)==-1):
+                        delfile(i)
+                    if(i.find(&quot;.h.gch&quot;)&gt;=0):
+                        delfile(i)
+    if(os.path.exists(output+&quot;.exe&quot;)):
+        print(output+&quot;.exe&quot;)
+        os.remove(output+&quot;.exe&quot;)
+    print(&quot;[*] Finish Delete&quot;)
+
+
+# Compile
+if(ismake&gt;0):
+    cmd1=&quot;g++ -c&quot;
+    for i in files:
+        cmd1=cmd1+&quot; &quot;+i
+    cmd2=&quot;g++ -o &quot;+output
+    for i in files:
+        ind=i.find(&#x27;.cpp&#x27;)
+        if(ind&gt;=0):
+            cmd2 = cmd2 + &#x27; &#x27;+i[0:ind]+&quot;.o&quot;
+    print(&quot;[*] &quot;+cmd1)
+    print(&quot;------Running-------&quot;)
+    os.system(cmd1)
+    print(&quot;[*] &quot;+cmd2)
+    os.system(cmd2)
+    print(&quot;------Running-------&quot;)
+
+
+# Run it
+if(isrun&gt;0):
+    cmd3=output+&quot;.exe&quot;
+    os.system(cmd3)
+</code></pre></article></main><footer class="static-footer"><a href="mailto:tar118@pitt.edu">Email</a><a href="https://drive.google.com/file/d/1aNJ-NPuk71x4xQgRo5Es2WPyNZA8kbCb/view?usp=sharing">Résumé</a><a href="https://github.com/tempest2023">GitHub</a><a href="https://www.linkedin.com/in/taoren-pitt/">LinkedIn</a><div class="static-colophon"><p>A small space for unfinished thoughts and things worth sharing.</p><span>— Tempest</span></div><nav class="static-footer-links" aria-label="More links"><a href="https://github.com/tempest2023/ConciseMarkDownBlog">Made of Markdown ↗</a><a href="/rss.xml">RSS</a></nav><p>© 2026 Tempest</p></footer></div></div><script id="blog-bootstrap" type="application/json">{"page":"Blogs/C/Python_C_compile_script","markdown":"## Use Python script to help multi C++ files compile on Windows (no make)\n> 2017-10-25 11:49:30\n\nBecause there is no make on my Windows, so I write this script to help me to compile C++ files.\n\nComparing make, it can not detect the updates, maybe later I can add diff to it.\n\nOnly for small C++ projects compilation\n\nWhat it supports：\n1. **Delete the old files in compilation**\n2. **Automatically generate compilig .exe files**\n3. **Automatically run the final .exe file**\n\n-------------------\n\n### Code\n\n```python\n#coding=utf-8\nimport os,sys\ndef delfile(file):\n    if(os.path.exists(file)):\n        print(file)\n        os.remove(file)\n\n#Config\n#The files you want to compile\nfiles=['Rational.h','Rational.cpp','test.cpp']\n# output file name, will be [output].exe\noutput=\"Test\"\n\n# if you want to delete the old exe files in last compilation. 0 not 1 yes\nisdel=1\n# if you want to compile them. 0 not 1 yes\nismake=1\n# if you want to run after compilation. 0 not 1 yes\nisrun=0\n\n# del old files\nif(isdel>0):\n    files_name=[]\n    print(\"[*] Start to delete files\")\n    for i in files:\n        if(i.find(\".\")>=0):\n            files_name.append(i[0:i.find(\".\")])\n    for root,dirs,allfiles in os.walk(\".\"):\n        for i in allfiles:\n            for j in files_name:\n                if(i.find(j)>=0):\n                    if(i.find(\".cpp\")==-1 and i.find(\".h\")==-1):\n                        delfile(i)\n                    if(i.find(\".h.gch\")>=0):\n                        delfile(i)\n    if(os.path.exists(output+\".exe\")):\n        print(output+\".exe\")\n        os.remove(output+\".exe\")\n    print(\"[*] Finish Delete\")\n\n\n# Compile\nif(ismake>0):\n    cmd1=\"g++ -c\"\n    for i in files:\n        cmd1=cmd1+\" \"+i\n    cmd2=\"g++ -o \"+output\n    for i in files:\n        ind=i.find('.cpp')\n        if(ind>=0):\n            cmd2 = cmd2 + ' '+i[0:ind]+\".o\"\n    print(\"[*] \"+cmd1)\n    print(\"------Running-------\")\n    os.system(cmd1)\n    print(\"[*] \"+cmd2)\n    os.system(cmd2)\n    print(\"------Running-------\")\n\n\n# Run it\nif(isrun>0):\n    cmd3=output+\".exe\"\n    os.system(cmd3)\n```\n","noIndex":false}</script></body></html>

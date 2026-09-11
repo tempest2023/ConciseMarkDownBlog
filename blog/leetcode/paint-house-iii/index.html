@@ -1,0 +1,124 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Paint House III | Tempest's Blog</title><meta name="description" content="Obviously we need 3D dp array to cover group changes!"><meta name="author" content="Tao Ren (Tempest)"><meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="https://tempest.fun/blog/leetcode/paint-house-iii/"><link rel="icon" type="image/png" sizes="256x256" href="/assets/agent-avatar/idle.png"><link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"><meta property="og:type" content="article"><meta property="og:title" content="Paint House III | Tempest's Blog"><meta property="og:description" content="Obviously we need 3D dp array to cover group changes!"><meta property="og:url" content="https://tempest.fun/blog/leetcode/paint-house-iii/"><meta property="og:image" content="https://tempest.fun/logo512.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Paint House III | Tempest's Blog"><meta name="twitter:description" content="Obviously we need 3D dp array to cover group changes!"><meta name="twitter:image" content="https://tempest.fun/logo512.png"><script id="seo-structured-data" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://tempest.fun/#person","name":"Tao Ren","alternateName":"Tempest","url":"https://tempest.fun","sameAs":["https://github.com/tempest2023","https://www.linkedin.com/in/taoren-pitt/"]},{"@type":"BlogPosting","@id":"https://tempest.fun/blog/leetcode/paint-house-iii/#page","url":"https://tempest.fun/blog/leetcode/paint-house-iii/","name":"Paint House III","headline":"Paint House III","description":"Obviously we need 3D dp array to cover group changes!","author":{"@id":"https://tempest.fun/#person"},"datePublished":"2022-09-12T20:48:47-04:00","dateModified":"2022-09-12T20:48:47-04:00","inLanguage":"en"}]}</script><script defer="defer" src="/static/js/main.1f37b029.js"></script><link href="/static/css/main.2a4a268b.css" rel="stylesheet"><noscript><style>.site-nav{display:flex;position:static;flex-wrap:wrap}.site-header{flex-wrap:wrap}.header-controls{flex-wrap:wrap}</style></noscript></head><body><div id="root"><div class="page"><a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><a class="site-brand" href="/">Tempest's blog</a><nav class="site-nav" aria-label="Main navigation"><a href="/">About</a><a href="/work/">Work &amp; Research</a><a href="/writing/">Writing</a><a href="/projects/">Projects</a><a href="/links/">Links</a><a href="https://3d.tempest.fun/">3D Portfolio</a></nav></header><main id="main-content" class="main-container"><article class="article-content"><div class="article-meta"><span>Tao Ren (Tempest)</span><span>Published <time datetime="2022-09-12T20:48:47-04:00">2022-09-12</time></span><span>Updated <time datetime="2022-09-12T20:48:47-04:00">2022-09-12</time></span><span>1 min read</span></div><h1>Paint House III</h1><h3 id="paint-house-iii">Paint House III</h3>
+<blockquote>
+<p><a href="https://leetcode.com/problems/paint-house-iii/">Problem Link</a></p>
+</blockquote>
+<h3 id="solution">Solution</h3>
+<pre><code class="language-python">class Solution:
+    def minCost(self, houses: List[int], cost: List[List[int]], m: int, n: int, target: int) -&gt; int:
+        &quot;&quot;&quot;
+        Try to figure it out by 2D dp
+        dp[i][j] means the min cost when i-th house painted as color j+1
+            (without considering painted house)
+            if group &lt; target:
+                dp[i][j] = min(dp[i-1])+cost[i][j]
+                # if choose different color j, group+=1
+            else: # no choice but choose same color with prev one
+                dp[i][j] = if : dp[i-1][j] + cost[i][j]
+
+        Obviously we need 3D dp array to cover group changes!
+
+        dp[i][j][k] means the dp[i][j] with k groups
+            (withou considering paiinted house)
+            # paint it as the same color with prev one
+            dp[i][j][k] = dp[i-1][j][k] + cost[i][j]
+            # paint it as different colors with prev one
+            dp[i][j][k] = dp[i-1][all but not j][k-1] + cost[i][j]
+            
+        Notice that there are some painted houses at the start, we can not repaint them
+
+        For these houses, cost[i][j] = 0, and dp[i][j except fixcolor][k] = inf which means it is not possible to paint them
+
+        fixcolor = house[i]
+        dp[i][fixcolor][k] = min(
+                                # prev one with fixcolor, don&#x27;t need to add k by 1
+                                dp[i-1][fixcolor][k],
+                                # prev one has different colors, add k by 1
+                                dp[i-1][all but not fix color][k-1]
+                            )
+        By the way, when we iterate k to fill 3D matrix, it is not possible that we have just considered i houses and get i+1 groups. 
+        In other words, the max k we can fill when consider i-th houses can not be bigger i.
+        For example, when we consider 2-th house, there at most are 2 groups.
+        which means we only fill dp[2][j][0] and dp[2][j][1].
+        That&#x27;s why we fill dp array with k in range(min(i+1, target))
+        &quot;&quot;&quot;
+        dp = [[[inf]*target  for j in range(n) ] for i in range(m)]
+
+        for i in range(m):
+            # if house[i] is pre-painted
+            if(houses[i]&gt;0):
+                for k in range(min(i+1, target)):
+                    fc = houses[i]-1 # fixed color
+                    # don&#x27;t need to consider prev one
+                    if(i==0):
+                        dp[i][fc][k] = 0
+                    elif(k==0):
+                        # the prev one must have the same color
+                        dp[i][fc][k] = dp[i-1][fc][k]
+                    else:
+                        # we can consider the prev one have every colors with k-1
+                        tmp = dp[i-1][fc][k]
+                        for each in range(n):
+                            if(each!=fc):
+                                tmp = min(tmp, dp[i-1][each][k-1])
+                        dp[i][fc][k] = tmp
+                continue
+            # for non-pre-painted houses, try every colors
+            for j in range(n):
+                for k in range(min(i+1, target)):
+                    # don&#x27;t need to consider prev one
+                    if(i==0):
+                        dp[i][j][k] = cost[i][j]
+                    elif(k==0):
+                        # the prev one must have the same color
+                        dp[i][j][k] = dp[i-1][j][k] + cost[i][j]
+                    else:
+                        # we can consider the prev one have every colors with k-1
+                        tmp = dp[i-1][j][k] + cost[i][j]
+                        for each in range(n):
+                            if(each != j):
+                                tmp = min(tmp, dp[i-1][each][k-1] + cost[i][j])
+                        dp[i][j][k] = tmp
+                    # print(f&#x27;({i},{j},{k}), dp:{dp[i][j][k]}&#x27;)
+        res = inf
+        # dp[m-1][each color][target-1] means considering m houses, target group, the min cost value of painted schemas (whatever color of each house painted)
+        for j in range(n):
+            res = min(res, dp[m-1][j][target-1])
+        # if not possible to paint as target group, it wiil be inf, because we never fill this position in our 3D dp.
+        if(res == inf):
+            return -1
+        return res
+</code></pre>
+<p>Recursion dfs with memo will be faster.</p>
+<pre><code class="language-python">memo = {}
+def dfs(ind, color, group):
+	&quot;&quot;&quot;
+	dfs(ind, color, group) means 
+	for ind-th house, prev house painted as color, the group for now,
+	the min cost can get.
+	&quot;&quot;&quot;
+	# print(f&#x27;house:{houses}, nei: {nei}, score: {score}&#x27;)
+	# invalid groups
+	if(group&lt;0 or m-ind&lt;group):
+		return inf
+	# reach the last house
+	if(ind == m):
+		return 0 if group==0 else inf
+	if((ind, color, group) in memo):
+		return memo[(ind, color, group)]
+	# pre-painted house
+	if(houses[ind]):
+		memo[(ind, color, group)] = dfs(ind+1, houses[ind], group-(color!=houses[ind]))
+	else:
+		# paint the same color as the prev house
+		tmp = inf
+		# try to paint evry colors different with the prev house
+		for j in range(1,n+1):
+			tmp = min(tmp, cost[ind][j-1] + dfs(ind+1, j, group-(j!=color)))
+		memo[(ind, color, group)] = tmp
+	return memo[(ind, color, group)]
+res = dfs(0, 0, target)
+if(res == inf):
+	return -1
+return res
+</code></pre>
+<p>Original Link: <a href="https://leetcode.com/problems/paint-house-iii/discuss/2260742/python-dp-and-memo-dfs-solutions-with-explanation">post</a></p></article></main><footer class="static-footer"><a href="mailto:tar118@pitt.edu">Email</a><a href="https://drive.google.com/file/d/1aNJ-NPuk71x4xQgRo5Es2WPyNZA8kbCb/view?usp=sharing">Résumé</a><a href="https://github.com/tempest2023">GitHub</a><a href="https://www.linkedin.com/in/taoren-pitt/">LinkedIn</a><div class="static-colophon"><p>A small space for unfinished thoughts and things worth sharing.</p><span>— Tempest</span></div><nav class="static-footer-links" aria-label="More links"><a href="https://github.com/tempest2023/ConciseMarkDownBlog">Made of Markdown ↗</a><a href="/rss.xml">RSS</a></nav><p>© 2026 Tempest</p></footer></div></div><script id="blog-bootstrap" type="application/json">{"page":"Blogs/Leetcode/Paint_House_III","markdown":"### Paint House III\n> [Problem Link](https://leetcode.com/problems/paint-house-iii/)\n\n### Solution\n\n```python\nclass Solution:\n    def minCost(self, houses: List[int], cost: List[List[int]], m: int, n: int, target: int) -> int:\n        \"\"\"\n        Try to figure it out by 2D dp\n        dp[i][j] means the min cost when i-th house painted as color j+1\n            (without considering painted house)\n            if group \u003c target:\n                dp[i][j] = min(dp[i-1])+cost[i][j]\n                # if choose different color j, group+=1\n            else: # no choice but choose same color with prev one\n                dp[i][j] = if : dp[i-1][j] + cost[i][j]\n\n        Obviously we need 3D dp array to cover group changes!\n\n        dp[i][j][k] means the dp[i][j] with k groups\n            (withou considering paiinted house)\n            # paint it as the same color with prev one\n            dp[i][j][k] = dp[i-1][j][k] + cost[i][j]\n            # paint it as different colors with prev one\n            dp[i][j][k] = dp[i-1][all but not j][k-1] + cost[i][j]\n            \n        Notice that there are some painted houses at the start, we can not repaint them\n\n        For these houses, cost[i][j] = 0, and dp[i][j except fixcolor][k] = inf which means it is not possible to paint them\n\n        fixcolor = house[i]\n        dp[i][fixcolor][k] = min(\n                                # prev one with fixcolor, don't need to add k by 1\n                                dp[i-1][fixcolor][k],\n                                # prev one has different colors, add k by 1\n                                dp[i-1][all but not fix color][k-1]\n                            )\n        By the way, when we iterate k to fill 3D matrix, it is not possible that we have just considered i houses and get i+1 groups. \n        In other words, the max k we can fill when consider i-th houses can not be bigger i.\n        For example, when we consider 2-th house, there at most are 2 groups.\n        which means we only fill dp[2][j][0] and dp[2][j][1].\n        That's why we fill dp array with k in range(min(i+1, target))\n        \"\"\"\n        dp = [[[inf]*target  for j in range(n) ] for i in range(m)]\n\n        for i in range(m):\n            # if house[i] is pre-painted\n            if(houses[i]>0):\n                for k in range(min(i+1, target)):\n                    fc = houses[i]-1 # fixed color\n                    # don't need to consider prev one\n                    if(i==0):\n                        dp[i][fc][k] = 0\n                    elif(k==0):\n                        # the prev one must have the same color\n                        dp[i][fc][k] = dp[i-1][fc][k]\n                    else:\n                        # we can consider the prev one have every colors with k-1\n                        tmp = dp[i-1][fc][k]\n                        for each in range(n):\n                            if(each!=fc):\n                                tmp = min(tmp, dp[i-1][each][k-1])\n                        dp[i][fc][k] = tmp\n                continue\n            # for non-pre-painted houses, try every colors\n            for j in range(n):\n                for k in range(min(i+1, target)):\n                    # don't need to consider prev one\n                    if(i==0):\n                        dp[i][j][k] = cost[i][j]\n                    elif(k==0):\n                        # the prev one must have the same color\n                        dp[i][j][k] = dp[i-1][j][k] + cost[i][j]\n                    else:\n                        # we can consider the prev one have every colors with k-1\n                        tmp = dp[i-1][j][k] + cost[i][j]\n                        for each in range(n):\n                            if(each != j):\n                                tmp = min(tmp, dp[i-1][each][k-1] + cost[i][j])\n                        dp[i][j][k] = tmp\n                    # print(f'({i},{j},{k}), dp:{dp[i][j][k]}')\n        res = inf\n        # dp[m-1][each color][target-1] means considering m houses, target group, the min cost value of painted schemas (whatever color of each house painted)\n        for j in range(n):\n            res = min(res, dp[m-1][j][target-1])\n        # if not possible to paint as target group, it wiil be inf, because we never fill this position in our 3D dp.\n        if(res == inf):\n            return -1\n        return res\n```\n\nRecursion dfs with memo will be faster.\n\n```python\nmemo = {}\ndef dfs(ind, color, group):\n\t\"\"\"\n\tdfs(ind, color, group) means \n\tfor ind-th house, prev house painted as color, the group for now,\n\tthe min cost can get.\n\t\"\"\"\n\t# print(f'house:{houses}, nei: {nei}, score: {score}')\n\t# invalid groups\n\tif(group\u003c0 or m-ind\u003cgroup):\n\t\treturn inf\n\t# reach the last house\n\tif(ind == m):\n\t\treturn 0 if group==0 else inf\n\tif((ind, color, group) in memo):\n\t\treturn memo[(ind, color, group)]\n\t# pre-painted house\n\tif(houses[ind]):\n\t\tmemo[(ind, color, group)] = dfs(ind+1, houses[ind], group-(color!=houses[ind]))\n\telse:\n\t\t# paint the same color as the prev house\n\t\ttmp = inf\n\t\t# try to paint evry colors different with the prev house\n\t\tfor j in range(1,n+1):\n\t\t\ttmp = min(tmp, cost[ind][j-1] + dfs(ind+1, j, group-(j!=color)))\n\t\tmemo[(ind, color, group)] = tmp\n\treturn memo[(ind, color, group)]\nres = dfs(0, 0, target)\nif(res == inf):\n\treturn -1\nreturn res\n```\n\nOriginal Link: [post](https://leetcode.com/problems/paint-house-iii/discuss/2260742/python-dp-and-memo-dfs-solutions-with-explanation)","noIndex":false}</script></body></html>

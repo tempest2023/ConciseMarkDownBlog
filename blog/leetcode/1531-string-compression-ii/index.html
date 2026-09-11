@@ -1,0 +1,96 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>1531. String Compression II | Tempest's Blog</title><meta name="description" content="String Compression II - LeetCode"><meta name="author" content="Tao Ren (Tempest)"><meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="https://tempest.fun/blog/leetcode/1531-string-compression-ii/"><link rel="icon" type="image/png" sizes="256x256" href="/assets/agent-avatar/idle.png"><link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"><meta property="og:type" content="article"><meta property="og:title" content="1531. String Compression II | Tempest's Blog"><meta property="og:description" content="String Compression II - LeetCode"><meta property="og:url" content="https://tempest.fun/blog/leetcode/1531-string-compression-ii/"><meta property="og:image" content="https://tempest.fun/logo512.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="1531. String Compression II | Tempest's Blog"><meta name="twitter:description" content="String Compression II - LeetCode"><meta name="twitter:image" content="https://tempest.fun/logo512.png"><script id="seo-structured-data" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://tempest.fun/#person","name":"Tao Ren","alternateName":"Tempest","url":"https://tempest.fun","sameAs":["https://github.com/tempest2023","https://www.linkedin.com/in/taoren-pitt/"]},{"@type":"BlogPosting","@id":"https://tempest.fun/blog/leetcode/1531-string-compression-ii/#page","url":"https://tempest.fun/blog/leetcode/1531-string-compression-ii/","name":"1531. String Compression II","headline":"1531. String Compression II","description":"String Compression II - LeetCode","author":{"@id":"https://tempest.fun/#person"},"datePublished":"2022-11-08T19:46:27-05:00","dateModified":"2022-11-08T19:46:27-05:00","inLanguage":"en"}]}</script><script defer="defer" src="/static/js/main.1f37b029.js"></script><link href="/static/css/main.2a4a268b.css" rel="stylesheet"><noscript><style>.site-nav{display:flex;position:static;flex-wrap:wrap}.site-header{flex-wrap:wrap}.header-controls{flex-wrap:wrap}</style></noscript></head><body><div id="root"><div class="page"><a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><a class="site-brand" href="/">Tempest's blog</a><nav class="site-nav" aria-label="Main navigation"><a href="/">About</a><a href="/work/">Work &amp; Research</a><a href="/writing/">Writing</a><a href="/projects/">Projects</a><a href="/links/">Links</a><a href="https://3d.tempest.fun/">3D Portfolio</a></nav></header><main id="main-content" class="main-container"><article class="article-content"><div class="article-meta"><span>Tao Ren (Tempest)</span><span>Published <time datetime="2022-11-08T19:46:27-05:00">2022-11-08</time></span><span>Updated <time datetime="2022-11-08T19:46:27-05:00">2022-11-08</time></span><span>2 min read</span></div><h1 id="1531-string-compression-ii">1531. String Compression II</h1>
+<p><a href="https://leetcode.com/problems/string-compression-ii/">String Compression II - LeetCode</a></p>
+<p><a href="http://en.wikipedia.org/wiki/Run-length_encoding">Run-length encoding</a> is a string compression method that works by replacing consecutive identical characters (repeated 2 or more times) with the concatenation of the character and the number marking the count of the characters (length of the run). For example, to compress the string <code>&quot;aabccc&quot;</code> we replace <code>&quot;aa&quot;</code> by <code>&quot;a2&quot;</code> and replace <code>&quot;ccc&quot;</code> by <code>&quot;c3&quot;</code>. Thus the compressed string becomes <code>&quot;a2bc3&quot;</code>.</p>
+<p>Notice that in this problem, we are not adding <code>&#x27;1&#x27;</code> after single characters.</p>
+<p>Given a string <code>s</code> and an integer <code>k</code>. You need to delete <strong>at most</strong> <code>k</code> characters from <code>s</code> such that the run-length encoded version of <code>s</code> has minimum length.</p>
+<p>Find the <em>minimum length of the run-length encoded version of</em> <code>s</code> <em>after deleting at most</em> <code>k</code> <em>characters</em>.</p>
+<p><strong>Example 1:</strong></p>
+<pre><code>Input: s = &quot;aaabcccd&quot;, k = 2
+Output: 4
+Explanation:Compressing s without deleting anything will give us &quot;a3bc3d&quot; of length 6. 
+Deleting any of the characters &#x27;a&#x27; or &#x27;c&#x27; would at most decrease the length of the compressed string to 5, 
+for instance delete 2 &#x27;a&#x27; then we will have s = &quot;abcccd&quot; which compressed is abc3d. 
+Therefore, the optimal way is to delete &#x27;b&#x27; and &#x27;d&#x27;, 
+then the compressed version of s will be &quot;a3c3&quot; of length 4.
+</code></pre>
+<p><strong>Example 2:</strong></p>
+<pre><code>Input: s = &quot;aabbaa&quot;, k = 2
+Output: 2
+Explanation:If we delete both &#x27;b&#x27; characters, the resulting compressed string would be &quot;a4&quot; of length 2.
+
+</code></pre>
+<p><strong>Example 3:</strong></p>
+<pre><code>Input: s = &quot;aaaaaaaaaaa&quot;, k = 0
+Output: 3
+Explanation:Since k is zero, we cannot delete anything. The compressed string is &quot;a11&quot; of length 3.
+
+</code></pre>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><code>1 &lt;= s.length &lt;= 100</code></li>
+<li><code>0 &lt;= k &lt;= s.length</code></li>
+<li><code>s</code> contains only lowercase English letters.</li>
+</ul>
+<h2 id="solution">Solution</h2>
+<p>Using <strong>DFS</strong> to get the min compressed string length.</p>
+<p><span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[i][k]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em">k</span><span class="mclose">]</span></span></span></span></span> can not represent the min length for <code>s[0:i]</code> with deleting at most k, because it does not show which chars we delete in <code>s[0:i]</code></p>
+<p>It needs four parameters to determine one state: <code>i</code>, <code>prev</code>, <code>prev_count</code>, <code>k</code></p>
+<p>For each incoming char, we have two choice:</p>
+<ul>
+<li>Delete
+<ul>
+<li>if k is not enough to delete, the result is inf means not a valid result.</li>
+<li>otherwise, continue until we iterate all chars in s</li>
+</ul>
+</li>
+<li>Keep
+<ul>
+<li>if prev  == s[i], we merge the incoming char to our last part, check the prev_count to determine the compressed length: ‘’ → ‘a’, ‘a’→’a2’, ‘a9’ → ‘a10’, ‘a99’ → ‘a100’, the max of s is 100, so don’t worry about ‘a999’</li>
+<li>If prev ≠ s[i], we already compute the compressed length of the last part by +1 to <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mi>e</mi><mi>e</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">keep</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.03148em">k</span><span class="mord mathnormal">ee</span><span class="mord mathnormal">p</span></span></span></span></span> in iterations, set the new char to <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mi>r</mi><mi>e</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">prev</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal">p</span><span class="mord mathnormal">re</span><span class="mord mathnormal" style="margin-right:0.03588em">v</span></span></span></span></span> and set the count as 1.</li>
+</ul>
+</li>
+</ul>
+<p>What we need to do is return the min of keep and delete, and the dfs will lead the min length of s with at most k deletion.</p>
+<pre><code class="language-python">class Solution:
+    def getLengthOfOptimalCompression(self, s: str, k: int) -&gt; int:
+        n = len(s)
+        memo = defaultdict(int)
+        
+        &#x27;&#x27;&#x27;
+        The compressed string length for s[0:i] with deleting at most k chars
+        prev: last character
+        prev_count: the count of last character
+        prev and prev_count can decide the compressed string length if we choose want to keep the coming char or delete it.
+        &#x27;&#x27;&#x27;
+        def helper(i, prev, prev_count, k):
+            # invalid k
+            if(k&lt;0):
+                return math.inf
+            if(i==n):
+                return 0
+            # in memeo
+            if((i,prev, prev_count, k) in memo):
+                return memo[(i,prev, prev_count, k)]
+            # if choose to delete the next char, k-=1 and i+1, prev and prev_count won&#x27;t change
+            delete = helper(i+1, prev, prev_count, k-1)
+            # print(f&#x27;delete {s[i]}: {s[0:i]}, k:{k} {delete}&#x27;)
+            
+            # keep it for the same next char
+            if(prev == s[i]):
+                keep = helper(i+1, prev, prev_count+1,k)
+                # keep one more same char will lead one more length in compressed string, like a -&gt; aa (a-&gt;a2), aaaaaaaaa -&gt; aaaaaaaaaa (a9 -&gt; a10)
+                # under this situation, the length needs to be added by 1
+                if(prev_count in [1, 9, 99]):
+                    keep += 1
+            else:
+                # the next char is not as same as the previous one
+                # set new prev and prev_count for this, and add 1 on length (for this new char)
+                keep = helper(i+1, s[i], 1, k) + 1
+            # print(f&#x27;keep {s[i]}: {s[0:i]}, k:{k}, {keep}&#x27;)
+            # store memo
+            memo[(i,prev, prev_count, k)] = min(keep, delete)
+            # print(f&#x27;set dp {(i,prev, prev_count, k)}, {memo[(i,prev, prev_count, k)]}&#x27;)
+            return memo[(i,prev, prev_count, k)]
+
+        return helper(0, &quot;&quot;, 0, k)
+</code></pre></article></main><footer class="static-footer"><a href="mailto:tar118@pitt.edu">Email</a><a href="https://drive.google.com/file/d/1aNJ-NPuk71x4xQgRo5Es2WPyNZA8kbCb/view?usp=sharing">Résumé</a><a href="https://github.com/tempest2023">GitHub</a><a href="https://www.linkedin.com/in/taoren-pitt/">LinkedIn</a><div class="static-colophon"><p>A small space for unfinished thoughts and things worth sharing.</p><span>— Tempest</span></div><nav class="static-footer-links" aria-label="More links"><a href="https://github.com/tempest2023/ConciseMarkDownBlog">Made of Markdown ↗</a><a href="/rss.xml">RSS</a></nav><p>© 2026 Tempest</p></footer></div></div><script id="blog-bootstrap" type="application/json">{"page":"Blogs/Leetcode/1531_String_Compression_II","markdown":"# 1531. String Compression II\n\n[String Compression II - LeetCode](https://leetcode.com/problems/string-compression-ii/)\n\n[Run-length encoding](http://en.wikipedia.org/wiki/Run-length_encoding) is a string compression method that works by replacing consecutive identical characters (repeated 2 or more times) with the concatenation of the character and the number marking the count of the characters (length of the run). For example, to compress the string `\"aabccc\"` we replace `\"aa\"` by `\"a2\"` and replace `\"ccc\"` by `\"c3\"`. Thus the compressed string becomes `\"a2bc3\"`.\n\nNotice that in this problem, we are not adding `'1'` after single characters.\n\nGiven a string `s` and an integer `k`. You need to delete **at most** `k` characters from `s` such that the run-length encoded version of `s` has minimum length.\n\nFind the *minimum length of the run-length encoded version of* `s` *after deleting at most* `k` *characters*.\n\n**Example 1:**\n\n```\nInput: s = \"aaabcccd\", k = 2\nOutput: 4\nExplanation:Compressing s without deleting anything will give us \"a3bc3d\" of length 6. \nDeleting any of the characters 'a' or 'c' would at most decrease the length of the compressed string to 5, \nfor instance delete 2 'a' then we will have s = \"abcccd\" which compressed is abc3d. \nTherefore, the optimal way is to delete 'b' and 'd', \nthen the compressed version of s will be \"a3c3\" of length 4.\n```\n\n**Example 2:**\n\n```\nInput: s = \"aabbaa\", k = 2\nOutput: 2\nExplanation:If we delete both 'b' characters, the resulting compressed string would be \"a4\" of length 2.\n\n```\n\n**Example 3:**\n\n```\nInput: s = \"aaaaaaaaaaa\", k = 0\nOutput: 3\nExplanation:Since k is zero, we cannot delete anything. The compressed string is \"a11\" of length 3.\n\n```\n\n**Constraints:**\n\n- `1 \u003c= s.length \u003c= 100`\n- `0 \u003c= k \u003c= s.length`\n- `s` contains only lowercase English letters.\n\n## Solution\n\nUsing **DFS** to get the min compressed string length.\n\n$dp[i][k]$ can not represent the min length for `s[0:i]` with deleting at most k, because it does not show which chars we delete in `s[0:i]`\n\nIt needs four parameters to determine one state: `i`, `prev`, `prev_count`, `k`\n\nFor each incoming char, we have two choice:\n\n- Delete\n    - if k is not enough to delete, the result is inf means not a valid result.\n    - otherwise, continue until we iterate all chars in s\n- Keep\n    - if prev  == s[i], we merge the incoming char to our last part, check the prev_count to determine the compressed length: ‘’ → ‘a’, ‘a’→’a2’, ‘a9’ → ‘a10’, ‘a99’ → ‘a100’, the max of s is 100, so don’t worry about ‘a999’\n    - If prev ≠ s[i], we already compute the compressed length of the last part by +1 to $keep$ in iterations, set the new char to $prev$ and set the count as 1.\n\nWhat we need to do is return the min of keep and delete, and the dfs will lead the min length of s with at most k deletion.\n\n```python\nclass Solution:\n    def getLengthOfOptimalCompression(self, s: str, k: int) -> int:\n        n = len(s)\n        memo = defaultdict(int)\n        \n        '''\n        The compressed string length for s[0:i] with deleting at most k chars\n        prev: last character\n        prev_count: the count of last character\n        prev and prev_count can decide the compressed string length if we choose want to keep the coming char or delete it.\n        '''\n        def helper(i, prev, prev_count, k):\n            # invalid k\n            if(k\u003c0):\n                return math.inf\n            if(i==n):\n                return 0\n            # in memeo\n            if((i,prev, prev_count, k) in memo):\n                return memo[(i,prev, prev_count, k)]\n            # if choose to delete the next char, k-=1 and i+1, prev and prev_count won't change\n            delete = helper(i+1, prev, prev_count, k-1)\n            # print(f'delete {s[i]}: {s[0:i]}, k:{k} {delete}')\n            \n            # keep it for the same next char\n            if(prev == s[i]):\n                keep = helper(i+1, prev, prev_count+1,k)\n                # keep one more same char will lead one more length in compressed string, like a -> aa (a->a2), aaaaaaaaa -> aaaaaaaaaa (a9 -> a10)\n                # under this situation, the length needs to be added by 1\n                if(prev_count in [1, 9, 99]):\n                    keep += 1\n            else:\n                # the next char is not as same as the previous one\n                # set new prev and prev_count for this, and add 1 on length (for this new char)\n                keep = helper(i+1, s[i], 1, k) + 1\n            # print(f'keep {s[i]}: {s[0:i]}, k:{k}, {keep}')\n            # store memo\n            memo[(i,prev, prev_count, k)] = min(keep, delete)\n            # print(f'set dp {(i,prev, prev_count, k)}, {memo[(i,prev, prev_count, k)]}')\n            return memo[(i,prev, prev_count, k)]\n\n        return helper(0, \"\", 0, k)\n```","noIndex":false}</script></body></html>

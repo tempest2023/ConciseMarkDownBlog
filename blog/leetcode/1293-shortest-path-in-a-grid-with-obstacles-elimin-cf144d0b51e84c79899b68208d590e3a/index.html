@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>1293. Shortest Path in a Grid with Obstacles Elimination | Tempest's Blog</title><meta name="description" content="Shortest Path in a Grid with Obstacles Elimination - LeetCode"><meta name="author" content="Tao Ren (Tempest)"><meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="https://tempest.fun/blog/leetcode/1293-shortest-path-in-a-grid-with-obstacles-elimin-cf144d0b51e84c79899b68208d590e3a/"><link rel="icon" type="image/png" sizes="256x256" href="/assets/agent-avatar/idle.png"><link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"><meta property="og:type" content="article"><meta property="og:title" content="1293. Shortest Path in a Grid with Obstacles Elimination | Tempest's Blog"><meta property="og:description" content="Shortest Path in a Grid with Obstacles Elimination - LeetCode"><meta property="og:url" content="https://tempest.fun/blog/leetcode/1293-shortest-path-in-a-grid-with-obstacles-elimin-cf144d0b51e84c79899b68208d590e3a/"><meta property="og:image" content="https://tempest.fun/logo512.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="1293. Shortest Path in a Grid with Obstacles Elimination | Tempest's Blog"><meta name="twitter:description" content="Shortest Path in a Grid with Obstacles Elimination - LeetCode"><meta name="twitter:image" content="https://tempest.fun/logo512.png"><script id="seo-structured-data" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://tempest.fun/#person","name":"Tao Ren","alternateName":"Tempest","url":"https://tempest.fun","sameAs":["https://github.com/tempest2023","https://www.linkedin.com/in/taoren-pitt/"]},{"@type":"BlogPosting","@id":"https://tempest.fun/blog/leetcode/1293-shortest-path-in-a-grid-with-obstacles-elimin-cf144d0b51e84c79899b68208d590e3a/#page","url":"https://tempest.fun/blog/leetcode/1293-shortest-path-in-a-grid-with-obstacles-elimin-cf144d0b51e84c79899b68208d590e3a/","name":"1293. Shortest Path in a Grid with Obstacles Elimination","headline":"1293. Shortest Path in a Grid with Obstacles Elimination","description":"Shortest Path in a Grid with Obstacles Elimination - LeetCode","author":{"@id":"https://tempest.fun/#person"},"datePublished":"2022-10-31T20:27:15-04:00","dateModified":"2022-10-31T20:27:15-04:00","inLanguage":"en"}]}</script><script defer="defer" src="/static/js/main.1f37b029.js"></script><link href="/static/css/main.2a4a268b.css" rel="stylesheet"><noscript><style>.site-nav{display:flex;position:static;flex-wrap:wrap}.site-header{flex-wrap:wrap}.header-controls{flex-wrap:wrap}</style></noscript></head><body><div id="root"><div class="page"><a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><a class="site-brand" href="/">Tempest's blog</a><nav class="site-nav" aria-label="Main navigation"><a href="/">About</a><a href="/work/">Work &amp; Research</a><a href="/writing/">Writing</a><a href="/projects/">Projects</a><a href="/links/">Links</a><a href="https://3d.tempest.fun/">3D Portfolio</a></nav></header><main id="main-content" class="main-container"><article class="article-content"><div class="article-meta"><span>Tao Ren (Tempest)</span><span>Published <time datetime="2022-10-31T20:27:15-04:00">2022-10-31</time></span><span>Updated <time datetime="2022-10-31T20:27:15-04:00">2022-10-31</time></span><span>1 min read</span></div><h1 id="1293-shortest-path-in-a-grid-with-obstacles-elimination">1293. Shortest Path in a Grid with Obstacles Elimination</h1>
+<p><a href="https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/">Shortest Path in a Grid with Obstacles Elimination - LeetCode</a></p>
+<p>You are given an <code>m x n</code> integer matrix <code>grid</code> where each cell is either <code>0</code> (empty) or <code>1</code> (obstacle). You can move up, down, left, or right from and to an empty cell in <strong>one step</strong>.</p>
+<p>Return <em>the minimum number of <strong>steps</strong> to walk from the upper left corner</em> <code>(0, 0)</code> <em>to the lower right corner</em> <code>(m - 1, n - 1)</code> <em>given that you can eliminate <strong>at most</strong></em> <code>k</code> <em>obstacles</em>. If it is not possible to find such walk return <code>-1</code>.</p>
+<h3 id="example">Example</h3>
+<pre><code>Input: grid = [[0,0,0],[1,1,0],[0,0,0],[0,1,1],[0,0,0]], k = 1
+Output: 6
+Explanation:
+The shortest path without eliminating any obstacle is 10.
+The shortest path with one obstacle elimination at position (3,2) is 6. Such path is (0,0) -&gt; (0,1) -&gt; (0,2) -&gt; (1,2) -&gt; (2,2) -&gt;(3,2) -&gt; (4,2).
+</code></pre>
+<p><img src="https://assets.leetcode.com/uploads/2021/09/30/short1-grid.jpg" alt="https://assets.leetcode.com/uploads/2021/09/30/short1-grid.jpg" loading="lazy" decoding="async"/></p>
+<h2 id="solution">Solution</h2>
+<p>Use bfs to explore from <code>(0,0)</code> with elimination <code>k</code>, which is state <code>(0,0,k)</code></p>
+<p>If the <code>grid[x][y]</code> is obstacle, eliminate it and push a new state to stack <code>(x, y, k-1)</code> if <code>k&gt;0</code></p>
+<p>If it is a cell, push a new state to stack <code>(x, y, k)</code></p>
+<p>Maintain a visited set to record the visited sate <code>(i, j, k)</code></p>
+<p>If the <code>x,y</code> hits the destination <code>(m-1, n-1)</code>, return <code>depth</code>.</p>
+<pre><code class="language-python">class Solution:
+    def shortestPath(self, grid: List[List[int]], k: int) -&gt; int:
+        directions = [(0,1),(-1,0),(1,0),(0,-1)]
+        elimination = k
+        m = len(grid)
+        n = len(grid[0])
+        q = [(0,0,elimination)]
+        new_q = []
+        visited = set()
+        if(m+n-1&lt;=k):
+            return m+n-2
+        depth = 1
+        while(q):
+            (i,j,k) = q.pop()
+            for dx,dy in directions:
+                x = i+dx
+                y = j+dy
+                if(x&lt;0 or x&gt;=m or y&lt;0 or y&gt;=n):
+                    continue
+                if(grid[x][y] == 1):
+                    if(k&gt;0 and (x,y,k-1) not in visited):
+                        visited.add((x,y,k-1))
+                        new_q.append((x,y,k-1))
+                else:
+                    if((x,y,k) not in visited):
+                        if(x==m-1 and y == n-1):
+                            return depth
+                        visited.add((x,y,k))
+                        new_q.append((x,y,k))
+            if(not q):
+                depth += 1
+                q = new_q
+                new_q = []
+
+        return -1
+</code></pre></article></main><footer class="static-footer"><a href="mailto:tar118@pitt.edu">Email</a><a href="https://drive.google.com/file/d/1aNJ-NPuk71x4xQgRo5Es2WPyNZA8kbCb/view?usp=sharing">Résumé</a><a href="https://github.com/tempest2023">GitHub</a><a href="https://www.linkedin.com/in/taoren-pitt/">LinkedIn</a><div class="static-colophon"><p>A small space for unfinished thoughts and things worth sharing.</p><span>— Tempest</span></div><nav class="static-footer-links" aria-label="More links"><a href="https://github.com/tempest2023/ConciseMarkDownBlog">Made of Markdown ↗</a><a href="/rss.xml">RSS</a></nav><p>© 2026 Tempest</p></footer></div></div><script id="blog-bootstrap" type="application/json">{"page":"Blogs/Leetcode/1293_Shortest_Path_in_a_Grid_with_Obstacles_Elimin_cf144d0b51e84c79899b68208d590e3a","markdown":"# 1293. Shortest Path in a Grid with Obstacles Elimination\n\n[Shortest Path in a Grid with Obstacles Elimination - LeetCode](https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination/)\n\nYou are given an `m x n` integer matrix `grid` where each cell is either `0` (empty) or `1` (obstacle). You can move up, down, left, or right from and to an empty cell in **one step**.\n\nReturn *the minimum number of **steps** to walk from the upper left corner* `(0, 0)` *to the lower right corner* `(m - 1, n - 1)` *given that you can eliminate **at most*** `k` *obstacles*. If it is not possible to find such walk return `-1`.\n\n### Example\n\n```\nInput: grid = [[0,0,0],[1,1,0],[0,0,0],[0,1,1],[0,0,0]], k = 1\nOutput: 6\nExplanation:\nThe shortest path without eliminating any obstacle is 10.\nThe shortest path with one obstacle elimination at position (3,2) is 6. Such path is (0,0) -> (0,1) -> (0,2) -> (1,2) -> (2,2) ->(3,2) -> (4,2).\n```\n\n![https://assets.leetcode.com/uploads/2021/09/30/short1-grid.jpg](https://assets.leetcode.com/uploads/2021/09/30/short1-grid.jpg)\n\n## Solution\n\nUse bfs to explore from `(0,0)` with elimination `k`, which is state `(0,0,k)`\n\nIf the `grid[x][y]` is obstacle, eliminate it and push a new state to stack `(x, y, k-1)` if `k>0`\n\nIf it is a cell, push a new state to stack `(x, y, k)`\n\nMaintain a visited set to record the visited sate `(i, j, k)`\n\nIf the `x,y` hits the destination `(m-1, n-1)`, return `depth`.\n\n```python\nclass Solution:\n    def shortestPath(self, grid: List[List[int]], k: int) -> int:\n        directions = [(0,1),(-1,0),(1,0),(0,-1)]\n        elimination = k\n        m = len(grid)\n        n = len(grid[0])\n        q = [(0,0,elimination)]\n        new_q = []\n        visited = set()\n        if(m+n-1\u003c=k):\n            return m+n-2\n        depth = 1\n        while(q):\n            (i,j,k) = q.pop()\n            for dx,dy in directions:\n                x = i+dx\n                y = j+dy\n                if(x\u003c0 or x>=m or y\u003c0 or y>=n):\n                    continue\n                if(grid[x][y] == 1):\n                    if(k>0 and (x,y,k-1) not in visited):\n                        visited.add((x,y,k-1))\n                        new_q.append((x,y,k-1))\n                else:\n                    if((x,y,k) not in visited):\n                        if(x==m-1 and y == n-1):\n                            return depth\n                        visited.add((x,y,k))\n                        new_q.append((x,y,k))\n            if(not q):\n                depth += 1\n                q = new_q\n                new_q = []\n\n        return -1\n```\n","noIndex":false}</script></body></html>

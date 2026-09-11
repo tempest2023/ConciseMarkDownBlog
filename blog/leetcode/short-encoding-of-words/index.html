@@ -1,0 +1,73 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>820. Short Encoding of Words | Tempest's Blog</title><meta name="description" content="A valid encoding of an array of words is any reference string s and array of indices indices such that:"><meta name="author" content="Tao Ren (Tempest)"><meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="https://tempest.fun/blog/leetcode/short-encoding-of-words/"><link rel="icon" type="image/png" sizes="256x256" href="/assets/agent-avatar/idle.png"><link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"><meta property="og:type" content="article"><meta property="og:title" content="820. Short Encoding of Words | Tempest's Blog"><meta property="og:description" content="A valid encoding of an array of words is any reference string s and array of indices indices such that:"><meta property="og:url" content="https://tempest.fun/blog/leetcode/short-encoding-of-words/"><meta property="og:image" content="https://tempest.fun/logo512.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="820. Short Encoding of Words | Tempest's Blog"><meta name="twitter:description" content="A valid encoding of an array of words is any reference string s and array of indices indices such that:"><meta name="twitter:image" content="https://tempest.fun/logo512.png"><script id="seo-structured-data" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://tempest.fun/#person","name":"Tao Ren","alternateName":"Tempest","url":"https://tempest.fun","sameAs":["https://github.com/tempest2023","https://www.linkedin.com/in/taoren-pitt/"]},{"@type":"BlogPosting","@id":"https://tempest.fun/blog/leetcode/short-encoding-of-words/#page","url":"https://tempest.fun/blog/leetcode/short-encoding-of-words/","name":"820. Short Encoding of Words","headline":"820. Short Encoding of Words","description":"A valid encoding of an array of words is any reference string s and array of indices indices such that:","author":{"@id":"https://tempest.fun/#person"},"datePublished":"2022-09-12T20:48:47-04:00","dateModified":"2022-09-12T20:48:47-04:00","inLanguage":"en"}]}</script><script defer="defer" src="/static/js/main.1f37b029.js"></script><link href="/static/css/main.2a4a268b.css" rel="stylesheet"><noscript><style>.site-nav{display:flex;position:static;flex-wrap:wrap}.site-header{flex-wrap:wrap}.header-controls{flex-wrap:wrap}</style></noscript></head><body><div id="root"><div class="page"><a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><a class="site-brand" href="/">Tempest's blog</a><nav class="site-nav" aria-label="Main navigation"><a href="/">About</a><a href="/work/">Work &amp; Research</a><a href="/writing/">Writing</a><a href="/projects/">Projects</a><a href="/links/">Links</a><a href="https://3d.tempest.fun/">3D Portfolio</a></nav></header><main id="main-content" class="main-container"><article class="article-content"><div class="article-meta"><span>Tao Ren (Tempest)</span><span>Published <time datetime="2022-09-12T20:48:47-04:00">2022-09-12</time></span><span>Updated <time datetime="2022-09-12T20:48:47-04:00">2022-09-12</time></span><span>2 min read</span></div><h1>820. Short Encoding of Words</h1><h3 id="820-short-encoding-of-words"><a href="https://leetcode.com/problems/short-encoding-of-words/">820. Short Encoding of Words</a></h3>
+<p>A valid encoding of an array of words is any reference string s and array of indices indices such that:</p>
+<ul>
+<li><code>words.length == indices.length</code></li>
+<li>The reference string s ends with the &#x27;#&#x27; character.</li>
+<li>For each index indices[i], the substring of s starting from indices[i] and up to (but not including) the next &#x27;#&#x27; character is equal to words[i].</li>
+</ul>
+<p>Given an array of words, return the length of the shortest reference string s possible of any valid encoding of words.</p>
+<h4 id="example-1">Example 1:</h4>
+<pre><code class="language-shell">Input: words = [&quot;time&quot;, &quot;me&quot;, &quot;bell&quot;]
+Output: 10
+Explanation: A valid encoding would be s = &quot;time#bell#&quot; and indices = [0, 2, 5].
+words[0] = &quot;time&quot;, the substring of s starting from indices[0] = 0 to the next &#x27;#&#x27; is underlined in &quot;time#bell#&quot;
+words[1] = &quot;me&quot;, the substring of s starting from indices[1] = 2 to the next &#x27;#&#x27; is underlined in &quot;time#bell#&quot;
+words[2] = &quot;bell&quot;, the substring of s starting from indices[2] = 5 to the next &#x27;#&#x27; is underlined in &quot;time#bell#&quot;
+</code></pre>
+<h4 id="example-2">Example 2:</h4>
+<pre><code class="language-shell">Input: words = [&quot;t&quot;]
+Output: 2
+Explanation: A valid encoding would be s = &quot;t#&quot; and indices = [0].
+</code></pre>
+<h4 id="constraints">Constraints:</h4>
+<ul>
+<li>1 &lt;= words.length &lt;= 2000</li>
+<li>1 &lt;= words[i].length &lt;= 7</li>
+<li>words[i] consists of only lowercase letters.</li>
+</ul>
+<hr/>
+<h3 id="solution">Solution</h3>
+<p>We can see that the shortest reference string is because there are some words can be included by other words.</p>
+<p>For example, we can get the shortest reference string for [&quot;time&quot;,&quot;bell&quot;] which is &quot;time#bell#&quot;.</p>
+<p>The index array doesn&#x27;t matter.</p>
+<p>If there is a new word &quot;me&quot;, the reference string is still &quot;time#bell#&quot; because obviously &quot;time&quot; include &quot;me&quot;.</p>
+<p>If there is a new word &quot;tell&quot;, the reference string needs to be changed to &quot;time#bell#tell#&quot; because &quot;bell&quot; does not include &quot;tell&quot;.</p>
+<p>So what we need to do is generating a hashmap based on all words&#x27; suffix.
+For [&quot;time&quot;, &quot;me&quot;, &quot;bell&quot;], we generate a hashmap like this</p>
+<pre><code class="language-javascript">{
+//  &quot;time&quot;: 1, don&#x27;t add this
+	&quot;ime&quot;: 1,
+	&quot;me&quot;: 1,
+	&quot;e&quot;: 1,
+//  &quot;bell&quot;:1, don&#x27;t add this
+	&quot;ell&quot;: 1,
+	&quot;ll&quot;: 1,
+	&quot;l&quot;: 1,
+}
+</code></pre>
+<p>We won&#x27;t add these entire words to this hashmap, so that when we find word[i] not in the hashmap, we can add this word[i] to reference string. And if we find a word[i] is in the hashmap, which means it is included by other word, which means we don&#x27;t need to add reference string for it.</p>
+<p>By the way, we need to remove duplicates words. Or after adding word[i] to reference string, we need to add this word[i] to hashmap to avoid dupliciates.</p>
+<pre><code class="language-python">class Solution:
+    def minimumLengthEncoding(self, words: List[str]) -&gt; int:
+        words = list(set(words))
+        words.sort(key=len, reverse=True)
+        hashmap = defaultdict(bool)
+        # for each word, generate suffix hashmap, but don&#x27;t include the entire word
+        # so that if the entire word occurs in the hashmap, we know it is included by other words.
+        for word in words:
+            for j in range(1, len(word)):
+                key = word[j:]+&#x27;#&#x27;
+                hashmap[key] = True
+        
+        s = &quot;&quot;
+        # iterate all words to generate reference string
+        for word in words:
+            key = word+&quot;#&quot;
+            # its ref str is included by other word
+            if(key in hashmap):
+                continue
+            s+=word+&quot;#&quot;
+        
+        return len(s)
+</code></pre>
+<p>Original Link: <a href="https://leetcode.com/problems/short-encoding-of-words/discuss/2176545/python-use-suffix-hashmap-to-skip-extra-ref-faster-than-90">820. Short Encoding of Words</a></p></article></main><footer class="static-footer"><a href="mailto:tar118@pitt.edu">Email</a><a href="https://drive.google.com/file/d/1aNJ-NPuk71x4xQgRo5Es2WPyNZA8kbCb/view?usp=sharing">Résumé</a><a href="https://github.com/tempest2023">GitHub</a><a href="https://www.linkedin.com/in/taoren-pitt/">LinkedIn</a><div class="static-colophon"><p>A small space for unfinished thoughts and things worth sharing.</p><span>— Tempest</span></div><nav class="static-footer-links" aria-label="More links"><a href="https://github.com/tempest2023/ConciseMarkDownBlog">Made of Markdown ↗</a><a href="/rss.xml">RSS</a></nav><p>© 2026 Tempest</p></footer></div></div><script id="blog-bootstrap" type="application/json">{"page":"Blogs/Leetcode/Short_Encoding_of_Words","markdown":"### [820. Short Encoding of Words](https://leetcode.com/problems/short-encoding-of-words/)\n\nA valid encoding of an array of words is any reference string s and array of indices indices such that:\n\n- `words.length == indices.length`\n- The reference string s ends with the '#' character.\n- For each index indices[i], the substring of s starting from indices[i] and up to (but not including) the next '#' character is equal to words[i].\n\nGiven an array of words, return the length of the shortest reference string s possible of any valid encoding of words.\n\n#### Example 1:\n```shell\nInput: words = [\"time\", \"me\", \"bell\"]\nOutput: 10\nExplanation: A valid encoding would be s = \"time#bell#\" and indices = [0, 2, 5].\nwords[0] = \"time\", the substring of s starting from indices[0] = 0 to the next '#' is underlined in \"time#bell#\"\nwords[1] = \"me\", the substring of s starting from indices[1] = 2 to the next '#' is underlined in \"time#bell#\"\nwords[2] = \"bell\", the substring of s starting from indices[2] = 5 to the next '#' is underlined in \"time#bell#\"\n```\n\n#### Example 2:\n```shell\nInput: words = [\"t\"]\nOutput: 2\nExplanation: A valid encoding would be s = \"t#\" and indices = [0].\n```\n\n#### Constraints:\n\n- 1 \u003c= words.length \u003c= 2000\n- 1 \u003c= words[i].length \u003c= 7\n- words[i] consists of only lowercase letters.\n\n--------------\n\n### Solution\n\nWe can see that the shortest reference string is because there are some words can be included by other words.\n\nFor example, we can get the shortest reference string for [\"time\",\"bell\"] which is \"time#bell#\".\n\nThe index array doesn't matter.\n\nIf there is a new word \"me\", the reference string is still \"time#bell#\" because obviously \"time\" include \"me\".\n\nIf there is a new word \"tell\", the reference string needs to be changed to \"time#bell#tell#\" because \"bell\" does not include \"tell\".\n\nSo what we need to do is generating a hashmap based on all words' suffix.\nFor [\"time\", \"me\", \"bell\"], we generate a hashmap like this\n\n```javascript\n{\n//  \"time\": 1, don't add this\n\t\"ime\": 1,\n\t\"me\": 1,\n\t\"e\": 1,\n//  \"bell\":1, don't add this\n\t\"ell\": 1,\n\t\"ll\": 1,\n\t\"l\": 1,\n}\n```\nWe won't add these entire words to this hashmap, so that when we find word[i] not in the hashmap, we can add this word[i] to reference string. And if we find a word[i] is in the hashmap, which means it is included by other word, which means we don't need to add reference string for it.\n\nBy the way, we need to remove duplicates words. Or after adding word[i] to reference string, we need to add this word[i] to hashmap to avoid dupliciates.\n\n```python\nclass Solution:\n    def minimumLengthEncoding(self, words: List[str]) -> int:\n        words = list(set(words))\n        words.sort(key=len, reverse=True)\n        hashmap = defaultdict(bool)\n        # for each word, generate suffix hashmap, but don't include the entire word\n        # so that if the entire word occurs in the hashmap, we know it is included by other words.\n        for word in words:\n            for j in range(1, len(word)):\n                key = word[j:]+'#'\n                hashmap[key] = True\n        \n        s = \"\"\n        # iterate all words to generate reference string\n        for word in words:\n            key = word+\"#\"\n            # its ref str is included by other word\n            if(key in hashmap):\n                continue\n            s+=word+\"#\"\n        \n        return len(s)\n```\n\nOriginal Link: [820. Short Encoding of Words](https://leetcode.com/problems/short-encoding-of-words/discuss/2176545/python-use-suffix-hashmap-to-skip-extra-ref-faster-than-90)","noIndex":false}</script></body></html>

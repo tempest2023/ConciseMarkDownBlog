@@ -2,5 +2,14 @@ User-agent: *
 Allow: /
 Disallow: /?page=config
 Disallow: /?page=Markdown
+Disallow: /config/
+Disallow: /markdown/
+Disallow: /api/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /config/
+Disallow: /markdown/
+Disallow: /api/
 
 Sitemap: https://tempest.fun/sitemap.xml

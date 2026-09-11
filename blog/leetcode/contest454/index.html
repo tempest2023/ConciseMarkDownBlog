@@ -1,0 +1,286 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Contest 454 | Tempest's Blog</title><meta name="description" content="A special triplet is defined as a triplet of indices (i, j, k) such that:"><meta name="author" content="Tao Ren (Tempest)"><meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="https://tempest.fun/blog/leetcode/contest454/"><link rel="icon" type="image/png" sizes="256x256" href="/assets/agent-avatar/idle.png"><link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"><meta property="og:type" content="article"><meta property="og:title" content="Contest 454 | Tempest's Blog"><meta property="og:description" content="A special triplet is defined as a triplet of indices (i, j, k) such that:"><meta property="og:url" content="https://tempest.fun/blog/leetcode/contest454/"><meta property="og:image" content="https://tempest.fun/logo512.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Contest 454 | Tempest's Blog"><meta name="twitter:description" content="A special triplet is defined as a triplet of indices (i, j, k) such that:"><meta name="twitter:image" content="https://tempest.fun/logo512.png"><script id="seo-structured-data" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://tempest.fun/#person","name":"Tao Ren","alternateName":"Tempest","url":"https://tempest.fun","sameAs":["https://github.com/tempest2023","https://www.linkedin.com/in/taoren-pitt/"]},{"@type":"BlogPosting","@id":"https://tempest.fun/blog/leetcode/contest454/#page","url":"https://tempest.fun/blog/leetcode/contest454/","name":"Contest 454","headline":"Contest 454","description":"A special triplet is defined as a triplet of indices (i, j, k) such that:","author":{"@id":"https://tempest.fun/#person"},"datePublished":"2025-06-16T20:33:27-07:00","dateModified":"2025-06-17T01:28:08-07:00","inLanguage":"en"}]}</script><script defer="defer" src="/static/js/main.1f37b029.js"></script><link href="/static/css/main.2a4a268b.css" rel="stylesheet"><noscript><style>.site-nav{display:flex;position:static;flex-wrap:wrap}.site-header{flex-wrap:wrap}.header-controls{flex-wrap:wrap}</style></noscript></head><body><div id="root"><div class="page"><a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><a class="site-brand" href="/">Tempest's blog</a><nav class="site-nav" aria-label="Main navigation"><a href="/">About</a><a href="/work/">Work &amp; Research</a><a href="/writing/">Writing</a><a href="/projects/">Projects</a><a href="/links/">Links</a><a href="https://3d.tempest.fun/">3D Portfolio</a></nav></header><main id="main-content" class="main-container"><article class="article-content"><div class="article-meta"><span>Tao Ren (Tempest)</span><span>Published <time datetime="2025-06-16T20:33:27-07:00">2025-06-16</time></span><span>Updated <time datetime="2025-06-17T01:28:08-07:00">2025-06-17</time></span><span>2 min read</span></div><h2 id="contest-454">Contest 454</h2>
+<blockquote>
+<p>Date: Jun 14-15 2025</p>
+</blockquote>
+<h1 id="q1">Q1</h1>
+<p>Skip</p>
+<h2 id="q2">Q2</h2>
+<p><a href="https://leetcode.com/problems/count-special-triplets/description/">https://leetcode.com/problems/count-special-triplets/description/</a></p>
+<h2 id="3583-count-special-triplets">3583. Count Special Triplets</h2>
+<p>You are given an integer array nums.</p>
+<p>A special triplet is defined as a triplet of indices <code>(i, j, k)</code> such that:</p>
+<p><code>0 &lt;= i &lt; j &lt; k &lt; n</code>, where <code>n = nums.length</code>
+<code>nums[i] == nums[j] * 2</code></p>
+<p><code>nums[k] == nums[j] * 2</code>
+Return the total number of special triplets in the array.</p>
+<p>Since the answer may be large, return it modulo <code>10**9 + 7</code>.</p>
+<p>Example 1:</p>
+<p>Input: nums = [6,3,6]</p>
+<p>Output: 1</p>
+<p>Explanation:</p>
+<p>The only special triplet is (i, j, k) = (0, 1, 2), where:</p>
+<p>nums[0] = 6, nums[1] = 3, nums[2] = 6
+nums[0] = nums[1] * 2 = 3 * 2 = 6
+nums[2] = nums[1] * 2 = 3 * 2 = 6
+Example 2:</p>
+<p>Input: nums = [0,1,0,0]</p>
+<p>Output: 1</p>
+<p>Explanation:</p>
+<p>The only special triplet is (i, j, k) = (0, 2, 3), where:</p>
+<p>nums[0] = 0, nums[2] = 0, nums[3] = 0
+nums[0] = nums[2] * 2 = 0 * 2 = 0
+nums[3] = nums[2] * 2 = 0 * 2 = 0
+Example 3:</p>
+<p>Input: nums = [8,4,2,8,4]</p>
+<p>Output: 2</p>
+<p>Explanation:</p>
+<p>There are exactly two special triplets:</p>
+<p>(i, j, k) = (0, 1, 3)
+nums[0] = 8, nums[1] = 4, nums[3] = 8
+nums[0] = nums[1] * 2 = 4 * 2 = 8
+nums[3] = nums[1] * 2 = 4 * 2 = 8
+(i, j, k) = (1, 2, 4)
+nums[1] = 4, nums[2] = 2, nums[4] = 4
+nums[1] = nums[2] * 2 = 2 * 2 = 4
+nums[4] = nums[2] * 2 = 2 * 2 = 4</p>
+<p>Constraints:</p>
+<p><code>3 &lt;= n == nums.length &lt;= 10**5</code></p>
+<p><code>0 &lt;= nums[i] &lt;= 10**5</code></p>
+<h2 id="key-thought">Key Thought</h2>
+<p>Two passes
+If we use brute force, it definitely TLE. In brute force method, for each i, we iterate the array to find possible j and iterate the remaining array to find the possible k.</p>
+<pre><code class="language-python3">from collections import defaultdict, Counter
+from typing import List
+class Solution:
+    def bruteforce(self, nums: List[int]) -&gt; int:
+        n = len(nums)
+        res = set()
+        li = defaultdict(tuple)
+        for i in range(n):
+            for j in range(i+1, n):
+                for k in range(j+1, n):
+                    if nums[i] == nums[k] and nums[j] * 2 == nums[k]:
+                        res.add((i, j, k))
+                        li[(i,j,k)] = (nums[i], nums[j], nums[k])
+        # for item in res:
+        #     print(f&quot;{item} -&gt; {li[item]}&quot;)
+        return len(res)
+</code></pre>
+<p>So we need to optimize our methods. A simple thought is use Hashtable/Counter. Because the <code>nums[i] = nums[k] = 2*nums[j]</code>, we can make a Counter and iterate nums, for each j and nums[j], we access the Counter with <code>2*nums[j]</code> to find possible i and k.
+But here is another issue, we ask <code>i&lt;j&lt;k</code>, using the Counter we can not prove that, unless we use a dict map to record the number of indices. So that in indices of <code>2*nums[j]</code>, we can search the indices smaller than j and greater than j, to get the count of i and k.
+It&#x27;s complex, and we don&#x27;t care about the exact number of any i or k. We only need the numbers of i or k and get their product to get the result.</p>
+<p>Here is the optimization method: Two Passes</p>
+<p>We iterate the nums twice, back and forth. In interations, we build the counter.
+When we go from left to right, we build a Counter and this Counter shows possible i for each nums[j]. Because we cannot count any indices greater than j when go from left to right.
+When we go from right to left, we build a Counter and this Counter shows possible k for each nums[j]. In this case, we cannot count any indices smaller than j when go right to left.</p>
+<pre><code class="language-python3">from collections import defaultdict, Counter
+from typing import List
+class Solution:
+    def specialTriplets(self, nums: List[int]) -&gt; int:
+        c = defaultdict(int)
+        n = len(nums)
+        res = 0
+        potential_i = [0]*n
+        potential_k = [0]*n
+        for j in range(n):
+            # get valid potential_i
+            potential_i[j] = c[nums[j]*2]
+            c[nums[j]] += 1
+        c = None
+        c = defaultdict(int)
+        for j in range(n-1, -1, -1):
+            # get valid potential_k
+            potential_k[j] = c[nums[j]*2]
+            c[nums[j]] += 1
+        for j in range(n):
+            v = (potential_i[j]*potential_k[j]) % 1000000007
+            res += v
+        return res
+</code></pre>
+<h2 id="q3">Q3</h2>
+<p><a href="https://leetcode.com/problems/maximum-product-of-first-and-last-elements-of-a-subsequence/">https://leetcode.com/problems/maximum-product-of-first-and-last-elements-of-a-subsequence/</a></p>
+<h2 id="3584-maximum-product-of-first-and-last-elements-of-a-subsequence">3584. Maximum Product of First and Last Elements of a Subsequence</h2>
+<p>You are given an integer array nums and an integer m.</p>
+<p>Return the maximum product of the first and last elements of any subsequence of nums of size m.</p>
+<p>Example 1:</p>
+<p>Input: nums = [-1,-9,2,3,-2,-3,1], m = 1</p>
+<p>Output: 81</p>
+<p>Explanation:</p>
+<p>The subsequence [-9] has the largest product of the first and last elements: -9 * -9 = 81. Therefore, the answer is 81.</p>
+<p>Example 2:</p>
+<p>Input: nums = [1,3,-5,5,6,-4], m = 3</p>
+<p>Output: 20</p>
+<p>Explanation:</p>
+<p>The subsequence [-5, 6, -4] has the largest product of the first and last elements.</p>
+<p>Example 3:</p>
+<p>Input: nums = [2,-1,2,-6,5,2,-5,7], m = 2</p>
+<p>Output: 35</p>
+<p>Explanation:</p>
+<p>The subsequence [5, 7] has the largest product of the first and last elements.</p>
+<p>Constraints:</p>
+<p><code>1 &lt;= nums.length &lt;= 10**5</code></p>
+<p><code>-10**5 &lt;= nums[i] &lt;= 10**5</code></p>
+<p><code>1 &lt;= m &lt;= nums.length</code></p>
+<h3 id="key-thought-1">Key Thought</h3>
+<p>For this question, we notices <code>j-i+1 &gt;=m, j&gt;=i+m-1</code>
+We only care about the first element and the last element. To find the max product of subseqence, we can use <strong>sliding window</strong>, iterate the array, for each last-element <code>j</code>, the possible first-element <code>i &lt;= j-m+1</code>. We can record the max nums[i], and only update nums[i] when we met a larger  first-element. Then we check the product for each <code>nums[j]*prev_max_nums_i</code> to update the res.
+Noticed that we have negative number in arrays, that&#x27;s why we need to store the min value to get the max product.</p>
+<h3 id="solution">Solution</h3>
+<pre><code class="language-python3">class Solution:
+    def maximumProduct(self, nums: List[int], m: int) -&gt; int:
+        # constarint: j - i + 1 &gt;= m, j &gt;= i+m-1
+        n = len(nums)
+        res = -inf
+        min_v = max_v = nums[0]
+        for j in range(m-1, n):
+            # for new first element in this subseq, use it to update min and max value to get potential better product
+            min_v = min(min_v, nums[j-m+1])
+            max_v = max(max_v, nums[j-m+1])
+            # update res, if the product with new last element and potential max(min) first element is larger
+            res = max(res, min_v*nums[j], max_v*nums[j])
+        return res
+</code></pre>
+<h2 id="q4">Q4</h2>
+<h2 id="3585-find-weighted-median-node-in-tree">3585. Find Weighted Median Node in Tree</h2>
+<p>You are given an integer n and an undirected, weighted tree rooted at node 0 with n nodes numbered from 0 to n - 1. This is represented by a 2D array edges of length n - 1, where edges[i] = [ui, vi, wi] indicates an edge from node ui to vi with weight wi.</p>
+<p>The weighted median node is defined as the first node x on the path from ui to vi such that the sum of edge weights from ui to x is greater than or equal to half of the total path weight.</p>
+<p>You are given a 2D integer array queries. For each queries[j] = [uj, vj], determine the weighted median node along the path from uj to vj.</p>
+<p>Return an array ans, where ans[j] is the node index of the weighted median for queries[j].</p>
+<p>Example 1:</p>
+<p>Input: n = 2, edges = [[0,1,7]], queries = [[1,0],[0,1]]</p>
+<p>Output: [0,1]</p>
+<p>Explanation:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Query</th><th>Path</th><th>Edge Weights</th><th>Total Path Weight</th><th>Half</th><th>Explanation</th><th>Answer</th></tr></thead><tbody><tr><td>[1, 0]</td><td>1 → 0</td><td>[7]</td><td>7</td><td>3.5</td><td>Sum from 1 → 0 = 7 &gt;= 3.5, median is node 0.</td><td>0</td></tr><tr><td>[0, 1]</td><td>0 → 1</td><td>[7]</td><td>7</td><td>3.5</td><td>Sum from 0 → 1 = 7 &gt;= 3.5, median is node 1.</td><td>1</td></tr></tbody></table>
+<p>Example 2:</p>
+<p>Input: n = 3, edges = [[0,1,2],[2,0,4]], queries = [[0,1],[2,0],[1,2]]</p>
+<p>Output: [1,0,2]</p>
+<p>Explanation:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Query</th><th>Path</th><th>Edge Weights</th><th>Total Path Weight</th><th>Half</th><th>Explanation</th><th>Answer</th></tr></thead><tbody><tr><td>[0, 1]</td><td>0 → 1</td><td>[2]</td><td>2</td><td>1</td><td>Sum from 0 → 1 = 2 &gt;= 1, median is node 1.</td><td>1</td></tr><tr><td>[2, 0]</td><td>2 → 0</td><td>[4]</td><td>4</td><td>2</td><td>Sum from 2 → 0 = 4 &gt;= 2, median is node 0.</td><td>0</td></tr><tr><td>[1, 2]</td><td>1 → 0 → 2</td><td>[2, 4]</td><td>6</td><td>3</td><td>Sum from 1 → 0 = 2 &lt; 3. Sum from 1 → 2 = 6 &gt;= 3, median is node 2.</td><td>2</td></tr></tbody></table>
+<p>Example 3:</p>
+<p>Input: n = 5, edges = [[0,1,2],[0,2,5],[1,3,1],[2,4,3]], queries = [[3,4],[1,2]]</p>
+<p>Output: [2,2]</p>
+<p>Explanation:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Query</th><th>Path</th><th>Edge Weights</th><th>Total Path Weight</th><th>Half</th><th>Explanation</th><th>Answer</th></tr></thead><tbody><tr><td>[3, 4]</td><td>3 → 1 → 0 → 2 → 4</td><td>[1, 2, 5, 3]</td><td>11</td><td>5.5</td><td>Sum from 3 → 1 = 1 &lt; 5.5. Sum from 3 → 0 = 1 + 2 = 3 &lt; 5.5. Sum from 3 → 2 = 1 + 2 + 5 = 8 &gt;= 5.5, median is node 2.</td><td>2</td></tr><tr><td>[1, 2]</td><td>1 → 0 → 2</td><td>[2, 5]</td><td>7</td><td>3.5</td><td>Sum from 1 → 0 = 2 &lt; 3.5. Sum from 1 → 2 = 2 + 5 = 7 &gt;= 3.5, median is node 2.</td><td>2</td></tr></tbody></table>
+<p>Constraints:</p>
+<p><code>2 &lt;= n &lt;= 10**5</code></p>
+<p>edges.length == n - 1
+edges[i] == [ui, vi, wi]
+0 &lt;= ui, vi &lt; n
+1 &lt;= wi &lt;= 109</p>
+<p><code>1 &lt;= queries.length &lt;= 10**5</code></p>
+<p>queries[j] == [uj, vj]
+0 &lt;= uj, vj &lt; n</p>
+<p>The input is generated such that edges represents a valid tree.</p>
+<h3 id="key-thoughts">Key Thoughts</h3>
+<p>We can use binary lifting to find the lowest common ancestor (LCA) of the two nodes u, v in the query.
+Using Dfs we can find the costs from root node 0 to every node x
+Total Path Cost = costs[u] + costs[v] - 2* costs[lca]. We can get half Path Cost
+If costs[u] &gt; costs[v], straightforward binary search between the depths of u and lca to find a node whose cost is greater than or equal to halfCost and move down away from LCA
+But if costs[u] &lt; costs[v], then find a node from v whose cost is less than or equal to halfCost and move up towards LCA</p>
+<h3 id="solution-1">Solution</h3>
+<p><a href="https://leetcode.com/problems/find-weighted-median-node-in-tree/solutions/6844956/python3-binary-lifting-binary-search-simple-o-n-log-n/">https://leetcode.com/problems/find-weighted-median-node-in-tree/solutions/6844956/python3-binary-lifting-binary-search-simple-o-n-log-n/</a></p></article></main><footer class="static-footer"><a href="mailto:tar118@pitt.edu">Email</a><a href="https://drive.google.com/file/d/1aNJ-NPuk71x4xQgRo5Es2WPyNZA8kbCb/view?usp=sharing">Résumé</a><a href="https://github.com/tempest2023">GitHub</a><a href="https://www.linkedin.com/in/taoren-pitt/">LinkedIn</a><div class="static-colophon"><p>A small space for unfinished thoughts and things worth sharing.</p><span>— Tempest</span></div><nav class="static-footer-links" aria-label="More links"><a href="https://github.com/tempest2023/ConciseMarkDownBlog">Made of Markdown ↗</a><a href="/rss.xml">RSS</a></nav><p>© 2026 Tempest</p></footer></div></div><script id="blog-bootstrap" type="application/json">{"page":"Blogs/Leetcode/Contest454","markdown":"## Contest 454\n> Date: Jun 14-15 2025\n# Q1\nSkip\n\n# Q2\nhttps://leetcode.com/problems/count-special-triplets/description/\n## 3583. Count Special Triplets\nYou are given an integer array nums.\n\nA special triplet is defined as a triplet of indices `(i, j, k)` such that:\n\n`0 \u003c= i \u003c j \u003c k \u003c n`, where `n = nums.length`\n`nums[i] == nums[j] * 2`\n\n`nums[k] == nums[j] * 2`\nReturn the total number of special triplets in the array.\n\nSince the answer may be large, return it modulo `10**9 + 7`.\n\n \n\nExample 1:\n\nInput: nums = [6,3,6]\n\nOutput: 1\n\nExplanation:\n\nThe only special triplet is (i, j, k) = (0, 1, 2), where:\n\nnums[0] = 6, nums[1] = 3, nums[2] = 6\nnums[0] = nums[1] * 2 = 3 * 2 = 6\nnums[2] = nums[1] * 2 = 3 * 2 = 6\nExample 2:\n\nInput: nums = [0,1,0,0]\n\nOutput: 1\n\nExplanation:\n\nThe only special triplet is (i, j, k) = (0, 2, 3), where:\n\nnums[0] = 0, nums[2] = 0, nums[3] = 0\nnums[0] = nums[2] * 2 = 0 * 2 = 0\nnums[3] = nums[2] * 2 = 0 * 2 = 0\nExample 3:\n\nInput: nums = [8,4,2,8,4]\n\nOutput: 2\n\nExplanation:\n\nThere are exactly two special triplets:\n\n(i, j, k) = (0, 1, 3)\nnums[0] = 8, nums[1] = 4, nums[3] = 8\nnums[0] = nums[1] * 2 = 4 * 2 = 8\nnums[3] = nums[1] * 2 = 4 * 2 = 8\n(i, j, k) = (1, 2, 4)\nnums[1] = 4, nums[2] = 2, nums[4] = 4\nnums[1] = nums[2] * 2 = 2 * 2 = 4\nnums[4] = nums[2] * 2 = 2 * 2 = 4\n \n\nConstraints:\n\n`3 \u003c= n == nums.length \u003c= 10**5`\n\n`0 \u003c= nums[i] \u003c= 10**5`\n\n# Key Thought\nTwo passes\nIf we use brute force, it definitely TLE. In brute force method, for each i, we iterate the array to find possible j and iterate the remaining array to find the possible k.\n```python3\nfrom collections import defaultdict, Counter\nfrom typing import List\nclass Solution:\n    def bruteforce(self, nums: List[int]) -> int:\n        n = len(nums)\n        res = set()\n        li = defaultdict(tuple)\n        for i in range(n):\n            for j in range(i+1, n):\n                for k in range(j+1, n):\n                    if nums[i] == nums[k] and nums[j] * 2 == nums[k]:\n                        res.add((i, j, k))\n                        li[(i,j,k)] = (nums[i], nums[j], nums[k])\n        # for item in res:\n        #     print(f\"{item} -> {li[item]}\")\n        return len(res)\n```\n\nSo we need to optimize our methods. A simple thought is use Hashtable/Counter. Because the `nums[i] = nums[k] = 2*nums[j]`, we can make a Counter and iterate nums, for each j and nums[j], we access the Counter with `2*nums[j]` to find possible i and k.\nBut here is another issue, we ask `i\u003cj\u003ck`, using the Counter we can not prove that, unless we use a dict map to record the number of indices. So that in indices of `2*nums[j]`, we can search the indices smaller than j and greater than j, to get the count of i and k.\nIt's complex, and we don't care about the exact number of any i or k. We only need the numbers of i or k and get their product to get the result.\n\nHere is the optimization method: Two Passes\n\nWe iterate the nums twice, back and forth. In interations, we build the counter.\nWhen we go from left to right, we build a Counter and this Counter shows possible i for each nums[j]. Because we cannot count any indices greater than j when go from left to right.\nWhen we go from right to left, we build a Counter and this Counter shows possible k for each nums[j]. In this case, we cannot count any indices smaller than j when go right to left.\n\n```python3\nfrom collections import defaultdict, Counter\nfrom typing import List\nclass Solution:\n    def specialTriplets(self, nums: List[int]) -> int:\n        c = defaultdict(int)\n        n = len(nums)\n        res = 0\n        potential_i = [0]*n\n        potential_k = [0]*n\n        for j in range(n):\n            # get valid potential_i\n            potential_i[j] = c[nums[j]*2]\n            c[nums[j]] += 1\n        c = None\n        c = defaultdict(int)\n        for j in range(n-1, -1, -1):\n            # get valid potential_k\n            potential_k[j] = c[nums[j]*2]\n            c[nums[j]] += 1\n        for j in range(n):\n            v = (potential_i[j]*potential_k[j]) % 1000000007\n            res += v\n        return res\n```\n\n# Q3\nhttps://leetcode.com/problems/maximum-product-of-first-and-last-elements-of-a-subsequence/\n\n## 3584. Maximum Product of First and Last Elements of a Subsequence\nYou are given an integer array nums and an integer m.\n\nReturn the maximum product of the first and last elements of any subsequence of nums of size m.\n\n \n\nExample 1:\n\nInput: nums = [-1,-9,2,3,-2,-3,1], m = 1\n\nOutput: 81\n\nExplanation:\n\nThe subsequence [-9] has the largest product of the first and last elements: -9 * -9 = 81. Therefore, the answer is 81.\n\nExample 2:\n\nInput: nums = [1,3,-5,5,6,-4], m = 3\n\nOutput: 20\n\nExplanation:\n\nThe subsequence [-5, 6, -4] has the largest product of the first and last elements.\n\nExample 3:\n\nInput: nums = [2,-1,2,-6,5,2,-5,7], m = 2\n\nOutput: 35\n\nExplanation:\n\nThe subsequence [5, 7] has the largest product of the first and last elements.\n\n \n\nConstraints:\n\n`1 \u003c= nums.length \u003c= 10**5`\n\n`-10**5 \u003c= nums[i] \u003c= 10**5`\n\n`1 \u003c= m \u003c= nums.length`\n\n\n### Key Thought\n\nFor this question, we notices `j-i+1 >=m, j>=i+m-1`\nWe only care about the first element and the last element. To find the max product of subseqence, we can use **sliding window**, iterate the array, for each last-element `j`, the possible first-element `i \u003c= j-m+1`. We can record the max nums[i], and only update nums[i] when we met a larger  first-element. Then we check the product for each `nums[j]*prev_max_nums_i` to update the res.\nNoticed that we have negative number in arrays, that's why we need to store the min value to get the max product.\n\n### Solution\n\n```python3\nclass Solution:\n    def maximumProduct(self, nums: List[int], m: int) -> int:\n        # constarint: j - i + 1 >= m, j >= i+m-1\n        n = len(nums)\n        res = -inf\n        min_v = max_v = nums[0]\n        for j in range(m-1, n):\n            # for new first element in this subseq, use it to update min and max value to get potential better product\n            min_v = min(min_v, nums[j-m+1])\n            max_v = max(max_v, nums[j-m+1])\n            # update res, if the product with new last element and potential max(min) first element is larger\n            res = max(res, min_v*nums[j], max_v*nums[j])\n        return res\n```\n\n# Q4\n\n## 3585. Find Weighted Median Node in Tree\nYou are given an integer n and an undirected, weighted tree rooted at node 0 with n nodes numbered from 0 to n - 1. This is represented by a 2D array edges of length n - 1, where edges[i] = [ui, vi, wi] indicates an edge from node ui to vi with weight wi.\n\nThe weighted median node is defined as the first node x on the path from ui to vi such that the sum of edge weights from ui to x is greater than or equal to half of the total path weight.\n\nYou are given a 2D integer array queries. For each queries[j] = [uj, vj], determine the weighted median node along the path from uj to vj.\n\nReturn an array ans, where ans[j] is the node index of the weighted median for queries[j].\n\n\nExample 1:\n\nInput: n = 2, edges = [[0,1,7]], queries = [[1,0],[0,1]]\n\nOutput: [0,1]\n\nExplanation:\n\n| Query   | Path   | Edge Weights | Total Path Weight | Half | Explanation                                      | Answer |\n|---------|--------|--------------|--------------------|------|--------------------------------------------------|--------|\n| [1, 0]  | 1 → 0  | [7]          | 7                  | 3.5  | Sum from 1 → 0 = 7 >= 3.5, median is node 0.    | 0      |\n| [0, 1]  | 0 → 1  | [7]          | 7                  | 3.5  | Sum from 0 → 1 = 7 >= 3.5, median is node 1.    | 1      |\n\nExample 2:\n\nInput: n = 3, edges = [[0,1,2],[2,0,4]], queries = [[0,1],[2,0],[1,2]]\n\nOutput: [1,0,2]\n\nExplanation:\n\n| Query   | Path       | Edge Weights | Total Path Weight | Half | Explanation                                      | Answer |\n|---------|------------|--------------|--------------------|------|--------------------------------------------------|--------|\n| [0, 1]  | 0 → 1      | [2]          | 2                  | 1    | Sum from 0 → 1 = 2 >= 1, median is node 1.      | 1      |\n| [2, 0]  | 2 → 0      | [4]          | 4                  | 2    | Sum from 2 → 0 = 4 >= 2, median is node 0.      | 0      |\n| [1, 2]  | 1 → 0 → 2  | [2, 4]       | 6                  | 3    | Sum from 1 → 0 = 2 \u003c 3. Sum from 1 → 2 = 6 >= 3, median is node 2. | 2      |\n\n\nExample 3:\n\nInput: n = 5, edges = [[0,1,2],[0,2,5],[1,3,1],[2,4,3]], queries = [[3,4],[1,2]]\n\nOutput: [2,2]\n\nExplanation:\n\n| Query   | Path                     | Edge Weights   | Total Path Weight | Half  | Explanation                                                                 | Answer |\n|---------|--------------------------|----------------|--------------------|-------|-----------------------------------------------------------------------------|--------|\n| [3, 4]  | 3 → 1 → 0 → 2 → 4        | [1, 2, 5, 3]   | 11                 | 5.5   | Sum from 3 → 1 = 1 \u003c 5.5. Sum from 3 → 0 = 1 + 2 = 3 \u003c 5.5. Sum from 3 → 2 = 1 + 2 + 5 = 8 >= 5.5, median is node 2. | 2      |\n| [1, 2]  | 1 → 0 → 2                | [2, 5]         | 7                  | 3.5   | Sum from 1 → 0 = 2 \u003c 3.5. Sum from 1 → 2 = 2 + 5 = 7 >= 3.5, median is node 2. | 2      |\n\nConstraints:\n\n`2 \u003c= n \u003c= 10**5`\n\nedges.length == n - 1\nedges[i] == [ui, vi, wi]\n0 \u003c= ui, vi \u003c n\n1 \u003c= wi \u003c= 109\n\n`1 \u003c= queries.length \u003c= 10**5`\n\nqueries[j] == [uj, vj]\n0 \u003c= uj, vj \u003c n\n\nThe input is generated such that edges represents a valid tree.\n\n### Key Thoughts\nWe can use binary lifting to find the lowest common ancestor (LCA) of the two nodes u, v in the query.\nUsing Dfs we can find the costs from root node 0 to every node x\nTotal Path Cost = costs[u] + costs[v] - 2* costs[lca]. We can get half Path Cost\nIf costs[u] > costs[v], straightforward binary search between the depths of u and lca to find a node whose cost is greater than or equal to halfCost and move down away from LCA\nBut if costs[u] \u003c costs[v], then find a node from v whose cost is less than or equal to halfCost and move up towards LCA\n\n### Solution\nhttps://leetcode.com/problems/find-weighted-median-node-in-tree/solutions/6844956/python3-binary-lifting-binary-search-simple-o-n-log-n/","noIndex":false}</script></body></html>

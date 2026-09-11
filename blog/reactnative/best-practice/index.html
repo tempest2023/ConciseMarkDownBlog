@@ -1,0 +1,112 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Best Practice for React Native Project | Tempest's Blog</title><meta name="description" content="In recent, I'm working on React Native application setup. That's the work for my lab, SHRS-Rehab Sci &amp; Tech Lab in the University of Pittsburgh."><meta name="author" content="Tao Ren (Tempest)"><meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="https://tempest.fun/blog/reactnative/best-practice/"><link rel="icon" type="image/png" sizes="256x256" href="/assets/agent-avatar/idle.png"><link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"><meta property="og:type" content="article"><meta property="og:title" content="Best Practice for React Native Project | Tempest's Blog"><meta property="og:description" content="In recent, I'm working on React Native application setup. That's the work for my lab, SHRS-Rehab Sci &amp; Tech Lab in the University of Pittsburgh."><meta property="og:url" content="https://tempest.fun/blog/reactnative/best-practice/"><meta property="og:image" content="https://tempest.fun/logo512.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Best Practice for React Native Project | Tempest's Blog"><meta name="twitter:description" content="In recent, I'm working on React Native application setup. That's the work for my lab, SHRS-Rehab Sci &amp; Tech Lab in the University of Pittsburgh."><meta name="twitter:image" content="https://tempest.fun/logo512.png"><script id="seo-structured-data" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://tempest.fun/#person","name":"Tao Ren","alternateName":"Tempest","url":"https://tempest.fun","sameAs":["https://github.com/tempest2023","https://www.linkedin.com/in/taoren-pitt/"]},{"@type":"BlogPosting","@id":"https://tempest.fun/blog/reactnative/best-practice/#page","url":"https://tempest.fun/blog/reactnative/best-practice/","name":"Best Practice for React Native Project","headline":"Best Practice for React Native Project","description":"In recent, I'm working on React Native application setup. That's the work for my lab, SHRS-Rehab Sci & Tech Lab in the University of Pittsburgh.","author":{"@id":"https://tempest.fun/#person"},"datePublished":"2022-10-12T02:53:46-04:00","dateModified":"2022-10-12T02:53:46-04:00","inLanguage":"en"}]}</script><script defer="defer" src="/static/js/main.1f37b029.js"></script><link href="/static/css/main.2a4a268b.css" rel="stylesheet"><noscript><style>.site-nav{display:flex;position:static;flex-wrap:wrap}.site-header{flex-wrap:wrap}.header-controls{flex-wrap:wrap}</style></noscript></head><body><div id="root"><div class="page"><a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><a class="site-brand" href="/">Tempest's blog</a><nav class="site-nav" aria-label="Main navigation"><a href="/">About</a><a href="/work/">Work &amp; Research</a><a href="/writing/">Writing</a><a href="/projects/">Projects</a><a href="/links/">Links</a><a href="https://3d.tempest.fun/">3D Portfolio</a></nav></header><main id="main-content" class="main-container"><article class="article-content"><div class="article-meta"><span>Tao Ren (Tempest)</span><span>Published <time datetime="2022-10-12T02:53:46-04:00">2022-10-12</time></span><span>Updated <time datetime="2022-10-12T02:53:46-04:00">2022-10-12</time></span><span>2 min read</span></div><h1>Best Practice for React Native Project</h1><h2 id="best-practice-for-react-native-project">Best Practice for React Native Project</h2>
+<blockquote>
+<p>2022-10-12 02:47:05</p>
+</blockquote>
+<p>In recent, I&#x27;m working on React Native application setup. That&#x27;s the work for my lab, SHRS-Rehab Sci &amp; Tech Lab in the University of Pittsburgh.</p>
+<p>My mentor asked me to set up a modulization application with the good compatibility for iOS and Android. And we have an old project powered by React Native and it performs not bad. That&#x27;s why I&#x27;ve been doing React Native recently. I won&#x27;t talk much about the details about my work, but I&#x27;d like to share some common libraries and experience here.</p>
+<p>Here is a recipe I explored. I tried to combine all the best practice in React community and also suggested by the official (React Native developers). There is no doubt that many replacements are different with React (web applications).</p>
+<h2 id="scaffold-cli-tool">Scaffold &amp; cli-tool</h2>
+<p><a href="https://docs.expo.dev/">expo</a></p>
+<p>It&#x27;s not totally free because they provide deployment and release services.</p>
+<p>But as a scaffold, it&#x27;s free and suggested by React Native official developers.</p>
+<p>Personally, I met some version problems and read the old docs, it&#x27;s messy. So make sure you get the latest version and documents.</p>
+<p>It&#x27;s on good maintainance, but not every demo can run succesfully on my computer :&lt;.</p>
+<h3 id="commands">Commands</h3>
+<h4 id="dependencies-installs">Dependencies Installs</h4>
+<p><code>yarn install</code></p>
+<h4 id="launch-a-ios-app">Launch a iOS app</h4>
+<p>Require: Mac OS</p>
+<p>Open a iOS simulator first: <code>open -a simulator</code></p>
+<p>If you don&#x27;t have a simulator, install one before launch.
+After open the simulator, run this command to launch the app on your simulator</p>
+<p><code>yarn ios</code></p>
+<h4 id="launch-an-android-app">Launch an Android app</h4>
+<p>Require: Android Simulator</p>
+<p><code>yarn android</code></p>
+<h4 id="launch-a-web-app">Launch a Web App</h4>
+<p><code>yarn web</code></p>
+<h2 id="components-library">Components Library</h2>
+<p><a href="https://callstack.github.io/react-native-paper/getting-started.html">react-native-paper</a></p>
+<p>That&#x27;s depends on your demand for UI. But react-native-paper is a react-native components library with material design.</p>
+<p>It provides simple components you may need to build an mobile application. But it doesn&#x27;t include a map component.</p>
+<p>Also it has rich demo and components examples so that developer can directly copy to use.</p>
+<p>Expo demo with react-native-paper can not launch on my computer, it&#x27;s the version problem of expo-cli (pay attension to it).</p>
+<h2 id="router">Router</h2>
+<p><a href="https://reactnavigation.org/docs/getting-started">react-navigation v6.x</a></p>
+<p>Router is a common concept in React web application. In React applicaiton, we may use react-router to manage our pages switching.</p>
+<p>However, it is not a good choice on React Native applicaiton. Here is a replacement: <a href="https://reactnavigation.org/docs/getting-started">react-navigation v6.x</a></p>
+<p>React Navigation is suggested by expo. It uses Stack to manage pages switching and going back and provides rich pages switch animation.
+It helps us to define the content of the header for each pages, very friendly for Android/iOS developers.</p>
+<h2 id="state-manager">State Manager</h2>
+<p><a href="https://redux.js.org/introduction/getting-started">Redux</a></p>
+<p>As same as web</p>
+<h2 id="validation-lint">Validation &amp; Lint</h2>
+<h3 id="eslint-prettier">ESLint &amp; Prettier</h3>
+<p>Here is an article to teach you to set up the eslint and prettier for react-native.
+<a href="https://three29.com/set-up-eslint-and-prettier-for-react-native-projects/">How to set up?</a></p>
+<p>Due to version problem, there are some changes.</p>
+<pre><code class="language-js">{
+    &quot;env&quot;: {
+        &quot;browser&quot;: true,
+        &quot;es2021&quot;: true,
+        &quot;react-native/react-native&quot;: true
+    },
+    &quot;extends&quot;: [
+        &quot;plugin:react/recommended&quot;,
+        &quot;airbnb&quot;,
+        &quot;airbnb/hooks&quot;,
+        &quot;prettier&quot;
+    ],
+    &quot;overrides&quot;: [
+    ],
+    &quot;parserOptions&quot;: {
+        &quot;ecmaVersion&quot;: &quot;latest&quot;,
+        &quot;sourceType&quot;: &quot;module&quot;
+    },
+    &quot;plugins&quot;: [
+        &quot;react&quot;,
+        &quot;react-native&quot;
+    ],
+    &quot;rules&quot;: {
+        // custom rules, if you don&#x27;t want to set it off, delete it
+        &quot;react/jsx-filename-extension&quot;: [1, { &quot;extensions&quot;: [&quot;.js&quot;, &quot;.jsx&quot;] }],
+        &quot;react/jsx-props-no-spreading&quot;: &quot;off&quot;,
+        &quot;react/forbid-prop-types&quot;: &quot;off&quot;,
+        &quot;react/require-default-props&quot;: &quot;off&quot;,
+        &quot;no-unused-vars&quot;: &quot;warn&quot;
+    }
+}
+</code></pre>
+<h3 id="props-types">Props Types</h3>
+<p><a href="https://www.npmjs.com/package/prop-types">PropTypes</a></p>
+<p>No need to say, it&#x27;s as the same as React web application.</p>
+<p>JavaScript only. If you use TypeScript, no need to install it.</p>
+<h2 id="localstorage-or-cookie">LocalStorage or Cookie</h2>
+<blockquote>
+<p>Cookie based auth can not work properly for now: <a href="https://github.com/facebook/react-native/issues/23185">issue</a></p>
+</blockquote>
+<p>So it&#x27;s suggested to use keychain to save user token.</p>
+<h3 id="async-storage">Async Storage</h3>
+<blockquote>
+<p>An equivalent of Local Storage from the web</p>
+</blockquote>
+<p><a href="https://react-native-async-storage.github.io/async-storage/docs/install/">React Async Storage</a></p>
+<p>Total storage size is capped at 6 MB by default, Per-entry is limited by a size of a WindowCursor, a buffer used to read data from SQLite. Currently it&#x27;s size is around 2 MB.</p>
+<p>If you want to handle larger size, see documents about multiGet/multiSet</p>
+<p>Use it for:</p>
+<ul>
+<li>Persisting non-sensitive data across app runs</li>
+<li>Persisting Redux state</li>
+<li>Persisting GraphQL state</li>
+<li>Storing global app-wide variables</li>
+</ul>
+<p>Do not use it for:</p>
+<ul>
+<li>Token storage</li>
+<li>Secrets</li>
+</ul>
+<h3 id="secure-storages">Secure Storages</h3>
+<p><a href="https://docs.expo.dev/versions/latest/sdk/securestore/">expo-secure-store</a></p>
+<p>On iOS, it uses the keychain services, and on Android, it uses the SharedPreferences.</p>
+<p>Size limit for a value is 2048 bytes, it won&#x27;t work for web.</p>
+<p>So you should detect the Platform (provided by React Native) and invoking localStorage or other web secure lib to replace it if you want to provide web compatibility.</p></article></main><footer class="static-footer"><a href="mailto:tar118@pitt.edu">Email</a><a href="https://drive.google.com/file/d/1aNJ-NPuk71x4xQgRo5Es2WPyNZA8kbCb/view?usp=sharing">Résumé</a><a href="https://github.com/tempest2023">GitHub</a><a href="https://www.linkedin.com/in/taoren-pitt/">LinkedIn</a><div class="static-colophon"><p>A small space for unfinished thoughts and things worth sharing.</p><span>— Tempest</span></div><nav class="static-footer-links" aria-label="More links"><a href="https://github.com/tempest2023/ConciseMarkDownBlog">Made of Markdown ↗</a><a href="/rss.xml">RSS</a></nav><p>© 2026 Tempest</p></footer></div></div><script id="blog-bootstrap" type="application/json">{"page":"Blogs/ReactNative/best_practice","markdown":"## Best Practice for React Native Project\n> 2022-10-12 02:47:05\n\nIn recent, I'm working on React Native application setup. That's the work for my lab, SHRS-Rehab Sci & Tech Lab in the University of Pittsburgh.\n\nMy mentor asked me to set up a modulization application with the good compatibility for iOS and Android. And we have an old project powered by React Native and it performs not bad. That's why I've been doing React Native recently. I won't talk much about the details about my work, but I'd like to share some common libraries and experience here.\n\nHere is a recipe I explored. I tried to combine all the best practice in React community and also suggested by the official (React Native developers). There is no doubt that many replacements are different with React (web applications).\n\n## Scaffold & cli-tool\n[expo](https://docs.expo.dev/)\n\nIt's not totally free because they provide deployment and release services.\n\nBut as a scaffold, it's free and suggested by React Native official developers.\n\nPersonally, I met some version problems and read the old docs, it's messy. So make sure you get the latest version and documents.\n\nIt's on good maintainance, but not every demo can run succesfully on my computer :\u003c.\n\n### Commands\n\n#### Dependencies Installs\n`yarn install`\n\n#### Launch a iOS app\nRequire: Mac OS\n\nOpen a iOS simulator first: `open -a simulator`\n\nIf you don't have a simulator, install one before launch.\nAfter open the simulator, run this command to launch the app on your simulator\n\n`yarn ios`\n\n#### Launch an Android app\n\nRequire: Android Simulator\n\n`yarn android`\n\n#### Launch a Web App\n`yarn web`\n\n## Components Library\n\n[react-native-paper](https://callstack.github.io/react-native-paper/getting-started.html)\n\nThat's depends on your demand for UI. But react-native-paper is a react-native components library with material design.\n\nIt provides simple components you may need to build an mobile application. But it doesn't include a map component.\n\nAlso it has rich demo and components examples so that developer can directly copy to use.\n\nExpo demo with react-native-paper can not launch on my computer, it's the version problem of expo-cli (pay attension to it).\n\n## Router\n[react-navigation v6.x](https://reactnavigation.org/docs/getting-started)\n\nRouter is a common concept in React web application. In React applicaiton, we may use react-router to manage our pages switching.\n\nHowever, it is not a good choice on React Native applicaiton. Here is a replacement: [react-navigation v6.x](https://reactnavigation.org/docs/getting-started)\n\nReact Navigation is suggested by expo. It uses Stack to manage pages switching and going back and provides rich pages switch animation.\nIt helps us to define the content of the header for each pages, very friendly for Android/iOS developers.\n\n## State Manager\n\n[Redux](https://redux.js.org/introduction/getting-started)\n\nAs same as web\n\n\n## Validation & Lint\n\n### ESLint & Prettier\nHere is an article to teach you to set up the eslint and prettier for react-native.\n[How to set up?](https://three29.com/set-up-eslint-and-prettier-for-react-native-projects/)\n\nDue to version problem, there are some changes.\n```js\n{\n    \"env\": {\n        \"browser\": true,\n        \"es2021\": true,\n        \"react-native/react-native\": true\n    },\n    \"extends\": [\n        \"plugin:react/recommended\",\n        \"airbnb\",\n        \"airbnb/hooks\",\n        \"prettier\"\n    ],\n    \"overrides\": [\n    ],\n    \"parserOptions\": {\n        \"ecmaVersion\": \"latest\",\n        \"sourceType\": \"module\"\n    },\n    \"plugins\": [\n        \"react\",\n        \"react-native\"\n    ],\n    \"rules\": {\n        // custom rules, if you don't want to set it off, delete it\n        \"react/jsx-filename-extension\": [1, { \"extensions\": [\".js\", \".jsx\"] }],\n        \"react/jsx-props-no-spreading\": \"off\",\n        \"react/forbid-prop-types\": \"off\",\n        \"react/require-default-props\": \"off\",\n        \"no-unused-vars\": \"warn\"\n    }\n}\n```\n\n\n### Props Types\n[PropTypes](https://www.npmjs.com/package/prop-types)\n\nNo need to say, it's as the same as React web application.\n\nJavaScript only. If you use TypeScript, no need to install it.\n\n## LocalStorage or Cookie\n> Cookie based auth can not work properly for now: [issue](https://github.com/facebook/react-native/issues/23185)\n\nSo it's suggested to use keychain to save user token.\n\n### Async Storage\n> An equivalent of Local Storage from the web\n\n[React Async Storage](https://react-native-async-storage.github.io/async-storage/docs/install/)\n\nTotal storage size is capped at 6 MB by default, Per-entry is limited by a size of a WindowCursor, a buffer used to read data from SQLite. Currently it's size is around 2 MB.\n\nIf you want to handle larger size, see documents about multiGet/multiSet\n\nUse it for:\n- Persisting non-sensitive data across app runs\n- Persisting Redux state\n- Persisting GraphQL state\n- Storing global app-wide variables\n\nDo not use it for:\n- Token storage\n- Secrets\n\n### Secure Storages\n\n[expo-secure-store](https://docs.expo.dev/versions/latest/sdk/securestore/)\n\nOn iOS, it uses the keychain services, and on Android, it uses the SharedPreferences.\n\nSize limit for a value is 2048 bytes, it won't work for web.\n\nSo you should detect the Platform (provided by React Native) and invoking localStorage or other web secure lib to replace it if you want to provide web compatibility.\n\n\n","noIndex":false}</script></body></html>

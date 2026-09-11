@@ -1,0 +1,90 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>2458. Height of Binary Tree After Subtree Removal Queries | Tempest's Blog</title><meta name="description" content="For each node, we record his neighbors' height in DFS."><meta name="author" content="Tao Ren (Tempest)"><meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="https://tempest.fun/blog/leetcode/height-of-binary-tree-after-subtree-removal-queries/"><link rel="icon" type="image/png" sizes="256x256" href="/assets/agent-avatar/idle.png"><link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"><meta property="og:type" content="article"><meta property="og:title" content="2458. Height of Binary Tree After Subtree Removal Queries | Tempest's Blog"><meta property="og:description" content="For each node, we record his neighbors' height in DFS."><meta property="og:url" content="https://tempest.fun/blog/leetcode/height-of-binary-tree-after-subtree-removal-queries/"><meta property="og:image" content="https://tempest.fun/logo512.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="2458. Height of Binary Tree After Subtree Removal Queries | Tempest's Blog"><meta name="twitter:description" content="For each node, we record his neighbors' height in DFS."><meta name="twitter:image" content="https://tempest.fun/logo512.png"><script id="seo-structured-data" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://tempest.fun/#person","name":"Tao Ren","alternateName":"Tempest","url":"https://tempest.fun","sameAs":["https://github.com/tempest2023","https://www.linkedin.com/in/taoren-pitt/"]},{"@type":"BlogPosting","@id":"https://tempest.fun/blog/leetcode/height-of-binary-tree-after-subtree-removal-queries/#page","url":"https://tempest.fun/blog/leetcode/height-of-binary-tree-after-subtree-removal-queries/","name":"2458. Height of Binary Tree After Subtree Removal Queries","headline":"2458. Height of Binary Tree After Subtree Removal Queries","description":"For each node, we record his neighbors' height in DFS.","author":{"@id":"https://tempest.fun/#person"},"datePublished":"2022-10-30T02:34:08-04:00","dateModified":"2022-10-30T02:47:15-04:00","inLanguage":"en"}]}</script><script defer="defer" src="/static/js/main.1f37b029.js"></script><link href="/static/css/main.2a4a268b.css" rel="stylesheet"><noscript><style>.site-nav{display:flex;position:static;flex-wrap:wrap}.site-header{flex-wrap:wrap}.header-controls{flex-wrap:wrap}</style></noscript></head><body><div id="root"><div class="page"><a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><a class="site-brand" href="/">Tempest's blog</a><nav class="site-nav" aria-label="Main navigation"><a href="/">About</a><a href="/work/">Work &amp; Research</a><a href="/writing/">Writing</a><a href="/projects/">Projects</a><a href="/links/">Links</a><a href="https://3d.tempest.fun/">3D Portfolio</a></nav></header><main id="main-content" class="main-container"><article class="article-content"><div class="article-meta"><span>Tao Ren (Tempest)</span><span>Published <time datetime="2022-10-30T02:34:08-04:00">2022-10-30</time></span><span>Updated <time datetime="2022-10-30T02:47:15-04:00">2022-10-30</time></span><span>1 min read</span></div><h1>2458. Height of Binary Tree After Subtree Removal Queries</h1><h3 id="2458-height-of-binary-tree-after-subtree-removal-queries">2458. Height of Binary Tree After Subtree Removal Queries</h3>
+<blockquote>
+<p><a href="https://leetcode.com/problems/height-of-binary-tree-after-subtree-removal-queries/">problem link</a></p>
+</blockquote>
+<h4 id="hint">Hint</h4>
+<blockquote>
+<ol>
+<li>Try pre-computing the answer for each node from 1 to n, and answer each query in O(1).</li>
+<li>The answers can be precomputed in a single tree traversal after computing the height of each subtree.</li>
+</ol>
+</blockquote>
+<h3 id="solution">Solution</h3>
+<p>For each node, we record his neighbors&#x27; height in DFS.</p>
+<p>When delete this node and its subtree, obviously his neighbors may have the larger height.</p>
+<p>We remove the height contributed from this node and check what is the rest.</p>
+<p>We only need to record first 2 largest height for each depth because every removal is independent.</p>
+<pre><code class="language-python"># Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def treeQueries(self, root: Optional[TreeNode], queries: List[int]) -&gt; List[int]:
+        m = len(queries)
+        q = [(root,[])]
+        new_q = []
+        h = 0
+
+        depth2NodeHeight = defaultdict(list) # neighbors with first 2 largest height in this depth
+        node2depth = defaultdict(int)
+        node2height = defaultdict(int)
+        
+        def max2ele(l, a):
+            l.append(a)
+            l.sort(reverse=True)
+            return l[0:2]
+        &#x27;&#x27;&#x27;
+        use dfs to iterate all nodes and record their depths, height, and the height list with different depth
+        &#x27;&#x27;&#x27;
+        def dfs(node, depth):
+            if(not node):
+                return depth-1
+            # set depth for this node value
+            node2depth[node.val] = depth
+            # get height from childrens
+            heightLeft = dfs(node.left, depth + 1)
+            heightRight = dfs(node.right, depth + 1)
+            # set height for this node value
+            node2height[node.val] = max(heightLeft, heightRight)
+            # for this depth, keep first 2 largest height
+            depth2NodeHeight[depth] = max2ele(depth2NodeHeight[depth], node2height[node.val])
+            
+            return node2height[node.val]
+        &#x27;&#x27;&#x27;
+        remove the value from a list with max length 2
+        if the value is not in list, do nothing
+        &#x27;&#x27;&#x27;
+        def removeFromList(l, v):
+            # len of l can only be [0,1,2]
+            if(len(l) == 0):
+                return l
+            if(v not in l):
+                return l
+            if(len(l)&gt;0 and l[0] == v):
+                l = [] if len(l)==1 else [l[1]]
+            elif(len(l)&gt;1):
+                l = [l[0]] if l[1] == v else [l[1]]
+            return l
+
+        dfs(root, 0)
+        
+        # print(node2depth, node2height, depth2NodeHeight)
+        res = [0]*m  
+        for i in range(m):
+            removal = queries[i]
+            depth = node2depth[removal]
+            height = node2height[removal]
+            depthList = depth2NodeHeight[depth]
+            # remove the height of this node&#x27;s subtree
+            depthList = removeFromList(depthList, height)
+            if(len(depthList) == 0):
+                # no neighbors can provide larger height, the max height will be depth - 1
+                res[i] = depth-1
+            else:
+                res[i] = depthList[0]
+        return res
+        
+        
+</code></pre></article></main><footer class="static-footer"><a href="mailto:tar118@pitt.edu">Email</a><a href="https://drive.google.com/file/d/1aNJ-NPuk71x4xQgRo5Es2WPyNZA8kbCb/view?usp=sharing">Résumé</a><a href="https://github.com/tempest2023">GitHub</a><a href="https://www.linkedin.com/in/taoren-pitt/">LinkedIn</a><div class="static-colophon"><p>A small space for unfinished thoughts and things worth sharing.</p><span>— Tempest</span></div><nav class="static-footer-links" aria-label="More links"><a href="https://github.com/tempest2023/ConciseMarkDownBlog">Made of Markdown ↗</a><a href="/rss.xml">RSS</a></nav><p>© 2026 Tempest</p></footer></div></div><script id="blog-bootstrap" type="application/json">{"page":"Blogs/Leetcode/Height_of_Binary_Tree_After_Subtree_Removal_Queries","markdown":"### 2458. Height of Binary Tree After Subtree Removal Queries\n> [problem link](https://leetcode.com/problems/height-of-binary-tree-after-subtree-removal-queries/)\n\n#### Hint\n> 1. Try pre-computing the answer for each node from 1 to n, and answer each query in O(1).\n> 2. The answers can be precomputed in a single tree traversal after computing the height of each subtree.\n### Solution\n\nFor each node, we record his neighbors' height in DFS. \n\nWhen delete this node and its subtree, obviously his neighbors may have the larger height.\n\nWe remove the height contributed from this node and check what is the rest.\n\nWe only need to record first 2 largest height for each depth because every removal is independent.\n\n```python\n# Definition for a binary tree node.\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\nclass Solution:\n    def treeQueries(self, root: Optional[TreeNode], queries: List[int]) -> List[int]:\n        m = len(queries)\n        q = [(root,[])]\n        new_q = []\n        h = 0\n\n        depth2NodeHeight = defaultdict(list) # neighbors with first 2 largest height in this depth\n        node2depth = defaultdict(int)\n        node2height = defaultdict(int)\n        \n        def max2ele(l, a):\n            l.append(a)\n            l.sort(reverse=True)\n            return l[0:2]\n        '''\n        use dfs to iterate all nodes and record their depths, height, and the height list with different depth\n        '''\n        def dfs(node, depth):\n            if(not node):\n                return depth-1\n            # set depth for this node value\n            node2depth[node.val] = depth\n            # get height from childrens\n            heightLeft = dfs(node.left, depth + 1)\n            heightRight = dfs(node.right, depth + 1)\n            # set height for this node value\n            node2height[node.val] = max(heightLeft, heightRight)\n            # for this depth, keep first 2 largest height\n            depth2NodeHeight[depth] = max2ele(depth2NodeHeight[depth], node2height[node.val])\n            \n            return node2height[node.val]\n        '''\n        remove the value from a list with max length 2\n        if the value is not in list, do nothing\n        '''\n        def removeFromList(l, v):\n            # len of l can only be [0,1,2]\n            if(len(l) == 0):\n                return l\n            if(v not in l):\n                return l\n            if(len(l)>0 and l[0] == v):\n                l = [] if len(l)==1 else [l[1]]\n            elif(len(l)>1):\n                l = [l[0]] if l[1] == v else [l[1]]\n            return l\n\n        dfs(root, 0)\n        \n        # print(node2depth, node2height, depth2NodeHeight)\n        res = [0]*m  \n        for i in range(m):\n            removal = queries[i]\n            depth = node2depth[removal]\n            height = node2height[removal]\n            depthList = depth2NodeHeight[depth]\n            # remove the height of this node's subtree\n            depthList = removeFromList(depthList, height)\n            if(len(depthList) == 0):\n                # no neighbors can provide larger height, the max height will be depth - 1\n                res[i] = depth-1\n            else:\n                res[i] = depthList[0]\n        return res\n        \n        \n```","noIndex":false}</script></body></html>

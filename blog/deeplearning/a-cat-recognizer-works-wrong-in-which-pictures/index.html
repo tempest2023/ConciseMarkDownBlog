@@ -1,0 +1,94 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>A cat recognizer works wrong in which pictures? | Tempest's Blog</title><meta name="description" content="I took a break from my busy schedule and finished the first DL course on Coursera in a few days."><meta name="author" content="Tao Ren (Tempest)"><meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="https://tempest.fun/blog/deeplearning/a-cat-recognizer-works-wrong-in-which-pictures/"><link rel="icon" type="image/png" sizes="256x256" href="/assets/agent-avatar/idle.png"><link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"><meta property="og:type" content="article"><meta property="og:title" content="A cat recognizer works wrong in which pictures? | Tempest's Blog"><meta property="og:description" content="I took a break from my busy schedule and finished the first DL course on Coursera in a few days."><meta property="og:url" content="https://tempest.fun/blog/deeplearning/a-cat-recognizer-works-wrong-in-which-pictures/"><meta property="og:image" content="https://tempest.fun/logo512.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="A cat recognizer works wrong in which pictures? | Tempest's Blog"><meta name="twitter:description" content="I took a break from my busy schedule and finished the first DL course on Coursera in a few days."><meta name="twitter:image" content="https://tempest.fun/logo512.png"><script id="seo-structured-data" type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://tempest.fun/#person","name":"Tao Ren","alternateName":"Tempest","url":"https://tempest.fun","sameAs":["https://github.com/tempest2023","https://www.linkedin.com/in/taoren-pitt/"]},{"@type":"BlogPosting","@id":"https://tempest.fun/blog/deeplearning/a-cat-recognizer-works-wrong-in-which-pictures/#page","url":"https://tempest.fun/blog/deeplearning/a-cat-recognizer-works-wrong-in-which-pictures/","name":"A cat recognizer works wrong in which pictures?","headline":"A cat recognizer works wrong in which pictures?","description":"I took a break from my busy schedule and finished the first DL course on Coursera in a few days.","author":{"@id":"https://tempest.fun/#person"},"datePublished":"2022-09-20T02:11:38-04:00","dateModified":"2022-09-20T02:11:38-04:00","inLanguage":"en"}]}</script><script defer="defer" src="/static/js/main.1f37b029.js"></script><link href="/static/css/main.2a4a268b.css" rel="stylesheet"><noscript><style>.site-nav{display:flex;position:static;flex-wrap:wrap}.site-header{flex-wrap:wrap}.header-controls{flex-wrap:wrap}</style></noscript></head><body><div id="root"><div class="page"><a class="skip-link" href="#main-content">Skip to content</a><header class="site-header"><a class="site-brand" href="/">Tempest's blog</a><nav class="site-nav" aria-label="Main navigation"><a href="/">About</a><a href="/work/">Work &amp; Research</a><a href="/writing/">Writing</a><a href="/projects/">Projects</a><a href="/links/">Links</a><a href="https://3d.tempest.fun/">3D Portfolio</a></nav></header><main id="main-content" class="main-container"><article class="article-content"><div class="article-meta"><span>Tao Ren (Tempest)</span><span>Published <time datetime="2022-09-20T02:11:38-04:00">2022-09-20</time></span><span>Updated <time datetime="2022-09-20T02:11:38-04:00">2022-09-20</time></span><span>3 min read</span></div><h1 id="a-cat-recognizer-works-wrong-in-which-pictures">A cat recognizer works wrong in which pictures?</h1>
+<blockquote>
+<p>2018-03-01 23:33:51</p>
+</blockquote>
+<p>I took a break from my busy schedule and finished the first DL course on Coursera in a few days.</p>
+<p>Although it took almost 10 months to learn ML before, it has been a year, and there is really not much I can remember.</p>
+<p>The Project of this course is very interesting, a Cat Recognizer.</p>
+<p>Andrew Ng said that deep learning and Cat are inseparable, so our Programming Assignment is it, a Cat Recognizer!</p>
+<h2 id="dataset">Dataset</h2>
+<p>In the fourth week, the Project completed the entire Neural Network, L-layer Neural Network, 209 training samples, and 50 test samples which each sample is a 64*64 image, imported in h5 format</p>
+<p>The image vectorization process is as follow:</p>
+<p><img src="/resources/src/articles/Blogs/DeepLearning/images/20180301220156553.png" alt="img" loading="lazy" decoding="async"/></p>
+<h2 id="l-layer-neural-network">L-Layer Neural Network</h2>
+<p>The Architecture is as follow:</p>
+<p><img src="/resources/src/articles/Blogs/DeepLearning/images/20180301233124903.png" alt="img" loading="lazy" decoding="async"/></p>
+<p>Compared with the <strong>100%</strong> accuracy on training data and <strong>72%</strong> accuracy on test data of the 2-layer shallow neural network, the L-layer reduces overfitting on the training data and only achieves <strong>98.56%</strong> accuracy. But the accuracy on test data has risen to <strong>80%</strong>.</p>
+<p>Which means, 10 of the 50 images in the test data are classified incorrectly, and the recognition rate of the entire network is relatively poor.</p>
+<p>However, the ReLU and Sigmoid functions used by the activation function are relatively simple activation functions, and it is very good to achieve this accuracy.</p>
+<h2 id="incorrectly-classified-images">Incorrectly classified images</h2>
+<p>The final optional assignment is still to add my own pictures for test, so I found a few interesting pictures to try to confuse the neural network. As far as these pictures, even people can not define that they are cats or not (≖ᴗ≖)✧.</p>
+<ul>
+<li>
+<p>1st: A character in FGO game</p>
+<p><img src="/resources/src/articles/Blogs/DeepLearning/images/20180301221152337.png" alt="img" loading="lazy" decoding="async"/></p>
+</li>
+</ul>
+<p>Prediction:</p>
+<p><img src="/resources/src/articles/Blogs/DeepLearning/images/20180301221312224.png" alt="img" loading="lazy" decoding="async"/></p>
+<ul>
+<li>
+<p>2nd: Still this character but with different clothes</p>
+<p><img src="/resources/src/articles/Blogs/DeepLearning/images/20180301221332174.png" alt="img" loading="lazy" decoding="async"/></p>
+</li>
+</ul>
+<p>Prediction:</p>
+<p><img src="/resources/src/articles/Blogs/DeepLearning/images/20180301221437181.png" alt="img" loading="lazy" decoding="async"/></p>
+<ul>
+<li>
+<p>3rd: Still this character but with different clothes</p>
+<p><img src="/resources/src/articles/Blogs/DeepLearning/images/2018030122151042.png" alt="img" loading="lazy" decoding="async"/></p>
+<p><strong>Here comes the strange result, the neural network thinks this one is a cat, and the first two are not ( • ̀ω•́ )✧</strong></p>
+</li>
+</ul>
+<p>Prediction:</p>
+<p><img src="/resources/src/articles/Blogs/DeepLearning/images/20180301221627606.png" alt="img" loading="lazy" decoding="async"/></p>
+<ul>
+<li>
+<p>4th: A Tigger</p>
+<p><img src="/resources/src/articles/Blogs/DeepLearning/images/2018030122171696.png" alt="img" loading="lazy" decoding="async"/></p>
+</li>
+</ul>
+<p>Prediction: no trick</p>
+<p><img src="/resources/src/articles/Blogs/DeepLearning/images/20180301221736914.png" alt="img" loading="lazy" decoding="async"/></p>
+<ul>
+<li>
+<p>5th: A little tigger</p>
+<p><img src="/resources/src/articles/Blogs/DeepLearning/images/20180301221815865.png" alt="img" loading="lazy" decoding="async"/></p>
+</li>
+</ul>
+<p>Prediction: tricked (<del>・ｖ・)</del></p>
+<p><img src="/resources/src/articles/Blogs/DeepLearning/images/20180301221828200.png" alt="img" loading="lazy" decoding="async"/></p>
+<ul>
+<li>
+<p>6th: A little lion (panther?)</p>
+<p><img src="/resources/src/articles/Blogs/DeepLearning/images/20180301221958512.png" alt="img" loading="lazy" decoding="async"/></p>
+</li>
+</ul>
+<p>Prediction: tricked.</p>
+<p><img src="/resources/src/articles/Blogs/DeepLearning/images/20180301222049830.png" alt="img" loading="lazy" decoding="async"/></p>
+<ul>
+<li>
+<p>7th: A cat-shaped plush toy</p>
+<p><img src="/resources/src/articles/Blogs/DeepLearning/images/20180301222154795.png" alt="img" loading="lazy" decoding="async"/></p>
+</li>
+</ul>
+<p>Prediction: tricked</p>
+<p><img src="/resources/src/articles/Blogs/DeepLearning/images/20180301222211549.png" alt="img" loading="lazy" decoding="async"/></p>
+<ul>
+<li>
+<p>8th: A lovely cat</p>
+<p><img src="/resources/src/articles/Blogs/DeepLearning/images/20180301232140299.png" alt="img" loading="lazy" decoding="async"/></p>
+</li>
+</ul>
+<p>Prediction: Haha, this picture is missing the most important feature of a cat, the ears, so NN thinks it&#x27;s not a cat (funny</p>
+<p><img src="/resources/src/articles/Blogs/DeepLearning/images/20180301232311484.png" alt="img" loading="lazy" decoding="async"/></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Although I didn&#x27;t look at the 209 training data, I can probably guess some important features. Of course, the features I pointed out are based on our vision.</p>
+<ul>
+<li>whether the picture has <strong>cat ears</strong></li>
+<li>whether the picture has <strong>cat furry claws</strong></li>
+<li>The <strong>animal face</strong> of the picture</li>
+</ul>
+<p>Considering that several cat pictures in the test data are also identified incorrectly, <strong>the background of similar color to the cat</strong> will lead to the classification error, and the overall color of the picture will also affect the recognition result.</p>
+<p>If you have more interesting pictures that you want to try, you can leave pictures in the comments.</p></article></main><footer class="static-footer"><a href="mailto:tar118@pitt.edu">Email</a><a href="https://drive.google.com/file/d/1aNJ-NPuk71x4xQgRo5Es2WPyNZA8kbCb/view?usp=sharing">Résumé</a><a href="https://github.com/tempest2023">GitHub</a><a href="https://www.linkedin.com/in/taoren-pitt/">LinkedIn</a><div class="static-colophon"><p>A small space for unfinished thoughts and things worth sharing.</p><span>— Tempest</span></div><nav class="static-footer-links" aria-label="More links"><a href="https://github.com/tempest2023/ConciseMarkDownBlog">Made of Markdown ↗</a><a href="/rss.xml">RSS</a></nav><p>© 2026 Tempest</p></footer></div></div><script id="blog-bootstrap" type="application/json">{"page":"Blogs/DeepLearning/A_cat_recognizer_works_wrong_in_which_pictures","markdown":"# A cat recognizer works wrong in which pictures?\n> 2018-03-01 23:33:51\n\nI took a break from my busy schedule and finished the first DL course on Coursera in a few days.\n\nAlthough it took almost 10 months to learn ML before, it has been a year, and there is really not much I can remember.\n\nThe Project of this course is very interesting, a Cat Recognizer.\n\nAndrew Ng said that deep learning and Cat are inseparable, so our Programming Assignment is it, a Cat Recognizer!\n\n# Dataset\n\nIn the fourth week, the Project completed the entire Neural Network, L-layer Neural Network, 209 training samples, and 50 test samples which each sample is a 64\\*64 image, imported in h5 format\n\nThe image vectorization process is as follow:\n\n![img](/src/articles/Blogs/DeepLearning/images/20180301220156553.png)\n\n# L-Layer Neural Network\n\nThe Architecture is as follow:\n\n![img](/src/articles/Blogs/DeepLearning/images/20180301233124903.png)\n\nCompared with the **100%** accuracy on training data and **72%** accuracy on test data of the 2-layer shallow neural network, the L-layer reduces overfitting on the training data and only achieves **98.56%** accuracy. But the accuracy on test data has risen to **80%**.\n\nWhich means, 10 of the 50 images in the test data are classified incorrectly, and the recognition rate of the entire network is relatively poor.\n\nHowever, the ReLU and Sigmoid functions used by the activation function are relatively simple activation functions, and it is very good to achieve this accuracy.\n\n# Incorrectly classified images\n\nThe final optional assignment is still to add my own pictures for test, so I found a few interesting pictures to try to confuse the neural network. As far as these pictures, even people can not define that they are cats or not (≖ᴗ≖)✧.\n\n- 1st: A character in FGO game\n  \n  ![img](/src/articles/Blogs/DeepLearning/images/20180301221152337.png)\n\nPrediction:\n\n![img](/src/articles/Blogs/DeepLearning/images/20180301221312224.png)\n\n- 2nd: Still this character but with different clothes\n\n  ![img](/src/articles/Blogs/DeepLearning/images/20180301221332174.png)\n\nPrediction:\n\n![img](/src/articles/Blogs/DeepLearning/images/20180301221437181.png)\n\n- 3rd: Still this character but with different clothes \n\n  ![img](/src/articles/Blogs/DeepLearning/images/2018030122151042.png)\n\n  **Here comes the strange result, the neural network thinks this one is a cat, and the first two are not ( • ̀ω•́ )✧**\n\nPrediction:\n\n  ![img](/src/articles/Blogs/DeepLearning/images/20180301221627606.png)\n\n- 4th: A Tigger\n\n  ![img](/src/articles/Blogs/DeepLearning/images/2018030122171696.png)\n\nPrediction: no trick\n\n  ![img](/src/articles/Blogs/DeepLearning/images/20180301221736914.png)\n\n- 5th: A little tigger\n\n  ![img](/src/articles/Blogs/DeepLearning/images/20180301221815865.png)\n  \nPrediction: tricked (~・ｖ・)~\n\n  ![img](/src/articles/Blogs/DeepLearning/images/20180301221828200.png)\n\n- 6th: A little lion (panther?)\n\n  ![img](/src/articles/Blogs/DeepLearning/images/20180301221958512.png)\n\nPrediction: tricked.\n\n  ![img](/src/articles/Blogs/DeepLearning/images/20180301222049830.png)\n\n- 7th: A cat-shaped plush toy\n\n  ![img](/src/articles/Blogs/DeepLearning/images/20180301222154795.png)\n\nPrediction: tricked\n\n  ![img](/src/articles/Blogs/DeepLearning/images/20180301222211549.png)\n\n- 8th: A lovely cat\n\n  ![img](/src/articles/Blogs/DeepLearning/images/20180301232140299.png)\n\nPrediction: Haha, this picture is missing the most important feature of a cat, the ears, so NN thinks it's not a cat (funny\n\n  ![img](/src/articles/Blogs/DeepLearning/images/20180301232311484.png)\n\n# Conclusion\n\nAlthough I didn't look at the 209 training data, I can probably guess some important features. Of course, the features I pointed out are based on our vision.\n\n- whether the picture has **cat ears**\n- whether the picture has **cat furry claws**\n- The **animal face** of the picture\n\nConsidering that several cat pictures in the test data are also identified incorrectly, **the background of similar color to the cat** will lead to the classification error, and the overall color of the picture will also affect the recognition result.\n\nIf you have more interesting pictures that you want to try, you can leave pictures in the comments.\n","noIndex":false}</script></body></html>

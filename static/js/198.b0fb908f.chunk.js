@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkconcise_markdown_blog=self.webpackChunkconcise_markdown_blog||[]).push([[198],{3198:(e,n,a)=>{a.r(n),a.d(n,{default:()=>s});a(9198);var l=a(1786),c=a(8375),r=a(5582);function s(e){let{language:n,children:a}=e;return(0,r.jsx)(l.A,{style:c.A,language:n,PreTag:"div",children:a})}}}]);
+//# sourceMappingURL=198.b0fb908f.chunk.js.map
