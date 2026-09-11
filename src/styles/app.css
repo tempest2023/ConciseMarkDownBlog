@@ -186,10 +186,10 @@ a:hover { text-decoration-thickness: 2px; }
 .static-footer { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1.5rem; padding: 2rem; border-top: 1px solid var(--border-color); font-family: var(--ui-font); font-size: .9rem; }
 .static-footer a { min-height: 44px; display: inline-flex; align-items: center; }
 .static-footer p { width: 100%; color: var(--muted-color); text-align: center; }
-.static-colophon { width: 100%; color: var(--muted-color); font-family: var(--hand-font); font-style: italic; line-height: 1.65; text-align: center; }
+.static-colophon { width: min(100%, 40rem); color: var(--muted-color); font-family: var(--hand-font); font-style: italic; line-height: 1.65; text-align: center; }
 .static-colophon p { margin: 0 0 .3rem; }
 .static-colophon span { display: block; margin-bottom: .5rem; }
-.static-colophon a { font-family: var(--ui-font); font-size: .78rem; font-style: normal; }
+.static-footer-links { width: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: .25rem 1.25rem; }
 
 .dark-theme { color-scheme: dark; --paper-color: rgba(48, 49, 44, .76); }
 .dark-theme .form-control, .dark-theme .form-select { border-color: var(--border-color); background: var(--input-bg); color: var(--text-color); }

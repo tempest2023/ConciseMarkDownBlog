@@ -91,9 +91,22 @@ test.describe('Deployment Configuration', () => {
     expect(packageJson.scripts.build).toBeDefined();
     expect(packageJson.scripts.build).toBe('node scripts/build.js');
   });
+
+  test('uses the generated Saber avatar as the favicon', () => {
+    const index = fs.readFileSync(path.join(process.cwd(), 'public', 'index.html'), 'utf8');
+    const manifest = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'public', 'manifest.json'), 'utf8'));
+
+    expect(index).toContain('%PUBLIC_URL%/assets/agent-avatar/idle.png');
+    expect(manifest.icons[0]).toEqual({ src: 'assets/agent-avatar/idle.png', sizes: '256x256', type: 'image/png' });
+  });
 });
 
 test.describe('Build Output', () => {
+  test('serves the Saber favicon on static pages', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.locator('link[rel="icon"]')).toHaveAttribute('href', '/assets/agent-avatar/idle.png');
+  });
+
   test('404 page remains noindex after client hydration', async ({ page }) => {
     await page.goto('/404.html');
     await expect(page.getByRole('button', { name: 'Open Ask Tempest' })).toBeVisible();

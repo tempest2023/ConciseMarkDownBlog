@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://tempest.fun/</loc><lastmod>2026-09-08T14:56:39-07:00</lastmod></url>
-  <url><loc>https://tempest.fun/ask/</loc><lastmod>2026-09-09T09:01:35-07:00</lastmod></url>
+  <url><loc>https://tempest.fun/</loc><lastmod>2026-09-10T17:12:33-07:00</lastmod></url>
+  <url><loc>https://tempest.fun/ask/</loc><lastmod>2026-09-10T17:12:33-07:00</lastmod></url>
   <url><loc>https://tempest.fun/blog/ai/my-ai-research-and-engineering-journey/</loc><lastmod>2026-09-08T14:56:39-07:00</lastmod></url>
   <url><loc>https://tempest.fun/blog/c/pinitos-error/</loc><lastmod>2022-09-13T14:51:39-04:00</lastmod></url>
   <url><loc>https://tempest.fun/blog/c/python-c-compile-script/</loc><lastmod>2022-09-13T14:51:39-04:00</lastmod></url>
@@ -42,6 +42,6 @@
   <url><loc>https://tempest.fun/projects/</loc><lastmod>2026-05-13T21:39:48-07:00</lastmod></url>
   <url><loc>https://tempest.fun/projects/concise-markdown-blog/</loc><lastmod>2026-09-08T15:07:07-07:00</lastmod></url>
   <url><loc>https://tempest.fun/technical-background/</loc><lastmod>2026-05-16T22:00:16-07:00</lastmod></url>
-  <url><loc>https://tempest.fun/work/</loc><lastmod>2026-09-08T14:56:39-07:00</lastmod></url>
+  <url><loc>https://tempest.fun/work/</loc><lastmod>2026-09-10T17:12:33-07:00</lastmod></url>
   <url><loc>https://tempest.fun/writing/</loc><lastmod>2026-09-08T15:07:07-07:00</lastmod></url>
 </urlset>

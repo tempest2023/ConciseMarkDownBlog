@@ -59,6 +59,8 @@ describe('Footer', () => {
     const repoLink = screen.getByText(/Made of Markdown/);
     expect(repoLink).toBeInTheDocument();
     expect(repoLink.closest('a')).toHaveAttribute('href', config.repo);
+    expect(repoLink.closest('nav')).toHaveAttribute('aria-label', 'More links');
+    expect(repoLink.closest('nav')).toContainElement(screen.getByRole('link', { name: 'RSS' }));
   });
 
   it('should not render when no social links are configured', () => {

@@ -17,6 +17,7 @@ for (const entry of entries) {
   assert.ok(article?.textContent.trim().length > 40, `${entry.page}: missing readable article`);
   assert.ok(document.querySelector('h1'), `${entry.page}: missing heading`);
   assert.equal(document.querySelector('link[rel="canonical"]').href, seo.siteUrl + entry.path);
+  assert.equal(document.querySelector('link[rel="icon"]').getAttribute('href'), '/assets/agent-avatar/idle.png');
   assert.equal(document.querySelector('meta[name="robots"]').content.includes('noindex'), false);
   const bootstrap = JSON.parse(document.querySelector('#blog-bootstrap').textContent);
   assert.equal(bootstrap.markdown, fs.readFileSync(path.join(articlesRoot, entry.page + '.md'), 'utf8'), `${entry.page}: source mismatch`);
