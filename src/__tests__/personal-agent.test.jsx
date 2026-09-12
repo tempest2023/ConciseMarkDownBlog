@@ -28,6 +28,8 @@ test('unavailable status offers static alternatives and disables submission', as
 test('a suggested question sends one request, renders the reply and supports a clean new conversation', async () => {
   await ready();
   expect(screen.getByPlaceholderText('Ask about Tempest’s work…')).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'What’s new in Tempest’s research papers lately?' })).toBeInTheDocument();
+  expect(screen.queryByText('Complete chats are saved only in this browser.')).not.toBeInTheDocument();
   fireEvent.click(screen.getByRole('button', { name: 'Tell me about Tempest’s research.' }));
   expect(await screen.findByText('A public answer.')).toBeInTheDocument();
   expect(screen.getByLabelText('Ask Tempest')).toHaveClass('is-chatting');
@@ -41,6 +43,11 @@ test('a suggested question sends one request, renders the reply and supports a c
   expect(screen.getByLabelText('Ask Tempest')).toHaveClass('is-onboarding');
   expect(window.localStorage.getItem('ask-tempest:messages:v1')).toBeNull();
   expect(screen.getByLabelText('Your question')).toHaveFocus();
+});
+test('the configured default model remains visible with an older availability response', async () => {
+  global.fetch.mockResolvedValue({ ok: true, json: async () => ({ available: true }) });
+  await ready();
+  expect(screen.getByText('Model · zai/glm-5.3-flash')).toBeInTheDocument();
 });
 test('complete local conversation history is restored after a refresh', async () => {
   window.localStorage.setItem('ask-tempest:messages:v1', JSON.stringify([

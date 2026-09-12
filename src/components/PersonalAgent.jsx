@@ -4,7 +4,8 @@ import { consumeChatStream } from '../util/chat-stream';
 import { conversationHistory, safeAgentHref } from '../util/agent-client';
 import '../styles/agent.css';
 
-const suggestions = ['What AI systems has Tempest built?', 'Tell me about Tempest’s research.', 'What is Tempest’s industry experience?', 'Is Tempest open to new roles?'];
+const defaultModel = 'zai/glm-5.3-flash';
+const suggestions = ['What AI systems has Tempest built?', 'Tell me about Tempest’s research.', 'What is Tempest’s industry experience?', 'What’s new in Tempest’s research papers lately?'];
 const storageKey = 'ask-tempest:messages:v1';
 
 function storedMessages () {
@@ -34,7 +35,7 @@ function completeConversation (messages) {
 
 export default function PersonalAgent () {
   const [available, setAvailable] = useState(null);
-  const [model, setModel] = useState('');
+  const [model, setModel] = useState(defaultModel);
   const [messages, setMessages] = useState(storedMessages);
   const [question, setQuestion] = useState('');
   const [busy, setBusy] = useState(false);
@@ -61,7 +62,7 @@ export default function PersonalAgent () {
     const status = new AbortController();
     fetch('/api/chat', { signal: status.signal }).then(response => response.ok ? response.json() : { available: false }).then(data => {
       setAvailable(data.available === true);
-      setModel(typeof data.model === 'string' ? data.model : '');
+      setModel(typeof data.model === 'string' && data.model ? data.model : defaultModel);
     }).catch(() => { if (!status.signal.aborted) setAvailable(false); });
     return () => { status.abort(); controller.current?.abort(); };
   }, []);
@@ -126,11 +127,10 @@ export default function PersonalAgent () {
           <label htmlFor="agent-question">Your question</label>
           <textarea id="agent-question" ref={input} value={question} onChange={event => setQuestion(event.target.value)} maxLength={2000} rows={1} placeholder={chatting ? 'Continue the conversation…' : 'Ask about Tempest’s work…'} disabled={available !== true} onKeyDown={event => { if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); ask(question); } }} />
           <div className="agent-actions">
-            <small>{available === null ? 'Connecting…' : model ? `Model · ${model}` : 'AI Gateway'}</small>
+            <small>{available === null ? 'Connecting…' : `Model · ${model}`}</small>
             {busy ? <button type="button" onClick={() => controller.current?.abort()}>Stop</button> : <button className="agent-send" type="submit" disabled={!question.trim() || available !== true} aria-label="Send message">Send ↗</button>}
           </div>
         </form>
-        <p className="agent-privacy">Complete chats are saved only in this browser. Messages are sent to the AI provider and may be mistaken. Avoid private information. <a href="/ask/">About this guide</a></p>
       </div>
     </section>
   );

@@ -203,7 +203,6 @@
 .agent-actions button { min-height: 36px; padding-block: .35rem; }
 .personal-agent .agent-send { padding-inline: 1rem; border-color: #e87f63; border-radius: 999px; background: #ed8669; color: #fff; }
 .personal-agent .agent-send:hover:not(:disabled) { background: #df7358; }
-.personal-agent .agent-privacy { width: min(100%, 800px); margin: .38rem auto 0; color: var(--muted-color); font-size: .62rem; line-height: 1.4; text-align: center; }
 .personal-agent .agent-notice { width: min(100%, 800px); margin: .55rem auto; padding: .65rem .8rem; border: 1px solid var(--border-color); border-radius: 9px; background: var(--code-bg); font-size: .79rem; line-height: 1.5; }
 .agent-notice button { min-height: 34px; margin-left: .5rem; padding-block: .3rem; }
 
@@ -232,7 +231,6 @@
   .agent-message { font-size: .84rem; }
   .agent-message.user { max-width: 90%; }
   .agent-actions small { max-width: 62%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .personal-agent .agent-privacy { font-size: .58rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
