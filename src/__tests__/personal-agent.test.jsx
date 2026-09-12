@@ -9,7 +9,8 @@ jest.mock('react-markdown', () => ({ __esModule: true, default: ({ children }) =
 jest.mock('../util/chat-stream', () => ({ consumeChatStream: jest.fn() }));
 const originalFetch = global.fetch;
 beforeEach(() => {
-  global.fetch = jest.fn().mockResolvedValue({ ok: true, json: async () => ({ available: true }) });
+  window.localStorage.clear();
+  global.fetch = jest.fn().mockResolvedValue({ ok: true, json: async () => ({ available: true, model: 'test/model' }) });
   consumeChatStream.mockImplementation(async (_, emit) => { emit({ type: 'delta', text: 'A public answer.' }); emit({ type: 'done' }); });
 });
 afterEach(() => { global.fetch = originalFetch; });
@@ -29,12 +30,28 @@ test('a suggested question sends one request, renders the reply and supports a c
   expect(screen.getByPlaceholderText('Ask about Tempest’s work…')).toBeInTheDocument();
   fireEvent.click(screen.getByRole('button', { name: 'Tell me about Tempest’s research.' }));
   expect(await screen.findByText('A public answer.')).toBeInTheDocument();
+  expect(screen.getByLabelText('Ask Tempest')).toHaveClass('is-chatting');
+  expect(screen.getByText('Model · test/model')).toBeInTheDocument();
   await waitFor(() => expect(screen.queryByRole('button', { name: 'Stop' })).not.toBeInTheDocument());
   expect(global.fetch).toHaveBeenCalledTimes(2);
   expect(JSON.parse(global.fetch.mock.calls[1][1].body).messages).toEqual([{ role: 'user', content: 'Tell me about Tempest’s research.' }]);
+  await waitFor(() => expect(JSON.parse(window.localStorage.getItem('ask-tempest:messages:v1'))).toHaveLength(2));
   fireEvent.click(screen.getByRole('button', { name: 'New conversation' }));
   expect(screen.queryByText('A public answer.')).not.toBeInTheDocument();
+  expect(screen.getByLabelText('Ask Tempest')).toHaveClass('is-onboarding');
+  expect(window.localStorage.getItem('ask-tempest:messages:v1')).toBeNull();
   expect(screen.getByLabelText('Your question')).toHaveFocus();
+});
+test('complete local conversation history is restored after a refresh', async () => {
+  window.localStorage.setItem('ask-tempest:messages:v1', JSON.stringify([
+    { role: 'user', content: 'A saved question' },
+    { role: 'assistant', content: 'A saved answer' }
+  ]));
+  await ready();
+  expect(screen.getByText('A saved question')).toBeInTheDocument();
+  expect(screen.getByText('A saved answer')).toBeInTheDocument();
+  expect(screen.getByPlaceholderText('Continue the conversation…')).toBeInTheDocument();
+  expect(screen.getByLabelText('Ask Tempest')).toHaveClass('is-chatting');
 });
 test('failed replies can be retried without duplicate questions', async () => {
   consumeChatStream.mockRejectedValueOnce(new Error('Temporary failure'));

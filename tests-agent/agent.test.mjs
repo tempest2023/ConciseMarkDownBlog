@@ -56,7 +56,7 @@ test('prompt is bounded public context, not a retriever or a job-search assertio
 test('disabled or missing-key deployments fail closed with usable status', async t => {
   for (const env of [{}, { PERSONAL_AGENT_ENABLED: 'true' }, { AI_GATEWAY_API_KEY: 'not-enough' }]) {
     const { url, post } = await serve(t, { env });
-    assert.deepEqual(await (await fetch(url)).json(), { available: false });
+    assert.deepEqual(await (await fetch(url)).json(), { available: false, model: null });
     assert.equal((await post()).status, 503);
   }
 });
@@ -106,6 +106,11 @@ test('owner-selected GLM default and server override cannot be changed by a visi
     assert.equal(options.maxOutputTokens, limits.outputTokens);
     assert.equal(options.maxRetries, 0);
   }
+});
+
+test('availability reports the server-selected model without exposing credentials', async t => {
+  const { url } = await serve(t, { env: { ...enabled, AGENT_MODEL: 'owner/configured-model' } });
+  assert.deepEqual(await (await fetch(url)).json(), { available: true, model: 'owner/configured-model' });
 });
 
 test('empty, truncated and provider-error replies are incomplete without exposing provider errors', async t => {

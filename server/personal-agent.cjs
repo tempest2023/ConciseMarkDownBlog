@@ -78,7 +78,8 @@ function createHandler({ env = process.env, streamText, model, limiter = createL
     const reply = (status, payload) => { res.statusCode = status; res.setHeader('Content-Type', 'application/json'); res.end(JSON.stringify(payload)); };
     res.setHeader('Cache-Control', 'no-store');
     const available = env.PERSONAL_AGENT_ENABLED === 'true' && Boolean(env.AI_GATEWAY_API_KEY);
-    if (req.method === 'GET') return reply(200, { available });
+    const modelName = env.AGENT_MODEL || 'zai/glm-5.3-flash';
+    if (req.method === 'GET') return reply(200, { available, model: available ? modelName : null });
     if (req.method !== 'POST') { res.setHeader('Allow', 'GET, POST'); return reply(405, { error: 'Method not allowed.' }); }
     if (!available) return reply(503, { error: 'Chat is not available right now. Please explore the public profile or contact Tempest directly.' });
     if (!String(req.headers['content-type'] || '').startsWith('application/json')) return reply(415, { error: 'Use application/json.' });
@@ -100,7 +101,7 @@ function createHandler({ env = process.env, streamText, model, limiter = createL
     try {
       const sdk = streamText ? null : await import('ai');
       // The SDK's default error callback logs provider errors, which can contain request data.
-      const result = (streamText || sdk.streamText)({ model: model || env.AGENT_MODEL || 'zai/glm-5.3-flash', system: systemPrompt(), messages, maxOutputTokens: limits.outputTokens, maxRetries: 0, abortSignal: abort.signal, temperature: 0.2, onError: () => {} });
+      const result = (streamText || sdk.streamText)({ model: model || modelName, system: systemPrompt(), messages, maxOutputTokens: limits.outputTokens, maxRetries: 0, abortSignal: abort.signal, temperature: 0.2, onError: () => {} });
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/event-stream; charset=utf-8');
       res.setHeader('X-Accel-Buffering', 'no');

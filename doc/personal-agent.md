@@ -1,6 +1,6 @@
 # Personal Agent
 
-Ask Tempest is a small optional interface on top of the existing static blog. It uses Vercel AI SDK on the server, AI Gateway, and a streaming React interface. There is no RAG, embedding job, vector database, tool execution, or stored conversation history. The SDK is not included in the browser bundle.
+Ask Tempest is a small optional interface on top of the existing static blog. It uses Vercel AI SDK on the server, AI Gateway, and a streaming React interface. There is no RAG, embedding job, vector database, tool execution, or server-side conversation history. Complete chats are kept only in the visitor's browser. The SDK is not included in the browser bundle.
 
 ## Public context
 
@@ -30,7 +30,7 @@ Each reply is one model generation with no automatic retries, at most 600 output
 
 The in-memory limiter allows six requests per client per five minutes and 100 per server instance per UTC day. It resets on cold starts and does not coordinate across instances, so it is **not a global spend cap**. Clients without an Origin header may use the endpoint programmatically; same-origin checking is not authentication. Use the dedicated Gateway key budget as the external spend control and review provider/hosting charges, refill settings and usage separately. See [Vercel's budget documentation](https://vercel.com/docs/ai-gateway/observability-and-spend/budgets).
 
-The application does not persist conversations or log prompts, replies or raw provider errors. Messages still pass through Vercel and the model provider, whose retention settings and policies apply. In-memory throttling uses a daily hashed client address. A visitor should not submit private information. Stopping a reply aborts the upstream request but does not erase already incurred usage.
+The application does not persist conversations on the server or log prompts, replies or raw provider errors. Complete conversation pairs are saved in the visitor's browser using `localStorage`, so they remain available after a refresh on that browser and can be cleared with New conversation. Messages still pass through Vercel and the model provider, whose retention settings and policies apply. In-memory throttling uses a daily hashed client address. A visitor should not submit private information. Stopping a reply aborts the upstream request but does not erase already incurred usage.
 
 ## Verification
 
