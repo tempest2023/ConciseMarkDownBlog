@@ -111,7 +111,7 @@ export default function PersonalAgent () {
         <div className="agent-chat" aria-hidden={!chatting}>
           <div className="agent-chat-toolbar">
             <span>{messages.filter(message => message.role === 'user').length} {messages.filter(message => message.role === 'user').length === 1 ? 'question' : 'questions'}</span>
-            <button type="button" disabled={busy} onClick={newConversation} tabIndex={chatting ? undefined : -1}>New conversation</button>
+            <button type="button" disabled={busy} onClick={newConversation} tabIndex={chatting ? undefined : -1} aria-label="New chat"><span aria-hidden="true">+</span> New chat</button>
           </div>
           <div className="agent-transcript" ref={transcript} onScroll={event => { const area = event.currentTarget; followReply.current = area.scrollHeight - area.scrollTop - area.clientHeight < 64; }} role="log" aria-label="Conversation" aria-live="polite" aria-relevant="additions text" tabIndex={chatting ? 0 : -1}>
             {messages.map(message => <div className={`agent-message ${message.role}`} key={message.id}><span className="message-role">{message.role === 'user' ? 'You' : 'Tempest’s AI guide'}</span><div className="message-content"><ReactMarkdown skipHtml transformLinkUri={safeAgentHref} components={{ img: () => null, a: ({ href, children }) => href ? <a href={href} rel="nofollow noreferrer">{children}</a> : <span>{children}</span> }}>{message.content || (message.status === 'streaming' ? 'Thinking…' : 'No reply received.')}</ReactMarkdown>{message.status === 'error' && message.content && <small>Incomplete reply</small>}</div></div>)}

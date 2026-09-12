@@ -36,7 +36,7 @@ test('a suggested question sends one request, renders the reply and supports a c
   expect(global.fetch).toHaveBeenCalledTimes(2);
   expect(JSON.parse(global.fetch.mock.calls[1][1].body).messages).toEqual([{ role: 'user', content: 'Tell me about Tempest’s research.' }]);
   await waitFor(() => expect(JSON.parse(window.localStorage.getItem('ask-tempest:messages:v1'))).toHaveLength(2));
-  fireEvent.click(screen.getByRole('button', { name: 'New conversation' }));
+  fireEvent.click(screen.getByRole('button', { name: 'New chat' }));
   expect(screen.queryByText('A public answer.')).not.toBeInTheDocument();
   expect(screen.getByLabelText('Ask Tempest')).toHaveClass('is-onboarding');
   expect(window.localStorage.getItem('ask-tempest:messages:v1')).toBeNull();
@@ -84,7 +84,11 @@ test('Enter submits but Shift+Enter and IME composition do not', async () => {
   expect(global.fetch).toHaveBeenCalledTimes(2);
 });
 
-test('the avatar-only companion opens and closes the window-sized conversation dialog', async () => {
+test('the avatar-only companion keeps the current chat when its dialog is closed and reopened', async () => {
+  window.localStorage.setItem('ask-tempest:messages:v1', JSON.stringify([
+    { role: 'user', content: 'A saved question' },
+    { role: 'assistant', content: 'A saved answer' }
+  ]));
   render(<AgentDock />);
   const dialog = document.querySelector('dialog');
   dialog.showModal = () => dialog.setAttribute('open', '');
@@ -99,6 +103,11 @@ test('the avatar-only companion opens and closes the window-sized conversation d
   expect(document.querySelector('.companion-chat-icon')).not.toBeInTheDocument();
   fireEvent.click(screen.getByRole('button', { name: 'Open Ask Tempest' }));
   expect(dialog).toHaveAttribute('open');
+  expect(await screen.findByText('A saved answer')).toBeInTheDocument();
   fireEvent.click(screen.getByRole('button', { name: 'Close conversation' }));
   expect(dialog).not.toHaveAttribute('open');
+  fireEvent.click(screen.getByRole('button', { name: 'Open Ask Tempest' }));
+  expect(dialog).toHaveAttribute('open');
+  expect(screen.getByText('A saved answer')).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'New chat' })).toBeInTheDocument();
 });
