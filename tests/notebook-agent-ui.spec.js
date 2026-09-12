@@ -43,7 +43,7 @@ test.describe('Notebook and agent companion', () => {
     expect(layout.topGap).toBeGreaterThanOrEqual(3);
   });
 
-  test('keeps the interactive agent outside article Markdown', async ({ page }) => {
+  test('opens the interactive agent as a full-screen experience outside article Markdown', async ({ page }) => {
     await expect(page.locator('.article-content [data-personal-agent]')).toHaveCount(0);
     await expect(page.locator('.companion-avatar')).toBeVisible();
 
@@ -56,9 +56,9 @@ test.describe('Notebook and agent companion', () => {
     const size = await dialog.evaluate(element => {
       return { width: element.offsetWidth, height: element.offsetHeight, viewportWidth: innerWidth, viewportHeight: innerHeight };
     });
-    expect(size.width).toBeCloseTo(size.viewportWidth * .8, 0);
-    expect(size.height).toBeCloseTo(size.viewportHeight * .8, 0);
-    await expect(dialog).toHaveCSS('backdrop-filter', 'blur(28px) saturate(1.18)');
+    expect(size.width).toBeCloseTo(size.viewportWidth, 0);
+    expect(size.height).toBeCloseTo(size.viewportHeight, 0);
+    await expect(dialog).toHaveCSS('border-radius', '0px');
 
     await page.keyboard.press('Escape');
     await expect(dialog).not.toBeVisible();

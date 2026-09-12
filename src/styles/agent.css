@@ -48,25 +48,23 @@
 .companion-avatar-image.is-current { opacity: 1; }
 
 .agent-dialog {
-  width: min(80vw, 1120px);
-  height: 80vh;
-  max-width: none;
-  max-height: none;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-width: 100vw;
+  max-height: 100dvh;
+  margin: 0;
   padding: 0;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--border-color) 72%, transparent);
-  border-radius: 22px;
-  background: color-mix(in srgb, var(--bg-color) 88%, transparent);
-  box-shadow: 0 30px 90px rgba(48, 37, 29, .22), inset 0 1px rgba(255, 255, 255, .5);
+  border: 0;
+  border-radius: 0;
+  background: var(--bg-color);
+  box-shadow: none;
   color: var(--text-color);
-  backdrop-filter: blur(28px) saturate(1.18);
-  -webkit-backdrop-filter: blur(28px) saturate(1.18);
 }
-.agent-dialog[open] { display: flex; flex-direction: column; animation: conversation-open .28s cubic-bezier(.22, 1, .36, 1) both; }
+.agent-dialog[open] { display: flex; flex-direction: column; animation: conversation-open .32s cubic-bezier(.22, 1, .36, 1) both; }
 .agent-dialog::backdrop {
-  background: rgba(43, 37, 31, .28);
-  backdrop-filter: blur(18px) saturate(.82);
-  -webkit-backdrop-filter: blur(18px) saturate(.82);
+  background: var(--bg-color);
 }
 .agent-dialog-header {
   min-height: 70px;
@@ -116,32 +114,40 @@
 .agent-chat {
   position: absolute;
   inset: 0;
-  transition: opacity .24s ease, transform .36s cubic-bezier(.22, 1, .36, 1), visibility 0s;
 }
 .agent-onboarding {
   display: flex;
   flex-direction: column;
   padding: clamp(1.25rem, 3vw, 2.6rem) clamp(1.15rem, 5vw, 5rem) .4rem;
+  visibility: visible;
+  transition: visibility 0s;
+}
+.agent-onboarding-copy {
+  margin: auto 0;
   opacity: 1;
   transform: none;
+  transition: opacity .22s ease, transform .34s cubic-bezier(.22, 1, .36, 1);
 }
-.agent-onboarding-copy { margin: auto 0; }
 .agent-chat {
   display: flex;
   flex-direction: column;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(20px);
+  transform: translateY(24px) scale(.992);
+  transform-origin: 50% 60%;
   visibility: hidden;
+  transition: opacity .3s ease, transform .44s cubic-bezier(.22, 1, .36, 1), visibility 0s .3s;
 }
-.personal-agent.is-chatting .agent-onboarding { opacity: 0; pointer-events: none; transform: translateY(-18px); visibility: hidden; transition-delay: 0s, 0s, .24s; }
-.personal-agent.is-chatting .agent-chat { opacity: 1; pointer-events: auto; transform: none; visibility: visible; }
+.personal-agent.is-chatting .agent-onboarding { pointer-events: none; visibility: hidden; transition-delay: .34s; }
+.personal-agent.is-chatting .agent-onboarding-copy { opacity: 0; transform: translateY(-22px); }
+.personal-agent.is-chatting .agent-suggestions { opacity: 0; transform: translateY(-10px) scale(.985); transition-delay: .04s; }
+.personal-agent.is-chatting .agent-chat { opacity: 1; pointer-events: auto; transform: none; visibility: visible; transition-delay: .12s, .08s, 0s; }
 .agent-heading { display: flex; justify-content: center; align-items: center; gap: .75rem; }
 .agent-heading .eyebrow { color: var(--accent-color); font-size: .67rem; font-weight: 700; letter-spacing: .15em; }
 .agent-badge { padding: .25rem .48rem; border: 1px solid var(--border-color); border-radius: 999px; color: var(--muted-color); font-size: .68rem; }
 .personal-agent h2 { margin: .75rem 0 .45rem; font: 700 clamp(1.85rem, 3vw, 2.7rem)/1.1 var(--body-font); letter-spacing: -.035em; text-align: center; }
 .personal-agent .agent-intro { margin: 0 auto; max-width: 580px; color: var(--muted-color); font-size: .9rem; line-height: 1.55; text-align: center; }
-.agent-suggestions { max-width: 800px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem; margin: 1.25rem auto 0; width: 100%; }
+.agent-suggestions { max-width: 800px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem; margin: 1.25rem auto 0; width: 100%; opacity: 1; transform: none; transition: opacity .2s ease, transform .32s cubic-bezier(.22, 1, .36, 1); }
 .personal-agent button { min-height: 44px; padding: .62rem .8rem; border: 1px solid var(--border-color); border-radius: 10px; background: color-mix(in srgb, var(--bg-color) 66%, transparent); color: var(--text-color); font-size: .82rem; line-height: 1.35; text-align: left; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
 .personal-agent button:hover:not(:disabled) { border-color: color-mix(in srgb, var(--accent-color) 50%, var(--border-color)); background: color-mix(in srgb, var(--code-bg) 78%, transparent); transform: translateY(-1px); }
 .personal-agent button:disabled { cursor: not-allowed; opacity: .55; }
@@ -187,6 +193,7 @@
 .message-content { min-width: 0; }
 .message-content small { display: block; margin-top: .4rem; color: var(--muted-color); }
 .agent-composer-area { flex: 0 0 auto; padding: 0 clamp(1.15rem, 5vw, 5rem) .7rem; background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--bg-color) 94%, transparent) 22%); }
+.personal-agent.is-chatting .agent-composer-area { animation: composer-settle .42s .1s cubic-bezier(.22, 1, .36, 1) both; }
 .personal-agent form { width: min(100%, 800px); margin: 0 auto; padding: .48rem .55rem .42rem .7rem; border: 1px solid var(--border-color); border-radius: 15px; background: color-mix(in srgb, var(--bg-color) 88%, transparent); box-shadow: 0 10px 28px rgba(70, 54, 42, .08); }
 .personal-agent label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .personal-agent textarea { width: 100%; min-height: 34px; max-height: 96px; padding: .35rem .4rem .2rem; resize: none; border: 0; outline: 0; background: transparent; color: var(--text-color); font: .9rem/1.45 var(--ui-font); }
@@ -200,7 +207,8 @@
 .personal-agent .agent-notice { width: min(100%, 800px); margin: .55rem auto; padding: .65rem .8rem; border: 1px solid var(--border-color); border-radius: 9px; background: var(--code-bg); font-size: .79rem; line-height: 1.5; }
 .agent-notice button { min-height: 34px; margin-left: .5rem; padding-block: .3rem; }
 
-@keyframes conversation-open { from { opacity: 0; transform: translateY(18px) scale(.975); } to { opacity: 1; transform: none; } }
+@keyframes conversation-open { from { opacity: 0; transform: scale(.992); } to { opacity: 1; transform: none; } }
+@keyframes composer-settle { from { opacity: .5; transform: translateY(12px) scale(.985); } to { opacity: 1; transform: none; } }
 @keyframes message-arrive { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 @keyframes companion-five-second-beat {
   0%, 16%, 100% { transform: translateY(0) rotate(0); }
@@ -210,7 +218,6 @@
 }
 @media (max-width: 760px) {
   .agent-dock { --agent-dock-size: 63px; right: 13.5px; }
-  .agent-dialog { width: 94vw; height: 90dvh; border-radius: 17px; }
   .agent-dialog-header { min-height: 62px; padding-left: 1rem; }
   .agent-dialog-header > div { grid-template-columns: auto auto; }
   .agent-subtitle { display: none; }
@@ -231,6 +238,7 @@
 @media (prefers-reduced-motion: reduce) {
   .companion-launcher { animation: none; }
   .companion-avatar-image { transition: none; }
-  .agent-onboarding, .agent-chat { transition: none; }
+  .agent-onboarding, .agent-onboarding-copy, .agent-chat, .agent-suggestions { transition: none; }
+  .personal-agent.is-chatting .agent-composer-area { animation: none; }
   .agent-message { animation: none; }
 }
