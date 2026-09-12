@@ -5,7 +5,7 @@ import { conversationHistory, safeAgentHref } from '../util/agent-client';
 import '../styles/agent.css';
 
 const defaultModel = 'zai/glm-5.3-flash';
-const suggestions = ['What AI systems has Tempest built?', 'Tell me about Tempest’s research.', 'What is Tempest’s industry experience?', 'What’s new in Tempest’s research papers lately?'];
+const suggestions = ['What AI systems has Tempest built?', 'Tell me about Tempest’s research.', 'What is Tempest’s industry experience?', "What's new in Tempest research papers lately?"];
 const storageKey = 'ask-tempest:messages:v1';
 
 function storedMessages () {

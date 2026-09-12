@@ -28,7 +28,7 @@ test('unavailable status offers static alternatives and disables submission', as
 test('a suggested question sends one request, renders the reply and supports a clean new conversation', async () => {
   await ready();
   expect(screen.getByPlaceholderText('Ask about Tempest’s work…')).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: 'What’s new in Tempest’s research papers lately?' })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: "What's new in Tempest research papers lately?" })).toBeInTheDocument();
   expect(screen.queryByText('Complete chats are saved only in this browser.')).not.toBeInTheDocument();
   fireEvent.click(screen.getByRole('button', { name: 'Tell me about Tempest’s research.' }));
   expect(await screen.findByText('A public answer.')).toBeInTheDocument();
