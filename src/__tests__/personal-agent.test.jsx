@@ -52,7 +52,12 @@ test('a suggested question sends one request, renders the reply and supports a c
 test('the configured default model remains visible with an older availability response', async () => {
   global.fetch.mockResolvedValue({ ok: true, json: async () => ({ available: true }) });
   await ready();
-  expect(screen.getByText('Model · zai/glm-5.3-flash')).toBeInTheDocument();
+  expect(screen.getByText('Model · inception/mercury-2.5')).toBeInTheDocument();
+});
+test('the configured primary and backup models are both visible', async () => {
+  global.fetch.mockResolvedValue({ ok: true, json: async () => ({ available: true, model: 'inception/mercury-2.5', fallbackModels: ['alibaba/qwen3.8-flash'] }) });
+  await ready();
+  expect(screen.getByText('Model · inception/mercury-2.5 · Backup · alibaba/qwen3.8-flash')).toBeInTheDocument();
 });
 test('complete local conversation history is restored after a refresh', async () => {
   window.localStorage.setItem('ask-tempest:messages:v1', JSON.stringify([

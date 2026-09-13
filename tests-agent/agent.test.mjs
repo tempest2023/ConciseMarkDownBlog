@@ -6,7 +6,7 @@ import { MockLanguageModelV4 } from 'ai/test';
 import agent from '../server/personal-agent.cjs';
 import transport from '../src/util/chat-stream.js';
 
-const { createHandler, createLimiter, validateMessages, limits, systemPrompt } = agent;
+const { configuredModels, createHandler, createLimiter, validateMessages, limits, systemPrompt } = agent;
 const { consumeChatStream } = transport;
 const enabled = { PERSONAL_AGENT_ENABLED: 'true', AI_GATEWAY_API_KEY: 'test-only-not-a-key' };
 const question = { messages: [{ role: 'user', content: '介绍一下他的研究' }] };
@@ -56,7 +56,7 @@ test('prompt is bounded public context, not a retriever or a job-search assertio
 test('disabled or missing-key deployments fail closed with usable status', async t => {
   for (const env of [{}, { PERSONAL_AGENT_ENABLED: 'true' }, { AI_GATEWAY_API_KEY: 'not-enough' }]) {
     const { url, post } = await serve(t, { env });
-    assert.deepEqual(await (await fetch(url)).json(), { available: false, model: null });
+    assert.deepEqual(await (await fetch(url)).json(), { available: false, model: null, fallbackModels: [] });
     assert.equal((await post()).status, 503);
   }
 });
@@ -93,24 +93,32 @@ test('real AI SDK + mock provider + HTTP + client parser streams Unicode and enf
   assert.ok(!call.tools?.length);
 });
 
-test('owner-selected GLM default and server override cannot be changed by a visitor', async t => {
-  for (const override of [undefined, 'owner/configured-model']) {
+test('owner-selected primary and fallback models cannot be changed by a visitor', async t => {
+  const cases = [
+    { configured: undefined, primary: 'inception/mercury-2.5', fallbacks: ['alibaba/qwen3.8-flash'] },
+    { configured: 'owner/configured-model', primary: 'owner/configured-model', fallbacks: [] },
+    { configured: ' primary/model, backup/one, backup/two, backup/one, primary/model ', primary: 'primary/model', fallbacks: ['backup/one', 'backup/two'] }
+  ];
+  for (const { configured, primary, fallbacks } of cases) {
     let options;
     const fakeStream = input => {
       options = input;
       return { fullStream: (async function* () { yield { type: 'text-delta', text: 'Test reply' }; yield { type: 'finish', finishReason: 'stop' }; })() };
     };
-    const { post } = await serve(t, { model: undefined, env: { ...enabled, ...(override ? { AGENT_MODEL: override } : {}) }, streamText: fakeStream });
+    const { post } = await serve(t, { model: undefined, env: { ...enabled, ...(configured ? { AGENT_MODEL: configured } : {}) }, streamText: fakeStream });
     await consumeChatStream(await post({ ...question, model: 'visitor/expensive-model' }), () => {});
-    assert.equal(options.model, override || 'zai/glm-5.3-flash');
+    assert.equal(options.model, primary);
+    assert.deepEqual(options.providerOptions?.gateway.models || [], fallbacks);
     assert.equal(options.maxOutputTokens, limits.outputTokens);
     assert.equal(options.maxRetries, 0);
+    assert.equal(options.reasoning, 'none');
   }
+  assert.deepEqual(configuredModels('primary/model, backup/model, backup/model'), { primary: 'primary/model', fallbacks: ['backup/model'] });
 });
 
 test('availability reports the server-selected model without exposing credentials', async t => {
-  const { url } = await serve(t, { env: { ...enabled, AGENT_MODEL: 'owner/configured-model' } });
-  assert.deepEqual(await (await fetch(url)).json(), { available: true, model: 'owner/configured-model' });
+  const { url } = await serve(t, { env: { ...enabled, AGENT_MODEL: 'primary/model,backup/model' } });
+  assert.deepEqual(await (await fetch(url)).json(), { available: true, model: 'primary/model', fallbackModels: ['backup/model'] });
 });
 
 test('empty, truncated and provider-error replies are incomplete without exposing provider errors', async t => {
