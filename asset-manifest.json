@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.css": "/static/css/main.2a4a268b.css",
-    "main.js": "/static/js/main.1f37b029.js",
+    "main.css": "/static/css/main.36b42fdc.css",
+    "main.js": "/static/js/main.c0e3e5a7.js",
     "static/js/473.992f5cd9.chunk.js": "/static/js/473.992f5cd9.chunk.js",
     "static/css/204.b5ee57c2.chunk.css": "/static/css/204.b5ee57c2.chunk.css",
     "static/js/204.931210cc.chunk.js": "/static/js/204.931210cc.chunk.js",
     "static/js/198.b0fb908f.chunk.js": "/static/js/198.b0fb908f.chunk.js",
-    "static/js/551.1b81e0f6.chunk.js": "/static/js/551.1b81e0f6.chunk.js",
+    "static/js/868.06784736.chunk.js": "/static/js/868.06784736.chunk.js",
     "static/js/358.b773cd29.chunk.js": "/static/js/358.b773cd29.chunk.js",
     "static/js/16.01d7de84.chunk.js": "/static/js/16.01d7de84.chunk.js",
     "resources/src/articles/Blogs/JavaScript/images/maximum_call_stack_size_exceeded.png": "/resources/src/articles/Blogs/JavaScript/images/maximum_call_stack_size_exceeded.png",
@@ -101,11 +101,11 @@
     "static/media/Most_Popular_Video_Creator.md": "/static/media/Most_Popular_Video_Creator.131e114daeed00fb688a.md",
     "static/media/1293_Shortest_Path_in_a_Grid_with_Obstacles_Elimin_md": "/static/media/1293_Shortest_Path_in_a_Grid_with_Obstacles_Elimin_cf144d0b51e84c79899b68208d590e3a.2762c328a6a9f3dd3090.md",
     "static/media/Maximum_Score_Of_Spliced_Array.md": "/static/media/Maximum_Score_Of_Spliced_Array.a3d8fd705b450e5ba2bd.md",
+    "static/media/Ask.md": "/static/media/Ask.21b7fe643bfc63e7fa5c.md",
     "static/media/Python_C_compile_script.md": "/static/media/Python_C_compile_script.56fa712b8d66cea3f5e9.md",
     "static/media/socketio_error.md": "/static/media/socketio_error.5b3de6afb81cfebede1a.md",
     "static/media/markdown_intro.md": "/static/media/markdown_intro.06591a1b31c6147af4ba.md",
     "static/media/Shortest_Unsorted_Continuous_Subarray.md": "/static/media/Shortest_Unsorted_Continuous_Subarray.f641df4bcb3b7ed8116b.md",
-    "static/media/Ask.md": "/static/media/Ask.48a282ad42e35ca92ea9.md",
     "static/media/pinitos_error.md": "/static/media/pinitos_error.2ef1c561127048e9bb44.md",
     "static/media/RecommendationLetter.md": "/static/media/RecommendationLetter.a20538bc01e2ddf069fa.md",
     "static/media/referal3rd.md": "/static/media/referal3rd.4435558d5be0bece3e90.md",
@@ -120,18 +120,18 @@
     "static/media/colorfont.md": "/static/media/colorfont.fb8d70409884c4f6d10b.md",
     "static/media/Use_Python_to_print_colorfully.md": "/static/media/Use_Python_to_print_colorfully.176d497a840ff936695b.md",
     "static/media/404.md": "/static/media/404.6d4bd4046c21b4c3aab1.md",
-    "main.2a4a268b.css.map": "/static/css/main.2a4a268b.css.map",
-    "main.1f37b029.js.map": "/static/js/main.1f37b029.js.map",
+    "main.36b42fdc.css.map": "/static/css/main.36b42fdc.css.map",
+    "main.c0e3e5a7.js.map": "/static/js/main.c0e3e5a7.js.map",
     "473.992f5cd9.chunk.js.map": "/static/js/473.992f5cd9.chunk.js.map",
     "204.b5ee57c2.chunk.css.map": "/static/css/204.b5ee57c2.chunk.css.map",
     "204.931210cc.chunk.js.map": "/static/js/204.931210cc.chunk.js.map",
     "198.b0fb908f.chunk.js.map": "/static/js/198.b0fb908f.chunk.js.map",
-    "551.1b81e0f6.chunk.js.map": "/static/js/551.1b81e0f6.chunk.js.map",
+    "868.06784736.chunk.js.map": "/static/js/868.06784736.chunk.js.map",
     "358.b773cd29.chunk.js.map": "/static/js/358.b773cd29.chunk.js.map",
     "16.01d7de84.chunk.js.map": "/static/js/16.01d7de84.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2a4a268b.css",
-    "static/js/main.1f37b029.js"
+    "static/css/main.36b42fdc.css",
+    "static/js/main.c0e3e5a7.js"
   ]
 }
