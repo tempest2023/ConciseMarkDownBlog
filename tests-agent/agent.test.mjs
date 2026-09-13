@@ -6,7 +6,7 @@ import { MockLanguageModelV4 } from 'ai/test';
 import agent from '../server/personal-agent.cjs';
 import transport from '../src/util/chat-stream.js';
 
-const { configuredModels, createHandler, createLimiter, validateMessages, limits, systemPrompt } = agent;
+const { configuredModels, responseModel, createHandler, createLimiter, validateMessages, limits, systemPrompt } = agent;
 const { consumeChatStream } = transport;
 const enabled = { PERSONAL_AGENT_ENABLED: 'true', AI_GATEWAY_API_KEY: 'test-only-not-a-key' };
 const question = { messages: [{ role: 'user', content: '介绍一下他的研究' }] };
@@ -119,6 +119,26 @@ test('owner-selected primary and fallback models cannot be changed by a visitor'
 test('availability reports the server-selected model without exposing credentials', async t => {
   const { url } = await serve(t, { env: { ...enabled, AGENT_MODEL: 'primary/model,backup/model' } });
   assert.deepEqual(await (await fetch(url)).json(), { available: true, model: 'primary/model', fallbackModels: ['backup/model'] });
+});
+
+test('successful streams report the model actually selected by Gateway fallback routing', async t => {
+  const fakeStream = () => ({ fullStream: (async function* () {
+    yield { type: 'text-delta', text: 'Backup reply' };
+    yield {
+      type: 'finish-step',
+      finishReason: 'stop',
+      response: { modelId: 'qwen3.8-flash' },
+      providerMetadata: { gateway: { routing: { canonicalSlug: 'alibaba/qwen3.8-flash' } } }
+    };
+    yield { type: 'finish', finishReason: 'stop' };
+  })() });
+  const env = { ...enabled, AGENT_MODEL: 'inception/mercury-2.5,alibaba/qwen3.8-flash' };
+  const { post } = await serve(t, { model: undefined, env, streamText: fakeStream });
+  const events = [];
+  await consumeChatStream(await post(), event => events.push(event));
+  assert.deepEqual(events.map(event => event.type), ['delta', 'model', 'done']);
+  assert.equal(events[1].model, 'alibaba/qwen3.8-flash');
+  assert.equal(responseModel({ type: 'finish-step', response: { modelId: 'unconfigured/model' } }, configuredModels(env.AGENT_MODEL)), null);
 });
 
 test('empty, truncated and provider-error replies are incomplete without exposing provider errors', async t => {

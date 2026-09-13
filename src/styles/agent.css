@@ -180,18 +180,6 @@
 .personal-agent button { min-height: 44px; padding: .62rem .8rem; border: 1px solid var(--border-color); border-radius: 10px; background: color-mix(in srgb, var(--bg-color) 66%, transparent); color: var(--text-color); font-size: .82rem; line-height: 1.35; text-align: left; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
 .personal-agent button:hover:not(:disabled) { border-color: color-mix(in srgb, var(--accent-color) 50%, var(--border-color)); background: color-mix(in srgb, var(--code-bg) 78%, transparent); transform: translateY(-1px); }
 .personal-agent button:disabled { cursor: not-allowed; opacity: .55; }
-.agent-chat-toolbar {
-  width: min(100%, 800px);
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex: 0 0 auto;
-  margin: 0 auto;
-  padding: .8rem .35rem .55rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--border-color) 70%, transparent);
-  color: var(--muted-color);
-  font-size: .68rem;
-}
 .agent-transcript {
   width: min(100%, 800px);
   min-height: 0;
@@ -207,18 +195,20 @@
 .agent-message.user { width: fit-content; max-width: 82%; margin: 1.25rem 0 1.25rem auto; padding: .72rem .9rem; border-radius: 15px 15px 5px 15px; background: var(--code-bg); }
 .agent-message.user .message-role { text-align: right; }
 .agent-message.assistant {
+  --agent-reply-avatar-size: clamp(1.75rem, calc(1.5rem + .6vw), 2rem);
   display: grid;
-  grid-template-columns: 64px minmax(0, 1fr);
+  grid-template-columns: var(--agent-reply-avatar-size) minmax(0, 1fr);
   grid-template-rows: auto auto;
   column-gap: .9rem;
   align-items: start;
 }
 .agent-message-avatar {
-  width: 64px;
-  height: 64px;
+  width: var(--agent-reply-avatar-size);
+  aspect-ratio: 1;
   display: block;
   grid-column: 1;
   grid-row: 1 / span 2;
+  justify-self: center;
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--border-color) 76%, transparent);
   border-radius: 50%;
@@ -285,7 +275,6 @@
   .personal-agent .agent-intro { font-size: .8rem; }
   .agent-suggestions { grid-template-columns: 1fr 1fr; gap: .4rem; }
   .agent-suggestions button { min-height: 48px; padding: .48rem .58rem; font-size: .7rem; }
-  .agent-chat-toolbar { padding-inline: .7rem; }
   .agent-transcript { padding-inline: .8rem; }
   .agent-message { font-size: .84rem; }
   .agent-message.user { max-width: 90%; }

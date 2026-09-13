@@ -35,8 +35,9 @@ test('a suggested question sends one request, renders the reply and supports a c
   expect(await screen.findByText('A public answer.')).toBeInTheDocument();
   expect(screen.getByText('Saber (AI Agent)')).toBeInTheDocument();
   expect(document.querySelector('.agent-message-avatar img')).toHaveAttribute('src', '/assets/agent-avatar/focused.png');
-  expect(document.querySelector('.agent-message-avatar img')).toHaveAttribute('width', '64');
-  expect(document.querySelector('.agent-message-avatar img')).toHaveAttribute('height', '64');
+  expect(document.querySelector('.agent-message-avatar img')).not.toHaveAttribute('width');
+  expect(document.querySelector('.agent-message-avatar img')).not.toHaveAttribute('height');
+  expect(screen.queryByText('1 question')).not.toBeInTheDocument();
   expect(screen.getByLabelText('Ask Tempest')).toHaveClass('is-chatting');
   expect(screen.getByText('Model · test/model')).toBeInTheDocument();
   await waitFor(() => expect(screen.queryByRole('button', { name: 'Stop' })).not.toBeInTheDocument());
@@ -58,6 +59,21 @@ test('the configured primary and backup models are both visible', async () => {
   global.fetch.mockResolvedValue({ ok: true, json: async () => ({ available: true, model: 'inception/mercury-2.5', fallbackModels: ['alibaba/qwen3.8-flash'] }) });
   await ready();
   expect(screen.getByText('Model · inception/mercury-2.5 · Backup · alibaba/qwen3.8-flash')).toBeInTheDocument();
+});
+test('the displayed model follows the model actually selected for the reply and survives refresh', async () => {
+  global.fetch.mockResolvedValue({ ok: true, json: async () => ({ available: true, model: 'inception/mercury-2.5', fallbackModels: ['alibaba/qwen3.8-flash'] }) });
+  consumeChatStream.mockImplementationOnce(async (_, emit) => {
+    emit({ type: 'delta', text: 'A fallback answer.' });
+    emit({ type: 'model', model: 'alibaba/qwen3.8-flash' });
+    emit({ type: 'done' });
+  });
+  const view = await ready();
+  fireEvent.click(screen.getByRole('button', { name: 'Tell me about Tempest’s research.' }));
+  expect(await screen.findByText('Model · alibaba/qwen3.8-flash · Fallback')).toBeInTheDocument();
+  await waitFor(() => expect(JSON.parse(window.localStorage.getItem('ask-tempest:messages:v1'))[1].model).toBe('alibaba/qwen3.8-flash'));
+  view.unmount();
+  await ready();
+  expect(screen.getByText('Model · alibaba/qwen3.8-flash · Fallback')).toBeInTheDocument();
 });
 test('complete local conversation history is restored after a refresh', async () => {
   window.localStorage.setItem('ask-tempest:messages:v1', JSON.stringify([

@@ -11,6 +11,19 @@ function configuredModels(value) {
   return { primary, fallbacks };
 }
 
+function responseModel(part, models) {
+  if (part?.type !== 'finish-step') return null;
+  const configured = [models.primary, ...models.fallbacks];
+  const routing = part.providerMetadata?.gateway?.routing;
+  const candidates = [routing?.canonicalSlug, part.response?.headers?.['x-model-id'], part.response?.modelId];
+  for (const candidate of candidates) {
+    if (typeof candidate !== 'string' || !candidate || candidate.length > 160) continue;
+    const matched = configured.find(name => name === candidate || name.endsWith(`/${candidate}`));
+    if (matched) return matched;
+  }
+  return null;
+}
+
 function systemPrompt() {
   const documents = catalog.map(({ title, path, description, sourceKind, updatedAt }) => ({ title, url: path, summary: description, kind: sourceKind, sourceDate: updatedAt.slice(0, 10) }));
   return `You are Saber, the AI guide to Tempest's public blog. You are not Tempest.
@@ -131,6 +144,8 @@ function createHandler({ env = process.env, streamText, model, limiter = createL
       let receivedText = false;
       for await (const part of result.fullStream) {
         if (part.type === 'text-delta' && part.text) { receivedText = true; emit({ type: 'delta', text: part.text }); }
+        const servedBy = responseModel(part, models);
+        if (servedBy && part.finishReason === 'stop') emit({ type: 'model', model: servedBy });
         if (part.type === 'error' || part.type === 'abort') { failed = true; failureMessage = safeFailureMessage(part.error); break; }
         if (part.type === 'finish' && part.finishReason !== 'stop') failed = true;
       }
@@ -146,4 +161,4 @@ function createHandler({ env = process.env, streamText, model, limiter = createL
     }
   };
 }
-module.exports = { configuredModels, createHandler, createLimiter, validateMessages, limits, systemPrompt };
+module.exports = { configuredModels, responseModel, createHandler, createLimiter, validateMessages, limits, systemPrompt };

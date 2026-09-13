@@ -66,6 +66,7 @@ test.describe('Notebook and agent companion', () => {
   });
 
   test('restores saved conversations directly into the full-screen chat', async ({ page }) => {
+    await page.setViewportSize({ width: 1512, height: 982 });
     await page.evaluate(() => localStorage.setItem('ask-tempest:messages:v1', JSON.stringify([
       { role: 'user', content: 'A saved question' },
       { role: 'assistant', content: 'A saved answer' }
@@ -80,10 +81,11 @@ test.describe('Notebook and agent companion', () => {
     await expect(page.getByText('Saber (AI Agent)')).toBeVisible();
     const avatar = page.locator('.agent-message.assistant .agent-message-avatar');
     await expect(avatar.locator('img')).toHaveAttribute('src', '/assets/agent-avatar/focused.png');
-    await expect(avatar).toHaveCSS('width', '64px');
-    await expect(avatar).toHaveCSS('height', '64px');
+    await expect(avatar).toHaveCSS('width', '32px');
+    await expect(avatar).toHaveCSS('height', '32px');
     await expect(avatar).toHaveCSS('border-radius', '50%');
     await expect(avatar).toHaveCSS('overflow', 'hidden');
+    await expect(page.locator('.agent-chat-toolbar')).toHaveCount(0);
     const headerActions = await page.evaluate(() => {
       const newChat = document.querySelector('.agent-header-new-chat').getBoundingClientRect();
       const close = document.querySelector('.agent-close').getBoundingClientRect();
@@ -92,6 +94,9 @@ test.describe('Notebook and agent companion', () => {
     expect(headerActions.newChatRight).toBeLessThanOrEqual(headerActions.closeLeft);
     expect(headerActions.rightPadding).toBeGreaterThanOrEqual(14);
     await expect(page.getByRole('button', { name: 'New chat' })).toHaveCSS('border-top-style', 'solid');
+    await page.setViewportSize({ width: 390, height: 844 });
+    await expect(avatar).toHaveCSS('width', '28px');
+    await expect(avatar).toHaveCSS('height', '28px');
   });
 
   test('uses only a small multi-state PNG avatar for the companion', async ({ page }) => {
