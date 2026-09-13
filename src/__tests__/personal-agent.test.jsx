@@ -5,6 +5,10 @@ import PersonalAgent from '../components/PersonalAgent';
 import AgentDock from '../components/AgentDock';
 import { consumeChatStream } from '../util/chat-stream';
 import { TextEncoder } from 'util';
+import { historyKey } from '../util/agent-history';
+
+const savedHistory = () => JSON.parse(window.localStorage.getItem(historyKey));
+const savedMessages = () => savedHistory().conversations.find(item => item.id === savedHistory().activeId)?.messages || [];
 
 jest.mock('react-markdown', () => ({ __esModule: true, default: ({ children }) => <p>{children}</p> }));
 jest.mock('../util/chat-stream', () => ({ consumeChatStream: jest.fn() }));
@@ -47,11 +51,12 @@ test('a suggested question sends one request, renders the reply and supports a c
   await waitFor(() => expect(screen.queryByRole('button', { name: 'Stop' })).not.toBeInTheDocument());
   expect(global.fetch).toHaveBeenCalledTimes(2);
   expect(JSON.parse(global.fetch.mock.calls[1][1].body).messages).toEqual([{ role: 'user', content: 'Tell me about Tempest’s research.' }]);
-  await waitFor(() => expect(JSON.parse(window.localStorage.getItem('ask-tempest:messages:v1'))).toHaveLength(2));
+  await waitFor(() => expect(savedMessages()).toHaveLength(2));
   view.rerender(<PersonalAgent newChatRequest={1} />);
   expect(screen.queryByText('A public answer.')).not.toBeInTheDocument();
-  expect(screen.getByLabelText('Ask Tempest')).toHaveClass('is-onboarding');
-  expect(window.localStorage.getItem('ask-tempest:messages:v1')).toBeNull();
+  expect(screen.getByLabelText('Ask Tempest')).toHaveClass('is-chatting');
+  expect(savedHistory().conversations).toHaveLength(1);
+  expect(savedMessages()).toHaveLength(0);
   expect(screen.getByLabelText('Your question')).toHaveFocus();
 });
 test('the configured default model remains visible with an older availability response', async () => {
@@ -74,7 +79,7 @@ test('the displayed model follows the model actually selected for the reply and 
   const view = await ready();
   fireEvent.click(screen.getByRole('button', { name: 'Tell me about Tempest’s research.' }));
   expect(await screen.findByText('Model · alibaba/qwen3.8-flash · Fallback')).toBeInTheDocument();
-  await waitFor(() => expect(JSON.parse(window.localStorage.getItem('ask-tempest:messages:v1'))[1].model).toBe('alibaba/qwen3.8-flash'));
+  await waitFor(() => expect(savedMessages()[1].model).toBe('alibaba/qwen3.8-flash'));
   view.unmount();
   await ready();
   expect(screen.getByText('Model · alibaba/qwen3.8-flash · Fallback')).toBeInTheDocument();
@@ -85,7 +90,7 @@ test('complete local conversation history is restored after a refresh', async ()
     { role: 'assistant', content: 'A saved answer' }
   ]));
   await ready();
-  expect(screen.getByText('A saved question')).toBeInTheDocument();
+  expect(within(screen.getByRole('log')).getByText('A saved question')).toBeInTheDocument();
   expect(screen.getByText('A saved answer')).toBeInTheDocument();
   expect(screen.getByPlaceholderText('Continue the conversation…')).toBeInTheDocument();
   expect(screen.getByLabelText('Ask Tempest')).toHaveClass('is-chatting');
@@ -112,14 +117,15 @@ test('streaming never rereads or rewrites retained history and completion saves 
     expect(writes).not.toHaveBeenCalled();
     await act(async () => { emit({ type: 'done' }); finish(); });
     expect(writes).toHaveBeenCalledTimes(1);
-    const saved = JSON.parse(writes.mock.calls[0][1]);
+    const saved = JSON.parse(writes.mock.calls[0][1]).conversations[0].messages;
     expect(saved).toHaveLength(40);
     expect(saved[39].content).toBe('A streamed answer.');
     fireEvent.change(screen.getByLabelText('Your question'), { target: { value: 'Another question' } });
     expect(reads).not.toHaveBeenCalled();
     expect(writes).toHaveBeenCalledTimes(1);
     view.rerender(<PersonalAgent newChatRequest={1} />);
-    expect(window.localStorage.getItem('ask-tempest:messages:v1')).toBeNull();
+    expect(savedHistory().activeId).toBeNull();
+    expect(savedHistory().conversations).toHaveLength(1);
   } finally { reads.mockRestore(); writes.mockRestore(); }
 });
 test.each([
@@ -140,7 +146,7 @@ test('failed replies can be retried without duplicate questions', async () => {
   expect(screen.queryByText('Temporary failure')).not.toBeInTheDocument();
   fireEvent.click(screen.getByRole('button', { name: 'Try again' }));
   expect(await screen.findByText('A public answer.')).toBeInTheDocument();
-  expect(screen.getAllByText('Tell me about Tempest’s research.')).toHaveLength(2); // suggestion + one message
+  expect(within(screen.getByRole('log')).getAllByText('Tell me about Tempest’s research.')).toHaveLength(1);
   expect(screen.queryByRole('alert')).not.toBeInTheDocument();
 });
 test('retrying an older failure sends its own question and preserves other turns', async () => {
@@ -163,11 +169,11 @@ test('retrying an older failure sends its own question and preserves other turns
     { role: 'assistant', content: 'A public answer.' },
     { role: 'user', content: 'First question' }
   ]);
-  expect(screen.getAllByText('First question')).toHaveLength(1);
-  expect(screen.getByText('Second question')).toBeInTheDocument();
-  expect(screen.getByText('Third question')).toBeInTheDocument();
+  expect(within(screen.getByRole('log')).getAllByText('First question')).toHaveLength(1);
+  expect(within(screen.getByRole('log')).getByText('Second question')).toBeInTheDocument();
+  expect(within(screen.getByRole('log')).getByText('Third question')).toBeInTheDocument();
   expect(screen.getAllByRole('alert')).toHaveLength(1);
-  const saved = JSON.parse(window.localStorage.getItem('ask-tempest:messages:v1'));
+  const saved = savedMessages();
   expect(saved.filter(message => message.role === 'user').map(message => message.content)).toEqual(['Third question', 'First question']);
 });
 test('Stop aborts the request and restores usable controls', async () => {
@@ -219,5 +225,74 @@ test('the avatar-only companion keeps the current chat when its dialog is closed
   expect(screen.getByText('A saved answer')).toBeInTheDocument();
   expect(screen.getByRole('button', { name: 'New chat' })).toBeInTheDocument();
   fireEvent.click(screen.getByRole('button', { name: 'New chat' }));
-  expect(dialog).not.toHaveClass('agent-dialog--chatting');
+  expect(dialog).toHaveClass('agent-dialog--chatting');
+  expect(screen.getByText('What’s on your mind?')).toBeInTheDocument();
+});
+
+test('history supports selecting, collapsing, deleting and restoring multiple conversations', async () => {
+  const view = await ready();
+  const send = async text => {
+    fireEvent.change(screen.getByLabelText('Your question'), { target: { value: text } });
+    fireEvent.click(screen.getByRole('button', { name: 'Send message' }));
+    await waitFor(() => expect(screen.queryByRole('button', { name: 'Stop' })).not.toBeInTheDocument());
+  };
+  await send('Research history');
+  view.rerender(<PersonalAgent newChatRequest={1} />);
+  await send('Engineering history');
+  expect(savedHistory().conversations).toHaveLength(2);
+  fireEvent.click(screen.getByRole('button', { name: 'Expand history' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Open conversation: Research history' }));
+  expect(within(screen.getByRole('log')).getByText('Research history')).toBeInTheDocument();
+  expect(within(screen.getByRole('log')).queryByText('Engineering history')).not.toBeInTheDocument();
+  await send('A research follow-up');
+  const sent = JSON.parse(global.fetch.mock.calls.at(-1)[1].body).messages;
+  expect(sent.map(message => message.content)).toEqual(['Research history', 'A public answer.', 'A research follow-up']);
+  fireEvent.click(screen.getByRole('button', { name: 'Collapse history' }));
+  expect(screen.queryByRole('button', { name: 'Open conversation: Engineering history' })).not.toBeInTheDocument();
+  view.unmount();
+  const restored = await ready();
+  expect(within(screen.getByRole('log')).getByText('A research follow-up')).toBeInTheDocument();
+  fireEvent.click(screen.getByRole('button', { name: 'Expand history' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Delete conversation: Research history' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Cancel' }));
+  expect(savedHistory().conversations).toHaveLength(2);
+  fireEvent.click(screen.getByRole('button', { name: 'Delete conversation: Research history' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Delete chat' }));
+  expect(within(screen.getByRole('log')).getByText('Engineering history')).toBeInTheDocument();
+  expect(savedHistory().conversations).toHaveLength(1);
+  restored.unmount();
+  await ready();
+  expect(within(screen.getByRole('log')).getByText('Engineering history')).toBeInTheDocument();
+});
+
+test('switching away from a stream aborts it and ignores late reply/model events', async () => {
+  window.localStorage.setItem('ask-tempest:messages:v1', JSON.stringify([{ role: 'user', content: 'Saved research' }, { role: 'assistant', content: 'Saved answer' }]));
+  const view = await ready();
+  view.rerender(<PersonalAgent newChatRequest={1} />);
+  let emit;
+  let finish;
+  consumeChatStream.mockImplementationOnce((_, onEvent) => { emit = onEvent; return new Promise(resolve => { finish = resolve; }); });
+  fireEvent.change(screen.getByLabelText('Your question'), { target: { value: 'New streaming question' } });
+  fireEvent.click(screen.getByRole('button', { name: 'Send message' }));
+  await waitFor(() => expect(emit).toBeDefined());
+  const signal = global.fetch.mock.calls.at(-1)[1].signal;
+  fireEvent.click(screen.getByRole('button', { name: 'Expand history' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Open conversation: Saved research' }));
+  expect(signal.aborted).toBe(true);
+  await act(async () => { emit({ type: 'delta', text: 'Late reply' }); emit({ type: 'model', model: 'late/model' }); finish(); });
+  expect(screen.queryByText('Late reply')).not.toBeInTheDocument();
+  expect(screen.queryByText(/late\/model/)).not.toBeInTheDocument();
+  expect(within(screen.getByRole('log')).getByText('Saved answer')).toBeInTheDocument();
+  expect(savedMessages().map(message => message.content)).toEqual(['Saved research', 'Saved answer']);
+});
+
+test('a failed migration write preserves the original history', async () => {
+  const legacy = JSON.stringify([{ role: 'user', content: 'Original question' }, { role: 'assistant', content: 'Original answer' }]);
+  window.localStorage.setItem('ask-tempest:messages:v1', legacy);
+  const writes = jest.spyOn(Storage.prototype, 'setItem').mockImplementation(() => { throw new Error('Quota exceeded'); });
+  try {
+    await ready();
+    expect(within(screen.getByRole('log')).getByText('Original answer')).toBeInTheDocument();
+    expect(window.localStorage.getItem('ask-tempest:messages:v1')).toBe(legacy);
+  } finally { writes.mockRestore(); }
 });
