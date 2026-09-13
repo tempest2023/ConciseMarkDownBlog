@@ -111,10 +111,13 @@ test('the avatar-only companion keeps the current chat when its dialog is closed
   fireEvent.click(screen.getByRole('button', { name: 'Open Ask Tempest' }));
   expect(dialog).toHaveAttribute('open');
   expect(await screen.findByText('A saved answer')).toBeInTheDocument();
+  expect(dialog).toHaveClass('agent-dialog--chatting');
   fireEvent.click(screen.getByRole('button', { name: 'Close conversation' }));
   expect(dialog).not.toHaveAttribute('open');
   fireEvent.click(screen.getByRole('button', { name: 'Open Ask Tempest' }));
   expect(dialog).toHaveAttribute('open');
   expect(screen.getByText('A saved answer')).toBeInTheDocument();
   expect(screen.getByRole('button', { name: 'New chat' })).toBeInTheDocument();
+  fireEvent.click(screen.getByRole('button', { name: 'New chat' }));
+  expect(dialog).not.toHaveClass('agent-dialog--chatting');
 });

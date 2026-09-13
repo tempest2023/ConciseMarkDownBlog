@@ -43,7 +43,7 @@ test.describe('Notebook and agent companion', () => {
     expect(layout.topGap).toBeGreaterThanOrEqual(3);
   });
 
-  test('opens the interactive agent as a full-screen experience outside article Markdown', async ({ page }) => {
+  test('opens onboarding at 80 percent outside article Markdown', async ({ page }) => {
     await expect(page.locator('.article-content [data-personal-agent]')).toHaveCount(0);
     await expect(page.locator('.companion-avatar')).toBeVisible();
 
@@ -56,13 +56,27 @@ test.describe('Notebook and agent companion', () => {
     const size = await dialog.evaluate(element => {
       return { width: element.offsetWidth, height: element.offsetHeight, viewportWidth: innerWidth, viewportHeight: innerHeight };
     });
-    expect(size.width).toBeCloseTo(size.viewportWidth, 0);
-    expect(size.height).toBeCloseTo(size.viewportHeight, 0);
-    await expect(dialog).toHaveCSS('border-radius', '0px');
+    expect(size.width).toBeCloseTo(size.viewportWidth * .8, 0);
+    expect(size.height).toBeCloseTo(size.viewportHeight * .8, 0);
+    await expect(dialog).toHaveCSS('border-radius', '22px');
 
     await page.keyboard.press('Escape');
     await expect(dialog).not.toBeVisible();
     await expect(launcher).toBeFocused();
+  });
+
+  test('restores saved conversations directly into the full-screen chat', async ({ page }) => {
+    await page.evaluate(() => localStorage.setItem('ask-tempest:messages:v1', JSON.stringify([
+      { role: 'user', content: 'A saved question' },
+      { role: 'assistant', content: 'A saved answer' }
+    ])));
+    await page.getByRole('button', { name: 'Open Ask Tempest' }).click();
+    const dialog = page.getByRole('dialog', { name: 'Ask Tempest' });
+    await expect(page.locator('.personal-agent')).toHaveClass(/is-chatting/);
+    const size = await dialog.evaluate(element => ({ width: element.offsetWidth, height: element.offsetHeight, viewportWidth: innerWidth, viewportHeight: innerHeight }));
+    expect(size.width).toBeCloseTo(size.viewportWidth, 0);
+    expect(size.height).toBeCloseTo(size.viewportHeight, 0);
+    await expect(dialog).toHaveCSS('border-radius', '0px');
   });
 
   test('uses only a small multi-state PNG avatar for the companion', async ({ page }) => {

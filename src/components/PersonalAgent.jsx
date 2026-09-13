@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 import { consumeChatStream } from '../util/chat-stream';
 import { conversationHistory, safeAgentHref } from '../util/agent-client';
@@ -33,7 +34,7 @@ function completeConversation (messages) {
   return saved.slice(-40);
 }
 
-export default function PersonalAgent () {
+export default function PersonalAgent ({ onConversationChange }) {
   const [available, setAvailable] = useState(null);
   const [model, setModel] = useState(defaultModel);
   const [messages, setMessages] = useState(storedMessages);
@@ -48,6 +49,7 @@ export default function PersonalAgent () {
   const followReply = useRef(true);
   const chatting = messages.length > 0;
 
+  useLayoutEffect(() => { onConversationChange?.(chatting); }, [chatting, onConversationChange]);
   useEffect(() => {
     if (followReply.current && transcript.current) transcript.current.scrollTop = transcript.current.scrollHeight;
   }, [messages]);
@@ -135,3 +137,5 @@ export default function PersonalAgent () {
     </section>
   );
 }
+
+PersonalAgent.propTypes = { onConversationChange: PropTypes.func };
