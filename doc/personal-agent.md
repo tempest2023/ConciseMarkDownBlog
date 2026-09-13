@@ -24,7 +24,7 @@ A key and a spend budget alone do not prove the account is ready to serve every 
 
 Model availability note (checked September 8, 2026): `zai/glm-5.3-flash` successfully served live requests using the owner's free-credit account. [Vercel's model page](https://vercel.com/ai-gateway/models/glm-5.3-flash) lists provider-dependent pricing; do not treat the lowest displayed price as a guaranteed bill. [Free-credit eligibility](https://vercel.com/docs/ai-gateway/pricing), quotas and model availability can change. The $5 credit and the owner's reported $10 budget are different: a budget does not add credits. When quota is exhausted and no configured backup succeeds, static profile/contact links remain usable and the chat reports an error. The availability endpoint reports configuration presence, not provider quota or health.
 
-On September 12, 2026, the same configured key was accepted by AI Gateway but `zai/glm-5.3-flash` returned HTTP 403 because the account's current free tier did not have access to that model. This distinguishes a missing or invalid key from model-plan eligibility. The current primary/backup configuration is shown in the composer so failover is explicit rather than hidden.
+On September 12, 2026, the same configured key was accepted by AI Gateway but `zai/glm-5.3-flash` returned HTTP 403 because the account's current free tier did not have access to that model. This distinguishes a missing or invalid key from model-plan eligibility. The composer shows one model: the primary by default, updated to the model reported by the current reply when Gateway uses a fallback.
 
 ## Cost and privacy boundaries
 

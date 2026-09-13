@@ -30,7 +30,7 @@ for (const viewport of [{ width: 1512, height: 982 }, { width: 390, height: 844 
     await expand();
     await page.getByRole('button', { name: 'Open conversation: What is Tempest researching?', exact: true }).click();
     await expect(page.getByRole('log').getByText('Saber answers: What is Tempest researching?', { exact: true })).toBeVisible();
-    await expect(page.getByText('Model · alibaba/qwen3.8-flash · Fallback', { exact: true })).toBeVisible();
+    await expect(page.getByText('Model · alibaba/qwen3.8-flash', { exact: true })).toBeVisible();
     await page.reload();
     await page.getByRole('button', { name: 'Open Ask Tempest' }).click();
     await expect(page.getByRole('log').getByText('Saber answers: What is Tempest researching?', { exact: true })).toBeVisible();

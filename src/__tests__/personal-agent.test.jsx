@@ -64,10 +64,11 @@ test('the configured default model remains visible with an older availability re
   await ready();
   expect(screen.getByText('Model · inception/mercury-2.5')).toBeInTheDocument();
 });
-test('the configured primary and backup models are both visible', async () => {
+test('only the primary model is displayed before a reply confirms a different model', async () => {
   global.fetch.mockResolvedValue({ ok: true, json: async () => ({ available: true, model: 'inception/mercury-2.5', fallbackModels: ['alibaba/qwen3.8-flash'] }) });
   await ready();
-  expect(screen.getByText('Model · inception/mercury-2.5 · Backup · alibaba/qwen3.8-flash')).toBeInTheDocument();
+  expect(screen.getByText('Model · inception/mercury-2.5')).toBeInTheDocument();
+  expect(screen.queryByText(/alibaba\/qwen3.8-flash|Backup|Fallback/)).not.toBeInTheDocument();
 });
 test('the displayed model follows the model actually selected for the reply and survives refresh', async () => {
   global.fetch.mockResolvedValue({ ok: true, json: async () => ({ available: true, model: 'inception/mercury-2.5', fallbackModels: ['alibaba/qwen3.8-flash'] }) });
@@ -78,11 +79,12 @@ test('the displayed model follows the model actually selected for the reply and 
   });
   const view = await ready();
   fireEvent.click(screen.getByRole('button', { name: 'Tell me about Tempest’s research.' }));
-  expect(await screen.findByText('Model · alibaba/qwen3.8-flash · Fallback')).toBeInTheDocument();
+  expect(await screen.findByText('Model · alibaba/qwen3.8-flash')).toBeInTheDocument();
+  expect(screen.queryByText(/Model · inception|Backup|Fallback/)).not.toBeInTheDocument();
   await waitFor(() => expect(savedMessages()[1].model).toBe('alibaba/qwen3.8-flash'));
   view.unmount();
   await ready();
-  expect(screen.getByText('Model · alibaba/qwen3.8-flash · Fallback')).toBeInTheDocument();
+  expect(screen.getByText('Model · alibaba/qwen3.8-flash')).toBeInTheDocument();
 });
 test('complete local conversation history is restored after a refresh', async () => {
   window.localStorage.setItem('ask-tempest:messages:v1', JSON.stringify([

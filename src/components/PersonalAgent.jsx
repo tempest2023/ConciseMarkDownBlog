@@ -19,7 +19,6 @@ export default function PersonalAgent ({ newChatRequest = 0, onConversationChang
   const [sidebarOpen, setSidebarOpen] = useState(() => typeof window !== 'undefined' && window.matchMedia?.('(min-width: 48rem)').matches === true);
   const [available, setAvailable] = useState(null);
   const [primaryModel, setPrimaryModel] = useState(defaultModel);
-  const [fallbackModels, setFallbackModels] = useState([]);
   const messages = conversations.find(item => item.id === activeId)?.messages || emptyMessages;
   const model = [...messages].reverse().find(message => message.role === 'assistant' && message.model)?.model || primaryModel;
   const [question, setQuestion] = useState('');
@@ -57,10 +56,8 @@ export default function PersonalAgent ({ newChatRequest = 0, onConversationChang
     const status = new AbortController();
     fetch('/api/chat', { signal: status.signal }).then(response => response.ok ? response.json() : { available: false }).then(data => {
       const configuredPrimary = typeof data.model === 'string' && data.model ? data.model : defaultModel;
-      const configuredFallbacks = Array.isArray(data.fallbackModels) ? data.fallbackModels.filter(name => typeof name === 'string' && name) : [];
       setAvailable(data.available === true);
       setPrimaryModel(configuredPrimary);
-      setFallbackModels(configuredFallbacks);
     }).catch(() => { if (!status.signal.aborted) setAvailable(false); });
     return () => { status.abort(); controller.current?.abort(); };
   }, []);
@@ -181,7 +178,7 @@ export default function PersonalAgent ({ newChatRequest = 0, onConversationChang
             <label htmlFor="agent-question">Your question</label>
             <textarea id="agent-question" ref={input} value={question} onChange={event => setQuestion(event.target.value)} maxLength={2000} rows={1} placeholder={chatting ? 'Continue the conversation…' : 'Ask about Tempest’s work…'} disabled={available !== true} onKeyDown={event => { if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); ask(question); } }} />
             <div className="agent-actions">
-              <small>{available === null ? 'Connecting…' : `Model · ${model}${fallbackModels.includes(model) ? ' · Fallback' : fallbackModels.length ? ` · Backup · ${fallbackModels.join(' → ')}` : ''}`}</small>
+              <small>{available === null ? 'Connecting…' : `Model · ${model}`}</small>
               {busy ? <button type="button" onClick={() => controller.current?.abort()}>Stop</button> : <button className="agent-send" type="submit" disabled={!question.trim() || available !== true} aria-label="Send message">Send ↗</button>}
             </div>
           </form>
