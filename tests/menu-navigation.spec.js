@@ -4,6 +4,36 @@
  */
 import { test, expect } from '@playwright/test';
 
+// Hold the app bundle to measure the real HTML first paint, then release it.
+// This catches layout shifts hidden by tests that only wait for networkidle.
+for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
+  test(`keeps article geometry stable as JavaScript starts (${viewport.width}px)`, async ({ page }) => {
+    await page.setViewportSize(viewport);
+    const geometry = () => page.locator('.article-content').evaluate(element => {
+      const rect = element.getBoundingClientRect();
+      return { x: rect.x, y: rect.y, width: rect.width };
+    });
+    for (const url of ['/work/', '/writing/', '/links/']) {
+      let release;
+      const bundleReady = new Promise(resolve => { release = resolve; });
+      await page.route('**/static/js/**', async route => {
+        await bundleReady;
+        await route.continue();
+      });
+      await page.goto(url, { waitUntil: 'commit' });
+      await expect(page.locator('.article-content')).toBeVisible();
+      await expect(page.locator('.notebook-sidebar')).toBeVisible();
+      const before = await geometry();
+      release();
+      await expect(page.getByRole('button', { name: 'Open Ask Tempest' })).toBeVisible();
+      const after = await geometry();
+      for (const key of ['x', 'y', 'width']) expect(Math.abs(after[key] - before[key]), `${url}: ${key}`).toBeLessThanOrEqual(1);
+      await expect(page.locator('.article-view-preview')).toHaveCSS('animation-name', 'none');
+      await page.unroute('**/static/js/**');
+    }
+  });
+}
+
 test.describe('Menu Navigation', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');

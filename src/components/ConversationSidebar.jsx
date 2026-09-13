@@ -22,7 +22,6 @@ export default function ConversationSidebar ({ conversations, activeId, open, on
       </div>
       <div id="agent-history-list" className="agent-history-list" hidden={!open}>
         {activeId === null && <p className="agent-history-draft">New conversation <span>Ready when you are</span></p>}
-        {!conversations.length && <p className="agent-history-empty">Your conversations will appear here after you send a question.</p>}
         <ul>{conversations.map(item => {
           const title = conversationTitle(item);
           return <li key={item.id} className={item.id === activeId ? 'is-active' : ''}>
@@ -34,7 +33,6 @@ export default function ConversationSidebar ({ conversations, activeId, open, on
             </>}
           </li>;
         })}</ul>
-        <p className="agent-history-local">Saved in this browser</p>
       </div>
     </aside>
   </>;

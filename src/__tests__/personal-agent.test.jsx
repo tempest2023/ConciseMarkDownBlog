@@ -33,6 +33,19 @@ test('unavailable status offers static alternatives and disables submission', as
   expect(await screen.findByRole('status')).toHaveTextContent('Chat is not available');
   expect(screen.getByRole('link', { name: 'Explore Tempest’s work' })).toHaveAttribute('href', '/work/');
   expect(screen.getByLabelText('Your question')).toBeDisabled();
+  for (const button of within(screen.getByLabelText('Suggested questions')).getAllByRole('button')) expect(button).toBeDisabled();
+  global.fetch.mockResolvedValue({ ok: true, json: async () => ({ available: true }) });
+  fireEvent.click(screen.getByRole('button', { name: 'Reconnect' }));
+  await waitFor(() => expect(screen.getByLabelText('Your question')).toBeEnabled());
+  expect(screen.queryByRole('status')).not.toBeInTheDocument();
+});
+test('onboarding offers four direct prompts and a composer without an entry button', async () => {
+  await ready();
+  expect(screen.getByRole('heading', { name: 'What would you like to know?' })).toBeInTheDocument();
+  expect(within(screen.getByLabelText('Suggested questions')).getAllByRole('button')).toHaveLength(4);
+  expect(screen.getByLabelText('Your question')).toBeEnabled();
+  expect(screen.queryByRole('button', { name: 'Start a conversation' })).not.toBeInTheDocument();
+  expect(global.fetch).toHaveBeenCalledTimes(1);
 });
 test('a suggested question sends one request, renders the reply and supports a clean new conversation', async () => {
   const view = await ready({ newChatRequest: 0 });
@@ -58,6 +71,11 @@ test('a suggested question sends one request, renders the reply and supports a c
   expect(savedHistory().conversations).toHaveLength(1);
   expect(savedMessages()).toHaveLength(0);
   expect(screen.getByLabelText('Your question')).toHaveFocus();
+  expect(screen.getByRole('heading', { name: 'What would you like to know?' })).toBeInTheDocument();
+  expect(within(screen.getByLabelText('Suggested questions')).getAllByRole('button')).toHaveLength(4);
+  fireEvent.click(screen.getByRole('button', { name: 'What AI systems has Tempest built?' }));
+  expect(await screen.findByText('A public answer.')).toBeInTheDocument();
+  expect(JSON.parse(global.fetch.mock.calls.at(-1)[1].body).messages).toEqual([{ role: 'user', content: 'What AI systems has Tempest built?' }]);
 });
 test('the configured default model remains visible with an older availability response', async () => {
   global.fetch.mockResolvedValue({ ok: true, json: async () => ({ available: true }) });
@@ -228,7 +246,7 @@ test('the avatar-only companion keeps the current chat when its dialog is closed
   expect(screen.getByRole('button', { name: 'New chat' })).toBeInTheDocument();
   fireEvent.click(screen.getByRole('button', { name: 'New chat' }));
   expect(dialog).toHaveClass('agent-dialog--chatting');
-  expect(screen.getByText('What’s on your mind?')).toBeInTheDocument();
+  expect(screen.getByText('What would you like to know?')).toBeInTheDocument();
 });
 
 test('history supports selecting, collapsing, deleting and restoring multiple conversations', async () => {
