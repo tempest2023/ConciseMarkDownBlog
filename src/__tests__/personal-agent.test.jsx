@@ -34,9 +34,9 @@ test('a suggested question sends one request, renders the reply and supports a c
   fireEvent.click(screen.getByRole('button', { name: 'Tell me about Tempest’s research.' }));
   expect(await screen.findByText('A public answer.')).toBeInTheDocument();
   expect(screen.getByText('Saber (AI Agent)')).toBeInTheDocument();
-  expect(document.querySelector('.agent-message-avatar')).toHaveAttribute('src', '/assets/agent-avatar/focused.png');
-  expect(document.querySelector('.agent-message-avatar')).toHaveAttribute('width', '64');
-  expect(document.querySelector('.agent-message-avatar')).toHaveAttribute('height', '64');
+  expect(document.querySelector('.agent-message-avatar img')).toHaveAttribute('src', '/assets/agent-avatar/focused.png');
+  expect(document.querySelector('.agent-message-avatar img')).toHaveAttribute('width', '64');
+  expect(document.querySelector('.agent-message-avatar img')).toHaveAttribute('height', '64');
   expect(screen.getByLabelText('Ask Tempest')).toHaveClass('is-chatting');
   expect(screen.getByText('Model · test/model')).toBeInTheDocument();
   await waitFor(() => expect(screen.queryByRole('button', { name: 'Stop' })).not.toBeInTheDocument());

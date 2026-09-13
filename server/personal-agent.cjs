@@ -69,6 +69,7 @@ function safeFailureMessage(error) {
   let current = error;
   for (let depth = 0; current && depth < 4; depth++, current = current.cause) {
     if (current.statusCode === 429) return 'Chat is busy. Please wait a minute before trying again, or explore the public profile.';
+    if (current.statusCode === 401 || current.statusCode === 403) return 'The selected model is not available for this AI Gateway key. Check Gateway credits or choose another model.';
   }
   return 'The reply was interrupted. Please try again.';
 }

@@ -79,9 +79,11 @@ test.describe('Notebook and agent companion', () => {
     await expect(dialog).toHaveCSS('border-radius', '0px');
     await expect(page.getByText('Saber (AI Agent)')).toBeVisible();
     const avatar = page.locator('.agent-message.assistant .agent-message-avatar');
-    await expect(avatar).toHaveAttribute('src', '/assets/agent-avatar/focused.png');
+    await expect(avatar.locator('img')).toHaveAttribute('src', '/assets/agent-avatar/focused.png');
     await expect(avatar).toHaveCSS('width', '64px');
     await expect(avatar).toHaveCSS('height', '64px');
+    await expect(avatar).toHaveCSS('border-radius', '50%');
+    await expect(avatar).toHaveCSS('overflow', 'hidden');
     const headerActions = await page.evaluate(() => {
       const newChat = document.querySelector('.agent-header-new-chat').getBoundingClientRect();
       const close = document.querySelector('.agent-close').getBoundingClientRect();
@@ -89,6 +91,7 @@ test.describe('Notebook and agent companion', () => {
     });
     expect(headerActions.newChatRight).toBeLessThanOrEqual(headerActions.closeLeft);
     expect(headerActions.rightPadding).toBeGreaterThanOrEqual(14);
+    await expect(page.getByRole('button', { name: 'New chat' })).toHaveCSS('border-top-style', 'solid');
   });
 
   test('uses only a small multi-state PNG avatar for the companion', async ({ page }) => {

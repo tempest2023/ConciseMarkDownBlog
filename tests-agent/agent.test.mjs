@@ -138,6 +138,17 @@ test('upstream rate limits give a safe wait-and-retry message for streamed and t
   }
 });
 
+test('Gateway access errors explain the owner action without exposing provider details', async t => {
+  const privateError = Object.assign(new Error('private account and provider detail'), { statusCode: 403 });
+  const fakeStream = () => ({ fullStream: (async function* () { yield { type: 'error', error: { cause: privateError } }; })() });
+  const { post } = await serve(t, { streamText: fakeStream });
+  await assert.rejects(consumeChatStream(await post(), () => {}), error => {
+    assert.match(error.message, /model is not available.*Gateway key.*credits.*another model/i);
+    assert.ok(!error.message.includes('private'));
+    return true;
+  });
+});
+
 test('timeout and client disconnect abort upstream generation', async t => {
   let aborted = 0;
   const slow = options => ({ fullStream: (async function* () {

@@ -118,7 +118,7 @@ export default function PersonalAgent ({ newChatRequest = 0, onConversationChang
           </div>
           <div className="agent-transcript" ref={transcript} onScroll={event => { const area = event.currentTarget; followReply.current = area.scrollHeight - area.scrollTop - area.clientHeight < 64; }} role="log" aria-label="Conversation" aria-live="polite" aria-relevant="additions text" tabIndex={chatting ? 0 : -1}>
             {messages.map(message => <div className={`agent-message ${message.role}`} key={message.id} role={message.status === 'error' ? 'alert' : undefined}>
-              {message.role === 'assistant' && <img className="agent-message-avatar" src="/assets/agent-avatar/focused.png" alt="" width="64" height="64" draggable="false" />}
+              {message.role === 'assistant' && <span className="agent-message-avatar" aria-hidden="true"><img src="/assets/agent-avatar/focused.png" alt="" width="64" height="64" draggable="false" /></span>}
               <span className="message-role">{message.role === 'user' ? 'You' : 'Saber (AI Agent)'}</span>
               <div className="message-content"><ReactMarkdown skipHtml transformLinkUri={safeAgentHref} components={{ img: () => null, a: ({ href, children }) => href ? <a href={href} rel="nofollow noreferrer">{children}</a> : <span>{children}</span> }}>{message.content || (message.status === 'streaming' ? 'Thinking…' : 'Saber is busy right now. Please try again in a moment.')}</ReactMarkdown>{message.status === 'error' && !busy && <button type="button" className="agent-message-retry" onClick={() => ask(lastQuestion.current, true)}>Try again</button>}</div>
             </div>)}
