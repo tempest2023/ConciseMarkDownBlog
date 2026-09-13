@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
+import React, { lazy, Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import AgentCompanion from './AgentCompanion';
 import { hasConfigAccess } from '../util/isLocal';
 import '../styles/agent.css';
@@ -8,8 +8,12 @@ export default function AgentDock () {
   const dialog = useRef(null);
   const launcher = useRef(null);
   const previousFocus = useRef(null);
+  const phaseRect = useRef(null);
+  const chattingRef = useRef(false);
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [chatting, setChatting] = useState(false);
+  const [newChatRequest, setNewChatRequest] = useState(0);
   const hasFloatingConfigButton = process.env.NODE_ENV !== 'production' && hasConfigAccess();
   useEffect(() => {
     if (!open) return;
@@ -17,6 +21,24 @@ export default function AgentDock () {
     document.body.style.overflow = 'hidden';
     return () => { document.body.style.overflow = overflow; };
   }, [open]);
+  useLayoutEffect(() => {
+    const before = phaseRect.current;
+    phaseRect.current = null;
+    const node = dialog.current;
+    if (!before || !node?.open || typeof node.animate !== 'function' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const after = node.getBoundingClientRect();
+    const animation = node.animate([
+      { transformOrigin: 'top left', transform: `translate(${before.left - after.left}px, ${before.top - after.top}px) scale(${before.width / after.width}, ${before.height / after.height})` },
+      { transformOrigin: 'top left', transform: 'none' }
+    ], { duration: 480, easing: 'cubic-bezier(.22, 1, .36, 1)' });
+    return () => animation.cancel();
+  }, [chatting]);
+  const handleConversationChange = useCallback(next => {
+    if (chattingRef.current === next) return;
+    chattingRef.current = next;
+    if (dialog.current?.open) phaseRect.current = dialog.current.getBoundingClientRect();
+    setChatting(next);
+  }, []);
   function show () {
     previousFocus.current = document.activeElement;
     setMounted(true);
@@ -33,13 +55,19 @@ export default function AgentDock () {
         <AgentCompanion />
       </button>
     </div>
-    <dialog ref={dialog} id="agent-dialog" className="agent-dialog" aria-labelledby="agent-dialog-title" onCancel={event => { event.preventDefault(); close(); }} onClose={() => { setOpen(false); (previousFocus.current?.isConnected ? previousFocus.current : launcher.current)?.focus(); }} onClick={event => {
+    <dialog ref={dialog} id="agent-dialog" className={`agent-dialog${chatting ? ' agent-dialog--chatting' : ''}`} aria-labelledby="agent-dialog-title" onCancel={event => { event.preventDefault(); close(); }} onClose={() => { setOpen(false); (previousFocus.current?.isConnected ? previousFocus.current : launcher.current)?.focus(); }} onClick={event => {
       if (event.target !== dialog.current) return;
       const rect = dialog.current.getBoundingClientRect();
       if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) close();
     }}>
-      <header className="agent-dialog-header"><div><span className="agent-online-dot" /><h2 id="agent-dialog-title">Ask Tempest</h2><span className="agent-subtitle">AI guide to my public work</span></div><button type="button" className="agent-close" onClick={close} aria-label="Close conversation" autoFocus><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg></button></header>
-      {mounted && <Suspense fallback={<p role="status" className="agent-loading">Opening a little space for conversation…</p>}><PersonalAgent active={open} /></Suspense>}
+      <header className="agent-dialog-header">
+        <div className="agent-dialog-identity"><span className="agent-online-dot" /><h2 id="agent-dialog-title">Saber</h2><span className="agent-subtitle">AI Agent to Tempest’s public work</span></div>
+        <div className="agent-dialog-actions">
+          {chatting && <button type="button" className="agent-header-new-chat" onClick={() => setNewChatRequest(value => value + 1)}><span aria-hidden="true">+</span> New chat</button>}
+          <button type="button" className="agent-close" onClick={close} aria-label="Close conversation" autoFocus><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg></button>
+        </div>
+      </header>
+      {mounted && <Suspense fallback={<p role="status" className="agent-loading">Opening a little space for conversation…</p>}><PersonalAgent newChatRequest={newChatRequest} onConversationChange={handleConversationChange} /></Suspense>}
     </dialog>
   </>;
 }

@@ -43,7 +43,7 @@ test.describe('Notebook and agent companion', () => {
     expect(layout.topGap).toBeGreaterThanOrEqual(3);
   });
 
-  test('keeps the interactive agent outside article Markdown', async ({ page }) => {
+  test('opens onboarding at 80 percent outside article Markdown', async ({ page }) => {
     await expect(page.locator('.article-content [data-personal-agent]')).toHaveCount(0);
     await expect(page.locator('.companion-avatar')).toBeVisible();
 
@@ -51,18 +51,52 @@ test.describe('Notebook and agent companion', () => {
     await expect(launcher).toHaveCSS('animation-duration', '5s');
     await launcher.click();
 
-    const dialog = page.getByRole('dialog', { name: 'Ask Tempest' });
+    const dialog = page.getByRole('dialog', { name: 'Saber' });
     await expect(dialog).toBeVisible();
     const size = await dialog.evaluate(element => {
       return { width: element.offsetWidth, height: element.offsetHeight, viewportWidth: innerWidth, viewportHeight: innerHeight };
     });
     expect(size.width).toBeCloseTo(size.viewportWidth * .8, 0);
     expect(size.height).toBeCloseTo(size.viewportHeight * .8, 0);
-    await expect(dialog).toHaveCSS('backdrop-filter', 'blur(28px) saturate(1.18)');
+    await expect(dialog).toHaveCSS('border-radius', '22px');
 
     await page.keyboard.press('Escape');
     await expect(dialog).not.toBeVisible();
     await expect(launcher).toBeFocused();
+  });
+
+  test('restores saved conversations directly into the full-screen chat', async ({ page }) => {
+    await page.setViewportSize({ width: 1512, height: 982 });
+    await page.evaluate(() => localStorage.setItem('ask-tempest:messages:v1', JSON.stringify([
+      { role: 'user', content: 'A saved question' },
+      { role: 'assistant', content: 'A saved answer' }
+    ])));
+    await page.getByRole('button', { name: 'Open Ask Tempest' }).click();
+    const dialog = page.getByRole('dialog', { name: 'Saber' });
+    await expect(page.locator('.personal-agent')).toHaveClass(/is-chatting/);
+    const size = await dialog.evaluate(element => ({ width: element.offsetWidth, height: element.offsetHeight, viewportWidth: innerWidth, viewportHeight: innerHeight }));
+    expect(size.width).toBeCloseTo(size.viewportWidth, 0);
+    expect(size.height).toBeCloseTo(size.viewportHeight, 0);
+    await expect(dialog).toHaveCSS('border-radius', '0px');
+    await expect(page.getByText('Saber (AI Agent)')).toBeVisible();
+    const avatar = page.locator('.agent-message.assistant .agent-message-avatar');
+    await expect(avatar.locator('img')).toHaveAttribute('src', '/assets/agent-avatar/focused.png');
+    await expect(avatar).toHaveCSS('width', '32px');
+    await expect(avatar).toHaveCSS('height', '32px');
+    await expect(avatar).toHaveCSS('border-radius', '50%');
+    await expect(avatar).toHaveCSS('overflow', 'hidden');
+    await expect(page.locator('.agent-chat-toolbar')).toHaveCount(0);
+    const headerActions = await page.evaluate(() => {
+      const newChat = document.querySelector('.agent-header-new-chat').getBoundingClientRect();
+      const close = document.querySelector('.agent-close').getBoundingClientRect();
+      return { newChatRight: newChat.right, closeLeft: close.left, rightPadding: innerWidth - close.right };
+    });
+    expect(headerActions.newChatRight).toBeLessThanOrEqual(headerActions.closeLeft);
+    expect(headerActions.rightPadding).toBeGreaterThanOrEqual(14);
+    await expect(page.getByRole('button', { name: 'New chat' })).toHaveCSS('border-top-style', 'solid');
+    await page.setViewportSize({ width: 390, height: 844 });
+    await expect(avatar).toHaveCSS('width', '28px');
+    await expect(avatar).toHaveCSS('height', '28px');
   });
 
   test('uses only a small multi-state PNG avatar for the companion', async ({ page }) => {
