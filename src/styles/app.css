@@ -181,7 +181,7 @@ a:hover { text-decoration-thickness: 2px; }
 .profile-actions .primary-link { padding: .7rem 1rem; border-radius: 7px; background: var(--text-color); color: var(--bg-color); text-decoration: none; }
 .article-tools { position: absolute; z-index: 2; top: -3rem; right: 0; display: flex; align-items: center; }
 .markdown-note { margin: 0 0 1rem; color: var(--muted-color); font-family: var(--hand-font); font-size: .9rem; font-style: italic; text-align: left; }
-.article-view { animation: paper-arrive .34s ease both; }
+.article-view-raw { animation: paper-arrive .34s ease both; }
 .article-view-raw { padding: 1.25rem; border: 1px solid var(--border-color); border-radius: 12px; background: color-mix(in srgb, var(--paper-color) 80%, transparent); }
 .static-footer { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1.5rem; padding: 2rem; border-top: 1px solid var(--border-color); font-family: var(--ui-font); font-size: .9rem; }
 .static-footer a { min-height: 44px; display: inline-flex; align-items: center; }

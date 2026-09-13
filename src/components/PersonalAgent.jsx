@@ -18,6 +18,7 @@ export default function PersonalAgent ({ newChatRequest = 0, onConversationChang
   const [chatting, setChatting] = useState(initialHistory.conversations.length > 0);
   const [sidebarOpen, setSidebarOpen] = useState(() => typeof window !== 'undefined' && window.matchMedia?.('(min-width: 48rem)').matches === true);
   const [available, setAvailable] = useState(null);
+  const [statusRequest, setStatusRequest] = useState(0);
   const [primaryModel, setPrimaryModel] = useState(defaultModel);
   const messages = conversations.find(item => item.id === activeId)?.messages || emptyMessages;
   const model = [...messages].reverse().find(message => message.role === 'assistant' && message.model)?.model || primaryModel;
@@ -54,13 +55,17 @@ export default function PersonalAgent ({ newChatRequest = 0, onConversationChang
   }, [conversations, activeId, busy]);
   useEffect(() => {
     const status = new AbortController();
+    setAvailable(null);
+    const timeout = window.setTimeout(() => { status.abort(); setAvailable(false); }, 10000);
     fetch('/api/chat', { signal: status.signal }).then(response => response.ok ? response.json() : { available: false }).then(data => {
+      if (status.signal.aborted) return;
       const configuredPrimary = typeof data.model === 'string' && data.model ? data.model : defaultModel;
       setAvailable(data.available === true);
       setPrimaryModel(configuredPrimary);
-    }).catch(() => { if (!status.signal.aborted) setAvailable(false); });
-    return () => { status.abort(); controller.current?.abort(); };
-  }, []);
+    }).catch(() => { if (!status.signal.aborted) setAvailable(false); }).finally(() => window.clearTimeout(timeout));
+    return () => { window.clearTimeout(timeout); status.abort(); };
+  }, [statusRequest]);
+  useEffect(() => () => controller.current?.abort(), []);
   useEffect(() => {
     if (lastNewChatRequest.current === newChatRequest) return;
     lastNewChatRequest.current = newChatRequest;
@@ -147,38 +152,37 @@ export default function PersonalAgent ({ newChatRequest = 0, onConversationChang
   }
 
   return (
-    <section className={`personal-agent ${chatting ? 'is-chatting' : 'is-onboarding'}`} aria-label="Ask Tempest">
+    <section className={`personal-agent ${chatting ? 'is-chatting' : 'is-onboarding'} ${messages.length ? 'has-messages' : 'is-empty'}`} aria-label="Ask Tempest">
       {chatting && <ConversationSidebar conversations={conversations} activeId={activeId} open={sidebarOpen} onToggle={() => setSidebarOpen(value => !value)} onSelect={selectConversation} onDelete={deleteConversation} />}
       <div className="agent-conversation-panel">
         <div className="agent-stage">
-          <div className="agent-onboarding" aria-hidden={chatting}>
+          {!messages.length && <div className="agent-onboarding">
             <div className="agent-onboarding-copy">
               <div className="agent-heading"><span className="eyebrow">ASK TEMPEST</span><span className="agent-badge">AI guide</span></div>
               <h2>What would you like to know?</h2>
               <p className="agent-intro">Ask about Tempest’s research, engineering work, or the stories behind Tempest’s projects.</p>
+              <div className="agent-suggestions" aria-label="Suggested questions">{suggestions.map(text => <button key={text} type="button" onClick={() => ask(text)} disabled={busy || available !== true}>{text}</button>)}</div>
             </div>
-            <div className="agent-suggestions" aria-label="Suggested questions">{suggestions.map(text => <button key={text} onClick={() => ask(text)} disabled={busy || available !== true} tabIndex={chatting ? -1 : undefined}>{text}</button>)}</div>
-          </div>
+          </div>}
 
-          <div className="agent-chat" aria-hidden={!chatting}>
+          {!!messages.length && <div className="agent-chat">
             <div className="agent-transcript" ref={transcript} onScroll={event => { const area = event.currentTarget; followReply.current = area.scrollHeight - area.scrollTop - area.clientHeight < 64; }} role="log" aria-label="Conversation" aria-live="polite" aria-relevant="additions text" tabIndex={chatting ? 0 : -1}>
-              {!messages.length && <div className="agent-empty-chat"><span className="eyebrow">A NEW CONVERSATION</span><h2>What’s on your mind?</h2><p>Ask Saber about Tempest’s work, or pick up a conversation from your history.</p><button type="button" onClick={() => ask(suggestions[0])} disabled={available !== true}>{suggestions[0]}</button></div>}
               {messages.map((message, index) => <div className={`agent-message ${message.role}`} key={message.id} role={message.status === 'error' ? 'alert' : undefined}>
                 {message.role === 'assistant' && <span className="agent-message-avatar" aria-hidden="true"><img src="/assets/agent-avatar/focused.png" alt="" draggable="false" /></span>}
                 <span className="message-role">{message.role === 'user' ? 'You' : 'Saber (AI Agent)'}</span>
                 <div className="message-content"><ReactMarkdown skipHtml transformLinkUri={safeAgentHref} components={{ img: () => null, a: ({ href, children }) => href ? <a href={href} rel="nofollow noreferrer">{children}</a> : <span>{children}</span> }}>{message.content || (message.status === 'streaming' ? 'Thinking…' : 'Saber is busy right now. Please try again in a moment.')}</ReactMarkdown>{message.status === 'error' && !busy && messages[index - 1]?.role === 'user' && <button type="button" className="agent-message-retry" onClick={() => ask(messages[index - 1].content, message.id)}>Try again</button>}</div>
               </div>)}
             </div>
-          </div>
+          </div>}
         </div>
 
         <div className="agent-composer-area">
-          {available === false && <p className="agent-notice" role="status">Chat is not available right now. <a href="/work/">Explore Tempest’s work</a> or <a href="mailto:tar118@pitt.edu">contact Tempest directly</a>.</p>}
+          {available === false && <p className="agent-notice" role="status">Chat is not available right now. <a href="/work/">Explore Tempest’s work</a> or <a href="mailto:tar118@pitt.edu">contact Tempest directly</a>.<button type="button" onClick={() => setStatusRequest(value => value + 1)}>Reconnect</button></p>}
           <form onSubmit={event => { event.preventDefault(); ask(question); }}>
             <label htmlFor="agent-question">Your question</label>
-            <textarea id="agent-question" ref={input} value={question} onChange={event => setQuestion(event.target.value)} maxLength={2000} rows={1} placeholder={chatting ? 'Continue the conversation…' : 'Ask about Tempest’s work…'} disabled={available !== true} onKeyDown={event => { if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); ask(question); } }} />
+            <textarea id="agent-question" ref={input} value={question} onChange={event => setQuestion(event.target.value)} maxLength={2000} rows={1} placeholder={messages.length ? 'Continue the conversation…' : 'Ask about Tempest’s work…'} disabled={available !== true} onKeyDown={event => { if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); ask(question); } }} />
             <div className="agent-actions">
-              <small>{available === null ? 'Connecting…' : `Model · ${model}`}</small>
+              <small>{available === null ? 'Connecting…' : available === false ? 'Chat temporarily unavailable' : `Model · ${model}`}</small>
               {busy ? <button type="button" onClick={() => controller.current?.abort()}>Stop</button> : <button className="agent-send" type="submit" disabled={!question.trim() || available !== true} aria-label="Send message">Send ↗</button>}
             </div>
           </form>
