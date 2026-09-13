@@ -16,4 +16,6 @@ My blog describes my professional interests, but does not confirm an active job 
 
 The guide is AI, not Tempest. It cannot contact anyone or act on Tempest's behalf. Replies can contain mistakes; check the linked source for important details.
 
-Messages are sent through Vercel AI Gateway to the configured model provider to generate a reply. This blog does not store chat history or use analytics to record conversations. Provider retention policies still apply. Please do not include sensitive or private information.
+Completed questions and replies are saved in this browser's local storage and automatically restored when you reopen the guide or refresh the page. Up to 20 completed turns are retained, with each message limited to 2,000 characters. Anyone using the same browser profile may be able to see them. Select **+ New chat** in the conversation header to delete this guide's saved history from the browser and start fresh. Clearing this site's browser data also removes it.
+
+Messages, including recent conversation context, are sent through Vercel AI Gateway to the configured model provider to generate a reply. The blog's server does not save conversations or use analytics to record them. Provider retention policies still apply; **+ New chat** only clears the browser copy. Please do not include sensitive or private information.

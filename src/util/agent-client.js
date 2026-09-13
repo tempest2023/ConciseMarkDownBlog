@@ -36,4 +36,16 @@ function conversationHistory (messages, question) {
   while (recent.length && exceedsLimit()) recent.shift();
   return recent.flat();
 }
-module.exports = { conversationHistory, safeAgentHref };
+// Preserve actionable public endpoint guidance, but never display arbitrary network/provider errors.
+const publicFailures = new Set([
+  'Chat is busy. Please wait a minute before trying again, or explore the public profile.',
+  'The chat limit has been reached. Please try later or contact Tempest directly.',
+  'The selected model is not available for this AI Gateway key. Check Gateway credits or choose another model.',
+  'Chat is not available right now. Please explore the public profile or contact Tempest directly.',
+  'Please start a new conversation or shorten your question.',
+  'Each message must be plain text, up to 2,000 characters.'
+]);
+function friendlyAgentError (error) {
+  return publicFailures.has(error?.message) ? error.message : 'Saber is busy right now. Please try again in a moment.';
+}
+module.exports = { conversationHistory, safeAgentHref, friendlyAgentError };

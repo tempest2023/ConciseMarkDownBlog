@@ -2,7 +2,7 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 import { consumeChatStream } from '../util/chat-stream';
-import { conversationHistory, safeAgentHref } from '../util/agent-client';
+import { conversationHistory, safeAgentHref, friendlyAgentError } from '../util/agent-client';
 import '../styles/agent.css';
 
 const defaultModel = 'inception/mercury-2.5';
@@ -40,7 +40,7 @@ function completeConversation (messages) {
 }
 
 export default function PersonalAgent ({ newChatRequest = 0, onConversationChange }) {
-  const initialConversation = useRef(storedConversation()).current;
+  const [initialConversation] = useState(storedConversation);
   const [available, setAvailable] = useState(null);
   const [primaryModel, setPrimaryModel] = useState(defaultModel);
   const [model, setModel] = useState(initialConversation.model || defaultModel);
@@ -49,7 +49,7 @@ export default function PersonalAgent ({ newChatRequest = 0, onConversationChang
   const [question, setQuestion] = useState('');
   const [busy, setBusy] = useState(false);
   const controller = useRef(null);
-  const lastQuestion = useRef('');
+  const persistedHistory = useRef(null);
   const input = useRef(null);
   const sequence = useRef(0);
   const transcript = useRef(null);
@@ -62,12 +62,17 @@ export default function PersonalAgent ({ newChatRequest = 0, onConversationChang
     if (followReply.current && transcript.current) transcript.current.scrollTop = transcript.current.scrollHeight;
   }, [messages]);
   useEffect(() => {
+    // Streaming changes only the unfinished turn. Keep storage off that render path.
+    if (busy) return;
     const saved = completeConversation(messages);
+    const serialized = saved.length ? JSON.stringify(saved) : null;
+    if (serialized === persistedHistory.current) return;
     try {
-      if (saved.length) window.localStorage.setItem(storageKey, JSON.stringify(saved));
+      if (serialized) window.localStorage.setItem(storageKey, serialized);
       else window.localStorage.removeItem(storageKey);
+      persistedHistory.current = serialized;
     } catch {}
-  }, [messages]);
+  }, [messages, busy]);
   useEffect(() => {
     const status = new AbortController();
     fetch('/api/chat', { signal: status.signal }).then(response => response.ok ? response.json() : { available: false }).then(data => {
@@ -86,22 +91,24 @@ export default function PersonalAgent ({ newChatRequest = 0, onConversationChang
     controller.current?.abort();
     setMessages([]);
     setModel(primaryModel);
-    try { window.localStorage.removeItem(storageKey); } catch {}
+    try { window.localStorage.removeItem(storageKey); persistedHistory.current = null; } catch {}
     input.current?.focus();
   }, [newChatRequest, primaryModel]);
 
-  async function ask (text, retry = false) {
+  async function ask (text, retryMessageId = null) {
     if (controller.current || !text.trim() || available !== true) return;
+    const retryIndex = retryMessageId === null ? -1 : messages.findIndex(message => message.id === retryMessageId && message.status === 'error');
+    const retryQuestion = retryIndex > 0 ? messages[retryIndex - 1] : null;
+    if (retryMessageId !== null && retryQuestion?.role !== 'user') return;
     const value = text.trim();
     const history = conversationHistory(messages, value);
     followReply.current = true;
     const id = ++sequence.current;
     const request = new AbortController();
     controller.current = request;
-    lastQuestion.current = value;
     setModel(primaryModel);
     setQuestion(''); setBusy(true);
-    setMessages(previous => [...(retry ? previous.filter(message => message.status !== 'error' && message.status !== 'question') : previous), { id: `${id}-user`, role: 'user', content: value, status: 'question' }, { id, role: 'assistant', content: '', status: 'streaming', model: primaryModel }]);
+    setMessages(previous => [...previous.filter(message => message.id !== retryMessageId && message.id !== retryQuestion?.id), { id: `${id}-user`, role: 'user', content: value, status: 'question' }, { id, role: 'assistant', content: '', status: 'streaming', model: primaryModel }]);
     try {
       const response = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: [...history, { role: 'user', content: value }] }), signal: request.signal });
       await consumeChatStream(response, event => {
@@ -112,8 +119,8 @@ export default function PersonalAgent ({ newChatRequest = 0, onConversationChang
         }
       });
       setMessages(previous => previous.map(message => message.id === id || message.id === `${id}-user` ? { ...message, status: 'complete' } : message));
-    } catch {
-      const friendlyReply = request.signal.aborted ? 'Reply stopped. You can try again whenever you’re ready.' : 'Saber is busy right now. Please try again in a moment.';
+    } catch (error) {
+      const friendlyReply = request.signal.aborted ? 'Reply stopped. You can try again whenever you’re ready.' : friendlyAgentError(error);
       setMessages(previous => previous.map(message => message.id === id ? { ...message, content: friendlyReply, status: 'error' } : message));
     } finally { controller.current = null; setBusy(false); }
   }
@@ -132,10 +139,10 @@ export default function PersonalAgent ({ newChatRequest = 0, onConversationChang
 
         <div className="agent-chat" aria-hidden={!chatting}>
           <div className="agent-transcript" ref={transcript} onScroll={event => { const area = event.currentTarget; followReply.current = area.scrollHeight - area.scrollTop - area.clientHeight < 64; }} role="log" aria-label="Conversation" aria-live="polite" aria-relevant="additions text" tabIndex={chatting ? 0 : -1}>
-            {messages.map(message => <div className={`agent-message ${message.role}`} key={message.id} role={message.status === 'error' ? 'alert' : undefined}>
+            {messages.map((message, index) => <div className={`agent-message ${message.role}`} key={message.id} role={message.status === 'error' ? 'alert' : undefined}>
               {message.role === 'assistant' && <span className="agent-message-avatar" aria-hidden="true"><img src="/assets/agent-avatar/focused.png" alt="" draggable="false" /></span>}
               <span className="message-role">{message.role === 'user' ? 'You' : 'Saber (AI Agent)'}</span>
-              <div className="message-content"><ReactMarkdown skipHtml transformLinkUri={safeAgentHref} components={{ img: () => null, a: ({ href, children }) => href ? <a href={href} rel="nofollow noreferrer">{children}</a> : <span>{children}</span> }}>{message.content || (message.status === 'streaming' ? 'Thinking…' : 'Saber is busy right now. Please try again in a moment.')}</ReactMarkdown>{message.status === 'error' && !busy && <button type="button" className="agent-message-retry" onClick={() => ask(lastQuestion.current, true)}>Try again</button>}</div>
+              <div className="message-content"><ReactMarkdown skipHtml transformLinkUri={safeAgentHref} components={{ img: () => null, a: ({ href, children }) => href ? <a href={href} rel="nofollow noreferrer">{children}</a> : <span>{children}</span> }}>{message.content || (message.status === 'streaming' ? 'Thinking…' : 'Saber is busy right now. Please try again in a moment.')}</ReactMarkdown>{message.status === 'error' && !busy && messages[index - 1]?.role === 'user' && <button type="button" className="agent-message-retry" onClick={() => ask(messages[index - 1].content, message.id)}>Try again</button>}</div>
             </div>)}
           </div>
         </div>
