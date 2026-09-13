@@ -13,6 +13,7 @@ export default function AgentDock () {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [chatting, setChatting] = useState(false);
+  const [newChatRequest, setNewChatRequest] = useState(0);
   const hasFloatingConfigButton = process.env.NODE_ENV !== 'production' && hasConfigAccess();
   useEffect(() => {
     if (!open) return;
@@ -59,8 +60,14 @@ export default function AgentDock () {
       const rect = dialog.current.getBoundingClientRect();
       if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) close();
     }}>
-      <header className="agent-dialog-header"><div><span className="agent-online-dot" /><h2 id="agent-dialog-title">Ask Tempest</h2><span className="agent-subtitle">AI guide to my public work</span></div><button type="button" className="agent-close" onClick={close} aria-label="Close conversation" autoFocus><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg></button></header>
-      {mounted && <Suspense fallback={<p role="status" className="agent-loading">Opening a little space for conversation…</p>}><PersonalAgent onConversationChange={handleConversationChange} /></Suspense>}
+      <header className="agent-dialog-header">
+        <div className="agent-dialog-identity"><span className="agent-online-dot" /><h2 id="agent-dialog-title">Saber</h2><span className="agent-subtitle">AI Agent to Tempest’s public work</span></div>
+        <div className="agent-dialog-actions">
+          {chatting && <button type="button" className="agent-header-new-chat" onClick={() => setNewChatRequest(value => value + 1)}><span aria-hidden="true">+</span> New chat</button>}
+          <button type="button" className="agent-close" onClick={close} aria-label="Close conversation" autoFocus><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg></button>
+        </div>
+      </header>
+      {mounted && <Suspense fallback={<p role="status" className="agent-loading">Opening a little space for conversation…</p>}><PersonalAgent newChatRequest={newChatRequest} onConversationChange={handleConversationChange} /></Suspense>}
     </dialog>
   </>;
 }

@@ -14,9 +14,10 @@ beforeEach(() => {
   consumeChatStream.mockImplementation(async (_, emit) => { emit({ type: 'delta', text: 'A public answer.' }); emit({ type: 'done' }); });
 });
 afterEach(() => { global.fetch = originalFetch; });
-async function ready () {
-  render(<PersonalAgent />);
+async function ready (props = {}) {
+  const view = render(<PersonalAgent {...props} />);
   await waitFor(() => expect(screen.getByLabelText('Your question')).toBeEnabled());
+  return view;
 }
 test('unavailable status offers static alternatives and disables submission', async () => {
   global.fetch.mockResolvedValue({ ok: false });
@@ -26,19 +27,23 @@ test('unavailable status offers static alternatives and disables submission', as
   expect(screen.getByLabelText('Your question')).toBeDisabled();
 });
 test('a suggested question sends one request, renders the reply and supports a clean new conversation', async () => {
-  await ready();
+  const view = await ready({ newChatRequest: 0 });
   expect(screen.getByPlaceholderText('Ask about Tempest’s work…')).toBeInTheDocument();
   expect(screen.getByRole('button', { name: "What's new in Tempest research papers lately?" })).toBeInTheDocument();
   expect(screen.queryByText('Complete chats are saved only in this browser.')).not.toBeInTheDocument();
   fireEvent.click(screen.getByRole('button', { name: 'Tell me about Tempest’s research.' }));
   expect(await screen.findByText('A public answer.')).toBeInTheDocument();
+  expect(screen.getByText('Saber (AI Agent)')).toBeInTheDocument();
+  expect(document.querySelector('.agent-message-avatar')).toHaveAttribute('src', '/assets/agent-avatar/focused.png');
+  expect(document.querySelector('.agent-message-avatar')).toHaveAttribute('width', '64');
+  expect(document.querySelector('.agent-message-avatar')).toHaveAttribute('height', '64');
   expect(screen.getByLabelText('Ask Tempest')).toHaveClass('is-chatting');
   expect(screen.getByText('Model · test/model')).toBeInTheDocument();
   await waitFor(() => expect(screen.queryByRole('button', { name: 'Stop' })).not.toBeInTheDocument());
   expect(global.fetch).toHaveBeenCalledTimes(2);
   expect(JSON.parse(global.fetch.mock.calls[1][1].body).messages).toEqual([{ role: 'user', content: 'Tell me about Tempest’s research.' }]);
   await waitFor(() => expect(JSON.parse(window.localStorage.getItem('ask-tempest:messages:v1'))).toHaveLength(2));
-  fireEvent.click(screen.getByRole('button', { name: 'New chat' }));
+  view.rerender(<PersonalAgent newChatRequest={1} />);
   expect(screen.queryByText('A public answer.')).not.toBeInTheDocument();
   expect(screen.getByLabelText('Ask Tempest')).toHaveClass('is-onboarding');
   expect(window.localStorage.getItem('ask-tempest:messages:v1')).toBeNull();
@@ -64,8 +69,9 @@ test('failed replies can be retried without duplicate questions', async () => {
   consumeChatStream.mockRejectedValueOnce(new Error('Temporary failure'));
   await ready();
   fireEvent.click(screen.getByRole('button', { name: 'Tell me about Tempest’s research.' }));
-  expect(await screen.findByRole('alert')).toHaveTextContent('Temporary failure');
-  fireEvent.click(screen.getByRole('button', { name: 'Retry' }));
+  expect(await screen.findByRole('alert')).toHaveTextContent('Saber is busy right now. Please try again in a moment.');
+  expect(screen.queryByText('Temporary failure')).not.toBeInTheDocument();
+  fireEvent.click(screen.getByRole('button', { name: 'Try again' }));
   expect(await screen.findByText('A public answer.')).toBeInTheDocument();
   expect(screen.getAllByText('Tell me about Tempest’s research.')).toHaveLength(2); // suggestion + one message
   expect(screen.queryByRole('alert')).not.toBeInTheDocument();
@@ -75,9 +81,9 @@ test('Stop aborts the request and restores usable controls', async () => {
   global.fetch.mockImplementation((_, options) => new Promise((resolve, reject) => options.signal.addEventListener('abort', () => reject(new Error('aborted')))));
   fireEvent.click(screen.getByRole('button', { name: 'Tell me about Tempest’s research.' }));
   fireEvent.click(await screen.findByRole('button', { name: 'Stop' }));
-  expect(await screen.findByRole('alert')).toHaveTextContent('Reply stopped.');
+  expect(await screen.findByRole('alert')).toHaveTextContent('Reply stopped. You can try again whenever you’re ready.');
   expect(global.fetch.mock.calls[1][1].signal.aborted).toBe(true);
-  expect(screen.getByRole('button', { name: 'Retry' })).toBeEnabled();
+  expect(screen.getByRole('button', { name: 'Try again' })).toBeEnabled();
 });
 test('Enter submits but Shift+Enter and IME composition do not', async () => {
   await ready();

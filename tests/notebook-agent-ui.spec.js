@@ -51,7 +51,7 @@ test.describe('Notebook and agent companion', () => {
     await expect(launcher).toHaveCSS('animation-duration', '5s');
     await launcher.click();
 
-    const dialog = page.getByRole('dialog', { name: 'Ask Tempest' });
+    const dialog = page.getByRole('dialog', { name: 'Saber' });
     await expect(dialog).toBeVisible();
     const size = await dialog.evaluate(element => {
       return { width: element.offsetWidth, height: element.offsetHeight, viewportWidth: innerWidth, viewportHeight: innerHeight };
@@ -71,12 +71,24 @@ test.describe('Notebook and agent companion', () => {
       { role: 'assistant', content: 'A saved answer' }
     ])));
     await page.getByRole('button', { name: 'Open Ask Tempest' }).click();
-    const dialog = page.getByRole('dialog', { name: 'Ask Tempest' });
+    const dialog = page.getByRole('dialog', { name: 'Saber' });
     await expect(page.locator('.personal-agent')).toHaveClass(/is-chatting/);
     const size = await dialog.evaluate(element => ({ width: element.offsetWidth, height: element.offsetHeight, viewportWidth: innerWidth, viewportHeight: innerHeight }));
     expect(size.width).toBeCloseTo(size.viewportWidth, 0);
     expect(size.height).toBeCloseTo(size.viewportHeight, 0);
     await expect(dialog).toHaveCSS('border-radius', '0px');
+    await expect(page.getByText('Saber (AI Agent)')).toBeVisible();
+    const avatar = page.locator('.agent-message.assistant .agent-message-avatar');
+    await expect(avatar).toHaveAttribute('src', '/assets/agent-avatar/focused.png');
+    await expect(avatar).toHaveCSS('width', '64px');
+    await expect(avatar).toHaveCSS('height', '64px');
+    const headerActions = await page.evaluate(() => {
+      const newChat = document.querySelector('.agent-header-new-chat').getBoundingClientRect();
+      const close = document.querySelector('.agent-close').getBoundingClientRect();
+      return { newChatRight: newChat.right, closeLeft: close.left, rightPadding: innerWidth - close.right };
+    });
+    expect(headerActions.newChatRight).toBeLessThanOrEqual(headerActions.closeLeft);
+    expect(headerActions.rightPadding).toBeGreaterThanOrEqual(14);
   });
 
   test('uses only a small multi-state PNG avatar for the companion', async ({ page }) => {
