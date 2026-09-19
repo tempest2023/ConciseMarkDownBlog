@@ -84,7 +84,7 @@ git commit -m "Initial blog setup"
 git push
 ```
 
-Then enable Pages in repository Settings → Pages → Deploy from branch `gh-pages`.
+Run **Actions → GitHub Pages (manual fallback) → Run workflow** on `main` and wait for it to create/update `gh-pages`. Repeat this after each content update; pushing alone does not deploy Pages. Then enable Pages in repository Settings → Pages → Deploy from branch `gh-pages`.
 
 **Vercel (Easier):**
 
@@ -122,7 +122,7 @@ npm run test:e2e
 ## 🎯 Why This Blog?
 
 - **No Server Required** - Static site, host anywhere for free
-- **Easy Updates** - Write Markdown, git push, done
+- **Easy Updates** - Merge Markdown changes to main for Vercel deployment; run the fallback workflow for Pages
 - **Full Control** - Own your content, custom domain support
 - **Developer Friendly** - React-based, easily extensible
 - **Notion Compatible** - Export Notion docs as Markdown

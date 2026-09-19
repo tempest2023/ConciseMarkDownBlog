@@ -117,9 +117,9 @@ headers: [
 
 ## Publishing Changes
 
-### Automatic Deployment (GitHub Pages)
+### Manual Fallback Deployment (GitHub Pages)
 
-Every push to `main` automatically deploys:
+First commit and merge the content changes into `main`:
 
 ```bash
 git add .
@@ -127,9 +127,9 @@ git commit -m "Update blog content"
 git push origin main
 ```
 
-Wait 3-5 minutes for the build and deployment.
+Then open **Actions → GitHub Pages (manual fallback) → Run workflow** and select `main`. Repeat after each update; pushing alone does not deploy Pages.
 
-### Manual Deployment (Vercel)
+### Production Deployment (Vercel)
 
 Vercel deploys automatically on every push:
 

@@ -10,7 +10,7 @@ Deploy your blog for free using GitHub Pages or Vercel.
 
 ## GitHub Pages
 
-Free hosting directly from your GitHub repository with automatic deployments.
+Static-only manual fallback hosting. Production uses Vercel; see [production setup](vercel-production.md). GitHub Pages cannot run the AI API.
 
 ### Setup Steps
 
@@ -21,7 +21,9 @@ Free hosting directly from your GitHub repository with automatic deployments.
    git push origin main
    ```
 
-2. **Enable GitHub Pages**
+2. **Run the fallback workflow, then enable GitHub Pages**
+   - Open **Actions → GitHub Pages (manual fallback) → Run workflow** and select `main`
+   - Wait for the workflow to create/update `gh-pages` before selecting it below
    - Go to your repository on GitHub
    - Click **Settings** → **Pages** (in left sidebar)
    - Under "Build and deployment":
@@ -30,7 +32,7 @@ Free hosting directly from your GitHub repository with automatic deployments.
    - Click **Save**
 
 3. **Wait for deployment**
-   - GitHub Actions will automatically build and deploy
+   - The manually triggered GitHub Actions workflow builds and deploys
    - This takes 3-5 minutes
    - Your blog will be available at `https://username.github.io/repo-name`
 
@@ -47,9 +49,9 @@ Free hosting directly from your GitHub repository with automatic deployments.
 
 3. Enable HTTPS in repository Settings → Pages
 
-### Automatic Deployments
+### Subsequent Updates
 
-Every push to `main` branch triggers automatic deployment:
+After changes reach `main`, explicitly run **Actions → GitHub Pages (manual fallback) → Run workflow** again. A push alone does not deploy Pages:
 
 1. GitHub Actions workflow runs
 2. Builds the React app
@@ -108,7 +110,7 @@ One-click deployment with zero configuration.
 | Preview Deployments | ✗ | ✓ |
 | Analytics | ✗ | ✓ |
 | Setup Complexity | Medium | One Click |
-| Git Integration | Automatic | Automatic |
+| Git Integration | Manual workflow | Automatic |
 
 ## Troubleshooting
 

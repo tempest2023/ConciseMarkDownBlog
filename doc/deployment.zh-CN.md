@@ -10,7 +10,7 @@
 
 ## GitHub Pages
 
-直接从你的 GitHub 仓库免费托管，支持自动部署。
+仅作为静态站点的手动回退。生产环境使用 Vercel，见[生产部署说明](vercel-production.md)。GitHub Pages 无法运行 AI 接口。
 
 ### 设置步骤
 
@@ -22,7 +22,10 @@
    git push origin main
    ```
 
-2. **启用 GitHub Pages**
+2. **手动运行回退工作流，再启用 GitHub Pages**
+
+   - 打开 **Actions → GitHub Pages (manual fallback) → Run workflow**，选择 `main`
+   - 等待工作流生成或更新 `gh-pages` 后，再进行下面的设置
 
    - 在 GitHub 上打开你的仓库
    - 点击 **设置** → **Pages**（在左侧边栏）
@@ -32,7 +35,7 @@
    - 点击 **保存**
 
 3. **等待部署**
-   - GitHub Actions 将自动构建和部署
+   - 手动触发的 GitHub Actions 工作流将构建和部署
    - 这需要 3-5 分钟
    - 你的博客将在 `https://username.github.io/repo-name` 可用
 
@@ -51,9 +54,9 @@
 
 3. 在仓库设置 → Pages 中启用 HTTPS
 
-### 自动部署
+### 后续更新
 
-每次推送到 `main` 分支都会触发自动部署：
+更改合并到 `main` 后，需再次打开 **Actions → GitHub Pages (manual fallback) → Run workflow**。单独推送不会部署 Pages：
 
 1. GitHub Actions 工作流运行
 2. 构建 React 应用
@@ -114,7 +117,7 @@
 | 预览部署   | ✗            | ✓            |
 | 分析       | ✗            | ✓            |
 | 设置复杂度 | 中等         | 一键         |
-| Git 集成   | 自动         | 自动         |
+| Git 集成   | 手动工作流   | 自动         |
 
 ## 故障排除
 

@@ -80,7 +80,7 @@ git commit -m "初始博客设置"
 git push
 ```
 
-然后在仓库设置 → Pages → 从分支 `gh-pages` 部署。
+打开 **Actions → GitHub Pages (manual fallback) → Run workflow**，选择 `main`，等待生成或更新 `gh-pages`。每次更新内容后都需手动运行，单独推送不会部署 Pages。然后在仓库设置 → Pages → 从分支 `gh-pages` 部署。
 
 **Vercel（更简单）：**
 
@@ -118,7 +118,7 @@ npm run test:e2e
 ## 🎯 为什么选择这个博客？
 
 - **无需服务器** - 静态网站，随处免费托管
-- **轻松更新** - 编写 Markdown，git push，完成
+- **轻松更新** - Markdown 更改合并到 main 后由 Vercel 自动部署；Pages 需手动运行回退工作流
 - **完全掌控** - 拥有自己的内容，支持自定义域名
 - **开发者友好** - 基于 React，易于扩展
 - **兼容 Notion** - 将 Notion 文档导出为 Markdown
