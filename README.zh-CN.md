@@ -1,5 +1,7 @@
 # 简洁 Markdown 博客
 
+生产环境使用 Vercel 整站部署（静态页面 + AI 接口），GitHub Pages 保留为手动回退。部署、限流及域名配置见 [生产部署说明](doc/vercel-production.md)。
+
 [![PayPal][badge_paypal_donate]][paypal-donations]
 
 <a href="https://www.buymeacoffee.com/tempes666" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee"></a>

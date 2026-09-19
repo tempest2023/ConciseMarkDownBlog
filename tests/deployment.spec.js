@@ -18,6 +18,8 @@ test.describe('Deployment Configuration', () => {
     expect(config.version).toBe(2);
     expect(config.buildCommand).toBe('npm run build');
     expect(config.outputDirectory).toBe('build');
+    // CRA's implicit SPA fallback shadows legacy redirects and turns 404s into 200s.
+    expect(config.framework).toBeNull();
   });
 
   test('vercel.json should redirect legacy page queries without shadowing static pages', () => {

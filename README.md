@@ -1,5 +1,7 @@
 # Concise MarkDown Blog
 
+Production runs entirely on Vercel (static pages and AI API). See [production deployment](doc/vercel-production.md) for deployment, limits, and domain setup. GitHub Pages is a manual fallback.
+
 [![PayPal][badge_paypal_donate]][paypal-donations]
 
 <a href="https://www.buymeacoffee.com/tempes666" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee"></a>

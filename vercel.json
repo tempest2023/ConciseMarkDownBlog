@@ -1,11 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "name": "concise-markdown-blog",
   "buildCommand": "npm run build",
   "outputDirectory": "build",
   "installCommand": "yarn install --frozen-lockfile",
-  "framework": "create-react-app",
+  "framework": null,
   "functions": { "api/chat.js": { "maxDuration": 30 } },
   "rewrites": [
     {

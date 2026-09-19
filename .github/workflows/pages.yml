@@ -1,8 +1,6 @@
-name: Deploy Creat React App Project
-on: 
-  push:
-    branches:
-      - main
+name: GitHub Pages (manual fallback)
+on:
+  workflow_dispatch:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
