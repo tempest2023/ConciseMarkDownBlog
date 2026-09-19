@@ -57,3 +57,7 @@ Run `CI=true npm test -- --watchAll=false --runInBand`, `npm run test:agent`,
 After deployment verify `/`, `/writing/`, a nested article, `/?page=Blog`
 (308 redirect), an unknown path (404), GET `/api/chat`, a streaming POST,
 and the firewall's 429 response. Repeat on the custom domain after DNS cutover.
+
+Routing uses an explicit route order: headers, legacy root query handler,
+filesystem, then the custom 404. A normal rewrite is insufficient because the
+existing root index.html takes filesystem precedence.
