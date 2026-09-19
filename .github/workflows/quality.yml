@@ -2,7 +2,7 @@ name: Blog quality
 on:
   pull_request:
   push:
-    branches: ['tempest/blog-foundation', 'tempest/static-articles', 'tempest/personal-agent']
+    branches: ['main']
 jobs:
   verify:
     runs-on: ubuntu-latest

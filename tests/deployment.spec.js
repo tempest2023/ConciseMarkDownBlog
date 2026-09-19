@@ -18,6 +18,8 @@ test.describe('Deployment Configuration', () => {
     expect(config.version).toBe(2);
     expect(config.buildCommand).toBe('npm run build');
     expect(config.outputDirectory).toBe('build');
+    // CRA's implicit SPA fallback shadows legacy redirects and turns 404s into 200s.
+    expect(config.framework).toBeNull();
   });
 
   test('vercel.json should redirect legacy page queries without shadowing static pages', () => {
@@ -25,13 +27,14 @@ test.describe('Deployment Configuration', () => {
     const content = fs.readFileSync(vercelJsonPath, 'utf8');
     const config = JSON.parse(content);
 
-    expect(config.rewrites).toBeDefined();
-    expect(config.rewrites.length).toBeGreaterThan(0);
+    expect(config.routes).toBeDefined();
+    expect(config.routes.length).toBeGreaterThan(0);
 
-    const rewrite = config.rewrites[0];
-    expect(rewrite.source).toBe('/');
+    const rewrite = config.routes.find(route => route.dest === '/api/legacy');
+    expect(config.routes.indexOf(rewrite)).toBeLessThan(config.routes.findIndex(route => route.handle === 'filesystem'));
+    expect(rewrite.src).toBe('^/$');
     expect(rewrite.has).toEqual([{ type: 'query', key: 'page' }]);
-    expect(rewrite.destination).toBe('/api/legacy');
+    expect(rewrite.dest).toBe('/api/legacy');
   });
 
   test('vercel.json should have security headers', () => {
@@ -39,18 +42,14 @@ test.describe('Deployment Configuration', () => {
     const content = fs.readFileSync(vercelJsonPath, 'utf8');
     const config = JSON.parse(content);
 
-    expect(config.headers).toBeDefined();
-    expect(config.headers.length).toBeGreaterThan(0);
+    expect(config.routes).toBeDefined();
+    expect(config.routes.length).toBeGreaterThan(0);
 
     // Check for security headers
-    const mainHeaders = config.headers.find(h => h.source === '/(.*)');
+    const mainHeaders = config.routes.find(h => h.src === '/(.*)');
     expect(mainHeaders).toBeDefined();
-    expect(mainHeaders.headers).toContainEqual(
-      expect.objectContaining({ key: 'X-Frame-Options', value: 'DENY' })
-    );
-    expect(mainHeaders.headers).toContainEqual(
-      expect.objectContaining({ key: 'X-Content-Type-Options', value: 'nosniff' })
-    );
+    expect(mainHeaders.headers['X-Frame-Options']).toBe('DENY');
+    expect(mainHeaders.headers['X-Content-Type-Options']).toBe('nosniff');
   });
 
   test('vercel.json should have caching headers for static assets', () => {
@@ -58,12 +57,12 @@ test.describe('Deployment Configuration', () => {
     const content = fs.readFileSync(vercelJsonPath, 'utf8');
     const config = JSON.parse(content);
 
-    const staticHeaders = config.headers.find(h => h.source === '/static/(.*)');
+    const staticHeaders = config.routes.find(h => h.src === '/static/(.*)');
     expect(staticHeaders).toBeDefined();
 
-    const cacheControl = staticHeaders.headers.find(h => h.key === 'Cache-Control');
+    const cacheControl = staticHeaders.headers['Cache-Control'];
     expect(cacheControl).toBeDefined();
-    expect(cacheControl.value).toContain('immutable');
+    expect(cacheControl).toContain('immutable');
   });
 
   test('README should mention Vercel deployment', () => {

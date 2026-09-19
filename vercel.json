@@ -1,45 +1,49 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "name": "concise-markdown-blog",
   "buildCommand": "npm run build",
   "outputDirectory": "build",
   "installCommand": "yarn install --frozen-lockfile",
-  "framework": "create-react-app",
-  "functions": { "api/chat.js": { "maxDuration": 30 } },
-  "rewrites": [
-    {
-      "source": "/",
-      "has": [{ "type": "query", "key": "page" }],
-      "destination": "/api/legacy"
+  "framework": null,
+  "functions": {
+    "api/chat.js": {
+      "maxDuration": 30
     }
-  ],
-  "headers": [
+  },
+  "routes": [
     {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        }
-      ]
+      "src": "/(.*)",
+      "headers": {
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY",
+        "X-XSS-Protection": "1; mode=block"
+      },
+      "continue": true
     },
     {
-      "source": "/static/(.*)",
-      "headers": [
+      "src": "/static/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/$",
+      "has": [
         {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
+          "type": "query",
+          "key": "page"
         }
-      ]
+      ],
+      "dest": "/api/legacy"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/.*",
+      "dest": "/404.html",
+      "status": 404
     }
   ]
 }

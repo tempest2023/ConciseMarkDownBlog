@@ -31,3 +31,5 @@ yarn-error.log*
 /playwright-report/
 /playwright/.cache/
 .playwright-mcp/
+.env*
+!.env.example
