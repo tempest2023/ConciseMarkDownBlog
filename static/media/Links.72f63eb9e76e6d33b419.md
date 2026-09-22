@@ -5,7 +5,7 @@
 - **Email:** [tar118@pitt.edu](mailto:tar118@pitt.edu)
 - **LinkedIn:** [linkedin.com/in/taoren-pitt](https://www.linkedin.com/in/taoren-pitt/)
 - **GitHub:** [github.com/tempest2023](https://github.com/tempest2023)
-- **Resume (PDF):** [Google Drive](https://drive.google.com/file/d/1aNJ-NPuk71x4xQgRo5Es2WPyNZA8kbCb/view?usp=sharing)
+- **Resume (PDF):** [Tao Ren - AI Engineer & Researcher](/resume/Tao-Ren-Resume.pdf)
 - **Resume (Markdown):** [ResumeMarkdown](/?page=Blogs/Other/ResumeMarkdown.md)
 
 ## Publications

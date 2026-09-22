@@ -6,7 +6,7 @@
 
 I'm Tao Ren (Tempest), an independent researcher and senior full-stack engineer working at the intersection of LLM research, agent systems, and production software.
 
-<nav class="profile-actions" aria-label="Explore my work"><a href="/?page=Work">Work & research ↗</a><a href="https://drive.google.com/file/d/1aNJ-NPuk71x4xQgRo5Es2WPyNZA8kbCb/view?usp=sharing">My résumé ↗</a></nav>
+<nav class="profile-actions" aria-label="Explore my work"><a href="/?page=Work">Work & research ↗</a><a href="/resume/Tao-Ren-Resume.pdf">My résumé ↗</a></nav>
 </div>
 
 I build systems that connect model capabilities to tools, documents, and the constraints of a real workflow. My interests include structured code generation, precise editing, evaluation, and human review. I care about what happens after a model produces an answer: whether the result is useful, testable, and reliable enough to use.

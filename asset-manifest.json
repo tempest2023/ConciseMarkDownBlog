@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.7e937315.css",
-    "main.js": "/static/js/main.5c7e8027.js",
+    "main.js": "/static/js/main.efac832c.js",
     "static/js/473.992f5cd9.chunk.js": "/static/js/473.992f5cd9.chunk.js",
     "static/css/204.b5ee57c2.chunk.css": "/static/css/204.b5ee57c2.chunk.css",
     "static/js/204.931210cc.chunk.js": "/static/js/204.931210cc.chunk.js",
@@ -80,19 +80,19 @@
     "static/media/KaTeX_Size4-Regular.woff": "/static/media/KaTeX_Size4-Regular.aeffd8025cba3647f1a6.woff",
     "static/media/BardConversation.md": "/static/media/BardConversation.e32f5631a363493bf220.md",
     "static/media/76_Minimum_Window_Substring.md": "/static/media/76_Minimum_Window_Substring.34e7434910efd75ad7bc.md",
-    "static/media/ResumeMarkdown.md": "/static/media/ResumeMarkdown.645f82f168a9dac6efe7.md",
     "static/media/KaTeX_Size1-Regular.woff2": "/static/media/KaTeX_Size1-Regular.6eec866c69313624be60.woff2",
+    "static/media/ResumeMarkdown.md": "/static/media/ResumeMarkdown.14ac1599db4a1330b5b2.md",
     "static/media/Paint_House_III.md": "/static/media/Paint_House_III.48a1802b169e86368a5c.md",
     "static/media/best_practice.md": "/static/media/best_practice.4d6deb08878b08227a61.md",
     "static/media/KaTeX_Size2-Regular.woff2": "/static/media/KaTeX_Size2-Regular.2960900c4f271311eb36.woff2",
     "static/media/KaTeX_Size4-Regular.woff2": "/static/media/KaTeX_Size4-Regular.e418bf257af1052628d8.woff2",
     "static/media/1531_String_Compression_II.md": "/static/media/1531_String_Compression_II.ae3c5aab8e79ac5ed916.md",
     "static/media/KaTeX_Size3-Regular.woff": "/static/media/KaTeX_Size3-Regular.7947224e8a9914fa332b.woff",
-    "static/media/About.md": "/static/media/About.6d98d5bf6283afbb5242.md",
+    "static/media/About.md": "/static/media/About.ff52aa26f373e1a4dafe.md",
     "static/media/A_cat_recognizer_works_wrong_in_which_pictures.md": "/static/media/A_cat_recognizer_works_wrong_in_which_pictures.f9ae617d14a127c081bd.md",
     "static/media/MyFrontendJourney.md": "/static/media/MyFrontendJourney.b316df97e9a10baf67b8.md",
-    "static/media/Blog.md": "/static/media/Blog.4df077b3f7fb0a535f96.md",
-    "static/media/Work.md": "/static/media/Work.f4d50f7b086302e83aae.md",
+    "static/media/Blog.md": "/static/media/Blog.b9ca8d107c6e36683e3f.md",
+    "static/media/Work.md": "/static/media/Work.18403ae0f4c224bb3b31.md",
     "static/media/PushDominoes.md": "/static/media/PushDominoes.95e13b3ce61ee53c5e50.md",
     "static/media/KaTeX_Size3-Regular.woff2": "/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "static/media/Short_Encoding_of_Words.md": "/static/media/Short_Encoding_of_Words.1aeffd430d9c7e43cde8.md",
@@ -109,7 +109,7 @@
     "static/media/pinitos_error.md": "/static/media/pinitos_error.2ef1c561127048e9bb44.md",
     "static/media/RecommendationLetter.md": "/static/media/RecommendationLetter.a20538bc01e2ddf069fa.md",
     "static/media/referal3rd.md": "/static/media/referal3rd.4435558d5be0bece3e90.md",
-    "static/media/Links.md": "/static/media/Links.978c30d4d2470754615b.md",
+    "static/media/Links.md": "/static/media/Links.72f63eb9e76e6d33b419.md",
     "static/media/RecommendationLetter-Lab.md": "/static/media/RecommendationLetter-Lab.a67e0116f1e20ce17964.md",
     "static/media/Encrypt_and_Decrypt_Strings.md": "/static/media/Encrypt_and_Decrypt_Strings.b4310f64cc52c0690994.md",
     "static/media/Int_to_Roman.md": "/static/media/Int_to_Roman.07b3788e96665d9aa070.md",
@@ -121,7 +121,7 @@
     "static/media/Use_Python_to_print_colorfully.md": "/static/media/Use_Python_to_print_colorfully.176d497a840ff936695b.md",
     "static/media/404.md": "/static/media/404.6d4bd4046c21b4c3aab1.md",
     "main.7e937315.css.map": "/static/css/main.7e937315.css.map",
-    "main.5c7e8027.js.map": "/static/js/main.5c7e8027.js.map",
+    "main.efac832c.js.map": "/static/js/main.efac832c.js.map",
     "473.992f5cd9.chunk.js.map": "/static/js/473.992f5cd9.chunk.js.map",
     "204.b5ee57c2.chunk.css.map": "/static/css/204.b5ee57c2.chunk.css.map",
     "204.931210cc.chunk.js.map": "/static/js/204.931210cc.chunk.js.map",
@@ -132,6 +132,6 @@
   },
   "entrypoints": [
     "static/css/main.7e937315.css",
-    "static/js/main.5c7e8027.js"
+    "static/js/main.efac832c.js"
   ]
 }

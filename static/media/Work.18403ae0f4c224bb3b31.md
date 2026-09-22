@@ -122,4 +122,4 @@ Computer science degree, GAN-based face generation with Prof. Ran Cheng, and web
 - **University of Pittsburgh** — MS, Information Science, 2021–2023
 - **Southern University of Science and Technology** — BEng, Computer Science and Technology, 2016–2020
 
-[Complete résumé](https://drive.google.com/file/d/1aNJ-NPuk71x4xQgRo5Es2WPyNZA8kbCb/view?usp=sharing) · [Projects](/?page=Projects/Project) · [Contact Tao](mailto:tar118@pitt.edu)
+[Complete résumé](/resume/Tao-Ren-Resume.pdf) · [Projects](/?page=Projects/Project) · [Contact Tao](mailto:tar118@pitt.edu)
