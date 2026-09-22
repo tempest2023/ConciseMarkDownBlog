@@ -1,39 +1,10 @@
-### Recent Projects
+# Earlier Projects
 
-- [Tira AI](https://tira.tempest.fun/)
-  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
-    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
-    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">AI</text>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
-    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#2ecc71"/>
-    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">Founder</text>
-  </svg>
-  An AI-native execution startup I co-founded in summer 2025. We explored product execution workflows, refined the founder narrative quickly, and received top-10% feedback in YC S25 with strong investor and accelerator interest.
+An archive of my earlier web, mobile, computer vision, and game projects. These descriptions document the work at the time; demos may no longer be maintained.
 
-- [AgentShelf](https://github.com/tempest2023/AgentShelf)
-  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
-    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
-    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">AI</text>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
-    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#2ecc71"/>
-    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">Next.js</text>
-  </svg>
-  A GEO Readiness Console built during a recent hackathon to explore how Generative UI can make agent-user interaction visible, inspectable, and operational for commerce teams.
+[Back to selected projects](/?page=Projects/Project)
 
-- [Influ Agent](https://influagent.tempest.fun/)
-  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
-    <rect x="0" y="0" rx="6" ry="6" width="32" height="24" fill="#0077BD"/>
-    <text x="16" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">AI</text>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24">
-    <rect x="0" y="0" rx="6" ry="6" width="48" height="24" fill="#2ecc71"/>
-    <text x="24" y="12" fill="#fff" font-family="Arial" font-size="12" text-anchor="middle" alignment-baseline="central">React</text>
-  </svg>
-  An autonomous 24/7 AI Multi-Agents system that achieves your success in social growth. We are the Devin of Social Media.
-
-### Awesome Projects
+## Project archive
 
 - [MockMyInterview](https://mockmyinterview-git-production-chatmetas-projects.vercel.app/#hero)
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="24">
@@ -193,14 +164,3 @@
 
 - [Horner's Method](https://github.com/623059008/Horner-s-Method/blob/master/Polynomials.html): Use Horner's Method to calculate the polynomial evaluation.
 
-## Github Status
-<div style="display:flex;flex-direction:row;justify-content:space-around;">
-<a href="https://github.com/623059008">
-  <img src="https://github-readme-stats-623059008.vercel.app/api?username=tempest2023" />
-</a>
-<a href="https://github.com/623059008">
-  <img src="https://github-readme-stats-623059008.vercel.app/api/top-langs/?username=tempest2023&layout=compact" />
-</a>
-</div>
-
----------------

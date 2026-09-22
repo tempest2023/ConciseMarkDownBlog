@@ -12,10 +12,6 @@ Archived September 8, 2026 from my former About page. The account below is prese
 
 Published: 2026-07-22
 
-### [My Frontend Journey](/blog/frontend/myfrontendjourney/)
-
-I have been in Full Stack Community more than 10 years.
-
 ## All writing
 
 ### AI
