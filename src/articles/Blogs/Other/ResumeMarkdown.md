@@ -1,126 +1,90 @@
-# Tempest (Tao Ren)
+# Tao Ren (Tempest)
 
-Senior Full-stack Software Engineer | Founder | Researcher
+**AI Engineer & Researcher** | Agents, structured generation, and evaluation
 
-Email: tar118@pitt.edu
+[tar118@pitt.edu](mailto:tar118@pitt.edu) | [tempest.fun](https://tempest.fun) | [GitHub](https://github.com/tempest2023) | [LinkedIn](https://www.linkedin.com/in/taoren-pitt/)
 
-Website: https://tempest.fun
+## Profile
 
-LinkedIn: https://www.linkedin.com/in/taoren-pitt/
+AI engineer and independent researcher building agents for document-heavy workflows and software engineering. Work spans insurance AI at Newfront, an internal coding agent at TikTok, and research on precise editing, structured code generation, and tool-using agents. Bring a full-stack engineering background to connecting model capabilities with tools, evaluation, production services, and human review.
 
-GitHub: https://github.com/tempest2023
+## Agent Engineering Experience
 
-## Summary
+### Newfront | Senior Full-stack Software Engineer
 
-Senior full-stack software engineer with experience across AI agents, production product systems, startup execution, and applied research. I work best in high-ambiguity environments where product sense, system design, and rapid execution all matter at once. My recent work spans insurance AI, founder-led product development, Generative UI, and structure-aware code generation research.
+October 2025 - Present
 
-## Core Skills
+- Work on Nova Agent, an internal AI coworker for insurance operators, supporting document-heavy tasks, contract generation, company-style email drafts, and human-in-the-loop review.
+- Develop agent workflows involving more than 50 PDFs per task, policy and submission documents, generated artifacts, and internal services; account for permissions, domain constraints, and operator review.
+- Work on agent system design involving tools, skills, memory, document processing, and structured outputs. Experience with quoting and placement services informs integration with insurance workflows.
 
-- Languages: JavaScript, TypeScript, Python, Java, C++, SQL, HTML5, CSS3/Less
-- Frontend: React, Next.js, React Native, Vue, Tailwind CSS, Redux, Webpack, Vite
-- Backend: Node.js, Express.js, Koa.js, Flask, Django, Tornado, REST APIs, GraphQL
-- Data and Infra: PostgreSQL, MySQL, Redis, Docker, AWS, Vercel, Linux, Git
-- Focus Areas: AI agents, full-stack product systems, workflow automation, Generative UI, low-code platforms
+### TikTok | Software Engineer, Social and User Relations
 
-## Experience
+Prior to October 2025
 
-### Newfront
+- Built an internal LLM coding agent from scratch for Objective-C-to-Swift migration, connecting code generation with iterative quality checks and custom evaluation harnesses.
+- Iterated on prompts and generated code to assess practical usefulness for engineers performing migrations.
+- Built consumer social interaction features and mobile product systems, grounding developer tooling work in production engineering requirements.
 
-Senior Full-stack Software Engineer
+### Tira AI | Co-Founder
 
-10.2025-Present
+June - August 2025
 
-1. Build internal insurance AI systems focused on agent-assisted workflows, high-trust product UX, and production software for complex broker operations.
-2. Contribute to the Placement AI Agent initiative, translating domain-heavy insurance workflows into practical human-in-the-loop software systems.
-3. Help shape product and engineering execution during Newfront's next phase of growth, including its acquisition by WTW on January 27, 2026.
+- Co-founded an AI-native execution startup; drove product architecture, implementation, and early go-to-market work.
+- Developed product execution workflows from initial concept through implementation, combining full-stack engineering with rapid product iteration.
 
-### Tira AI
+## Core Capabilities
 
-Co-Founder
+- **Agent systems:** Tool use, document workflows, memory, task decomposition, structured outputs, and human-in-the-loop review.
+- **Evaluation and research:** Code-generation evaluation harnesses, prompt iteration, precise editing, AST-guided generation, and real-time AI systems.
+- **Implementation:** Python, TypeScript, JavaScript, SQL; React, Next.js, React Native, Node.js, and Python backend frameworks.
+- **Production foundations:** API integration, PostgreSQL, MySQL, Redis, Docker, AWS, Linux, and Git.
 
-06.2025-08.2025
+<!-- pdf-page-break -->
 
-1. Co-founded an AI-native execution startup with Sam Liu, a UC Berkeley alumnus, and drove product architecture, implementation, and founder-led GTM.
-2. Earned top-10% feedback in YC S25 and built traction through conversations with PearX, Berkeley SkyDeck, Techstars, Antler, 500 Global, Afore, Kindred Ventures, and other early-stage investors and founder programs.
-3. Developed the product and fundraising narrative around AI-native execution workflows and full-stack software systems.
+## Selected Research
 
-### TikTok
+Co-authored work on structured generation, editing, tool use, and runtime constraints.
 
-Software Engineer, Social and User Relations
+### FineEdit | Findings of EMNLP 2025
 
-Prior to 10.2025
+[Bridging the Editing Gap in LLMs: FineEdit for Precise and Targeted Text Modifications](https://aclanthology.org/2025.findings-emnlp.118/)
 
-1. Worked on user social interaction features and product systems in a large-scale consumer platform environment.
-2. Contributed to software experiences where product quality, reliability, and iteration speed all mattered at scale.
+Research on precise instruction-driven editing across code, LaTeX, and database languages, connecting specialized editing models with evaluation of structured modifications.
 
-### University of Pittsburgh
+### TreeDiff | SURGeLLM at ACL 2026
 
-Research Assistant, Full-stack Engineer
+[TreeDiff: AST-Guided Code Generation with Diffusion LLMs](https://aclanthology.org/2026.surgellm-1.5/)
 
-08.2021-Present
+Research incorporating abstract syntax tree structure into diffusion-based code generation to address syntactic boundaries and hierarchical dependencies.
 
-1. Worked in Dr. Dan Ding's Human Engineering Research Laboratories on disability rehabilitation systems involving Apple Watch, Fitbit, and cloud-based information platforms.
-2. Built research software across data collection, analysis, visualization, and rehabilitation training using React, React Native, Node.js, MySQL, Redis, and AWS.
-3. Helped develop a modular low-code platform that enabled researchers and partner organizations to assemble customized rehabilitation applications for different study designs and device setups.
+### Infant Agent | arXiv preprint, 2024
 
-### Ansys
+[Infant Agent: A Tool-Integrated, Logic-Driven Agent with Cost-Effective API Usage](https://arxiv.org/abs/2411.01114)
 
-Full-stack Software Engineer Intern, Digital Twin
+Research on tool-integrated agents with task-aware functions, memory retrieval, and cost-aware API usage for multi-step tasks.
 
-05.2022-08.2022
+### RED | RTSS 2023
 
-1. Developed a Twin Deployer application with Python Tornado, TypeScript, Vue, Quasar, Electron, and Swagger for modeling and simulation workflows.
-2. Helped move the application from Electron-centric file operations toward browser-compatible workflows for broader deployment across operating environments.
-3. Built frontend components, APIs, and backend data models for project import, library management, and web-based execution.
+[RED: A Systematic Real-Time Scheduling Approach for Robotic Environmental Dynamics](https://ieeexplore.ieee.org/abstract/document/10405986)
 
-### Ant Group / Alibaba
+Research on robotic inference scheduling under changing environmental conditions, connecting AI execution with latency and runtime constraints.
 
-Software Development Engineer, Alipay Mobile Technology
+## Selected Product
 
-07.2020-06.2021
+### AgentShelf | AI Commerce Readiness Console
 
-1. Led development of a low-code build platform for dynamic financial shop templates using React, Redux, Ant Design, Less, and Node.js.
-2. Built live-streaming components and backend services for Alipay Financial Live, supporting financial product promotion at meaningful business scale.
-3. Migrated platform infrastructure to OceanBase and improved service quality, performance, and operational reliability.
+[github.com/tempest2023/AgentShelf](https://github.com/tempest2023/AgentShelf)
 
-## Selected Projects
+Built a hackathon product exploring inspectable AI commerce workflows: product readiness, shopping-query simulation, structured content, and launch preparation. The demo includes a mock publishing flow.
 
-### AgentShelf
+## Earlier Engineering & Research
 
-GitHub: https://github.com/tempest2023/AgentShelf
-
-A GEO Readiness Console built during a recent hackathon to explore how Generative UI can make agent-user interaction visible, inspectable, and operational for commerce teams.
-
-### Concise MarkDown Blog
-
-GitHub: https://github.com/tempest2023/ConciseMarkDownBlog
-
-A markdown-driven personal website framework built with React and designed for quick authoring, easy deployment, and content-first presentation.
-
-### Influ Agent
-
-Website: https://influagent.tempest.fun/
-
-An AI multi-agent system for creator and social growth workflows.
-
-## Publications and Research
-
-- TreeDiff: AST-Guided Code Generation with Diffusion LLMs. Accepted to SURGeLLM at ACL 2026.
-- RED: Adaptive Real-Time DAG Scheduling for Robotic Inference under Environmental Dynamics. Under review at ACM Transactions on Embedded Computing Systems.
-- Bridging the Editing Gap in LLMs: FineEdit for Precise and Targeted Text Modifications. Findings of EMNLP 2025. https://aclanthology.org/2025.findings-emnlp.118/
-- Infant Agent: A Tool-Integrated, Logic-Driven Agent with Cost-Effective API Usage. https://arxiv.org/abs/2411.01114
-- RED: A Systematic Real-Time Scheduling Approach for Robotic Environmental Dynamics. RTSS 2023. https://ieeexplore.ieee.org/abstract/document/10405986
+- **University of Pittsburgh | Research Assistant, Full-stack Engineer | From August 2021:** Built rehabilitation research platforms for data collection, visualization, wearable integrations, and configurable study workflows in Prof. Dan Ding's lab.
+- **Ansys | Full-stack Software Engineer Intern, Digital Twin | May - August 2022:** Built Twin Deployer UI, APIs, and data models; helped move Electron-based file operations toward browser-compatible deployment workflows.
+- **Ant Group / Alibaba | Software Development Engineer | July 2020 - June 2021:** Built low-code financial storefront infrastructure, live-streaming components, and backend services for Alipay; contributed to an OceanBase migration.
 
 ## Education
 
-### University of Pittsburgh
-
-Master of Science in Information Science
-
-08.2021-04.2023
-
-### Southern University of Science and Technology
-
-Bachelor of Engineering, Computer Science and Technology
-
-09.2016-07.2020
+- **University of Pittsburgh** - MS, Information Science | 2021 - 2023
+- **Southern University of Science and Technology** - BEng, Computer Science and Technology | 2016 - 2020
