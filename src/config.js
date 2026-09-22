@@ -20,7 +20,7 @@ const config = {
   },
   email: 'tar118@pitt.edu',
   repo: 'https://github.com/tempest2023/ConciseMarkDownBlog',
-  resume_url: 'https://drive.google.com/file/d/1aNJ-NPuk71x4xQgRo5Es2WPyNZA8kbCb/view?usp=sharing',
+  resume_url: '/resume/Tao-Ren-Resume.pdf',
   // default content shown on the main page, /src/articles/[config.default].md
   default: 'About',
   headers: [
