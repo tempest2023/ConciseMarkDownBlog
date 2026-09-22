@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Render the Markdown resume to a selectable-text PDF. Requires reportlab.
+"""Optional draft export only; the published PDF retains its original design.
+Do not replace the published PDF without explicit user approval. Requires reportlab.
 Run: python3 scripts/generate-resume.py
 """
 from pathlib import Path
 from html import escape
 import re
-import shutil
 from reportlab.lib import colors
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.pagesizes import letter
@@ -15,7 +15,7 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, PageBreak
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'src/articles/Blogs/Other/ResumeMarkdown.md'
-OUTPUT = ROOT / 'output/pdf/Tao-Ren-Resume.pdf'
+OUTPUT = ROOT / 'output/pdf/Tao-Ren-Resume-draft.pdf'
 OUTPUT.parent.mkdir(parents=True, exist_ok=True)
 # Embed available fonts; ReportLab standard fonts are the portable fallback.
 font_dir = Path('/System/Library/Fonts/Supplemental')
@@ -71,7 +71,4 @@ for line in SOURCE.read_text().splitlines():
 doc = SimpleDocTemplate(str(OUTPUT), pagesize=letter, rightMargin=43, leftMargin=43, topMargin=35, bottomMargin=46,
     title='Tao Ren - AI Engineer & Researcher', author='Tao Ren', subject='Agent engineering and AI research resume')
 doc.build(story, onFirstPage=footer, onLaterPages=footer)
-public = ROOT / 'public/resume/Tao-Ren-Resume.pdf'
-public.parent.mkdir(parents=True, exist_ok=True)
-shutil.copyfile(OUTPUT, public)
-print(f'Created {OUTPUT}\nPublished asset: {public}')
+print(f'Created draft: {OUTPUT}; published PDF unchanged')
