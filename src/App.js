@@ -84,7 +84,7 @@ const AppContent = () => {
       <a className="skip-link" href="#main-content">Skip to content</a>
       <Header />
       <div className="notebook-layout">
-        <NotebookSidebar />
+        <NotebookSidebar markdownEnabled={config.markdown.enable} />
         <main className="main-container" id="main-content" tabIndex={-1}>
           <Suspense fallback={<p role="status">Loading…</p>}>{renderContent()}</Suspense>
         </main>
