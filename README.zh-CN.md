@@ -1,6 +1,6 @@
 # 简洁 Markdown 博客
 
-生产环境使用 Vercel 整站部署（静态页面 + AI 接口），GitHub Pages 保留为手动回退。部署、限流及域名配置见 [生产部署说明](doc/vercel-production.md)。
+生产环境使用 Vercel 整站部署（静态页面 + AI 接口）。部署、限流及域名配置见 [生产部署说明](doc/vercel-production.md)。
 
 [![PayPal][badge_paypal_donate]][paypal-donations]
 
@@ -8,7 +8,7 @@
 
 ![演示](./demo.png)
 
-使用 Markdown 在 5 分钟内搭建你的个人博客。无需服务器，免费托管。
+使用 Markdown 搭建个人博客。静态页面无需自建服务器；AI 接口需要 Vercel 和模型服务。
 
 ## ✨ 功能特性
 
@@ -16,9 +16,9 @@
 - 🎨 **可定制主题** - 支持亮色/暗色模式和配色预设
 - ⚙️ **TUI 设置向导** - 交互式 CLI 快速配置
 - 🖥️ **GUI 配置编辑器** - 可视化设置编辑器（仅本地）
-- 🚀 **一键部署** - 即时部署到 GitHub Pages 或 Vercel
+- 🚀 **Vercel 部署** - 同时部署网站和 AI 接口
 - 📱 **移动响应式** - 适配所有设备
-- 🆓 **完全免费** - 无托管费用
+- 🆓 **静态页面** - 无需自建服务器；AI 模型调用可能产生费用
 
 ## 🚀 快速开始
 
@@ -72,19 +72,9 @@ echo "# 你好世界\n\n我的第一篇文章！" > src/articles/Hello.md
 
 ### 4. 部署
 
-**GitHub Pages（免费）：**
+**Vercel：**
 
-```bash
-git add .
-git commit -m "初始博客设置"
-git push
-```
-
-打开 **Actions → GitHub Pages (manual fallback) → Run workflow**，选择 `main`，等待生成或更新 `gh-pages`。每次更新内容后都需手动运行，单独推送不会部署 Pages。然后在仓库设置 → Pages → 从分支 `gh-pages` 部署。
-
-**Vercel（更简单）：**
-
-[![使用 Vercel 部署](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F623059008%2FConciseMarkDownBlog)
+[![使用 Vercel 部署](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftempest2023%2FConciseMarkDownBlog)
 
 详细说明请参阅[部署指南](doc/deployment.zh-CN.md)。
 
@@ -93,7 +83,7 @@ git push
 | 主题                                      | 说明                            |
 | ----------------------------------------- | ------------------------------- |
 | [配置](doc/configuration.zh-CN.md)        | 完整配置参考、导航设置、主题    |
-| [部署](doc/deployment.zh-CN.md)           | GitHub Pages 和 Vercel 部署指南 |
+| [部署](doc/deployment.zh-CN.md)           | Vercel 部署指南                |
 | [更新内容](doc/updating-content.zh-CN.md) | 添加和编辑博客文章              |
 | [编辑器指南](doc/editor.zh-CN.md)         | 内置 Markdown 编辑器功能        |
 | [技术栈](doc/tech-stack.zh-CN.md)         | 架构和使用的技术                |
@@ -118,7 +108,7 @@ npm run test:e2e
 ## 🎯 为什么选择这个博客？
 
 - **无需服务器** - 静态网站，随处免费托管
-- **轻松更新** - Markdown 更改合并到 main 后由 Vercel 自动部署；Pages 需手动运行回退工作流
+- **轻松更新** - Markdown 更改合并到 main 后由 Vercel 自动部署
 - **完全掌控** - 拥有自己的内容，支持自定义域名
 - **开发者友好** - 基于 React，易于扩展
 - **兼容 Notion** - 将 Notion 文档导出为 Markdown

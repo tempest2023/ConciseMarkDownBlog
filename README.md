@@ -1,6 +1,6 @@
 # Concise MarkDown Blog
 
-Production runs entirely on Vercel (static pages and AI API). See [production deployment](doc/vercel-production.md) for deployment, limits, and domain setup. GitHub Pages is a manual fallback.
+Production runs entirely on Vercel (static pages and AI API). See [production deployment](doc/vercel-production.md) for deployment, limits, and domain setup.
 
 [![PayPal][badge_paypal_donate]][paypal-donations]
 
@@ -20,9 +20,9 @@ Use **Node 22** and `yarn install --frozen-lockfile`. Edit `src/data/profile.jso
 - 🎨 **Customizable Themes** - Light/dark mode with color presets
 - ⚙️ **TUI Setup Wizard** - Interactive CLI for quick configuration
 - 🖥️ **GUI Config Editor** - Visual editor for settings (local only)
-- 🚀 **One-Click Deploy** - Deploy to GitHub Pages or Vercel instantly
+- 🚀 **Vercel Deployment** - Deploy the site and AI API together
 - 📱 **Mobile Responsive** - Works on all devices
-- 🆓 **Static Hosting** - Compatible with GitHub Pages; optional chat has separate provider/hosting costs
+- 🆓 **Static Pages** - Articles are published as HTML; optional chat has separate provider/hosting costs
 
 ## 🚀 Quick Start
 
@@ -76,19 +76,9 @@ Update `headers` in config to add navigation.
 
 ### 4. Deploy
 
-**GitHub Pages (Free):**
+**Vercel:**
 
-```bash
-git add .
-git commit -m "Initial blog setup"
-git push
-```
-
-Run **Actions → GitHub Pages (manual fallback) → Run workflow** on `main` and wait for it to create/update `gh-pages`. Repeat this after each content update; pushing alone does not deploy Pages. Then enable Pages in repository Settings → Pages → Deploy from branch `gh-pages`.
-
-**Vercel (Easier):**
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F623059008%2FConciseMarkDownBlog)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftempest2023%2FConciseMarkDownBlog)
 
 See [Deployment Guide](doc/deployment.md) for detailed instructions.
 
@@ -97,7 +87,7 @@ See [Deployment Guide](doc/deployment.md) for detailed instructions.
 | Topic | Description |
 |-------|-------------|
 | [Configuration](doc/configuration.md) | Complete config reference, navigation setup, themes |
-| [Deployment](doc/deployment.md) | GitHub Pages and Vercel deployment guides |
+| [Deployment](doc/deployment.md) | Vercel deployment guide |
 | [Updating Content](doc/updating-content.md) | Add and edit blog posts |
 | [Editor Guide](doc/editor.md) | Built-in markdown editor features |
 | [Tech Stack](doc/tech-stack.md) | Architecture and technologies used |
@@ -122,7 +112,7 @@ npm run test:e2e
 ## 🎯 Why This Blog?
 
 - **No Server Required** - Static site, host anywhere for free
-- **Easy Updates** - Merge Markdown changes to main for Vercel deployment; run the fallback workflow for Pages
+- **Easy Updates** - Merge Markdown changes to main for Vercel deployment
 - **Full Control** - Own your content, custom domain support
 - **Developer Friendly** - React-based, easily extensible
 - **Notion Compatible** - Export Notion docs as Markdown

@@ -1,70 +1,19 @@
 # Deployment Guide
 
-Deploy your blog for free using GitHub Pages or Vercel.
+Deploy the static blog and AI API together on Vercel. See [production setup](vercel-production.md) for this site's project settings, limits, and domain.
 
 ## Table of Contents
 
-- [GitHub Pages](#github-pages)
 - [Vercel](#vercel)
-- [Comparison](#comparison)
-
-## GitHub Pages
-
-Static-only manual fallback hosting. Production uses Vercel; see [production setup](vercel-production.md). GitHub Pages cannot run the AI API.
-
-### Setup Steps
-
-1. **Push your code to GitHub**
-   ```bash
-   git add .
-   git commit -m "Initial blog setup"
-   git push origin main
-   ```
-
-2. **Run the fallback workflow, then enable GitHub Pages**
-   - Open **Actions → GitHub Pages (manual fallback) → Run workflow** and select `main`
-   - Wait for the workflow to create/update `gh-pages` before selecting it below
-   - Go to your repository on GitHub
-   - Click **Settings** → **Pages** (in left sidebar)
-   - Under "Build and deployment":
-     - Source: **Deploy from a branch**
-     - Branch: **gh-pages** /root
-   - Click **Save**
-
-3. **Wait for deployment**
-   - The manually triggered GitHub Actions workflow builds and deploys
-   - This takes 3-5 minutes
-   - Your blog will be available at `https://username.github.io/repo-name`
-
-### Custom Domain (Optional)
-
-1. Add a `CNAME` file to your repository root:
-   ```
-   www.yourdomain.com
-   ```
-
-2. Configure DNS with your domain provider:
-   - CNAME record: `www` → `username.github.io`
-   - A records for apex domain pointing to GitHub Pages IPs
-
-3. Enable HTTPS in repository Settings → Pages
-
-### Subsequent Updates
-
-After changes reach `main`, explicitly run **Actions → GitHub Pages (manual fallback) → Run workflow** again. A push alone does not deploy Pages:
-
-1. GitHub Actions workflow runs
-2. Builds the React app
-3. Deploys to `gh-pages` branch
-4. Updates live site
+- [Troubleshooting](#troubleshooting)
 
 ## Vercel
 
-One-click deployment with zero configuration.
+Vercel publishes the static pages and runs `/api/chat` from the same origin. Configure the server-side environment variables in [production setup](vercel-production.md) before enabling the AI agent.
 
 ### One-Click Deploy
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F623059008%2FConciseMarkDownBlog)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftempest2023%2FConciseMarkDownBlog)
 
 1. Click the button above
 2. Sign in with GitHub (create account if needed)
@@ -99,34 +48,7 @@ One-click deployment with zero configuration.
 - **Edge Network** - Global CDN for fast loading
 - **Custom Domains** - Easy DNS configuration
 
-## Comparison
-
-| Feature | GitHub Pages | Vercel |
-|---------|--------------|--------|
-| Price | Free | Free |
-| HTTPS | ✓ | ✓ |
-| Custom Domain | ✓ | ✓ |
-| CDN | Basic | Global Edge Network |
-| Preview Deployments | ✗ | ✓ |
-| Analytics | ✗ | ✓ |
-| Setup Complexity | Medium | One Click |
-| Git Integration | Manual workflow | Automatic |
-
 ## Troubleshooting
-
-### GitHub Pages
-
-**Build fails:**
-- Check Actions tab for error logs
-- Ensure `homepage` in package.json matches your repo
-
-**404 errors:**
-- Verify `gh-pages` branch exists
-- Check repository is public (required for free GitHub Pages)
-
-**Changes not appearing:**
-- Clear browser cache
-- Wait 5-10 minutes for CDN refresh
 
 ### Vercel
 

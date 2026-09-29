@@ -1,75 +1,19 @@
 # 部署指南
 
-使用 GitHub Pages 或 Vercel 免费部署你的博客。
+在 Vercel 同时部署静态博客和 AI 接口。本网站的项目设置、限流和域名见[生产部署说明](vercel-production.md)。
 
 ## 目录
 
-- [GitHub Pages](#github-pages)
 - [Vercel](#vercel)
-- [对比](#对比)
-
-## GitHub Pages
-
-仅作为静态站点的手动回退。生产环境使用 Vercel，见[生产部署说明](vercel-production.md)。GitHub Pages 无法运行 AI 接口。
-
-### 设置步骤
-
-1. **将代码推送到 GitHub**
-
-   ```bash
-   git add .
-   git commit -m "初始博客设置"
-   git push origin main
-   ```
-
-2. **手动运行回退工作流，再启用 GitHub Pages**
-
-   - 打开 **Actions → GitHub Pages (manual fallback) → Run workflow**，选择 `main`
-   - 等待工作流生成或更新 `gh-pages` 后，再进行下面的设置
-
-   - 在 GitHub 上打开你的仓库
-   - 点击 **设置** → **Pages**（在左侧边栏）
-   - 在 "构建和部署" 下：
-     - 源：**从分支部署**
-     - 分支：**gh-pages** /root
-   - 点击 **保存**
-
-3. **等待部署**
-   - 手动触发的 GitHub Actions 工作流将构建和部署
-   - 这需要 3-5 分钟
-   - 你的博客将在 `https://username.github.io/repo-name` 可用
-
-### 自定义域名（可选）
-
-1. 在仓库根目录添加 `CNAME` 文件：
-
-   ```
-   www.yourdomain.com
-   ```
-
-2. 使用你的域名提供商配置 DNS：
-
-   - CNAME 记录：`www` → `username.github.io`
-   - A 记录指向 GitHub Pages IP
-
-3. 在仓库设置 → Pages 中启用 HTTPS
-
-### 后续更新
-
-更改合并到 `main` 后，需再次打开 **Actions → GitHub Pages (manual fallback) → Run workflow**。单独推送不会部署 Pages：
-
-1. GitHub Actions 工作流运行
-2. 构建 React 应用
-3. 部署到 `gh-pages` 分支
-4. 更新实时站点
+- [故障排除](#故障排除)
 
 ## Vercel
 
-一键部署，零配置。
+Vercel 发布静态页面，并在同一域名下运行 `/api/chat`。启用 AI Agent 前，需按[生产部署说明](vercel-production.md)设置服务端环境变量。
 
 ### 一键部署
 
-[![使用 Vercel 部署](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F623059008%2FConciseMarkDownBlog)
+[![使用 Vercel 部署](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftempest2023%2FConciseMarkDownBlog)
 
 1. 点击上面的按钮
 2. 使用 GitHub 登录（如需要则创建账户）
@@ -106,37 +50,7 @@
 - **边缘网络** - 全球 CDN 快速加载
 - **自定义域名** - 简单的 DNS 配置
 
-## 对比
-
-| 功能       | GitHub Pages | Vercel       |
-| ---------- | ------------ | ------------ |
-| 价格       | 免费         | 免费         |
-| HTTPS      | ✓            | ✓            |
-| 自定义域名 | ✓            | ✓            |
-| CDN        | 基础         | 全球边缘网络 |
-| 预览部署   | ✗            | ✓            |
-| 分析       | ✗            | ✓            |
-| 设置复杂度 | 中等         | 一键         |
-| Git 集成   | 手动工作流   | 自动         |
-
 ## 故障排除
-
-### GitHub Pages
-
-**构建失败：**
-
-- 检查 Actions 标签页中的错误日志
-- 确保 package.json 中的 `homepage` 与你的仓库匹配
-
-**404 错误：**
-
-- 验证 `gh-pages` 分支是否存在
-- 检查仓库是否为公开（免费 GitHub Pages 必需）
-
-**更改未显示：**
-
-- 清除浏览器缓存
-- 等待 5-10 分钟让 CDN 刷新
 
 ### Vercel
 
