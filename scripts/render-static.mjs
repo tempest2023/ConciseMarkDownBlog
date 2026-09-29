@@ -26,7 +26,7 @@ const config = loadComponent('src/config.js');
 // Render the actual sidebar so the first HTML paint reserves the same column
 // and mobile navigation row as the client, even before JavaScript loads.
 const NotebookSidebar = loadComponent('src/components/NotebookSidebar.jsx');
-const sidebar = renderToStaticMarkup(React.createElement(NotebookSidebar));
+const sidebar = renderToStaticMarkup(React.createElement(NotebookSidebar, { markdownEnabled: config.markdown.enable }));
 const output = path.join(root, 'build');
 const shell = fs.readFileSync(path.join(output, 'index.html'), 'utf8');
 const assets = [...shell.matchAll(/<script\b[^>]*src=[^>]*><\/script>|<link\b[^>]*rel="stylesheet"[^>]*>/g)].map(match => match[0].replace(/(["'])\.\//g, '$1/')).join('');

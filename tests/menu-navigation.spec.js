@@ -83,6 +83,15 @@ test.describe('Menu Navigation', () => {
     await expect(page.getByRole('heading', { name: 'Links', exact: true })).toBeVisible();
   });
 
+  test('opens the Markdown editor from the notebook sidebar', async ({ page }) => {
+    const sidebar = page.getByRole('navigation', { name: 'Explore the notebook' });
+    const markdownLink = sidebar.getByRole('link', { name: 'Markdown', exact: true });
+    await expect(markdownLink).toHaveAttribute('href', '/markdown/');
+    await markdownLink.click();
+    await expect(page).toHaveURL(/\/markdown\/$/);
+    await expect(page.getByRole('textbox', { name: 'Markdown source' })).toBeVisible();
+  });
+
   test('keeps RSS and Made of Markdown together below the notebook colophon', async ({ page }) => {
     const footerNavigation = page.getByRole('navigation', { name: 'More links' });
     await expect(footerNavigation.getByRole('link')).toHaveCount(2);
