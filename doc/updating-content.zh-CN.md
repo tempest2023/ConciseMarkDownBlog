@@ -117,25 +117,9 @@ headers: [
 
 ## 发布更改
 
-### 手动回退部署（GitHub Pages）
-
-先将更改提交并合并到 `main`：
-
-```bash
-git add .
-git commit -m "更新博客内容"
-git push origin main
-```
-
-然后打开 **Actions → GitHub Pages (manual fallback) → Run workflow**，选择 `main`。每次更新均需运行；推送不会自动部署 Pages。
-
 ### 生产部署（Vercel）
 
-Vercel 在每次推送时自动部署：
-
-```bash
-git push
-```
+将内容更改合并到 `main` 后，Vercel 会自动部署。
 
 或手动部署：
 

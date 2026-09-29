@@ -1,5 +1,7 @@
 # Concise MarkDown Blog
 
+> This article describes the original GitHub Pages setup. The current site runs on Vercel; see the [current deployment guide](https://github.com/tempest2023/ConciseMarkDownBlog/blob/main/doc/vercel-production.md).
+
 [![PayPal][badge_paypal_donate]][paypal-donations]
 
 <a href="https://www.buymeacoffee.com/tempes666" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png" alt="Buy Me A Coffee"></a>

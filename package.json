@@ -1,6 +1,6 @@
 {
   "name": "concise-markdown-blog",
-  "description": "This is a concise, static, easily updated, configurable web blog based on MarkDown contents, and it can be deployed on Github Pages easily to set up your own blog within 5 mins.",
+  "description": "A configurable Markdown blog with static pages and an optional AI agent, deployed on Vercel.",
   "author": "Temepst <tar118@pitt.edu> (https://tempest.fun)",
   "contributors": [],
   "version": "0.1.1",
@@ -16,8 +16,8 @@
     "personal blog",
     "web blog",
     "markdown",
-    "free deployment",
-    "github pages"
+    "vercel deployment",
+    "vercel"
   ],
   "bugs": {
     "url": "https://github.com/623059008/ConciseMarkDownBlog/issues"
@@ -136,7 +136,6 @@
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.31.1",
-    "gh-pages": "^4.0.0",
     "husky": "^8.0.1",
     "jsdom": "16.7.0",
     "prettier": "^2.6.2",

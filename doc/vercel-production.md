@@ -12,7 +12,7 @@ Use Node 22 and `yarn install --frozen-lockfile`. Vercel runs `npm run build`,
 including static publishing in `postbuild`, and serves `build/` plus `api/`.
 Keep `framework: null`: the CRA preset adds a SPA fallback that shadows legacy
 query redirects and returns the homepage with HTTP 200 for unknown paths.
-GitHub Pages deployment is a manual fallback (`workflow_dispatch`).
+GitHub Pages is unpublished, and its deployment workflow has been retired.
 
 Production environment variables are configured in Vercel:
 
@@ -37,18 +37,13 @@ is **per instance**, resets on restart, and is not a global spending cap.
 The firewall IP rule also does not impose a global budget or stop rotating IPs.
 Disable chat with `PERSONAL_AGENT_ENABLED=false` and redeploy if needed.
 
-## Custom domain cutover
+## Custom domain
 
-`tempest.fun` is attached to this Vercel project; authoritative DNS is at Aliyun.
-At cutover, replace the apex `@` CNAME to `623059008.github.io` with the A records
-currently recommended by `vercel domains verify tempest.fun`:
-
-- `@ A 216.198.79.1`
-- `@ A 64.29.17.1`
-
-Do not change unrelated subdomains, mail records, or nameservers. Run domain
-verification again after DNS propagation. Canonical links remain
-`https://tempest.fun`, so published article URLs do not change.
+`tempest.fun` is attached to this Vercel project. Authoritative DNS remains at
+Aliyun; the apex `@` A record points to Vercel. Use the current value shown in
+Vercel's Domains settings if this record needs to be changed. The `www`
+subdomain needs its own Vercel domain and CNAME record if it should be served.
+Canonical links use `https://tempest.fun`.
 
 ## Verification
 
@@ -56,7 +51,7 @@ Run `CI=true npm test -- --watchAll=false --runInBand`, `npm run test:agent`,
 `npm run build`, and `npm run test:static`.
 After deployment verify `/`, `/writing/`, a nested article, `/?page=Blog`
 (308 redirect), an unknown path (404), GET `/api/chat`, a streaming POST,
-and the firewall's 429 response. Repeat on the custom domain after DNS cutover.
+and the firewall's 429 response on the custom domain.
 
 Routing uses an explicit route order: headers, legacy root query handler,
 filesystem, then the custom 404. A normal rewrite is insufficient because the

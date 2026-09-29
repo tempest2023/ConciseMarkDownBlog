@@ -447,7 +447,7 @@ async function runSetup() {
   console.log('  2. Open http://localhost:3000/?page=config for GUI config editor');
   console.log('     (You can customize colors, headers, markdown settings there)');
   console.log('  3. Edit files in src/articles/ to add your content');
-  console.log('  4. Deploy using GitHub Pages or Vercel\n');
+  console.log('  4. Deploy the site and AI API on Vercel\n');
   console.log('💡 Tip: Use the GUI config editor to:');
   console.log('     - Customize theme colors');
   console.log('     - Add/remove navigation headers');

@@ -75,10 +75,9 @@ Build tooling and development environment:
 
 ### Build & Deploy
 
-**GitHub Actions**
-- Automated CI/CD pipeline
-- Builds on every push to main
-- Deploys to GitHub Pages
+**GitHub Actions and Vercel**
+- GitHub Actions checks pull requests and pushes to `main`
+- Vercel deploys the site and AI API from `main`
 
 ## File Structure
 

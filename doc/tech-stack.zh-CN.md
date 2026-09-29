@@ -82,11 +82,10 @@
 
 ### 构建和部署
 
-**GitHub Actions**
+**GitHub Actions 与 Vercel**
 
-- 自动化 CI/CD 流水线
-- 每次推送到 main 时构建
-- 部署到 GitHub Pages
+- GitHub Actions 检查拉取请求和推送到 `main` 的更改
+- Vercel 从 `main` 部署网站和 AI 接口
 
 ## 文件结构
 
