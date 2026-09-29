@@ -21,36 +21,15 @@ export default function MarkDownEditor () {
   const [deafultValue, setDeafultValue] = useState('');
   const [triggerLoading, setTriggerLoading] = useState(false);
   const [layout, setLayout] = useState('side-by-side');
-  const [showEditor, setShowEditor] = useState(true);
-  const [showPreview, setShowPreview] = useState(true);
-  const [layoutMenuOpen, setLayoutMenuOpen] = useState(false);
+  const [visiblePanes, setVisiblePanes] = useState('both');
   const scrollRestoreRef = useRef(null);
-  const layoutControlRef = useRef(null);
-  const layoutButtonRef = useRef(null);
   let updateDebounce = null;
 
-  useEffect(() => {
-    if (!layoutMenuOpen) return undefined;
-
-    const closeOnOutsideClick = (event) => {
-      if (!layoutControlRef.current?.contains(event.target)) {
-        setLayoutMenuOpen(false);
-      }
-    };
-    const closeOnEscape = (event) => {
-      if (event.key === 'Escape') {
-        setLayoutMenuOpen(false);
-        layoutButtonRef.current?.focus();
-      }
-    };
-
-    document.addEventListener('pointerdown', closeOnOutsideClick);
-    document.addEventListener('keydown', closeOnEscape);
-    return () => {
-      document.removeEventListener('pointerdown', closeOnOutsideClick);
-      document.removeEventListener('keydown', closeOnEscape);
-    };
-  }, [layoutMenuOpen]);
+  const nextLayout = layout === 'side-by-side' ? 'top-and-bottom' : 'side-by-side';
+  const nextVisiblePanes = visiblePanes === 'both' ? 'preview' : visiblePanes === 'preview' ? 'editor' : 'both';
+  const layoutLabel = layout === 'side-by-side' ? 'Side by side' : 'Top and bottom';
+  const nextLayoutLabel = nextLayout === 'side-by-side' ? 'side by side' : 'top and bottom';
+  const visibilityLabels = { both: 'editor and preview', preview: 'preview only', editor: 'editor only' };
 
   // update the markdown preview part.
   const updatePreview = (v, savedScrollY = null) => {
@@ -228,42 +207,48 @@ export default function MarkDownEditor () {
   return (
     <div className={styles['markdown-workspace']}>
       <div className={styles['layout-toolbar']}>
-        <div className={styles['layout-control']} ref={layoutControlRef}>
+        <div className={styles['view-controls']} role="group" aria-label="Editor view controls">
           <button
-            ref={layoutButtonRef}
             type="button"
-            className={styles['layout-trigger']}
-            aria-expanded={layoutMenuOpen}
-            aria-controls="markdown-layout-menu"
-            onClick={() => setLayoutMenuOpen(!layoutMenuOpen)}
+            className={styles['view-button']}
+            aria-label={`Layout: ${layoutLabel}. Switch to ${nextLayoutLabel}`}
+            title={`Layout: ${layoutLabel}. Switch to ${nextLayoutLabel}`}
+            onClick={() => setLayout(nextLayout)}
           >
-            <i className="bi bi-layout-split" aria-hidden="true" />
-            Layout
-            <i className="bi bi-chevron-down" aria-hidden="true" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="3" y="4.5" width="18" height="15" rx="2" />
+              {layout === 'side-by-side' ? <path d="M12 4.5v15" /> : <path d="M3 12h18" />}
+            </svg>
           </button>
-          <div id="markdown-layout-menu" className={styles['layout-menu']} role="group" aria-label="Markdown layout options" hidden={!layoutMenuOpen}>
-            <span className={styles['layout-menu-label']}>Arrange panes</span>
-            <button type="button" className={styles['layout-option']} aria-pressed={layout === 'side-by-side'} onClick={() => setLayout('side-by-side')}>Side by side</button>
-            <button type="button" className={styles['layout-option']} aria-pressed={layout === 'top-and-bottom'} onClick={() => setLayout('top-and-bottom')}>Top and bottom</button>
-            <span className={styles['layout-menu-label']}>Visible panes</span>
-            <button type="button" className={styles['layout-option']} aria-pressed={showEditor} disabled={showEditor && !showPreview} onClick={() => setShowEditor(!showEditor)}>Markdown editor</button>
-            <button type="button" className={styles['layout-option']} aria-pressed={showPreview} disabled={showPreview && !showEditor} onClick={() => setShowPreview(!showPreview)}>Markdown preview</button>
-          </div>
+          <button
+            type="button"
+            className={styles['view-button']}
+            aria-label={`Visible panes: ${visibilityLabels[visiblePanes]}. Show ${visibilityLabels[nextVisiblePanes]}`}
+            title={`Visible panes: ${visibilityLabels[visiblePanes]}. Show ${visibilityLabels[nextVisiblePanes]}`}
+            onClick={() => setVisiblePanes(nextVisiblePanes)}
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M2.5 11.5s3.5-5 9.5-5 9.5 5 9.5 5-3.5 5-9.5 5-9.5-5-9.5-5Z" />
+              <circle cx="12" cy="11.5" r="2.5" />
+              <path d="M6 20h4.5" strokeWidth="2.8" opacity={visiblePanes === 'preview' ? '.2' : '1'} />
+              <path d="M13.5 20H18" strokeWidth="2.8" opacity={visiblePanes === 'editor' ? '.2' : '1'} />
+            </svg>
+          </button>
         </div>
       </div>
       <div
         className={`${styles['editor-panes']} ${styles[layout]}`}
         data-layout={layout}
-        data-visible={showEditor && showPreview ? 'both' : showEditor ? 'editor' : 'preview'}
+        data-visible={visiblePanes}
       >
-        <div className={styles['editor-pane']} aria-hidden={!showEditor}>
+        <div className={styles['editor-pane']} aria-hidden={visiblePanes === 'preview'}>
           <MarkdownTextarea
             placeholder="Write your markdown content here."
             deafultValue={deafultValue}
             updatePreview={updatePreview}
           />
         </div>
-        <div className={styles['preview-pane']} aria-hidden={!showPreview}>
+        <div className={styles['preview-pane']} aria-hidden={visiblePanes === 'editor'}>
           <MarkDownPreview markdownString={markdownString} loading={triggerLoading} />
         </div>
       </div>
