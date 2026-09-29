@@ -7,12 +7,12 @@
  */
 
 import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
-import PropTypes from 'prop-types';
 
 import MarkdownTextarea from './MarkDownTextarea';
 import MarkDownPreview from './MarkDownPreview';
 import config from '../../config';
 import introfile from '../../articles/markdown_intro.md'; // introduction of how to use markdown
+import styles from '../../styles/editor.module.css';
 
 const markdownConfig = config.markdown;
 
@@ -20,8 +20,37 @@ export default function MarkDownEditor () {
   const [markdownString, setMarkdownString] = useState('');
   const [deafultValue, setDeafultValue] = useState('');
   const [triggerLoading, setTriggerLoading] = useState(false);
+  const [layout, setLayout] = useState('side-by-side');
+  const [showEditor, setShowEditor] = useState(true);
+  const [showPreview, setShowPreview] = useState(true);
+  const [layoutMenuOpen, setLayoutMenuOpen] = useState(false);
   const scrollRestoreRef = useRef(null);
+  const layoutControlRef = useRef(null);
+  const layoutButtonRef = useRef(null);
   let updateDebounce = null;
+
+  useEffect(() => {
+    if (!layoutMenuOpen) return undefined;
+
+    const closeOnOutsideClick = (event) => {
+      if (!layoutControlRef.current?.contains(event.target)) {
+        setLayoutMenuOpen(false);
+      }
+    };
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') {
+        setLayoutMenuOpen(false);
+        layoutButtonRef.current?.focus();
+      }
+    };
+
+    document.addEventListener('pointerdown', closeOnOutsideClick);
+    document.addEventListener('keydown', closeOnEscape);
+    return () => {
+      document.removeEventListener('pointerdown', closeOnOutsideClick);
+      document.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [layoutMenuOpen]);
 
   // update the markdown preview part.
   const updatePreview = (v, savedScrollY = null) => {
@@ -197,21 +226,47 @@ export default function MarkDownEditor () {
   }, []);
 
   return (
-    <div className="container-md">
-      <div className="row align-items-start">
-        <div className="col-6">
+    <div className={styles['markdown-workspace']}>
+      <div className={styles['layout-toolbar']}>
+        <div className={styles['layout-control']} ref={layoutControlRef}>
+          <button
+            ref={layoutButtonRef}
+            type="button"
+            className={styles['layout-trigger']}
+            aria-expanded={layoutMenuOpen}
+            aria-controls="markdown-layout-menu"
+            onClick={() => setLayoutMenuOpen(!layoutMenuOpen)}
+          >
+            <i className="bi bi-layout-split" aria-hidden="true" />
+            Layout
+            <i className="bi bi-chevron-down" aria-hidden="true" />
+          </button>
+          <div id="markdown-layout-menu" className={styles['layout-menu']} role="group" aria-label="Markdown layout options" hidden={!layoutMenuOpen}>
+            <span className={styles['layout-menu-label']}>Arrange panes</span>
+            <button type="button" className={styles['layout-option']} aria-pressed={layout === 'side-by-side'} onClick={() => setLayout('side-by-side')}>Side by side</button>
+            <button type="button" className={styles['layout-option']} aria-pressed={layout === 'top-and-bottom'} onClick={() => setLayout('top-and-bottom')}>Top and bottom</button>
+            <span className={styles['layout-menu-label']}>Visible panes</span>
+            <button type="button" className={styles['layout-option']} aria-pressed={showEditor} disabled={showEditor && !showPreview} onClick={() => setShowEditor(!showEditor)}>Markdown editor</button>
+            <button type="button" className={styles['layout-option']} aria-pressed={showPreview} disabled={showPreview && !showEditor} onClick={() => setShowPreview(!showPreview)}>Markdown preview</button>
+          </div>
+        </div>
+      </div>
+      <div
+        className={`${styles['editor-panes']} ${styles[layout]}`}
+        data-layout={layout}
+        data-visible={showEditor && showPreview ? 'both' : showEditor ? 'editor' : 'preview'}
+      >
+        <div className={styles['editor-pane']} aria-hidden={!showEditor}>
           <MarkdownTextarea
             placeholder="Write your markdown content here."
             deafultValue={deafultValue}
             updatePreview={updatePreview}
           />
         </div>
-        <div className="col-6">
+        <div className={styles['preview-pane']} aria-hidden={!showPreview}>
           <MarkDownPreview markdownString={markdownString} loading={triggerLoading} />
         </div>
       </div>
     </div>
   );
 }
-
-MarkDownEditor.propTypes = {};
