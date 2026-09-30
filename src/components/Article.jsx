@@ -127,7 +127,7 @@ const Article = () => {
           <div className="article-shell">
             {catalog.find(entry => entry.page === page)?.isPost && (() => {
               const entry = catalog.find(item => item.page === page);
-              return <div className="article-meta"><span>Tao Ren (Tempest)</span><span>Published <time dateTime={entry.publishedAt}>{entry.publishedAt.slice(0, 10)}</time></span><span>Updated <time dateTime={entry.updatedAt}>{entry.updatedAt.slice(0, 10)}</time></span><span>{entry.readingMinutes} min read</span></div>;
+              return <div className="article-meta"><span>Tempest</span><span>Published <time dateTime={entry.publishedAt}>{entry.publishedAt.slice(0, 10)}</time></span><span>Updated <time dateTime={entry.updatedAt}>{entry.updatedAt.slice(0, 10)}</time></span><span>{entry.readingMinutes} min read</span></div>;
             })()}
             {!/^#\s/m.test(markdownContent) && catalog.find(entry => entry.page === page) && <h1>{catalog.find(entry => entry.page === page).title}</h1>}
             <div className="article-tools"><FlipButton onClick={switchMode} open={mode === 'raw'} label={mode === 'raw' ? 'Read article' : 'Switch to Markdown'} closeElement={<img src={codeIcon} alt="" />} openElement={<img src={paragraphIcon} alt="" />} size="small" /></div>

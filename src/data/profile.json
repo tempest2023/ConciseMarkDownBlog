@@ -2,11 +2,10 @@
   "schemaVersion": 1,
   "sourceReviewedAt": "2026-09-21",
   "scope": "Only facts already published in this blog. Dates and current-role claims reflect the sources, not independent employer verification.",
-  "name": "Tao Ren",
-  "alias": "Tempest",
+  "name": "Tempest",
   "role": "AI Engineer & Researcher",
   "headline": "Building agents for complex work.",
-  "intro": "I'm Tao Ren (Tempest), an AI engineer and independent researcher. I build agents for document-heavy workflows and software engineering, and study how language models edit and generate structured content.",
+  "intro": "I'm Tempest, an AI engineer and independent researcher. I build agents for document-heavy workflows and software engineering, and study how language models edit and generate structured content.",
   "summary": "At Newfront, I work on Nova Agent for insurance operations. Previously at TikTok, I built an LLM coding agent for Objective-C-to-Swift migration with custom evaluation harnesses. My research includes FineEdit, TreeDiff, and Infant Agent.",
   "current": {
     "organization": "Newfront / WTW",

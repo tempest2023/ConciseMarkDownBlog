@@ -1,13 +1,12 @@
 {
   "siteUrl": "https://tempest.fun",
   "siteName": "Tempest's Blog",
-  "author": "Tao Ren (Tempest)",
-  "defaultDescription": "Tao Ren (Tempest) is an AI engineer and researcher building agents for document workflows and software engineering, with research in structured generation, precise editing, and evaluation.",
+  "author": "Tempest",
+  "defaultDescription": "Tempest is an AI engineer and researcher building agents for document workflows and software engineering, with research in structured generation, precise editing, and evaluation.",
   "defaultImage": "/logo512.png",
   "locale": "en_US",
   "language": "en",
   "keywords": [
-    "Tao Ren",
     "Tempest",
     "AI engineer",
     "AI researcher",
