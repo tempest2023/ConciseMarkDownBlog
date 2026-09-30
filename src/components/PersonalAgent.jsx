@@ -1,6 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { consumeChatStream } from '../util/chat-stream';
 import { conversationHistory, safeAgentHref, friendlyAgentError } from '../util/agent-client';
 import { historyKey, legacyHistoryKey, loadConversations, serializeConversations, maxConversations } from '../util/agent-history';
@@ -170,14 +171,14 @@ export default function PersonalAgent ({ newChatRequest = 0, onConversationChang
               {messages.map((message, index) => <div className={`agent-message ${message.role}`} key={message.id} role={message.status === 'error' ? 'alert' : undefined}>
                 {message.role === 'assistant' && <span className="agent-message-avatar" aria-hidden="true"><img src="/assets/agent-avatar/focused.png" alt="" draggable="false" /></span>}
                 <span className="message-role">{message.role === 'user' ? 'You' : 'Saber (AI Agent)'}</span>
-                <div className="message-content"><ReactMarkdown skipHtml transformLinkUri={safeAgentHref} components={{ img: () => null, a: ({ href, children }) => href ? <a href={href} rel="nofollow noreferrer">{children}</a> : <span>{children}</span> }}>{message.content || (message.status === 'streaming' ? 'Thinking…' : 'Saber is busy right now. Please try again in a moment.')}</ReactMarkdown>{message.status === 'error' && !busy && messages[index - 1]?.role === 'user' && <button type="button" className="agent-message-retry" onClick={() => ask(messages[index - 1].content, message.id)}>Try again</button>}</div>
+                <div className="message-content"><ReactMarkdown skipHtml remarkPlugins={[remarkGfm]} transformLinkUri={safeAgentHref} components={{ img: () => null, a: ({ href, children }) => href ? <a href={href} target={href.startsWith('mailto:') ? undefined : '_blank'} rel="nofollow noopener noreferrer">{children}</a> : <span>{children}</span> }}>{message.content || (message.status === 'streaming' ? 'Thinking…' : 'Saber is busy right now. Please try again in a moment.')}</ReactMarkdown>{message.status === 'error' && !busy && messages[index - 1]?.role === 'user' && <button type="button" className="agent-message-retry" onClick={() => ask(messages[index - 1].content, message.id)}>Try again</button>}</div>
               </div>)}
             </div>
           </div>}
         </div>
 
         <div className="agent-composer-area">
-          {available === false && <p className="agent-notice" role="status">Chat is not available right now. <a href="/work/">Explore Tempest’s work</a> or <a href="mailto:tar118@pitt.edu">contact Tempest directly</a>.<button type="button" onClick={() => setStatusRequest(value => value + 1)}>Reconnect</button></p>}
+          {available === false && <p className="agent-notice" role="status">Chat is not available right now. <a href="/work/" target="_blank" rel="noopener noreferrer">Explore Tempest’s work</a> or <a href="mailto:tar118@pitt.edu">contact Tempest directly</a>.<button type="button" onClick={() => setStatusRequest(value => value + 1)}>Reconnect</button></p>}
           <form onSubmit={event => { event.preventDefault(); ask(question); }}>
             <label htmlFor="agent-question">Your question</label>
             <textarea id="agent-question" ref={input} value={question} onChange={event => setQuestion(event.target.value)} maxLength={2000} rows={1} placeholder={messages.length ? 'Continue the conversation…' : 'Ask about Tempest’s work…'} disabled={available !== true} onKeyDown={event => { if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); ask(question); } }} />

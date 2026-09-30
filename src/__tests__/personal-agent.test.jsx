@@ -11,6 +11,7 @@ const savedHistory = () => JSON.parse(window.localStorage.getItem(historyKey));
 const savedMessages = () => savedHistory().conversations.find(item => item.id === savedHistory().activeId)?.messages || [];
 
 jest.mock('react-markdown', () => ({ __esModule: true, default: ({ children }) => <p>{children}</p> }));
+jest.mock('remark-gfm', () => () => {});
 jest.mock('../util/chat-stream', () => ({ consumeChatStream: jest.fn() }));
 const originalFetch = global.fetch;
 const originalTextEncoder = global.TextEncoder;

@@ -6,9 +6,13 @@ const { conversationHistory, safeAgentHref } = client;
 test('only known public links become clickable, never model-supplied tracking destinations', () => {
   assert.equal(safeAgentHref('/work/'), '/work/');
   assert.equal(safeAgentHref('/?page=Work#fineedit'), '/work/#fineedit');
+  assert.equal(safeAgentHref('https://tempest.fun/work/#fineedit'), '/work/#fineedit');
+  assert.equal(safeAgentHref('https://tempest.fun/?page=Work#fineedit'), '/work/#fineedit');
+  assert.equal(safeAgentHref('/work#fineedit'), '/work/#fineedit');
+  assert.equal(safeAgentHref('https://aclanthology.org/2025.findings-emnlp.118'), 'https://aclanthology.org/2025.findings-emnlp.118/');
   assert.equal(safeAgentHref('https://github.com/tempest2023'), 'https://github.com/tempest2023');
   assert.equal(safeAgentHref('mailto:tar118@pitt.edu'), 'mailto:tar118@pitt.edu');
-  for (const href of ['https://evil.example/track', '//evil.example', 'javascript:alert(1)', '/work/?tracking=secret', 'https://github.com/tempest2023?leak=secret', undefined]) assert.equal(safeAgentHref(href), undefined);
+  for (const href of ['https://evil.example/track', '//evil.example', 'javascript:alert(1)', '/work/?tracking=secret', 'https://tempest.fun/work/?tracking=secret', 'https://tempest.fun.evil.example/work/', 'https://tempest.fun@evil.example/work/', 'https://evil.example@tempest.fun/work/', 'https://github.com/tempest2023?leak=secret', undefined]) assert.equal(safeAgentHref(href), undefined);
 });
 test('history excludes failed turns, trims long replies and stays valid after many rounds', () => {
   const messages = [];
