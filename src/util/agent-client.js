@@ -1,6 +1,8 @@
 const profile = require('../data/profile.json');
 const catalog = require('../data/articles.json');
+const { siteUrl } = require('../seo.config.json');
 const { canonicalHref } = require('./routes');
+const siteOrigin = new URL(siteUrl).origin;
 
 // Only source links from the public context become clickable. Model output is untrusted.
 const allowed = new Set(catalog.map(article => article.path));
@@ -13,8 +15,21 @@ collectLinks(profile);
 allowed.add(`mailto:${profile.contact.email}`);
 function safeAgentHref (href) {
   if (typeof href !== 'string') return undefined;
+  if (/^https?:\/\//i.test(href)) {
+    try {
+      const url = new URL(href);
+      if (url.username || url.password) return undefined;
+      href = url.origin === siteOrigin ? url.pathname + url.search + url.hash : url.href;
+    } catch { return undefined; }
+  }
   const normalized = canonicalHref(href);
-  return allowed.has(normalized.split('#')[0]) ? normalized : undefined;
+  const hashIndex = normalized.indexOf('#');
+  const destination = hashIndex === -1 ? normalized : normalized.slice(0, hashIndex);
+  const fragment = hashIndex === -1 ? '' : normalized.slice(hashIndex);
+  if (allowed.has(destination)) return normalized;
+  if (allowed.has(destination + '/')) return destination + '/' + fragment;
+  if (destination.endsWith('/') && allowed.has(destination.slice(0, -1))) return destination.slice(0, -1) + fragment;
+  return undefined;
 }
 function conversationHistory (messages, question) {
   // Keep complete turns, not orphaned assistant replies; never send partial or failed output.
