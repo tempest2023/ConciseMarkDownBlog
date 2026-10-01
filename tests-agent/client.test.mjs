@@ -11,8 +11,12 @@ test('only known public links become clickable, never model-supplied tracking de
   assert.equal(safeAgentHref('/work#fineedit'), '/work/#fineedit');
   assert.equal(safeAgentHref('https://aclanthology.org/2025.findings-emnlp.118'), 'https://aclanthology.org/2025.findings-emnlp.118/');
   assert.equal(safeAgentHref('https://github.com/tempest2023'), 'https://github.com/tempest2023');
+  assert.equal(safeAgentHref('https://github.com/tempest2023/'), 'https://github.com/tempest2023');
+  assert.equal(safeAgentHref('https://github.com/tempest2023/#overview'), 'https://github.com/tempest2023#overview');
+  assert.equal(safeAgentHref('https://arxiv.org/abs/2411.01114/'), 'https://arxiv.org/abs/2411.01114');
+  assert.equal(safeAgentHref('https://ieeexplore.ieee.org/abstract/document/10405986/'), 'https://ieeexplore.ieee.org/abstract/document/10405986');
   assert.equal(safeAgentHref('mailto:tar118@pitt.edu'), 'mailto:tar118@pitt.edu');
-  for (const href of ['https://evil.example/track', '//evil.example', 'javascript:alert(1)', '/work/?tracking=secret', 'https://tempest.fun/work/?tracking=secret', 'https://tempest.fun.evil.example/work/', 'https://tempest.fun@evil.example/work/', 'https://evil.example@tempest.fun/work/', 'https://github.com/tempest2023?leak=secret', undefined]) assert.equal(safeAgentHref(href), undefined);
+  for (const href of ['https://evil.example/track', '//evil.example', 'javascript:alert(1)', '/work/?tracking=secret', 'https://tempest.fun/work/?tracking=secret', 'https://tempest.fun.evil.example/work/', 'https://tempest.fun@evil.example/work/', 'https://evil.example@tempest.fun/work/', 'https://github.com/tempest2023?leak=secret', 'https://github.com/tempest2023/?leak=secret', 'https://evil.example/', undefined]) assert.equal(safeAgentHref(href), undefined);
 });
 test('history excludes failed turns, trims long replies and stays valid after many rounds', () => {
   const messages = [];

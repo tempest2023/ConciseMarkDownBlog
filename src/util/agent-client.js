@@ -28,6 +28,7 @@ function safeAgentHref (href) {
   const fragment = hashIndex === -1 ? '' : normalized.slice(hashIndex);
   if (allowed.has(destination)) return normalized;
   if (allowed.has(destination + '/')) return destination + '/' + fragment;
+  if (destination.endsWith('/') && allowed.has(destination.slice(0, -1))) return destination.slice(0, -1) + fragment;
   return undefined;
 }
 function conversationHistory (messages, question) {

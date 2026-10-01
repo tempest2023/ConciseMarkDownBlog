@@ -2,8 +2,9 @@ import { test, expect } from '@playwright/test';
 
 const fineEdit = 'https://aclanthology.org/2025.findings-emnlp.118/';
 const treeDiff = 'https://aclanthology.org/2026.surgellm-1.5/';
+const slashVariants = ['https://github.com/tempest2023', 'https://arxiv.org/abs/2411.01114', 'https://ieeexplore.ieee.org/abstract/document/10405986'];
 const article = '/blog/ai/my-ai-research-and-engineering-journey/';
-const answer = `FineEdit: ${fineEdit}\n\nTreeDiff: ${treeDiff}\n\n[Read the article](${article})\n\nhttps://tempest.fun/work/#fineedit\n\n[Work reference](/?page=Work#fineedit)\n\nhttps://untrusted.example/track and [Unknown source](https://untrusted.example/track).`;
+const answer = `FineEdit: ${fineEdit}\n\nTreeDiff: ${treeDiff}\n\n${slashVariants.map(url => url + '/').join('\n\n')}\n\n[Read the article](${article})\n\nhttps://tempest.fun/work/#fineedit\n\n[Work reference](/?page=Work#fineedit)\n\nhttps://untrusted.example/track and [Unknown source](https://untrusted.example/track).`;
 
 for (const viewport of [{ width: 1512, height: 982 }, { width: 390, height: 844 }]) {
   test(`agent source links open new tabs and preserve the conversation at ${viewport.width}px`, async ({ page, context }) => {
@@ -22,9 +23,10 @@ for (const viewport of [{ width: 1512, height: 982 }, { width: 390, height: 844 
     const fineEditLink = reply.getByRole('link', { name: fineEdit, exact: true });
     await expect(fineEditLink).toHaveAttribute('href', fineEdit);
     await expect(reply.getByRole('link', { name: treeDiff, exact: true })).toHaveAttribute('href', treeDiff);
+    for (const url of slashVariants) await expect(reply.getByRole('link', { name: url + '/', exact: true })).toHaveAttribute('href', url);
     await expect(reply.getByRole('link', { name: 'https://tempest.fun/work/#fineedit', exact: true })).toHaveAttribute('href', '/work/#fineedit');
     await expect(reply.getByRole('link', { name: 'Work reference', exact: true })).toHaveAttribute('href', '/work/#fineedit');
-    await expect(reply.getByRole('link')).toHaveCount(5);
+    await expect(reply.getByRole('link')).toHaveCount(8);
     await expect(reply.getByRole('link', { name: 'Unknown source' })).toHaveCount(0);
     await expect(reply.getByRole('link', { name: 'https://untrusted.example/track', exact: true })).toHaveCount(0);
     for (const link of await reply.getByRole('link').all()) {
@@ -52,6 +54,6 @@ for (const viewport of [{ width: 1512, height: 982 }, { width: 390, height: 844 
 
     await page.reload();
     await page.getByRole('button', { name: 'Open Ask Tempest' }).click();
-    await expect(page.locator('.agent-message.assistant').getByRole('link')).toHaveCount(5);
+    await expect(page.locator('.agent-message.assistant').getByRole('link')).toHaveCount(8);
   });
 }
