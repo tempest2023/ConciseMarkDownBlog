@@ -28,6 +28,7 @@
     "postbuild": "node scripts/render-static.mjs",
     "test:static": "node scripts/verify-static.mjs",
     "test:agent": "node --test tests-agent/*.test.mjs",
+    "test:tooling": "node --test tests-tooling/*.test.cjs",
     "preview": "node scripts/preview.cjs",
     "start": "node scripts/start.js",
     "prebuild": "npm run content && node scripts/generate-seo.js",
@@ -44,12 +45,12 @@
     "@babel/core": "^7.16.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
     "@reduxjs/toolkit": "^1.8.6",
-    "@svgr/webpack": "^5.5.0",
+    "@svgr/webpack": "^8.1.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
     "ai": "7.0.94",
-    "babel-jest": "^27.4.2",
+    "babel-jest": "^29.7.0",
     "babel-loader": "^8.2.3",
     "babel-plugin-named-asset-import": "^0.3.8",
     "babel-preset-react-app": "^10.0.1",
@@ -60,7 +61,7 @@
     "camelcase": "^6.2.1",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "css-loader": "^6.5.1",
-    "css-minimizer-webpack-plugin": "^3.2.0",
+    "css-minimizer-webpack-plugin": "^8.0.0",
     "dotenv": "^10.0.0",
     "dotenv-expand": "^5.1.0",
     "eslint": "^8.3.0",
@@ -70,9 +71,10 @@
     "fs-extra": "^10.0.0",
     "html-webpack-plugin": "^5.5.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^27.4.3",
-    "jest-resolve": "^27.4.2",
-    "jest-watch-typeahead": "^1.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-resolve": "^29.7.0",
+    "jest-watch-typeahead": "^2.2.2",
     "mini-css-extract-plugin": "^2.4.5",
     "postcss": "^8.4.4",
     "postcss-flexbugs-fixes": "^5.0.2",
@@ -89,13 +91,13 @@
     "react-markdown": "^8.0.3",
     "react-redux": "^8.0.4",
     "react-refresh": "^0.11.0",
-    "react-syntax-highlighter": "^15.5.0",
+    "react-syntax-highlighter": "^15.6.6",
     "rehype-katex": "^6.0.2",
     "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1",
     "remark-math": "^5.1.1",
     "resolve": "^1.20.0",
-    "resolve-url-loader": "^4.0.0",
+    "resolve-url-loader": "^5.0.0",
     "sass-loader": "^12.3.0",
     "semver": "^7.3.5",
     "source-map-loader": "^3.0.0",
@@ -104,10 +106,10 @@
     "terser-webpack-plugin": "^5.2.5",
     "web-vitals": "^2.1.0",
     "webpack": "^5.64.4",
-    "webpack-dev-server": "^4.6.0",
+    "webpack-dev-server": "^5.2.7",
     "webpack-manifest-plugin": "^4.0.2",
-    "workbox-webpack-plugin": "^6.4.1",
-    "zod": "4.1.8"
+    "workbox-webpack-plugin": "^7.4.1",
+    "zod": "4.6.7"
   },
   "eslintConfig": {
     "extends": [
@@ -130,14 +132,13 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "7.21.11",
     "@playwright/test": "^1.58.2",
-    "eslint": "^8.0.1",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.31.1",
     "husky": "^8.0.1",
-    "jsdom": "16.7.0",
+    "jsdom": "^26.1.0",
     "prettier": "^2.6.2",
     "serve": "^14.2.5"
   },
@@ -196,5 +197,12 @@
     "presets": [
       "react-app"
     ]
+  },
+  "resolutions": {
+    "compression": "^1.8.2",
+    "prismjs": "^1.30.0",
+    "underscore": "^1.13.8",
+    "uuid": "^11.1.1",
+    "katex": "0.18.10"
   }
 }
