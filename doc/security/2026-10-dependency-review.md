@@ -16,7 +16,7 @@ Base: `main` at `dc09c96`. Source: all pages of the repository's GitHub Dependab
 
 Refresh dependencies within their existing version ranges. Upgrade SVGR, resolve-url-loader, CSS minimization, Workbox, webpack-dev-server, Jest and jsdom where the previous major versions retain vulnerable dependencies. The new development-server certificate chain removes `node-forge` entirely, including its advisory without a patched release.
 
-Migrate the development server to its current HTTPS, middleware and shutdown APIs. Keep host validation enabled without a backend proxy, remove wildcard CORS headers, and preserve the trailing slash on the middleware public path. HTTP/HTTPS regression tests exercise host rejection and cross-origin response headers.
+Migrate the development server to its current HTTPS, middleware and shutdown APIs. Keep host validation enabled without a backend proxy, remove wildcard CORS headers, and preserve the trailing slash on the middleware public path. Mount the native Host and cross-origin checks before source-map handlers and `src/setupProxy.js` routes. Preserve the Express app passed to proxy setup, and refuse startup if either native check is missing. HTTP/HTTPS regression tests exercise invalid Host and cross-site request rejection on custom routes, normal route responses, and source-map endpoint protection.
 
 Update Jest's asset transforms to return `{ code }`, as required by Jest 29. Browser coverage exercises math rendering and syntax highlighting after the dependency updates.
 

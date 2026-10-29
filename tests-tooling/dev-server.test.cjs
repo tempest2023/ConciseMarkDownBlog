@@ -14,21 +14,14 @@ test('development server keeps host checks and does not allow cross-origin reads
   assert.ok(config.devMiddleware.publicPath.endsWith('/'));
 });
 
-test('middleware migration preserves source maps before fallback and service worker reset', () => {
-  const config = createConfig();
-  const registered = [];
-  const existing = { name: 'built-in' };
-  const middlewares = [existing];
-  const result = config.setupMiddlewares(middlewares, {
-    app: { use: middleware => registered.push(middleware) },
-  });
-  assert.equal(registered.length, 1);
-  assert.equal(typeof registered[0], 'function');
-  assert.equal(result, middlewares);
-  assert.equal(result[0], existing);
-  assert.equal(result.length, 3);
-  assert.equal(typeof result[1], 'function');
-  assert.equal(typeof result[2], 'function');
+test('development server refuses to start without both native security checks', () => {
+  for (const name of ['host-header-check', 'cross-origin-header-check']) {
+    let registered = false;
+    assert.throws(() => createConfig().setupMiddlewares([{ name, middleware () {} }], {
+      app: { use: () => { registered = true; } },
+    }), /Required webpack-dev-server security middleware is missing/);
+    assert.equal(registered, false);
+  }
 });
 
 test('server configuration supports HTTP and automatic HTTPS certificates', () => {

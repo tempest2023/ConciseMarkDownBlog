@@ -79,7 +79,17 @@ module.exports = function (proxy, allowedHost) {
     },
     proxy,
     setupMiddlewares (middlewares, devServer) {
-      // Register source maps and user proxies before the built-in middleware.
+      // setupProxy receives the Express app and can register routes immediately.
+      // Mount the native security checks first so those routes cannot bypass them.
+      const securityChecks = ['host-header-check', 'cross-origin-header-check'];
+      if (securityChecks.some(name => !middlewares.some(item => item.name === name))) {
+        throw new Error('Required webpack-dev-server security middleware is missing.');
+      }
+      for (const name of securityChecks) {
+        const index = middlewares.findIndex(item => item.name === name);
+        const [check] = middlewares.splice(index, 1);
+        devServer.app.use(check.middleware);
+      }
       devServer.app.use(evalSourceMapMiddleware(devServer));
       if (fs.existsSync(paths.proxySetup)) {
         require(paths.proxySetup)(devServer.app);
