@@ -4,26 +4,24 @@
 
 # Building agents for complex work.
 
-I'm Tempest, an AI engineer and independent researcher. I build agents for document-heavy workflows and software engineering, and study how language models edit and generate structured content.
+At Newfront, I build software that helps insurance teams work through policy documents. Outside work, I help run Rein Protocol Foundation and study how agents should handle requests for permission.
 
 <nav class="profile-actions" aria-label="Explore my work"><a href="/?page=Work">Work & research ↗</a><a href="/resume/Tao-Ren-Resume.pdf">My résumé ↗</a></nav>
 </div>
 
-At Newfront, I work on Nova Agent for insurance operations. Previously at TikTok, I built an LLM coding agent for Objective-C-to-Swift migration with custom evaluation harnesses. My research includes FineEdit, TreeDiff, and Infant Agent.
+## Six years in China and the US
 
-## Building agents
+At Alipay in China, I was responsible for the frontend of several financial products and helped run the financial section of the Double 11 sale. I moved to the US for graduate school at Pittsburgh. At UC Riverside I studied how to run models on board autonomous vehicles, then left the PhD program to join TikTok. Over two and a half years there, I worked on mobile products and built an agent to help migrate Objective-C code to Swift.
 
-### [Nova Agent · Newfront / WTW](/?page=Work#nova-agent)
+In 2024, I was trying to get agents to work on social media tasks for longer than a single session. We scheduled jobs, split up the work, and gave another agent the job of reviewing it. Runs still failed when the agents lost track of earlier steps. In 2025, a co-founder and I built a go-to-market agent demo. Later that year I joined Newfront, a YC-backed insurance startup that WTW subsequently acquired.
 
-An internal AI coworker for insurance operators. I work on document-heavy workflows, generated contracts, company-style email drafts, tool use, and human-in-the-loop review.
+## What I'm working on
 
-A task can involve more than 50 PDFs, policy and submission documents, generated contracts, and internal services. My work connects tools, document processing, structured outputs, and operator review with the constraints of an insurance workflow.
+Our first placement workflows followed steps we wrote into the software. Today, insurance operators can describe a procedure as a Skill, and Nova can choose when to use it. [Nova at Newfront](/?page=Work#nova-agent)
 
-### [TikTok coding agent](/?page=Work#tiktok-coding-agent)
+At Rein, I help maintain the community's learning resources and develop Nori, the assistant we use to delegate work and collect the results. [Rein Protocol Foundation](/?page=Work#rein-foundation) · [Nori](/?page=Projects/Project#nori)
 
-*Developer tooling · Code migration*
-
-Built an internal LLM agent for Objective-C to Swift migration, with generation loops and custom evaluation harnesses.
+My current research looks at permission decisions. If an agent asks to read a file, can a model tell whether the user's original request authorizes that read? [Agent permissions and safety](/?page=Work#agent-safety)
 
 ## Selected research
 
@@ -45,20 +43,6 @@ AST-guided code generation with diffusion language models, treating code as a st
 
 Tool-integrated agents with task-aware functions, memory retrieval, and cost-aware API usage for multi-step tasks.
 
-## Product experiments
-
-I also build products to explore how people interact with AI: [AgentShelf](https://github.com/tempest2023/AgentShelf), a hackathon prototype for AI commerce readiness; [Obi](https://github.com/tempest2023/Obi), a frontend for a general-agent product; and [Live Subtitles](https://github.com/tempest2023/live-subtitles), an app for streaming speech transcription and translation.
-
-[Explore selected projects](/?page=Projects/Project)
-
-## How the work connects
-
-My engineering work asks how agents can complete useful tasks with tools, documents, and human review. My research asks how models can make precise changes and generate outputs that respect structure. Evaluation connects the two: the output has to hold up in the workflow where it will be used.
-
-Earlier work at Ant Group, Ansys, and Pittsburgh gave me experience with production services, mobile applications, and research software. That engineering foundation shapes how I build AI systems today.
-
-[My research and engineering journey](/?page=Blogs%2FAI%2FMy_AI_Research_and_Engineering_Journey) · [Technical background](/?page=TechStack)
-
 ## Writing
 
 - [From Deep Learning to Production AI Agents](/?page=Blogs%2FAI%2FMy_AI_Research_and_Engineering_Journey)
@@ -68,4 +52,6 @@ Earlier work at Ant Group, Ansys, and Pittsburgh gave me experience with product
 
 ## Let's connect
 
-For research, agent engineering, and collaboration, [email me](mailto:tar118@pitt.edu) or find me on [GitHub](https://github.com/tempest2023) and [LinkedIn](https://www.linkedin.com/in/taoren-pitt/).
+If you're working on agents or starting a company, I'd enjoy hearing what you're building. I'm up for coffee in LA or the Bay Area, or a call.
+
+[Email me](mailto:tar118@pitt.edu) or find me on [GitHub](https://github.com/tempest2023) and [LinkedIn](https://www.linkedin.com/in/taoren-pitt/).

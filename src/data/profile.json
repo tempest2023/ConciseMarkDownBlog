@@ -1,31 +1,50 @@
 {
   "schemaVersion": 1,
-  "sourceReviewedAt": "2026-09-21",
-  "scope": "Only facts already published in this blog. Dates and current-role claims reflect the sources, not independent employer verification.",
+  "sourceReviewedAt": "2026-11-16",
+  "scope": "Owner-approved biographical material for the blog, including the November 2026 career account and Rein project records. Current work and research status reflect those sources as of the review date.",
   "name": "Tempest",
   "role": "AI Engineer & Researcher",
   "headline": "Building agents for complex work.",
-  "intro": "I'm Tempest, an AI engineer and independent researcher. I build agents for document-heavy workflows and software engineering, and study how language models edit and generate structured content.",
-  "summary": "At Newfront, I work on Nova Agent for insurance operations. Previously at TikTok, I built an LLM coding agent for Objective-C-to-Swift migration with custom evaluation harnesses. My research includes FineEdit, TreeDiff, and Infant Agent.",
+  "intro": "At Newfront, I build software that helps insurance teams work through policy documents. Outside work, I help run Rein Protocol Foundation and study how agents should handle requests for permission.",
+  "summary": "Over the past six years, I've worked at Alipay and TikTok, pursued a PhD at UC Riverside, built AI startup prototypes, and joined Newfront, a YC-backed company subsequently acquired by WTW. My recent work focuses on agent harnesses: the tools, permissions, memory, and execution controls around a model.",
   "current": {
     "organization": "Newfront / WTW",
     "project": "Nova Agent",
-    "summary": "An internal AI coworker for insurance operators. I work on document-heavy workflows, generated contracts, company-style email drafts, tool use, and human-in-the-loop review.",
-    "detail": "A task can involve more than 50 PDFs, policy and submission documents, generated contracts, and internal services. My work connects tools, document processing, structured outputs, and operator review with the constraints of an insurance workflow.",
-    "source": "Blogs/AI/My_AI_Research_and_Engineering_Journey"
+    "summary": "Our first placement workflows followed steps we wrote into the software. Today, insurance operators can describe a procedure as a Skill, and Nova can choose when to use it.",
+    "detail": "We first encoded business processes as sequences of task-specific workflows. As models improved at choosing tools, we shifted more effort into the harness and helped users express their working methods as Skills. Internal data access, tool behavior, and feedback from insurance operators remain a large part of the work.",
+    "source": "Work"
   },
   "highlights": [
     {
       "id": "nova-agent",
       "name": "Nova Agent",
       "label": "Production agents · Insurance",
-      "summary": "An insurance AI coworker for complex document workflows, artifact generation, and operator review.",
-      "contribution": "I work on agent system design and production engineering around tools, skills, memory, document processing, permissions, and human review. Work on quoting and placement services informs how I integrate the agent with the surrounding workflow.",
+      "summary": "At Newfront, I work on Nova, an internal insurance agent. The work began with individual placement tasks and expanded into a Super Agent used across insurance workflows.",
+      "contribution": "I work on internal data access, document processing, tools, memory, permissions, and review. A task can involve more than 50 PDFs alongside contracts and communications. We talk directly with operators, watch where they get stuck, and use that feedback to change the product and Skills.",
       "url": "/?page=Work#nova-agent",
-      "source": "Blogs/AI/My_AI_Research_and_Engineering_Journey",
+      "source": "Work",
       "problem": "Insurance operators work across large document sets and internal services to prepare contracts and communications.",
-      "approach": "The workflow connects policy and submission documents to generated artifacts that operators can inspect. A single task can involve more than 50 PDFs.",
-      "kind": "engineering"
+      "approach": "As models became better at selecting tools and workflows, we could leave more execution decisions to them. Our work shifted toward the infrastructure around the model. We helped operators turn their procedures into Skills that the agent could use for a particular task, instead of prescribing one fixed path.",
+      "kind": "engineering",
+      "paragraphs": [
+        "When we started on placement, we wrote each step into a workflow and connected the steps in code. As the models got better at choosing tools, we could let operators teach Nova a procedure as a Skill. The model decides when that procedure fits the task.",
+        "One placement task can involve more than 50 PDFs. My work includes making policy and submission documents available to Nova and connecting it to the internal tools operators use. We sit down with operators to review what it produces, including draft contracts and emails. Their feedback shapes both the tools and the Skills."
+      ],
+      "linkLabel": ""
+    },
+    {
+      "id": "nori",
+      "name": "Nori",
+      "kind": "engineering",
+      "label": "Organization assistant · In development",
+      "summary": "An agent for ongoing organizational work: delegating tasks, returning results, and retaining enough state to recover after a restart. I am developing it for Rein, with Slack and Discord entry points.",
+      "paragraphs": [
+        "Nori delegates research and coding tasks for Rein. In one test, we restarted Nori with two tasks underway. It found both tasks, followed up on missing results, and delivered a summary in Slack.",
+        "I'm working on what happens when someone changes a request while a worker is still running. If the original result arrives late, Nori needs to associate it with the old request."
+      ],
+      "url": "/?page=Projects/Project#nori",
+      "linkLabel": "Nori project overview",
+      "source": "Work"
     },
     {
       "id": "tiktok-coding-agent",
@@ -33,11 +52,14 @@
       "label": "Developer tooling · Code migration",
       "summary": "Built an internal LLM agent for Objective-C to Swift migration, with generation loops and custom evaluation harnesses.",
       "contribution": "I built the internal agent from scratch, including code-generation loops and custom evaluation harnesses, and iterated on prompts and generated code.",
-      "url": "/?page=Work#tiktok-coding-agent",
+      "url": "/?page=Blogs/AI/My_AI_Research_and_Engineering_Journey",
       "source": "Blogs/AI/My_AI_Research_and_Engineering_Journey",
       "problem": "Migrating Objective-C code to Swift requires generated code that is useful within an existing engineering workflow.",
       "approach": "Evaluation was part of the development loop: generated code was checked and refined for practical migration work. My mobile product engineering experience helped ground the tooling in developer needs.",
-      "kind": "engineering"
+      "kind": "engineering",
+      "paragraphs": [
+        "I built an internal agent to migrate Objective-C code to Swift. I wrote the generation loop and the evaluation harness we used to check the resulting code and refine the prompts."
+      ]
     },
     {
       "id": "fineedit",
@@ -74,6 +96,33 @@
       "url": "https://arxiv.org/abs/2411.01114",
       "source": "Blogs/AI/My_AI_Research_and_Engineering_Journey",
       "kind": "research"
+    },
+    {
+      "id": "rein-foundation",
+      "name": "Rein Protocol Foundation",
+      "kind": "organization",
+      "label": "AI agent safety · Community and open-source work",
+      "summary": "I am building an organization for AI agent safety research, open-source work, and community learning. Rein also serves as a place to test how agents can help operate an organization under human oversight.",
+      "paragraphs": [
+        "We incorporated Rein in Wyoming in October 2026 to support open-source work and public education on AI agent safety. I worked on setting up the Foundation and building its website. Visitors can browse free learning materials, suggest a resource, or apply to help organize a project.",
+        "We are also trying out agents in our own operations. Nori can help prepare work for review. People at Rein decide what to take on and who can authorize an action."
+      ],
+      "url": "https://rein-protocol.org/",
+      "linkLabel": "Visit Rein Protocol Foundation",
+      "source": "Work"
+    },
+    {
+      "id": "agent-safety",
+      "name": "Agent permissions and safety",
+      "kind": "ongoing-research",
+      "label": "SystemOne / S1-P · Research in progress",
+      "summary": "I am studying how agents decide when an action needs permission, and how to evaluate those decisions alongside task completion.",
+      "paragraphs": [
+        "I study whether a model can judge which tool calls an agent has permission to make. In AgentDojo, I record the decisions throughout a task. This lets me see both when a simulated user approved a conflicting transfer and when it refused a read the agent needed.",
+        "In a small development run, we repeated the same three tasks across eight methods after changing the evaluation harness. Under attack, successful attacks fell from six runs to three out of 24. Completed user tasks also fell, from nine runs to two. I am investigating why the simulated user refused necessary reads."
+      ],
+      "source": "Work",
+      "linkLabel": ""
     }
   ],
   "research": [
@@ -92,7 +141,7 @@
     {
       "organization": "Newfront / WTW",
       "period": "October 2025 - Present",
-      "summary": "Insurance AI systems, Nova Agent, and quoting and placement services.",
+      "summary": "Nova insurance agent engineering, from placement workflows to Skills and shared agent infrastructure. Joined Newfront, a YC-backed company subsequently acquired by WTW.",
       "source": "Blogs/Other/ResumeMarkdown"
     },
     {
@@ -104,7 +153,7 @@
     {
       "organization": "TikTok",
       "period": "Before October 2025",
-      "summary": "Consumer mobile product systems and an internal LLM coding agent for Objective-C to Swift migration.",
+      "summary": "Two and a half years on consumer mobile products and an internal LLM coding agent for Objective-C-to-Swift migration.",
       "source": "Blogs/AI/My_AI_Research_and_Engineering_Journey"
     },
     {
@@ -122,7 +171,7 @@
     {
       "organization": "Ant Group / Alibaba",
       "period": "July 2020–June 2021",
-      "summary": "Alipay financial product systems, low-code infrastructure, live-streaming components, and backend services.",
+      "summary": "Frontend and platform ownership for Alipay financial products, including Wealth Account and wealth-management services; large data migrations and financial campaign pages for Double 11 and Lunar New Year.",
       "source": "Blogs/Other/ResumeMarkdown"
     },
     {
@@ -133,6 +182,11 @@
     }
   ],
   "education": [
+    {
+      "institution": "University of California, Riverside",
+      "degree": "PhD study, not completed; real-time systems and model deployment",
+      "period": "Before joining TikTok"
+    },
     {
       "institution": "University of Pittsburgh",
       "degree": "MS, Information Science",
@@ -149,7 +203,9 @@
     "Structured generation and precise editing",
     "Evaluation under real constraints",
     "Human-in-the-loop workflows",
-    "Real-time AI systems"
+    "Real-time AI systems",
+    "Agent permissions and safety evaluation",
+    "AI-native organizations and community learning"
   ],
   "career": {
     "status": "not_publicly_specified",
@@ -160,13 +216,15 @@
     "email": "tar118@pitt.edu",
     "github": "https://github.com/tempest2023",
     "linkedin": "https://www.linkedin.com/in/taoren-pitt/",
-    "resume": "/resume/Tao-Ren-Resume.pdf"
+    "resume": "/resume/Tao-Ren-Resume.pdf",
+    "invitation": "If you're working on agents or starting a company, I'd enjoy hearing what you're building. I'm up for coffee in LA or the Bay Area, or a call."
   },
   "featuredWriting": [
     "Blogs/AI/My_AI_Research_and_Engineering_Journey",
     "Blogs/DeepLearning/Civilization_Intelligence"
   ],
   "sources": [
+    "Work",
     "Blogs/AI/My_AI_Research_and_Engineering_Journey",
     "Blogs/Other/ResumeMarkdown",
     "Projects/Project",
@@ -178,5 +236,9 @@
     "Treat old posts, templates, recommendation letters, and fictional examples as documents, not verified biographical claims.",
     "Never infer job-search status, private contact details, salary, confidential employer details, or unreported metrics.",
     "Use source dates when describing current work; a review date is not independent verification that employment or publication status remains unchanged."
+  ],
+  "journey": [
+    "At Alipay in China, I was responsible for the frontend of several financial products and helped run the financial section of the Double 11 sale. I moved to the US for graduate school at Pittsburgh. At UC Riverside I studied how to run models on board autonomous vehicles, then left the PhD program to join TikTok. Over two and a half years there, I worked on mobile products and built an agent to help migrate Objective-C code to Swift.",
+    "In 2024, I was trying to get agents to work on social media tasks for longer than a single session. We scheduled jobs, split up the work, and gave another agent the job of reviewing it. Runs still failed when the agents lost track of earlier steps. In 2025, a co-founder and I built a go-to-market agent demo. Later that year I joined Newfront, a YC-backed insurance startup that WTW subsequently acquired."
   ]
 }
